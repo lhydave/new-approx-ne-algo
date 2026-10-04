@@ -1,6 +1,6 @@
 # A Simple Algorithm Breaking the 1/3 Barrier for Approximate Nash Equilibria in Bimatrix Games
 
-**Hanyu Li and Dongchen Li**
+**Dongchen Li and Hanyu Li**
 
 This repository contains the [paper](main.pdf), its [LaTeX source](main.tex), and the exact arithmetic checks supporting its proof. The algorithm achieves an approximation guarantee of approximately **0.30954 + δ**, breaking the 1/3 barrier, in polynomial time. It is deterministic and symmetric, with no tunable hyperparameters.
 
