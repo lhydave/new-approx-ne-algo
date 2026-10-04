@@ -1,0 +1,1535 @@
+{
+  "schema": "natural-bound-proof-manifest/v1",
+  "algorithm_version": "four full-side LPs with retained first/second dual tuples + true rectangle OptimalMixing with input-profile domination + SelectBest over five profiles; no proof-side a/b in algorithm",
+  "proof_scope": "conditional on only Stage I building-block contracts; sound necessary projection, not equivalence/game-realizability",
+  "root": {
+    "name": "r_star",
+    "decimal": "0.3095399654314434527905278757381760146381408025423563",
+    "definition": "unique isolated N_1=N_2=H_root=0 root specified by natural-root input and box",
+    "arithmetic_lower": "30953996/100000000",
+    "upper": "1/3"
+  },
+  "stage_I": {
+    "content": "only typed normalized payoff/full-BR conventions, five building-block contracts and SSA composition; no threshold, failure encoding, caps, budgets or derived algebra",
+    "registry_status": "finalized_five_candidate_straightline_contracts",
+    "registry_path": "../quantified/quantified-registry.json",
+    "source_path": "../quantified/stage-i-contracts.json",
+    "machine_arithmetic_required": false,
+    "early_branches": [],
+    "explicit_special_mixing_assignments": [],
+    "zero_mass_convention": "arbitrary typed normalized strategy; BR alignment only if its corresponding dual mass is positive"
+  },
+  "stage_II": {
+    "content": "guarantee and failure quantifiers, finite named instantiation, forgetting, safe necessary projection/variable elimination, then real arithmetic certificates",
+    "projection_direction": "bad execution satisfying Stage I contracts => finite necessary scalar failure system => oriented relaxed arithmetic branch; reverse implications and full exact QE are not claimed",
+    "comparison_threshold": "arbitrary rational r in (r_star,min(Fout-delta_f-tau,1/3)); old .31 exclusion tree is unnecessary",
+    "error_contract": "Fom<=min_rectangle F+tau and Fom<=all four input-profile values; frontend delta_f plus tau<=requested total delta",
+    "key_structural_choices": [
+      "finite necessary instantiation and free comparison threshold; first4 actual dual masses are shared",
+      "odds/response clipping, player orientation and common mass equalization reduce the arithmetic",
+      "fixed-v and postclip paths retain only selected source/envelope and one knot determinant; weakened scope is explicit",
+      "three small residual exact partitions cover canonical upper arc, high-rho LEFT and high-rho B_mix boundaries",
+      "kappa_1=0 root/resultant signs give global upper r_star; local root fixture concerns the scalar relaxation only"
+    ],
+    "logical_registry_path": "../quantified/quantified-registry.json",
+    "quantifier_elimination_scope": "sound instantiation/forgetting and proof of existential exclusion by necessary projections; not complete equivalent QE of original game trace",
+    "identity_replay_is_not_semantic_discharge": true,
+    "OM_encoding_scope": "Convenient generic signed-deficit-plane parametric linearizer with mechanically generated cuts/cells/coordinate edges; not claimed to be the official NC compiler or exact OM QE",
+    "old_knot_parameters": "display names for verified mechanical affine-ratio intersection outputs; not hand-selected compiler inputs or algorithm assignments",
+    "implication_ledgers": {
+      "ideal": "../global/ideal-cap-provenance-ledger.json",
+      "near_BR": "../critical/delta_f-lift-ledger.json",
+      "full_BR_rectangle": "../quantified/fullbr-rectangle-bridge.json",
+      "parametric_linearizer": "../quantified/parametric-optimalmix-compilation.json"
+    }
+  },
+  "semantic_pending_items": [],
+  "units": [
+    {
+      "id": "quantified-interface-identities",
+      "group": "necessary_instantiation",
+      "status": "replay_verified",
+      "scope": "14 exact identity/scope checks +1024 rational segment fixtures; NOT LP duality, convexity, full original-game quantifier discharge, game realization, exact joint alpha/gamma QE or global arithmetic proof",
+      "requires": [],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../quantified/replay_quantified_identities.py",
+        "args": [
+          "--out",
+          {
+            "path": "../quantified/quantified-identities-replay.json"
+          }
+        ],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../quantified/quantified-registry.json",
+        "../quantified/stage-i-contracts.json"
+      ],
+      "replay_report": {
+        "path": "../quantified/quantified-identities-replay.json",
+        "checks": {
+          "success": true,
+          "check_count": 14,
+          "uses_floating_point": false,
+          "runs_CAD": false,
+          "replays_large_trees": false
+        }
+      },
+      "current_evidence": {
+        "path": "../quantified/quantified-identities-replay.json",
+        "checks": {
+          "success": true,
+          "check_count": 14,
+          "uses_floating_point": false,
+          "runs_CAD": false,
+          "replays_large_trees": false
+        }
+      }
+    },
+    {
+      "id": "ideal-cap-provenance-ledger",
+      "group": "necessary_instantiation",
+      "status": "replay_verified",
+      "scope": "Ideal delta=0 only:211typed same-game proof nodes from Stage-I K/T/R/C/B contracts;84nonnegative combinations,14selector cases,6mixing identities and2instantiations. Full arbitrary signed Jensen families,first4 SAME source/envelope provenance; no extra algorithm property. Does not itself prove g-to-r or near-BR lift",
+      "requires": [
+        "quantified-interface-identities"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../global/replay_ideal_cap_provenance_ledger.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../global/ideal-cap-provenance-ledger.json"
+      ],
+      "replay_report": {
+        "path": "../global/ideal-cap-provenance-ledger-replay.json",
+        "checks": {
+          "success": true,
+          "delta_zero_only": true,
+          "same_game_terms_typechecked": true,
+          "primitive_clause_instances_rebuilt": true,
+          "nonnegative_multipliers_checked": true,
+          "positive_divisions_checked": true,
+          "all_identities_exact": true,
+          "selector_cases_checked": true,
+          "proof_node_count": 211,
+          "counts.linear": 84,
+          "extra_building_block_properties": false,
+          "g_to_r_projection_proved_here": false
+        }
+      },
+      "current_evidence": {
+        "path": "../global/ideal-cap-provenance-ledger-replay.json",
+        "checks": {
+          "success": true,
+          "delta_zero_only": true,
+          "same_game_terms_typechecked": true,
+          "primitive_clause_instances_rebuilt": true,
+          "nonnegative_multipliers_checked": true,
+          "positive_divisions_checked": true,
+          "all_identities_exact": true,
+          "selector_cases_checked": true,
+          "proof_node_count": 211,
+          "counts.linear": 84,
+          "extra_building_block_properties": false,
+          "g_to_r_projection_proved_here": false
+        }
+      }
+    },
+    {
+      "id": "full-BR-rectangle-bridge",
+      "group": "necessary_instantiation",
+      "status": "replay_verified",
+      "scope": "Finite typed same-game full-BR attainer bindings convert arbitrary signed deficit families to shared Jensen gaps;14exact identities,6nonnegative templates,2attainers,2positive joint-plane gap divisions. Actual payoff gaps are bounded below by lambda_0=G_s/rho,mu_0=G_s/sigma, not identified with them; cap increases by p*q times each gap slack. Actual4tuple masses fixed before free parameters. Standard full-BR/affinity semantics assumed, not game realization or full QE",
+      "requires": [
+        "quantified-interface-identities",
+        "ideal-cap-provenance-ledger"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../quantified/replay_fullbr_rectangle_bridge.py",
+        "args": [
+          "--out",
+          {
+            "path": "../quantified/fullbr-rectangle-bridge-replay.json"
+          }
+        ],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../quantified/fullbr-rectangle-bridge.json",
+        "../quantified/quantified-registry.json",
+        "../global/ideal-cap-provenance-ledger.json"
+      ],
+      "replay_report": {
+        "path": "../quantified/fullbr-rectangle-bridge-replay.json",
+        "checks": {
+          "success": true,
+          "identity_count": 14,
+          "nonnegative_combination_count": 6,
+          "attainer_instantiations_checked": 2,
+          "same_game_and_witness_dependencies_checked": true,
+          "actual_dual_masses_independent_of_free_parameters": true,
+          "signed_intercept_no_sign_assumption": true,
+          "actual_gap_to_lower_alias_positive_divisions_checked": 2,
+          "actual_gap_to_lambda_0_mu_0_caps_connected": true,
+          "ideal_and_retained_loss_rectangle_identities_verified": true
+        }
+      },
+      "current_evidence": {
+        "path": "../quantified/fullbr-rectangle-bridge-replay.json",
+        "checks": {
+          "success": true,
+          "identity_count": 14,
+          "nonnegative_combination_count": 6,
+          "attainer_instantiations_checked": 2,
+          "same_game_and_witness_dependencies_checked": true,
+          "actual_dual_masses_independent_of_free_parameters": true,
+          "signed_intercept_no_sign_assumption": true,
+          "actual_gap_to_lower_alias_positive_divisions_checked": 2,
+          "actual_gap_to_lambda_0_mu_0_caps_connected": true,
+          "ideal_and_retained_loss_rectangle_identities_verified": true
+        }
+      }
+    },
+    {
+      "id": "parametric-OM-linearizer",
+      "group": "necessary_instantiation",
+      "status": "replay_verified",
+      "scope": "Generic signed shared-plane nonnegative remainder, automatic unscaled affine-ratio intersection cuts,4piecewise-bilinear cells/12coordinate edges; safe forgetting8outeredges leaves old4knot arcs. No a/b input, no official NC compiler/equivalent full OM QE; exact fixture only, no game realization",
+      "requires": [
+        "quantified-interface-identities",
+        "ideal-cap-provenance-ledger",
+        "full-BR-rectangle-bridge"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../quantified/replay_parametric_optimalmix.py",
+        "args": [
+          "--out",
+          {
+            "path": "../quantified/parametric-optimalmix-replay.json"
+          }
+        ],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../quantified/parametric-optimalmix-compilation.json",
+        "../critical/alignment-exact-fixture.json"
+      ],
+      "replay_report": {
+        "path": "../quantified/parametric-optimalmix-replay.json",
+        "checks": {
+          "success": true,
+          "symbolic_identity_count": 131,
+          "cells": 4,
+          "edges": 12,
+          "all_generated_segments_affine": true,
+          "automatically_derived_old_internal_edges": 4,
+          "signed_intercept_requires_no_sign_assumption": true,
+          "search_used": false
+        }
+      },
+      "current_evidence": {
+        "path": "../quantified/parametric-optimalmix-replay.json",
+        "checks": {
+          "success": true,
+          "symbolic_identity_count": 131,
+          "cells": 4,
+          "edges": 12,
+          "all_generated_segments_affine": true,
+          "automatically_derived_old_internal_edges": 4,
+          "signed_intercept_requires_no_sign_assumption": true,
+          "search_used": false
+        }
+      }
+    },
+    {
+      "id": "near-BR-delta-ledger",
+      "group": "necessary_instantiation",
+      "status": "replay_verified",
+      "scope": "Finite arithmetic nonnegative-combination proof from explicitly typed contract instantiations: shared G_s=g-delta_f, cancellation before minclip, arbitrary p/q whole-family errors<=delta_f, actual first4 SAME masses, tau subtracted once. Standard instantiation/LP/maximum semantic rules are not proof-assistant formalized",
+      "requires": [
+        "quantified-interface-identities"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../critical/replay_delta_f_lift_ledger.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../critical/delta_f-lift-ledger.json",
+        "../quantified/quantified-registry.json"
+      ],
+      "replay_report": {
+        "path": "../critical/delta_f-lift-ledger-replay.json",
+        "checks": {
+          "success": true,
+          "imports_producer": false,
+          "nonnegative_combinations_verified": 34,
+          "exact_zero_identities_verified": 7,
+          "nonnegative_factor_atom_count": 23,
+          "derived_min_cap_premises_verified": 2,
+          "source_alias_instantiations_verified": 4,
+          "same_alpha_gamma_envelope_inputs_delta_free": true,
+          "whole_parameter_family_error_budgets_verified": true,
+          "OM_tau_subtracted_once_before_arc_instantiation_verified": true
+        }
+      },
+      "current_evidence": {
+        "path": "../critical/delta_f-lift-ledger-replay.json",
+        "checks": {
+          "success": true,
+          "imports_producer": false,
+          "nonnegative_combinations_verified": 34,
+          "exact_zero_identities_verified": 7,
+          "nonnegative_factor_atom_count": 23,
+          "derived_min_cap_premises_verified": 2,
+          "source_alias_instantiations_verified": 4,
+          "same_alpha_gamma_envelope_inputs_delta_free": true,
+          "whole_parameter_family_error_budgets_verified": true,
+          "OM_tau_subtracted_once_before_arc_instantiation_verified": true
+        }
+      }
+    },
+    {
+      "id": "g-identities",
+      "group": "threshold_projection",
+      "status": "replay_verified",
+      "scope": "free comparison r in [3/10,1/3]; signed rectangle g-to-r projection identities, not an approximation bound by itself",
+      "requires": [
+        "ideal-cap-provenance-ledger",
+        "near-BR-delta-ledger",
+        "parametric-OM-linearizer",
+        "full-BR-rectangle-bridge"
+      ],
+      "operation": {
+        "kind": "verified_fixed_algebra_checker",
+        "script": "../../analytic_scalar_bound/cross_projection_symbolic_checks.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../../analytic_scalar_bound/cross_derivative_certificate.json",
+        "../../analytic_scalar_bound/cross_derivative_large_mass_certificate.json"
+      ],
+      "replay_report": {
+        "path": "../../analytic_scalar_bound/cross_projection_symbolic_checks.json",
+        "checks": {
+          "passed": 16
+        }
+      },
+      "current_evidence": {
+        "path": "../../analytic_scalar_bound/cross_projection_symbolic_checks.json",
+        "checks": {
+          "passed": 16
+        }
+      }
+    },
+    {
+      "id": "g-derivative-small",
+      "group": "threshold_projection",
+      "status": "replay_verified",
+      "scope": "two fixed Bernstein charts; full mass scope obtained by the separate small and large mass certificates; r in [3/10,1/3]",
+      "requires": [
+        "g-identities"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../../analytic_scalar_bound/replay_cross_derivative_certificate.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../../analytic_scalar_bound/cross_derivative_certificate.json"
+      ],
+      "replay_report": {
+        "path": "../../analytic_scalar_bound/cross-derivative-independent-replay.json",
+        "checks": {
+          "charts.*.passed": true,
+          "total_coefficients": 1125
+        }
+      },
+      "current_evidence": {
+        "path": "../../analytic_scalar_bound/cross-derivative-independent-replay.json",
+        "checks": {
+          "charts.*.passed": true,
+          "total_coefficients": 1125
+        }
+      }
+    },
+    {
+      "id": "g-derivative-large",
+      "group": "threshold_projection",
+      "status": "replay_verified",
+      "scope": "two fixed Bernstein charts; full mass scope obtained by the separate small and large mass certificates; r in [3/10,1/3]",
+      "requires": [
+        "g-identities"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../../analytic_scalar_bound/replay_cross_derivative_large_mass_certificate.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../../analytic_scalar_bound/cross_derivative_large_mass_certificate.json"
+      ],
+      "replay_report": {
+        "path": "../../analytic_scalar_bound/cross-derivative-large-mass-independent-replay.json",
+        "checks": {
+          "charts.*.passed": true,
+          "total_coefficients": 1125
+        }
+      },
+      "current_evidence": {
+        "path": "../../analytic_scalar_bound/cross-derivative-large-mass-independent-replay.json",
+        "checks": {
+          "charts.*.passed": true,
+          "total_coefficients": 1125
+        }
+      }
+    },
+    {
+      "id": "compact-identities",
+      "group": "odds_shared_mass",
+      "status": "replay_verified",
+      "scope": "24 exact rational identities for sources/caps/old rectangle arcs/envelopes; optional final beta/z_eta system is excluded",
+      "requires": [],
+      "operation": {
+        "kind": "verified_fixed_algebra_checker",
+        "script": "../simplify/verify_compact_identities.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [],
+      "replay_report": {
+        "path": "../simplify/compact-identities-verification.json",
+        "checks": {
+          "all_passed": true,
+          "checks.*": true
+        }
+      },
+      "current_evidence": {
+        "path": "../simplify/compact-identities-verification.json",
+        "checks": {
+          "all_passed": true,
+          "checks.*": true
+        }
+      }
+    },
+    {
+      "id": "mass-identities",
+      "group": "odds_shared_mass",
+      "status": "replay_verified",
+      "scope": "same actual alpha/gamma row-envelope derivatives and selected-mass reductions; exact symbolic identities only",
+      "requires": [
+        "compact-identities"
+      ],
+      "operation": {
+        "kind": "verified_fixed_algebra_checker",
+        "script": "../global/check_reduction_identities.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": []
+    },
+    {
+      "id": "mass-M-small",
+      "group": "odds_shared_mass",
+      "status": "replay_verified",
+      "scope": "Canonical rho<=1/2,r>=619/2000, original normalized odds range and T>=0: M<0 in both BC charts;294 fixed coefficients,zero subdivisions",
+      "requires": [
+        "mass-identities"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../global/replay_m_chart_certificate.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../global/m-chart-certificate.json"
+      ],
+      "replay_report": {
+        "path": "../global/m-chart-certificate-replay.json",
+        "checks": {
+          "success": true
+        }
+      },
+      "current_evidence": {
+        "path": "../global/m-chart-certificate-replay.json",
+        "checks": {
+          "success": true
+        }
+      }
+    },
+    {
+      "id": "mass-M",
+      "group": "odds_shared_mass",
+      "status": "replay_verified",
+      "scope": "Large-rho extension together with mass-M-small covers rho in [r,1-r],r>=r0,original odds range,T>=0. Five extension polynomial signs and quartic; the full-mass certificate explicitly delegates small rho to the prior294coefficient certificate",
+      "requires": [
+        "mass-identities",
+        "mass-M-small"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../global/replay_m_chart_full_mass_certificate.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../global/m-chart-full-mass-certificate.json"
+      ],
+      "replay_report": {
+        "path": "../global/m-chart-full-mass-certificate-replay.json",
+        "checks": {
+          "success": true,
+          "uniform_s_2_quartic_negative": true
+        }
+      },
+      "current_evidence": {
+        "path": "../global/m-chart-full-mass-certificate-replay.json",
+        "checks": {
+          "success": true,
+          "uniform_s_2_quartic_negative": true
+        }
+      }
+    },
+    {
+      "id": "mass-h_2-xi",
+      "group": "odds_shared_mass",
+      "status": "replay_verified",
+      "scope": "all rho in [r,1-r],r>=.3095, nonnegative original caps,S>=r, actual shared H>=r with alpha<=1-r =>h_2>xi; no knots or envelope required",
+      "requires": [
+        "mass-M"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../simplify/replay-h_2-xi-certificates.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../simplify/h_2-xi-small-certificates.json"
+      ],
+      "replay_report": {
+        "path": "../simplify/h_2-xi-certificates-replay.json",
+        "checks": {
+          "all_passed": true
+        }
+      },
+      "current_evidence": {
+        "path": "../simplify/h_2-xi-certificates-replay.json",
+        "checks": {
+          "all_passed": true
+        }
+      }
+    },
+    {
+      "id": "canonical-u-cap",
+      "group": "odds_shared_mass",
+      "status": "replay_verified",
+      "scope": "Initial smaller stationary-weight chart: original source bounds plus u>=99/100 force N_C<0 by seven sign checks, hence original left segment gives L>=0; six shift signs then imply u<99/100. No shared-mass equalization or lower caps are used.",
+      "requires": [
+        "compact-identities"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../simplify/replay-relaxed-source-knot-u-cap.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../kink/u_cap_signs.json",
+        "../simplify/both-high-exclusion.json"
+      ],
+      "replay_report": {
+        "path": "../simplify/relaxed-source-knot-u-cap-replay.json",
+        "checks": {
+          "result": "passed",
+          "source_plus_L_only": true,
+          "lower_cap_bounds_used": false,
+          "seven_initial_N_C_checks_strictly_negative": true,
+          "initial_N_C_negative_coefficients_recomputed": 352,
+          "initial_N_C_source_substitution_and_quadratic_identities_verified": true,
+          "negative_coefficients_recomputed": 887
+        }
+      },
+      "current_evidence": {
+        "path": "../simplify/relaxed-source-knot-u-cap-replay.json",
+        "checks": {
+          "result": "passed",
+          "source_plus_L_only": true,
+          "lower_cap_bounds_used": false,
+          "seven_initial_N_C_checks_strictly_negative": true,
+          "initial_N_C_negative_coefficients_recomputed": 352,
+          "initial_N_C_source_substitution_and_quadratic_identities_verified": true,
+          "negative_coefficients_recomputed": 887
+        }
+      }
+    },
+    {
+      "id": "full-mass-both-high",
+      "group": "odds_shared_mass",
+      "status": "replay_verified",
+      "scope": "rho in [r,1-r],r>=r0,0<=u<=1,v>=0,response caps h=min(1,raw): S>=r=>T<r; allows linear s_1/s_2<0,no source/knot/envelope lower bounds",
+      "requires": [
+        "compact-identities"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../simplify/replay-fullmass-both-high.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../fullmass_both_high.json"
+      ],
+      "replay_report": {
+        "path": "../simplify/fullmass-both-high-replay.json",
+        "checks": {
+          "result": "passed",
+          "total_positive_coefficients": 295,
+          "cap_lower_bounds_used": false
+        }
+      },
+      "current_evidence": {
+        "path": "../simplify/fullmass-both-high-replay.json",
+        "checks": {
+          "result": "passed",
+          "total_positive_coefficients": 295,
+          "cap_lower_bounds_used": false
+        }
+      }
+    },
+    {
+      "id": "fixed-v-and-u1",
+      "group": "preclip_projection",
+      "status": "replay_verified",
+      "scope": "23 exact fixed polynomial signs: high-rho weak W+L/B_mix u=1 barriers require no N_C assumption; full-rho B,D selected-budget derivative signs allow s_1<0",
+      "requires": [
+        "mass-M",
+        "mass-h_2-xi"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../global/replay_preclip_left_projection_signs.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../kink/full_rho_w_signs.json",
+        "../kink/full_rho_w_below_signs.json",
+        "../kink/preclip_full_mass_direction_signs.json"
+      ],
+      "replay_report": {
+        "path": "../global/preclip-left-projection-signs-independent-replay.json",
+        "checks": {
+          "success": true,
+          "N_C_sign_assumed": false,
+          "weak_LEFT_u1_barrier_verified": true,
+          "weak_BELOW_u1_barrier_verified": true,
+          "full_mass_fixed_v_budget_directions_verified": true
+        }
+      },
+      "current_evidence": {
+        "path": "../global/preclip-left-projection-signs-independent-replay.json",
+        "checks": {
+          "success": true,
+          "N_C_sign_assumed": false,
+          "weak_LEFT_u1_barrier_verified": true,
+          "weak_BELOW_u1_barrier_verified": true,
+          "full_mass_fixed_v_budget_directions_verified": true
+        }
+      }
+    },
+    {
+      "id": "canonical-alignment",
+      "group": "preclip_projection",
+      "status": "replay_verified",
+      "scope": "canonical preclip,S>=r, u<=1 gives N_C<0; source boundary and denominator signs used as recorded, not full-rho claim",
+      "requires": [
+        "canonical-u-cap"
+      ],
+      "operation": {
+        "kind": "verified_fixed_algebra_checker",
+        "script": "../preclip_canonical_alignment.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [],
+      "replay_report": {
+        "path": "../preclip_canonical_alignment.json",
+        "checks": {
+          "all_positive": true,
+          "negative_count": 0,
+          "count": 135
+        }
+      },
+      "current_evidence": {
+        "path": "../preclip_canonical_alignment.json",
+        "checks": {
+          "all_positive": true,
+          "negative_count": 0,
+          "count": 135
+        }
+      }
+    },
+    {
+      "id": "canonical-A_0-stop",
+      "group": "preclip_projection",
+      "status": "replay_verified",
+      "scope": "A_0<=r excluded in retained N_C<0+L>=0 branch from caps+L; opposite N_C>=0 branch needs B_mix. Canonical arc uses only first scope; high-rho paths do not retain A_0>=r",
+      "requires": [
+        "compact-identities"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../simplify/replay-A_0-mass-stop-exclusion.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../simplify/A_0-mass-stop-exclusion.json"
+      ],
+      "replay_report": {
+        "path": "../simplify/A_0-mass-stop-exclusion-replay.json",
+        "checks": {
+          "all_passed": true
+        }
+      },
+      "current_evidence": {
+        "path": "../simplify/A_0-mass-stop-exclusion-replay.json",
+        "checks": {
+          "all_passed": true
+        }
+      }
+    },
+    {
+      "id": "canonical-E1",
+      "group": "preclip_projection",
+      "status": "replay_verified",
+      "scope": "canonical upper L=0, L>0,m,n>0,selected G>=0,E>=0: -E(1)-2GU>0 =>z<1; fixed degree elevation+six exact positive quadratic groups; corrected derivative identity only",
+      "requires": [
+        "compact-identities"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../simplify/replay-arc-e1-source-budget.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../simplify/arc-e1-source-budget-certificate.json"
+      ],
+      "replay_report": {
+        "path": "../simplify/arc-e1-source-budget-replay.json",
+        "checks": {
+          "result": "passed",
+          "corrected_zero_derivative_identity_verified": true,
+          "one_fixed_cube_no_subdivision": true
+        }
+      },
+      "current_evidence": {
+        "path": "../simplify/arc-e1-source-budget-replay.json",
+        "checks": {
+          "result": "passed",
+          "corrected_zero_derivative_identity_verified": true,
+          "one_fixed_cube_no_subdivision": true
+        }
+      }
+    },
+    {
+      "id": "canonical-boundary-stops",
+      "group": "preclip_projection",
+      "status": "replay_verified",
+      "scope": "canonical T=0=>S<2r; S>=r=>v>4/5; selected G=0 contradicts E>=0 using z>=k. The abandoned v>9/10 claim is not used",
+      "requires": [
+        "canonical-E1",
+        "canonical-A_0-stop"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../simplify/replay-preclip-stop-events.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../preclip_tzero_stop.json"
+      ],
+      "replay_report": {
+        "path": "../simplify/preclip-stop-events-replay.json",
+        "checks": {
+          "result": "passed",
+          "four_fifths_plus_k_exceeds_c_over_r": true
+        }
+      },
+      "current_evidence": {
+        "path": "../simplify/preclip-stop-events-replay.json",
+        "checks": {
+          "result": "passed",
+          "four_fifths_plus_k_exceeds_c_over_r": true
+        }
+      }
+    },
+    {
+      "id": "canonical-upper-arc",
+      "group": "preclip_projection",
+      "status": "replay_verified_deep_fresh_verified",
+      "scope": "canonical physical upper L=0 root: Ku<=0 initially; strict Ku,Kv<0,u>k,s_1/s_2>0 on feasible E>=0; correct Jzero>0 ONLY at E=0. 5098 leaves,zero open. Deep replay needs no historical prefix/report",
+      "requires": [
+        "canonical-alignment",
+        "canonical-boundary-stops",
+        "fixed-v-and-u1"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../kink/replay_preclip_bernstein_interval.py",
+        "args": [
+          {
+            "path": "../global/preclip-bernstein-certificate.json"
+          },
+          "--deep"
+        ],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../global/preclip-bernstein-certificate.json",
+        "../kink/replay_preclip_interval.py"
+      ],
+      "replay_report": {
+        "path": "../global/preclip-bernstein-certificate-deep-independent-replay.json",
+        "checks": {
+          "status": "complete_verified",
+          "accepted_leaf_audit": true,
+          "coverage_partition_verified": true,
+          "cached_prefix_accepted_leaves": 0,
+          "new_terminal_claims_independently_checked": 5098,
+          "deep_fresh_replay": true
+        }
+      },
+      "current_evidence": {
+        "path": "../global/preclip-bernstein-certificate-deep-independent-replay.json",
+        "checks": {
+          "status": "complete_verified",
+          "accepted_leaf_audit": true,
+          "coverage_partition_verified": true,
+          "cached_prefix_accepted_leaves": 0,
+          "new_terminal_claims_independently_checked": 5098,
+          "deep_fresh_replay": true
+        }
+      }
+    },
+    {
+      "id": "high-rho-left",
+      "group": "preclip_projection",
+      "status": "replay_verified",
+      "scope": "rho>=1/2, ANY physical L=0 root; keeps s_2>=0,T>=0,m,n>0,G>=0,uppermass,E>=0; allows s_1<0,A_0<r; no upper-root restriction; pole intervals retained",
+      "requires": [
+        "fixed-v-and-u1",
+        "full-mass-both-high"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../global/replay_preclip_left_interval.py",
+        "args": [
+          {
+            "path": "../critical/preclip-left-interval-certificate.json"
+          }
+        ],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../critical/preclip-left-interval-certificate.json",
+        "../global/replay_preclip_below_interval.py"
+      ],
+      "replay_report": {
+        "path": "../global/preclip-left-independent-replay.json",
+        "checks": {
+          "success": true,
+          "open_leaves": 0,
+          "closed_leaves_verified": 19771,
+          "pole_intervals_preserved": true
+        }
+      },
+      "current_evidence": {
+        "path": "../global/preclip-left-independent-replay.json",
+        "checks": {
+          "success": true,
+          "open_leaves": 0,
+          "closed_leaves_verified": 19771,
+          "pole_intervals_preserved": true
+        }
+      }
+    },
+    {
+      "id": "high-rho-below",
+      "group": "preclip_projection",
+      "status": "replay_verified",
+      "scope": "rho>=1/2 conditional physical B_mix=0 boundary,N_R<0<=N_C; keeps s_2>=0,T>=0,m,n>0,G>=0,uppermass,E>=0; allows s_1<0,A_0<r",
+      "requires": [
+        "fixed-v-and-u1",
+        "full-mass-both-high"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../global/replay_preclip_below_interval.py",
+        "args": [
+          {
+            "path": "../critical/preclip-below-interval-certificate.json"
+          }
+        ],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../critical/preclip-below-interval-certificate.json"
+      ],
+      "replay_report": {
+        "path": "../global/preclip-below-independent-replay.json",
+        "checks": {
+          "success": true,
+          "open_leaves": 0,
+          "closed_leaves_verified": 4945
+        }
+      },
+      "current_evidence": {
+        "path": "../global/preclip-below-independent-replay.json",
+        "checks": {
+          "success": true,
+          "open_leaves": 0,
+          "closed_leaves_verified": 4945
+        }
+      }
+    },
+    {
+      "id": "postclip-envelope",
+      "group": "postclip_projection",
+      "status": "replay_verified",
+      "scope": "full rho postclip, selected-budget constraints: no upward F zero-crossing when lowering v; z/source/uppermass direction identities",
+      "requires": [
+        "mass-M",
+        "mass-h_2-xi",
+        "fixed-v-and-u1"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../global/replay_postclip_crossing_certificate.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../global/postclip-crossing-certificate.json"
+      ],
+      "replay_report": {
+        "path": "../global/postclip-crossing-certificate-replay.json",
+        "checks": {
+          "success": true
+        }
+      },
+      "current_evidence": {
+        "path": "../global/postclip-crossing-certificate-replay.json",
+        "checks": {
+          "success": true
+        }
+      }
+    },
+    {
+      "id": "postclip-orientation",
+      "group": "postclip_projection",
+      "status": "replay_verified",
+      "scope": "full rho,u<=1,v>=v0: T<r throughout postclip; endpoint grouped exact quadratic; no knot lower bound",
+      "requires": [
+        "mass-M",
+        "mass-h_2-xi",
+        "fixed-v-and-u1"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../global/replay_postclip_orientation_certificate.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../global/postclip-orientation-certificate.json"
+      ],
+      "replay_report": {
+        "path": "../global/postclip-orientation-certificate-replay.json",
+        "checks": {
+          "success": true
+        }
+      },
+      "current_evidence": {
+        "path": "../global/postclip-orientation-certificate-replay.json",
+        "checks": {
+          "success": true
+        }
+      }
+    },
+    {
+      "id": "postclip-knots",
+      "group": "postclip_projection",
+      "status": "replay_verified",
+      "scope": "full rho postclip with T>=0: L_v,B_mix_v<0 plus N_R/N_C signs as separately specified; 14 fixed signs,700 coefficients",
+      "requires": [
+        "mass-M",
+        "mass-h_2-xi",
+        "fixed-v-and-u1"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../global/replay_postclip_knot_direction.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../postclip_knot_direction.json"
+      ],
+      "replay_report": {
+        "path": "../global/postclip-knot-direction-replay.json",
+        "checks": {
+          "success": true
+        }
+      },
+      "current_evidence": {
+        "path": "../global/postclip-knot-direction-replay.json",
+        "checks": {
+          "success": true
+        }
+      }
+    },
+    {
+      "id": "natural-root",
+      "group": "kink_root",
+      "status": "replay_verified",
+      "scope": "exact Fraction Krawczyk check: locally unique N_1=N_2=H_root=0 root in radius1e-30 box; no global conclusion by itself",
+      "requires": [],
+      "operation": {
+        "kind": "verified_fixed_algebra_checker",
+        "script": "../critical/local_root_certificate.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../critical/kink-polynomials.json",
+        "../critical/kink-kkt.json",
+        "../../baseline_audit/six_lp_shared_certificate.py"
+      ],
+      "replay_report": {
+        "path": "../critical/local-root-certificate.json",
+        "checks": {
+          "krawczyk_strict_inclusion": true,
+          "infinity_norm_contraction": true
+        }
+      },
+      "current_evidence": {
+        "path": "../critical/local-root-certificate.json",
+        "checks": {
+          "krawczyk_strict_inclusion": true,
+          "infinity_norm_contraction": true
+        }
+      }
+    },
+    {
+      "id": "full-rho-kink-face",
+      "group": "kink_root",
+      "status": "replay_verified",
+      "scope": "kappa_1=0,all rho in [r,1-r],S>r>T,0<A_0<=1-r,h_2>r,selected row-envelope>=0: L>=0=>r<=r*; high-rho B_mix>=0 impossible for r>=r0. Does not require A_0>=r,s_1/s_2>=0,T>=0,other envelope",
+      "requires": [
+        "natural-root"
+      ],
+      "operation": {
+        "kind": "independent_replay",
+        "script": "../critical/replay_full_rho_kink_face.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../critical/kink-polynomials.json",
+        "../critical/below-alignment-polynomials.json",
+        "../critical/kink-two-equation-resultant.json",
+        "../critical/local-root-certificate.json"
+      ],
+      "replay_report": {
+        "path": "../critical/full-rho-kink-independent-replay.json",
+        "checks": {
+          "all_checks_passed": true,
+          "imports_producer": false,
+          "positive_check_groups": 39,
+          "positive_coefficient_count": 2578,
+          "root_quotient_negative_coefficients": 19,
+          "cap_expressions_reconstructed": true,
+          "N_2_envelope_identity_verified": true,
+          "H_root_tangent_identity_verified": true,
+          "resultant_identity_verified": true
+        }
+      },
+      "current_evidence": {
+        "path": "../critical/full-rho-kink-independent-replay.json",
+        "checks": {
+          "all_checks_passed": true,
+          "imports_producer": false,
+          "positive_check_groups": 39,
+          "positive_coefficient_count": 2578,
+          "root_quotient_negative_coefficients": 19,
+          "cap_expressions_reconstructed": true,
+          "N_2_envelope_identity_verified": true,
+          "H_root_tangent_identity_verified": true,
+          "resultant_identity_verified": true
+        }
+      }
+    },
+    {
+      "id": "scalar-root-fixture",
+      "group": "scalar_relaxation_attainment",
+      "status": "replay_verified",
+      "scope": "local r* fixture:58 strict signs and4 exact active identities of retained necessary scalar relaxation; no game realizability or full OM contract attainment is claimed",
+      "requires": [
+        "natural-root"
+      ],
+      "operation": {
+        "kind": "verified_fixed_algebra_checker",
+        "script": "../critical/local_signs.py",
+        "args": [],
+        "cwd": "../.."
+      },
+      "inputs": [
+        "../critical/kink-polynomials.json",
+        "../critical/local-root-certificate.json",
+        "../../baseline_audit/six_lp_shared_certificate.py"
+      ],
+      "replay_report": {
+        "path": "../critical/local-signs.json",
+        "checks": {
+          "all_nonactive_strictly_positive": true,
+          "nonactive_count": 58
+        }
+      },
+      "current_evidence": {
+        "path": "../critical/local-signs.json",
+        "checks": {
+          "all_nonactive_strictly_positive": true,
+          "nonactive_count": 58
+        }
+      }
+    }
+  ],
+  "input_artifacts": [
+    {
+      "path": "../../analytic_scalar_bound/cross_derivative_certificate.json",
+      "bytes": 70963,
+      "sha256": "d3d9a75e3a0814712e9039146263bc34764df83ecd3a201d77a67abcdacc9d55",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../../analytic_scalar_bound/cross_derivative_large_mass_certificate.json",
+      "bytes": 53407,
+      "sha256": "ea25fc609beaa89f845f05c86bdedc2d7bc6461da368e83c1fe861f730eae7dc",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../../analytic_scalar_bound/cross_projection_symbolic_checks.py",
+      "bytes": 3661,
+      "sha256": "279445fa4c9d88fdbee6c46af2cb89874e128fa29511d6c021fd9a7ce148e00e",
+      "kind": "source"
+    },
+    {
+      "path": "../../analytic_scalar_bound/replay_cross_derivative_certificate.py",
+      "bytes": 1591,
+      "sha256": "7704b3b4d3a1384af54c2ff76ffc5ee51665da11614c2627e0ae7dbc21c5a50d",
+      "kind": "source"
+    },
+    {
+      "path": "../../analytic_scalar_bound/replay_cross_derivative_large_mass_certificate.py",
+      "bytes": 1613,
+      "sha256": "3fbc9aaca899ccfa58d19146ed0575e0e04bab913e9f2555d89e90fb8fad5957",
+      "kind": "source"
+    },
+    {
+      "path": "../../baseline_audit/six_lp_shared_certificate.py",
+      "bytes": 6505,
+      "sha256": "330ed01156c56e1f4c8ecdba5f530a754955be4987288749e553a3107d9e254a",
+      "kind": "source"
+    },
+    {
+      "path": "../critical/below-alignment-polynomials.json",
+      "bytes": 7014,
+      "sha256": "2780f60388396ab4596f94aa76b58e362b5a1db61e58c6f6c7a7d7626661a519",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../critical/kink-kkt.json",
+      "bytes": 3973,
+      "sha256": "ec8dd5616585e51f2af892e6e77c48768d066fe15234a3e519fcfc8c55d31c9c",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../critical/kink-polynomials.json",
+      "bytes": 17303,
+      "sha256": "a5dfecaef41ee0806dabcbf17caa862ad78193f82fb08eff85775eb828fbf640",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../critical/kink-two-equation-resultant.json",
+      "bytes": 8699,
+      "sha256": "10153e89a7ad12bf6e21992d82e6094856ed5cbe30c441a9f39975c64b9647f0",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../critical/local-root-certificate.json",
+      "bytes": 1983,
+      "sha256": "746d6ef679991e3e63fc0d04ebfdb3aa6bf0906559404af6c663dc13fc3d278b",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../critical/local_root_certificate.py",
+      "bytes": 2965,
+      "sha256": "4baa65815733822f511cfc6bb65669b94bcb4a0ee236e6bf4a14d6aa44083ae2",
+      "kind": "source"
+    },
+    {
+      "path": "../critical/local_signs.py",
+      "bytes": 5736,
+      "sha256": "0a6cdadf3055afe5585af389d9364464d346cbd94192bf13a01b86bbd9ba6739",
+      "kind": "source"
+    },
+    {
+      "path": "../critical/preclip-below-interval-certificate.json",
+      "bytes": 534219,
+      "sha256": "11e3979108a69ac33684bdb772708948ae5f2afbd2b69d4de772757a87c9e471",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../critical/preclip-left-interval-certificate.json",
+      "bytes": 2138730,
+      "sha256": "bfb552997155e77dc8e50677ba4c8d9e3ca0167f370951443324f81136f1b097",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../critical/replay_full_rho_kink_face.py",
+      "bytes": 10464,
+      "sha256": "028953163b84d0e648a1122e78109e682da9155b2d072906e947b6d9c2dd743f",
+      "kind": "source"
+    },
+    {
+      "path": "../fullmass_both_high.json",
+      "bytes": 2096,
+      "sha256": "8b61a112f6ebdad60e63cc15f76299f3e7513ed1e406835d1f5d4ccd8e2fc79a",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../global/check_reduction_identities.py",
+      "bytes": 1757,
+      "sha256": "c30bdfc084109be5e520500de0d541b30195af83a45eecbf04ed086e3f30bcc6",
+      "kind": "source"
+    },
+    {
+      "path": "../global/m-chart-full-mass-certificate.json",
+      "bytes": 102916,
+      "sha256": "a9d3720fe79bfc829348f29dc4c48233ad4d21f915b5fd4143d599d2bbc65f58",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../global/postclip-crossing-certificate.json",
+      "bytes": 39882,
+      "sha256": "2c63e8d8a8404498fd7d753fb4f8356e85af571eefdfed79acebe22793a7d816",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../global/postclip-orientation-certificate.json",
+      "bytes": 7249,
+      "sha256": "b42342b45074aea9f8ee7ba7356a4bfbaf303df4941a45d134862b949be72b92",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../global/preclip-bernstein-certificate.json",
+      "bytes": 2250649,
+      "sha256": "7d4d30dd8ea23b441cd381f9c02cc31d4aa91da0a41106505a1802ecea0a712b",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../global/replay_m_chart_full_mass_certificate.py",
+      "bytes": 3673,
+      "sha256": "c1a061b235a75e595091e49390b969de2522836e4d4f561b5bae2e10f06e25cd",
+      "kind": "source"
+    },
+    {
+      "path": "../global/replay_postclip_crossing_certificate.py",
+      "bytes": 3310,
+      "sha256": "41e3af808b22fee1ea57edecc2ced3a57c49d943fbdf5f412c3b06a8480c62f7",
+      "kind": "source"
+    },
+    {
+      "path": "../global/replay_postclip_knot_direction.py",
+      "bytes": 3302,
+      "sha256": "14bca8d0b82ca7944253e80c9fa40191addadc1fc7e02af208669ea52746db66",
+      "kind": "source"
+    },
+    {
+      "path": "../global/replay_postclip_orientation_certificate.py",
+      "bytes": 2989,
+      "sha256": "477960988a502d7283dbbdb4c7a9b127847c9aedf0a3d47a20d16f8d6c8e7a3c",
+      "kind": "source"
+    },
+    {
+      "path": "../global/replay_preclip_below_interval.py",
+      "bytes": 8155,
+      "sha256": "9eac1ee8ae8d4a8a14633a32d16afc2f816f509c983868891a6b81b508af39e9",
+      "kind": "source"
+    },
+    {
+      "path": "../global/replay_preclip_left_interval.py",
+      "bytes": 9423,
+      "sha256": "509148e9b95027a7caef4aac6997c262eb0928bfa9765242cb426b1482c9bff7",
+      "kind": "source"
+    },
+    {
+      "path": "../global/replay_preclip_left_projection_signs.py",
+      "bytes": 6073,
+      "sha256": "f0fa61f11a357b907c468d7c1774c095167946a7eafe0e212dfa7e3947f202b5",
+      "kind": "source"
+    },
+    {
+      "path": "../kink/full_rho_w_below_signs.json",
+      "bytes": 44702,
+      "sha256": "d3351b55e3e85631148566f8711473294572b8b043fc4a9fdfb88ddc78640080",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../kink/full_rho_w_signs.json",
+      "bytes": 19031,
+      "sha256": "bc6e6b724302735f912b8373c3c04f9f3576adfd1c6d3c227f427cc8fb980f1e",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../kink/preclip_full_mass_direction_signs.json",
+      "bytes": 6733,
+      "sha256": "ece1ab5bd20b7ee53ac871fd518edc36afd3083e9e8258c76fc1887b174b4962",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../kink/replay_preclip_bernstein_interval.py",
+      "bytes": 13966,
+      "sha256": "277c76b26f276dccb6c738b5ff97948eaeec859a7fe7430e0db746d8fedb0a7c",
+      "kind": "source"
+    },
+    {
+      "path": "../kink/replay_preclip_interval.py",
+      "bytes": 6744,
+      "sha256": "f22fb230bb5f3d971b267aaa54e0e19dffc259400e30e4c4815e315d94d99407",
+      "kind": "source"
+    },
+    {
+      "path": "../kink/u_cap_signs.json",
+      "bytes": 52537,
+      "sha256": "e54a049e3ab5f70482c8a9df206cd880da998b2eb79a0c9fbe08e2d66238c279",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../postclip_knot_direction.json",
+      "bytes": 5261,
+      "sha256": "f44d1881a89ff7ac01f86ba3ea006610adc9d758b97b6e5d586a7876e1f6bca7",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../preclip_canonical_alignment.py",
+      "bytes": 1537,
+      "sha256": "f6020af5d4fa8fd0f8ab5b9ddb194529d3bcad8b171ecfc45f4bbd1a7a9d7877",
+      "kind": "source"
+    },
+    {
+      "path": "../preclip_tzero_stop.json",
+      "bytes": 1374,
+      "sha256": "bcb9c067f20fac3b40cf9f47c56687565ffc60f707508338ab6656fc11a4f882",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../simplify/A_0-mass-stop-exclusion.json",
+      "bytes": 71595,
+      "sha256": "b09e34b2178473d9cc7f29fa6fd974b03aa9177d2c9a7ee9338c96d5dd84e9ea",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../simplify/arc-e1-source-budget-certificate.json",
+      "bytes": 36896,
+      "sha256": "096ab8cb393a2c7819bf2f95b30edc46ae9c22a41e9876e4df2d4fb751e37431",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../simplify/both-high-exclusion.json",
+      "bytes": 4106,
+      "sha256": "dce16f8786abd4eacad9e89b73cf39e65455a5e0d4261283e51eddf762df00dc",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../simplify/h_2-xi-small-certificates.json",
+      "bytes": 29980,
+      "sha256": "8d5f2777e35e93dc48ed98fdc7238613bc69eaf3fd9b2e79b1003f9bb72bf793",
+      "kind": "certificate_or_polynomial_input"
+    },
+    {
+      "path": "../simplify/replay-A_0-mass-stop-exclusion.py",
+      "bytes": 1490,
+      "sha256": "f5e6f32bc906e686487d5500e6c3b904946f023a34125bd8b597300ee0bbb2f8",
+      "kind": "source"
+    },
+    {
+      "path": "../simplify/replay-arc-e1-source-budget.py",
+      "bytes": 3713,
+      "sha256": "588566d15fd58dd5c4329bf34a6909133663ff97efdaef6e239996bbb1211a2b",
+      "kind": "source"
+    },
+    {
+      "path": "../simplify/replay-fullmass-both-high.py",
+      "bytes": 3930,
+      "sha256": "ba6efa5ee2b9eefe21bf84e08541c4264db6f1c1bb8015b053099ac2567fd441",
+      "kind": "source"
+    },
+    {
+      "path": "../simplify/replay-h_2-xi-certificates.py",
+      "bytes": 1632,
+      "sha256": "f5445ce7322b5ff731f268f37e3866c9442b826b45a175e42c2bed4140b12041",
+      "kind": "source"
+    },
+    {
+      "path": "../simplify/replay-preclip-stop-events.py",
+      "bytes": 3701,
+      "sha256": "c15dac15ff11ec9d902b587c6919f6968c0ef8b40d33be35daee8567ab23a045",
+      "kind": "source"
+    },
+    {
+      "path": "../simplify/replay-relaxed-source-knot-u-cap.py",
+      "bytes": 6586,
+      "sha256": "b8dd92b280ab17b7f4f22b603243f155bc3e76fffc14b74e89b5a37f5bc3e7cd",
+      "kind": "source"
+    },
+    {
+      "path": "../simplify/verify_compact_identities.py",
+      "bytes": 3351,
+      "sha256": "f8f3bfe68f75308775e5c389ab2aff511ac54d7a3b4ca590fb995f13227430d2",
+      "kind": "source"
+    },
+    {
+      "path": "../quantified/replay_quantified_identities.py",
+      "kind": "source",
+      "bytes": 9364,
+      "sha256": "a1ad7c6737f2f186ef4a7640a4a3c359cf006961f330bccd97ec93e6f62414ec"
+    },
+    {
+      "path": "../quantified/quantified-registry.json",
+      "kind": "contract_registry_or_document",
+      "bytes": 22726,
+      "sha256": "fa7a25c3bab48528a0083e13ffaf8e9094fe5c914c04b9dd0fce13eff433ca1b"
+    },
+    {
+      "path": "../quantified/stage-i-contracts.json",
+      "kind": "contract_registry_or_document",
+      "bytes": 6997,
+      "sha256": "acb217d19b3d1a149376f4a79b0ae56bdfa38679e35aaecdc95b3e84fb086b3c"
+    },
+    {
+      "path": "../quantified/replay_parametric_optimalmix.py",
+      "kind": "source",
+      "bytes": 8593,
+      "sha256": "e0677afb6b85d339451cde14fa3a60f3ecb665cfb3a0f642821572aafdc7b2ac"
+    },
+    {
+      "path": "../quantified/parametric-optimalmix-compilation.json",
+      "kind": "certificate_or_polynomial_input",
+      "bytes": 25885,
+      "sha256": "552ce7ce7241f9c7b2d63832d2099650aa7efdacdf973a19f07db64cb7eb5400"
+    },
+    {
+      "path": "../critical/alignment-exact-fixture.json",
+      "kind": "certificate_or_polynomial_input",
+      "bytes": 2263,
+      "sha256": "dd2d42721ce2bf6f7f7a24d1f94d32101518498a7c9a8717f0a8ebaf5e26866c"
+    },
+    {
+      "path": "../critical/replay_delta_f_lift_ledger.py",
+      "kind": "source",
+      "bytes": 11368,
+      "sha256": "d661bd69aa33a5526d29f3f64e391990cd579de4948330b4b12151997557a5d8"
+    },
+    {
+      "path": "../critical/delta_f-lift-ledger.json",
+      "kind": "certificate_or_polynomial_input",
+      "bytes": 35354,
+      "sha256": "0d46bd0774e33e34f5191980593b4b93df48a4cfad1454ba00bcd4c4d0016b41"
+    },
+    {
+      "path": "../global/replay_m_chart_certificate.py",
+      "kind": "source",
+      "bytes": 2882,
+      "sha256": "3d8458b773542951e384ebd40317acf0b8e39887b7de185c8f2e74e14231d3ca"
+    },
+    {
+      "path": "../global/m-chart-certificate.json",
+      "kind": "certificate_or_polynomial_input",
+      "bytes": 46146,
+      "sha256": "f80ec905e9b1ebaadf69177f0871d418e9859ea7d2b76ac4845fcae31e30c633"
+    },
+    {
+      "path": "../global/replay_ideal_cap_provenance_ledger.py",
+      "kind": "source",
+      "bytes": 16157,
+      "sha256": "07cc8b8332634d3bf56a69e110b6f3d1cc6f40580a7e6dd3594415ff940c89bb"
+    },
+    {
+      "path": "../global/ideal-cap-provenance-ledger.json",
+      "kind": "certificate_or_polynomial_input",
+      "bytes": 88379,
+      "sha256": "2303e3cbce6c7cf2bf0cf15a3646e5a14c44195afc78f705bc722ad76a4f58dc"
+    },
+    {
+      "path": "../quantified/replay_fullbr_rectangle_bridge.py",
+      "kind": "source",
+      "bytes": 6389,
+      "sha256": "7efdbfe4d6331d2df6c8de7a59b4b09beec88be9d93bd6f65e9730562fe89c03"
+    },
+    {
+      "path": "../quantified/fullbr-rectangle-bridge.json",
+      "kind": "certificate_or_contract_input",
+      "bytes": 8296,
+      "sha256": "213dd35f875b65a08a3b89a88b9af3014fb828b8c5e5023b08ec3836f046978c"
+    }
+  ],
+  "budget": {
+    "bundle_additional_limit_bytes": 1048576,
+    "referenced_unique_input_bytes": 5919964,
+    "certificate_tree_bytes": 1784668,
+    "historical_031_tree_included": false,
+    "new_search_tree_generated_by_entry": false,
+    "registered_unit_count": 29,
+    "referenced_unique_input_files": 63
+  },
+  "excluded": [
+    "optional SAME final beta/z_eta strengthening, excluded from the manuscript proof",
+    "old .31 105k-leaf exclusion tree",
+    "incomplete helper/prefix trees for mathematical replay (--deep canonical reads final certificate only)",
+    "old incorrect C0/C1 derivative diagnostics and invalid multiplier artifacts",
+    "numerical grids, optimizers and exploratory search files",
+    "claims that scalar r_star fixture realizes an actual game or saturates the true OM contract"
+  ],
+  "logical_chain": [
+    "Stage I: typed common-game building-block contracts including O02 input-profile domination; straightline4LP+OM+five-profile SelectBest composition",
+    "Stage II: quantified guarantee; bad execution; arbitrary rational comparison r; universal OM failure with tau subtracted once",
+    "Typed finite contract instantiation and payoff forgetting; ideal211node and near-BR34combination ledgers produce SAME4tuple source/envelope data and common signed deficit planes",
+    "Full-BR attainer bindings and actual-gap to G/rho,G/sigma connector; generic parametric linearizer generates cuts/cells/edges; safe forgetting retains4oldinternalarcs",
+    "Free-threshold g-to-r necessary projection, odds/caps and full-domain shared-mass/orientation reduction",
+    "Preclip canonical/high-rho LEFT/high-rho B_mix OR postclip to kappa_1=0, with registered weakened scopes and stop events",
+    "Full-rho kink-face arithmetic excludes every r>r_star",
+    "Ideal Fout<=r_star; rational approximate implementation Fout<=r_star+delta_f+tau"
+  ],
+  "formalization_coverage_limits": [
+    "ordinary typed universal instantiation and safe forgetting are accepted mathematical metarules rather than proof-assistant kernel rules",
+    "TS/LP/OptimalMixing implementation refinement and standard LP strong-duality/runtime theorems are not formalized here",
+    "the finite projection is sound necessary only, not full equivalent original-game QE or game realization"
+  ],
+  "mathematical_status": "complete conditional building-block guarantee, with all finite arithmetic bridge/certificate components replay_verified; ordinary typed instantiation/forgetting metarules and standard primitive semantics remain explicit, not pending gaps"
+}

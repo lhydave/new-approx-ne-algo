@@ -1,0 +1,4174 @@
+{
+  "schema": 1,
+  "delta": 0,
+  "game": "G",
+  "extra_building_block_properties": false,
+  "assumptions": {
+    "front_mass_identity": "rho+sigma-1",
+    "positive": [
+      "rho",
+      "sigma",
+      "r"
+    ],
+    "raw_mass_ranges": "eta,xi,alpha,gamma in [0,1] from actual LP contracts; pMix,qMix in [0,1] proof parameters",
+    "bad_values": "Hw,Hz,Hr,Hj >=r follow from one bad five-profile SelectBest execution; g>=r follows from the same execution via O02 and T01"
+  },
+  "row_strategies": [
+    "h",
+    "hJ",
+    "hMix",
+    "hZ",
+    "y_1_1",
+    "y_2_1",
+    "x_s_1",
+    "y_s_1",
+    "xE",
+    "xMix",
+    "x_1_1"
+  ],
+  "column_strategies": [
+    "y_1_2",
+    "y_2_2",
+    "k",
+    "kMix",
+    "kR",
+    "kW",
+    "x_s_2",
+    "yE",
+    "yMix",
+    "x_1_2",
+    "y_s_2"
+  ],
+  "symbols": [
+    "A_s",
+    "B_s",
+    "kappa_2",
+    "kappa_1",
+    "CC",
+    "CR",
+    "C_hJ_y_1_2",
+    "C_hJ_y_2_2",
+    "C_hZ_y_1_2",
+    "C_hZ_y_s_2",
+    "C_h_y_1_2",
+    "C_h_y_2_2",
+    "C_h_x_s_2",
+    "C_h_y_s_2",
+    "C_y_2_1_y_1_2",
+    "C_y_2_1_y_2_2",
+    "C_y_2_1_x_s_2",
+    "C_y_2_1_y_s_2",
+    "C_y_1_1_y_1_2",
+    "C_y_1_1_y_2_2",
+    "C_y_1_1_k",
+    "C_y_1_1_kR",
+    "C_y_1_1_x_s_2",
+    "C_y_1_1_yE",
+    "C_y_1_1_x_1_2",
+    "C_y_1_1_y_s_2",
+    "C_x_s_1_y_1_2",
+    "C_x_s_1_y_2_2",
+    "C_x_s_1_k",
+    "C_x_s_1_x_s_2",
+    "C_x_s_1_y_s_2",
+    "C_y_s_1_y_1_2",
+    "C_y_s_1_y_2_2",
+    "C_y_s_1_k",
+    "C_y_s_1_kW",
+    "C_y_s_1_x_s_2",
+    "C_y_s_1_y_s_2",
+    "C_xE_y_1_2",
+    "C_xE_y_2_2",
+    "C_xE_k",
+    "C_x_1_1_y_1_2",
+    "C_x_1_1_y_2_2",
+    "Ccap",
+    "DC",
+    "DR",
+    "EC",
+    "ER",
+    "Hj",
+    "Hr",
+    "Hw",
+    "Hz",
+    "JCexact",
+    "JRexact",
+    "LC",
+    "LR",
+    "rho",
+    "sigma",
+    "R_hJ_y_1_2",
+    "R_hZ_y_s_2",
+    "R_h_y_1_2",
+    "R_h_x_s_2",
+    "R_h_yE",
+    "R_h_y_s_2",
+    "R_y_2_1_y_1_2",
+    "R_y_2_1_y_2_2",
+    "R_y_2_1_k",
+    "R_y_2_1_kR",
+    "R_y_2_1_x_s_2",
+    "R_y_2_1_yE",
+    "R_y_2_1_x_1_2",
+    "R_y_2_1_y_s_2",
+    "R_y_1_1_y_1_2",
+    "R_y_1_1_y_2_2",
+    "R_y_1_1_k",
+    "R_y_1_1_kR",
+    "R_y_1_1_kW",
+    "R_y_1_1_x_s_2",
+    "R_y_1_1_yE",
+    "R_y_1_1_x_1_2",
+    "R_y_1_1_y_s_2",
+    "R_x_s_1_y_1_2",
+    "R_x_s_1_y_2_2",
+    "R_x_s_1_k",
+    "R_x_s_1_x_s_2",
+    "R_x_s_1_y_s_2",
+    "R_y_s_1_y_1_2",
+    "R_y_s_1_y_2_2",
+    "R_y_s_1_k",
+    "R_y_s_1_kW",
+    "R_y_s_1_x_s_2",
+    "R_y_s_1_y_s_2",
+    "R_xE_y_1_2",
+    "R_x_1_1_y_1_2",
+    "Rcap",
+    "S",
+    "T",
+    "UC_y_1_1",
+    "UC_x_s_1",
+    "UC_y_s_1",
+    "UC_xMix",
+    "UC_x_1_1",
+    "UR_y_1_2",
+    "UR_x_s_2",
+    "UR_yMix",
+    "UR_x_1_2",
+    "UR_y_s_2",
+    "V",
+    "alpha",
+    "eta",
+    "g",
+    "gamma",
+    "h_2",
+    "h_1",
+    "kC",
+    "kR",
+    "lambda_0",
+    "mu_0",
+    "pMix",
+    "qMix",
+    "r",
+    "s_2",
+    "s_1",
+    "v",
+    "u",
+    "vc",
+    "vr",
+    "xi"
+  ],
+  "payoff_terms": {
+    "R_y_s_1_x_s_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_s_1",
+        "x_s_2"
+      ]
+    },
+    "UR_x_s_2": {
+      "game": "G",
+      "player": "UR",
+      "arguments": [
+        "x_s_2"
+      ]
+    },
+    "C_x_s_1_y_s_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "x_s_1",
+        "y_s_2"
+      ]
+    },
+    "UC_x_s_1": {
+      "game": "G",
+      "player": "UC",
+      "arguments": [
+        "x_s_1"
+      ]
+    },
+    "R_x_s_1_x_s_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "x_s_1",
+        "x_s_2"
+      ]
+    },
+    "C_x_s_1_x_s_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "x_s_1",
+        "x_s_2"
+      ]
+    },
+    "R_y_1_1_kW": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_1_1",
+        "kW"
+      ]
+    },
+    "R_y_s_1_kW": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_s_1",
+        "kW"
+      ]
+    },
+    "UC_y_s_1": {
+      "game": "G",
+      "player": "UC",
+      "arguments": [
+        "y_s_1"
+      ]
+    },
+    "C_y_s_1_kW": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_s_1",
+        "kW"
+      ]
+    },
+    "R_y_2_1_kR": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_2_1",
+        "kR"
+      ]
+    },
+    "R_y_1_1_kR": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_1_1",
+        "kR"
+      ]
+    },
+    "UC_y_1_1": {
+      "game": "G",
+      "player": "UC",
+      "arguments": [
+        "y_1_1"
+      ]
+    },
+    "C_y_1_1_kR": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_1_1",
+        "kR"
+      ]
+    },
+    "UR_y_s_2": {
+      "game": "G",
+      "player": "UR",
+      "arguments": [
+        "y_s_2"
+      ]
+    },
+    "R_hZ_y_s_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "hZ",
+        "y_s_2"
+      ]
+    },
+    "C_hZ_y_1_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "hZ",
+        "y_1_2"
+      ]
+    },
+    "C_hZ_y_s_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "hZ",
+        "y_s_2"
+      ]
+    },
+    "UR_y_1_2": {
+      "game": "G",
+      "player": "UR",
+      "arguments": [
+        "y_1_2"
+      ]
+    },
+    "R_hJ_y_1_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "hJ",
+        "y_1_2"
+      ]
+    },
+    "C_hJ_y_2_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "hJ",
+        "y_2_2"
+      ]
+    },
+    "C_hJ_y_1_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "hJ",
+        "y_1_2"
+      ]
+    },
+    "R_y_1_1_x_s_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_1_1",
+        "x_s_2"
+      ]
+    },
+    "C_y_s_1_x_s_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_s_1",
+        "x_s_2"
+      ]
+    },
+    "R_x_s_1_y_s_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "x_s_1",
+        "y_s_2"
+      ]
+    },
+    "C_x_s_1_y_1_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "x_s_1",
+        "y_1_2"
+      ]
+    },
+    "R_y_1_1_x_1_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_1_1",
+        "x_1_2"
+      ]
+    },
+    "UR_x_1_2": {
+      "game": "G",
+      "player": "UR",
+      "arguments": [
+        "x_1_2"
+      ]
+    },
+    "C_x_1_1_y_1_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "x_1_1",
+        "y_1_2"
+      ]
+    },
+    "UC_x_1_1": {
+      "game": "G",
+      "player": "UC",
+      "arguments": [
+        "x_1_1"
+      ]
+    },
+    "R_y_2_1_x_1_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_2_1",
+        "x_1_2"
+      ]
+    },
+    "C_y_1_1_x_1_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_1_1",
+        "x_1_2"
+      ]
+    },
+    "R_x_1_1_y_1_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "x_1_1",
+        "y_1_2"
+      ]
+    },
+    "C_x_1_1_y_2_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "x_1_1",
+        "y_2_2"
+      ]
+    },
+    "R_y_s_1_y_s_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_s_1",
+        "y_s_2"
+      ]
+    },
+    "C_y_s_1_y_s_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_s_1",
+        "y_s_2"
+      ]
+    },
+    "R_y_1_1_y_s_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_1_1",
+        "y_s_2"
+      ]
+    },
+    "C_y_s_1_y_1_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_s_1",
+        "y_1_2"
+      ]
+    },
+    "R_y_s_1_y_1_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_s_1",
+        "y_1_2"
+      ]
+    },
+    "R_x_s_1_y_1_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "x_s_1",
+        "y_1_2"
+      ]
+    },
+    "C_y_1_1_y_s_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_1_1",
+        "y_s_2"
+      ]
+    },
+    "C_y_1_1_x_s_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_1_1",
+        "x_s_2"
+      ]
+    },
+    "R_y_1_1_y_1_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_1_1",
+        "y_1_2"
+      ]
+    },
+    "C_y_1_1_y_1_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_1_1",
+        "y_1_2"
+      ]
+    },
+    "R_y_2_1_y_1_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_2_1",
+        "y_1_2"
+      ]
+    },
+    "R_y_2_1_y_s_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_2_1",
+        "y_s_2"
+      ]
+    },
+    "C_y_1_1_y_2_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_1_1",
+        "y_2_2"
+      ]
+    },
+    "C_y_s_1_y_2_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_s_1",
+        "y_2_2"
+      ]
+    },
+    "C_h_y_1_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "h",
+        "y_1_2"
+      ]
+    },
+    "R_h_y_s_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "h",
+        "y_s_2"
+      ]
+    },
+    "C_h_y_s_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "h",
+        "y_s_2"
+      ]
+    },
+    "R_h_y_1_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "h",
+        "y_1_2"
+      ]
+    },
+    "C_h_y_2_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "h",
+        "y_2_2"
+      ]
+    },
+    "R_y_1_1_k": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_1_1",
+        "k"
+      ]
+    },
+    "C_y_s_1_k": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_s_1",
+        "k"
+      ]
+    },
+    "R_y_s_1_k": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_s_1",
+        "k"
+      ]
+    },
+    "C_y_1_1_k": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_1_1",
+        "k"
+      ]
+    },
+    "R_y_2_1_k": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_2_1",
+        "k"
+      ]
+    },
+    "R_h_yE": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "h",
+        "yE"
+      ]
+    },
+    "R_y_1_1_yE": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_1_1",
+        "yE"
+      ]
+    },
+    "C_y_1_1_yE": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_1_1",
+        "yE"
+      ]
+    },
+    "R_y_2_1_yE": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_2_1",
+        "yE"
+      ]
+    },
+    "C_xE_k": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "xE",
+        "k"
+      ]
+    },
+    "C_xE_y_1_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "xE",
+        "y_1_2"
+      ]
+    },
+    "R_xE_y_1_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "xE",
+        "y_1_2"
+      ]
+    },
+    "C_xE_y_2_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "xE",
+        "y_2_2"
+      ]
+    },
+    "C_x_s_1_k": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "x_s_1",
+        "k"
+      ]
+    },
+    "R_h_x_s_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "h",
+        "x_s_2"
+      ]
+    },
+    "R_x_s_1_k": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "x_s_1",
+        "k"
+      ]
+    },
+    "C_h_x_s_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "h",
+        "x_s_2"
+      ]
+    },
+    "UC_xMix": {
+      "game": "G",
+      "player": "UC",
+      "arguments": [
+        "xMix"
+      ]
+    },
+    "UR_yMix": {
+      "game": "G",
+      "player": "UR",
+      "arguments": [
+        "yMix"
+      ]
+    },
+    "C_y_2_1_y_1_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_2_1",
+        "y_1_2"
+      ]
+    },
+    "C_y_2_1_y_s_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_2_1",
+        "y_s_2"
+      ]
+    },
+    "C_y_2_1_y_2_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_2_1",
+        "y_2_2"
+      ]
+    },
+    "R_y_1_1_y_2_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_1_1",
+        "y_2_2"
+      ]
+    },
+    "R_y_s_1_y_2_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_s_1",
+        "y_2_2"
+      ]
+    },
+    "R_y_2_1_y_2_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_2_1",
+        "y_2_2"
+      ]
+    },
+    "C_x_s_1_y_2_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "x_s_1",
+        "y_2_2"
+      ]
+    },
+    "R_y_2_1_x_s_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "y_2_1",
+        "x_s_2"
+      ]
+    },
+    "R_x_s_1_y_2_2": {
+      "game": "G",
+      "player": "R",
+      "arguments": [
+        "x_s_1",
+        "y_2_2"
+      ]
+    },
+    "C_y_2_1_x_s_2": {
+      "game": "G",
+      "player": "C",
+      "arguments": [
+        "y_2_1",
+        "x_s_2"
+      ]
+    }
+  },
+  "tuples": {
+    "y_s_1": {
+      "clause": "R02",
+      "input": "y_s_1",
+      "response": "y_1_1",
+      "mass": "eta",
+      "value": "Hw"
+    },
+    "y_s_2": {
+      "clause": "C02",
+      "input": "y_s_2",
+      "response": "y_1_2",
+      "mass": "xi",
+      "value": "Hz"
+    },
+    "y_1_1": {
+      "clause": "R02",
+      "input": "y_1_1",
+      "response": "y_2_1",
+      "mass": "alpha",
+      "value": "Hr"
+    },
+    "y_1_2": {
+      "clause": "C02",
+      "input": "y_1_2",
+      "response": "y_2_2",
+      "mass": "gamma",
+      "value": "Hj"
+    }
+  },
+  "witnesses": {
+    "kW": {
+      "game": "G",
+      "player": "C",
+      "input": "y_s_1",
+      "depends_on": []
+    },
+    "kR": {
+      "game": "G",
+      "player": "C",
+      "input": "y_1_1",
+      "depends_on": []
+    },
+    "hZ": {
+      "game": "G",
+      "player": "R",
+      "input": "y_s_2",
+      "depends_on": []
+    },
+    "hJ": {
+      "game": "G",
+      "player": "R",
+      "input": "y_1_2",
+      "depends_on": []
+    },
+    "kMix": {
+      "game": "G",
+      "player": "C",
+      "input": "xMix",
+      "depends_on": [
+        "pMix"
+      ]
+    },
+    "hMix": {
+      "game": "G",
+      "player": "R",
+      "input": "yMix",
+      "depends_on": [
+        "qMix"
+      ]
+    }
+  },
+  "mixtures": {
+    "yE": {
+      "game": "G",
+      "type": "column",
+      "left": "y_1_2",
+      "right": "y_s_2",
+      "coefficient": "gamma*v/DR",
+      "left_coefficient": "(1-gamma)/DR"
+    },
+    "xE": {
+      "game": "G",
+      "type": "row",
+      "left": "y_1_1",
+      "right": "y_s_1",
+      "coefficient": "alpha*u/DC",
+      "left_coefficient": "(1-alpha)/DC"
+    },
+    "xMix": {
+      "game": "G",
+      "type": "row",
+      "left": "x_s_1",
+      "right": "y_s_1",
+      "coefficient": "pMix",
+      "left_coefficient": "1-pMix"
+    },
+    "yMix": {
+      "game": "G",
+      "type": "column",
+      "left": "x_s_2",
+      "right": "y_s_2",
+      "coefficient": "qMix",
+      "left_coefficient": "1-qMix"
+    }
+  },
+  "rational_definitions": {
+    "lambda_0": "g/rho",
+    "mu_0": "g/sigma",
+    "u": "(1-eta)/eta",
+    "v": "(1-xi)/xi",
+    "h_1": "1-kappa_1",
+    "h_2": "1-kappa_2",
+    "DR": "1-gamma+gamma*v",
+    "DC": "1-alpha+alpha*u",
+    "LC": "r-eta*(1-lambda_0)",
+    "LR": "r-xi*(1-mu_0)",
+    "ER": "((1-gamma)*S+gamma*(1-r/xi+v*s_1)-r)/DR",
+    "EC": "((1-gamma)*T+gamma*v*h_2)/DR",
+    "CR": "((1-alpha)*S+alpha*u*h_1)/DC",
+    "CC": "((1-alpha)*T+alpha*(1-r/eta+u*s_2)-r)/DC",
+    "JCexact": "(1-pMix)*UC_x_s_1+pMix*UC_y_s_1-UC_xMix",
+    "JRexact": "(1-qMix)*UR_x_s_2+qMix*UR_y_s_2-UR_yMix",
+    "Rcap": "(1-pMix)*(1-qMix)*g+qMix*(1-pMix*lambda_0)-kR*LR",
+    "Ccap": "(1-pMix)*(1-qMix)*g+pMix*(1-qMix*mu_0)-kC*LC"
+  },
+  "selectors": {
+    "vr": {
+      "operation": "min",
+      "choices": [
+        "1",
+        "(1-eta-r)/eta"
+      ]
+    },
+    "vc": {
+      "operation": "min",
+      "choices": [
+        "1",
+        "(1-xi-r)/xi"
+      ]
+    },
+    "s_1": {
+      "operation": "min",
+      "choices": [
+        "1",
+        "1-lambda_0-(r-(1-eta)*(1-mu_0))/eta"
+      ]
+    },
+    "s_2": {
+      "operation": "min",
+      "choices": [
+        "1",
+        "1-mu_0-(r-(1-xi)*(1-lambda_0))/xi"
+      ]
+    },
+    "kappa_1": {
+      "operation": "max",
+      "choices": [
+        "0",
+        "lambda_0-sigma*vc/rho"
+      ]
+    },
+    "kappa_2": {
+      "operation": "max",
+      "choices": [
+        "0",
+        "mu_0-rho*vr/sigma"
+      ]
+    },
+    "S": {
+      "operation": "min",
+      "choices": [
+        "1",
+        "1-kappa_1-(r-(1-eta)*s_2)/eta"
+      ]
+    },
+    "T": {
+      "operation": "min",
+      "choices": [
+        "1",
+        "1-kappa_2-(r-(1-xi)*s_1)/xi"
+      ]
+    },
+    "kC": {
+      "operation": "min",
+      "choices": [
+        "pMix/(1-eta)",
+        "(1-pMix)*rho/(eta*sigma)"
+      ]
+    },
+    "kR": {
+      "operation": "min",
+      "choices": [
+        "qMix/(1-xi)",
+        "(1-qMix)*sigma/(xi*rho)"
+      ]
+    }
+  },
+  "proof": [
+    {
+      "id": "bad_g",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "g - r",
+      "operation": "bad_value",
+      "clause_ids": [
+        "B01",
+        "O02",
+        "T01"
+      ],
+      "value": "g"
+    },
+    {
+      "id": "bad_Hw",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "Hw - r",
+      "operation": "bad_value",
+      "clause_ids": [
+        "B01"
+      ],
+      "value": "Hw"
+    },
+    {
+      "id": "bad_Hz",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "Hz - r",
+      "operation": "bad_value",
+      "clause_ids": [
+        "B01"
+      ],
+      "value": "Hz"
+    },
+    {
+      "id": "bad_Hr",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "Hr - r",
+      "operation": "bad_value",
+      "clause_ids": [
+        "B01"
+      ],
+      "value": "Hr"
+    },
+    {
+      "id": "bad_Hj",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "Hj - r",
+      "operation": "bad_value",
+      "clause_ids": [
+        "B01"
+      ],
+      "value": "Hj"
+    },
+    {
+      "id": "front_R",
+      "kind": "primitive",
+      "relation": "eq",
+      "expression": "R_y_s_1_x_s_2 - UR_x_s_2",
+      "operation": "front_BR",
+      "clause_ids": [
+        "T02",
+        "K02",
+        "K01"
+      ],
+      "player": "R"
+    },
+    {
+      "id": "front_C",
+      "kind": "primitive",
+      "relation": "eq",
+      "expression": "C_x_s_1_y_s_2 - UC_x_s_1",
+      "operation": "front_BR",
+      "clause_ids": [
+        "T02",
+        "K02",
+        "K01"
+      ],
+      "player": "C"
+    },
+    {
+      "id": "old_regret_R",
+      "kind": "primitive",
+      "relation": "eq",
+      "expression": "-R_x_s_1_x_s_2 + UR_x_s_2 - g",
+      "operation": "equal_regret",
+      "clause_ids": [
+        "T01",
+        "K03"
+      ],
+      "player": "R"
+    },
+    {
+      "id": "old_regret_C",
+      "kind": "primitive",
+      "relation": "eq",
+      "expression": "-C_x_s_1_x_s_2 + UC_x_s_1 - g",
+      "operation": "equal_regret",
+      "clause_ids": [
+        "T01",
+        "K03"
+      ],
+      "player": "C"
+    },
+    {
+      "id": "T_stop",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "V - g",
+      "operation": "Tstop",
+      "clause_ids": [
+        "T05"
+      ]
+    },
+    {
+      "id": "T_value",
+      "kind": "primitive",
+      "relation": "eq",
+      "expression": "-A_s - B_s - C_x_s_1_x_s_2*sigma - rho*R_x_s_1_x_s_2 + V",
+      "operation": "Tvalue",
+      "clause_ids": [
+        "T05"
+      ]
+    },
+    {
+      "id": "plane_w_kW",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hw + eta*(R_y_1_1_kW - R_y_s_1_kW) + (1 - eta)*(-C_y_s_1_kW + UC_y_s_1)",
+      "operation": "plane",
+      "clause_ids": [
+        "R02"
+      ],
+      "tuple": "y_s_1",
+      "opponent": "kW"
+    },
+    {
+      "id": "threshold_w_kW",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "eta*(R_y_1_1_kW - R_y_s_1_kW) - r + (1 - eta)*(-C_y_s_1_kW + UC_y_s_1)",
+      "terms": [
+        {
+          "fact": "plane_w_kW",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hw",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_R_y_1_1_kW",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - R_y_1_1_kW",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_1_1_kW",
+      "side": "upper"
+    },
+    {
+      "id": "low_R_y_s_1_kW",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "R_y_s_1_kW",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_s_1_kW",
+      "side": "lower"
+    },
+    {
+      "id": "attain_kW",
+      "kind": "primitive",
+      "relation": "eq",
+      "expression": "C_y_s_1_kW - UC_y_s_1",
+      "operation": "attainment",
+      "clause_ids": [
+        "K02"
+      ],
+      "player": "C",
+      "opponent": "y_s_1",
+      "witness": "kW"
+    },
+    {
+      "id": "mass_eta_low",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "eta - r",
+      "terms": [
+        {
+          "fact": "threshold_w_kW",
+          "weight": "1"
+        },
+        {
+          "fact": "high_R_y_1_1_kW",
+          "weight": "eta"
+        },
+        {
+          "fact": "low_R_y_s_1_kW",
+          "weight": "eta"
+        },
+        {
+          "fact": "attain_kW",
+          "weight": "1 - eta"
+        }
+      ]
+    },
+    {
+      "id": "plane_r_kR",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hr + alpha*(R_y_2_1_kR - R_y_1_1_kR) + (1 - alpha)*(-C_y_1_1_kR + UC_y_1_1)",
+      "operation": "plane",
+      "clause_ids": [
+        "R02"
+      ],
+      "tuple": "y_1_1",
+      "opponent": "kR"
+    },
+    {
+      "id": "threshold_r_kR",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "alpha*(R_y_2_1_kR - R_y_1_1_kR) - r + (1 - alpha)*(-C_y_1_1_kR + UC_y_1_1)",
+      "terms": [
+        {
+          "fact": "plane_r_kR",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hr",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_R_y_2_1_kR",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - R_y_2_1_kR",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_2_1_kR",
+      "side": "upper"
+    },
+    {
+      "id": "low_R_y_1_1_kR",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "R_y_1_1_kR",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_1_1_kR",
+      "side": "lower"
+    },
+    {
+      "id": "attain_kR",
+      "kind": "primitive",
+      "relation": "eq",
+      "expression": "C_y_1_1_kR - UC_y_1_1",
+      "operation": "attainment",
+      "clause_ids": [
+        "K02"
+      ],
+      "player": "C",
+      "opponent": "y_1_1",
+      "witness": "kR"
+    },
+    {
+      "id": "mass_alpha_low",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "alpha - r",
+      "terms": [
+        {
+          "fact": "threshold_r_kR",
+          "weight": "1"
+        },
+        {
+          "fact": "high_R_y_2_1_kR",
+          "weight": "alpha"
+        },
+        {
+          "fact": "low_R_y_1_1_kR",
+          "weight": "alpha"
+        },
+        {
+          "fact": "attain_kR",
+          "weight": "1 - alpha"
+        }
+      ]
+    },
+    {
+      "id": "plane_z_hZ",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hz + xi*(C_hZ_y_1_2 - C_hZ_y_s_2) + (1 - xi)*(-R_hZ_y_s_2 + UR_y_s_2)",
+      "operation": "plane",
+      "clause_ids": [
+        "C02"
+      ],
+      "tuple": "y_s_2",
+      "opponent": "hZ"
+    },
+    {
+      "id": "threshold_z_hZ",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-r + xi*(C_hZ_y_1_2 - C_hZ_y_s_2) + (1 - xi)*(-R_hZ_y_s_2 + UR_y_s_2)",
+      "terms": [
+        {
+          "fact": "plane_z_hZ",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hz",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_C_hZ_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - C_hZ_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_hZ_y_1_2",
+      "side": "upper"
+    },
+    {
+      "id": "low_C_hZ_y_s_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "C_hZ_y_s_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_hZ_y_s_2",
+      "side": "lower"
+    },
+    {
+      "id": "attain_hZ",
+      "kind": "primitive",
+      "relation": "eq",
+      "expression": "R_hZ_y_s_2 - UR_y_s_2",
+      "operation": "attainment",
+      "clause_ids": [
+        "K02"
+      ],
+      "player": "R",
+      "opponent": "y_s_2",
+      "witness": "hZ"
+    },
+    {
+      "id": "mass_xi_low",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-r + xi",
+      "terms": [
+        {
+          "fact": "threshold_z_hZ",
+          "weight": "1"
+        },
+        {
+          "fact": "high_C_hZ_y_1_2",
+          "weight": "xi"
+        },
+        {
+          "fact": "low_C_hZ_y_s_2",
+          "weight": "xi"
+        },
+        {
+          "fact": "attain_hZ",
+          "weight": "1 - xi"
+        }
+      ]
+    },
+    {
+      "id": "plane_j_hJ",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hj + gamma*(-C_hJ_y_1_2 + C_hJ_y_2_2) + (1 - gamma)*(-R_hJ_y_1_2 + UR_y_1_2)",
+      "operation": "plane",
+      "clause_ids": [
+        "C02"
+      ],
+      "tuple": "y_1_2",
+      "opponent": "hJ"
+    },
+    {
+      "id": "threshold_j_hJ",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "gamma*(-C_hJ_y_1_2 + C_hJ_y_2_2) - r + (1 - gamma)*(-R_hJ_y_1_2 + UR_y_1_2)",
+      "terms": [
+        {
+          "fact": "plane_j_hJ",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hj",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_C_hJ_y_2_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - C_hJ_y_2_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_hJ_y_2_2",
+      "side": "upper"
+    },
+    {
+      "id": "low_C_hJ_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "C_hJ_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_hJ_y_1_2",
+      "side": "lower"
+    },
+    {
+      "id": "attain_hJ",
+      "kind": "primitive",
+      "relation": "eq",
+      "expression": "R_hJ_y_1_2 - UR_y_1_2",
+      "operation": "attainment",
+      "clause_ids": [
+        "K02"
+      ],
+      "player": "R",
+      "opponent": "y_1_2",
+      "witness": "hJ"
+    },
+    {
+      "id": "mass_gamma_low",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "gamma - r",
+      "terms": [
+        {
+          "fact": "threshold_j_hJ",
+          "weight": "1"
+        },
+        {
+          "fact": "high_C_hJ_y_2_2",
+          "weight": "gamma"
+        },
+        {
+          "fact": "low_C_hJ_y_1_2",
+          "weight": "gamma"
+        },
+        {
+          "fact": "attain_hJ",
+          "weight": "1 - gamma"
+        }
+      ]
+    },
+    {
+      "id": "plane_w_v",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hw + eta*(R_y_1_1_x_s_2 - R_y_s_1_x_s_2) + (1 - eta)*(-C_y_s_1_x_s_2 + UC_y_s_1)",
+      "operation": "plane",
+      "clause_ids": [
+        "R02"
+      ],
+      "tuple": "y_s_1",
+      "opponent": "x_s_2"
+    },
+    {
+      "id": "threshold_w_v",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "eta*(R_y_1_1_x_s_2 - R_y_s_1_x_s_2) - r + (1 - eta)*(-C_y_s_1_x_s_2 + UC_y_s_1)",
+      "terms": [
+        {
+          "fact": "plane_w_v",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hw",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "BRupper_R_v_r",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-R_y_1_1_x_s_2 + UR_x_s_2",
+      "operation": "BR_upper",
+      "clause_ids": [
+        "K02"
+      ],
+      "player": "R",
+      "opponent": "x_s_2",
+      "deviation": "y_1_1"
+    },
+    {
+      "id": "maxhigh_UC_y_s_1",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - UC_y_s_1",
+      "operation": "maximum_bound",
+      "clause_ids": [
+        "K01",
+        "K02"
+      ],
+      "quantity": "UC_y_s_1"
+    },
+    {
+      "id": "low_C_y_s_1_x_s_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "C_y_s_1_x_s_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_y_s_1_x_s_2",
+      "side": "lower"
+    },
+    {
+      "id": "mass_eta_high",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-eta - r + 1",
+      "terms": [
+        {
+          "fact": "threshold_w_v",
+          "weight": "1"
+        },
+        {
+          "fact": "BRupper_R_v_r",
+          "weight": "eta"
+        },
+        {
+          "fact": "front_R",
+          "weight": "eta"
+        },
+        {
+          "fact": "maxhigh_UC_y_s_1",
+          "weight": "1 - eta"
+        },
+        {
+          "fact": "low_C_y_s_1_x_s_2",
+          "weight": "1 - eta"
+        }
+      ]
+    },
+    {
+      "id": "plane_z_s",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hz + xi*(C_x_s_1_y_1_2 - C_x_s_1_y_s_2) + (1 - xi)*(-R_x_s_1_y_s_2 + UR_y_s_2)",
+      "operation": "plane",
+      "clause_ids": [
+        "C02"
+      ],
+      "tuple": "y_s_2",
+      "opponent": "x_s_1"
+    },
+    {
+      "id": "threshold_z_s",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-r + xi*(C_x_s_1_y_1_2 - C_x_s_1_y_s_2) + (1 - xi)*(-R_x_s_1_y_s_2 + UR_y_s_2)",
+      "terms": [
+        {
+          "fact": "plane_z_s",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hz",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "BRupper_C_x_s_1_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-C_x_s_1_y_1_2 + UC_x_s_1",
+      "operation": "BR_upper",
+      "clause_ids": [
+        "K02"
+      ],
+      "player": "C",
+      "opponent": "x_s_1",
+      "deviation": "y_1_2"
+    },
+    {
+      "id": "maxhigh_UR_y_s_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - UR_y_s_2",
+      "operation": "maximum_bound",
+      "clause_ids": [
+        "K01",
+        "K02"
+      ],
+      "quantity": "UR_y_s_2"
+    },
+    {
+      "id": "low_R_x_s_1_y_s_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "R_x_s_1_y_s_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_x_s_1_y_s_2",
+      "side": "lower"
+    },
+    {
+      "id": "mass_xi_high",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-r - xi + 1",
+      "terms": [
+        {
+          "fact": "threshold_z_s",
+          "weight": "1"
+        },
+        {
+          "fact": "BRupper_C_x_s_1_y_1_2",
+          "weight": "xi"
+        },
+        {
+          "fact": "front_C",
+          "weight": "xi"
+        },
+        {
+          "fact": "maxhigh_UR_y_s_2",
+          "weight": "1 - xi"
+        },
+        {
+          "fact": "low_R_x_s_1_y_s_2",
+          "weight": "1 - xi"
+        }
+      ]
+    },
+    {
+      "id": "alignment_r",
+      "kind": "primitive",
+      "relation": "eq",
+      "expression": "R_y_1_1_x_1_2 - UR_x_1_2",
+      "operation": "alignment",
+      "clause_ids": [
+        "R03",
+        "K02"
+      ],
+      "tuple": "y_s_1"
+    },
+    {
+      "id": "alignment_j",
+      "kind": "primitive",
+      "relation": "eq",
+      "expression": "C_x_1_1_y_1_2 - UC_x_1_1",
+      "operation": "alignment",
+      "clause_ids": [
+        "C03",
+        "K02"
+      ],
+      "tuple": "y_s_2"
+    },
+    {
+      "id": "plane_r_yW",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hr + alpha*(R_y_2_1_x_1_2 - R_y_1_1_x_1_2) + (1 - alpha)*(-C_y_1_1_x_1_2 + UC_y_1_1)",
+      "operation": "plane",
+      "clause_ids": [
+        "R02"
+      ],
+      "tuple": "y_1_1",
+      "opponent": "x_1_2"
+    },
+    {
+      "id": "threshold_r_yW",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "alpha*(R_y_2_1_x_1_2 - R_y_1_1_x_1_2) - r + (1 - alpha)*(-C_y_1_1_x_1_2 + UC_y_1_1)",
+      "terms": [
+        {
+          "fact": "plane_r_yW",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hr",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "BRupper_R_yW_r2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-R_y_2_1_x_1_2 + UR_x_1_2",
+      "operation": "BR_upper",
+      "clause_ids": [
+        "K02"
+      ],
+      "player": "R",
+      "opponent": "x_1_2",
+      "deviation": "y_2_1"
+    },
+    {
+      "id": "maxhigh_UC_y_1_1",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - UC_y_1_1",
+      "operation": "maximum_bound",
+      "clause_ids": [
+        "K01",
+        "K02"
+      ],
+      "quantity": "UC_y_1_1"
+    },
+    {
+      "id": "low_C_y_1_1_x_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "C_y_1_1_x_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_y_1_1_x_1_2",
+      "side": "lower"
+    },
+    {
+      "id": "mass_alpha_high",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-alpha - r + 1",
+      "terms": [
+        {
+          "fact": "threshold_r_yW",
+          "weight": "1"
+        },
+        {
+          "fact": "BRupper_R_yW_r2",
+          "weight": "alpha"
+        },
+        {
+          "fact": "alignment_r",
+          "weight": "alpha"
+        },
+        {
+          "fact": "maxhigh_UC_y_1_1",
+          "weight": "1 - alpha"
+        },
+        {
+          "fact": "low_C_y_1_1_x_1_2",
+          "weight": "1 - alpha"
+        }
+      ]
+    },
+    {
+      "id": "plane_j_xZ",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hj + gamma*(-C_x_1_1_y_1_2 + C_x_1_1_y_2_2) + (1 - gamma)*(-R_x_1_1_y_1_2 + UR_y_1_2)",
+      "operation": "plane",
+      "clause_ids": [
+        "C02"
+      ],
+      "tuple": "y_1_2",
+      "opponent": "x_1_1"
+    },
+    {
+      "id": "threshold_j_xZ",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "gamma*(-C_x_1_1_y_1_2 + C_x_1_1_y_2_2) - r + (1 - gamma)*(-R_x_1_1_y_1_2 + UR_y_1_2)",
+      "terms": [
+        {
+          "fact": "plane_j_xZ",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hj",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "BRupper_C_x_1_1_y_2_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-C_x_1_1_y_2_2 + UC_x_1_1",
+      "operation": "BR_upper",
+      "clause_ids": [
+        "K02"
+      ],
+      "player": "C",
+      "opponent": "x_1_1",
+      "deviation": "y_2_2"
+    },
+    {
+      "id": "maxhigh_UR_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - UR_y_1_2",
+      "operation": "maximum_bound",
+      "clause_ids": [
+        "K01",
+        "K02"
+      ],
+      "quantity": "UR_y_1_2"
+    },
+    {
+      "id": "low_R_x_1_1_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "R_x_1_1_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_x_1_1_y_1_2",
+      "side": "lower"
+    },
+    {
+      "id": "mass_gamma_high",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-gamma - r + 1",
+      "terms": [
+        {
+          "fact": "threshold_j_xZ",
+          "weight": "1"
+        },
+        {
+          "fact": "BRupper_C_x_1_1_y_2_2",
+          "weight": "gamma"
+        },
+        {
+          "fact": "alignment_j",
+          "weight": "gamma"
+        },
+        {
+          "fact": "maxhigh_UR_y_1_2",
+          "weight": "1 - gamma"
+        },
+        {
+          "fact": "low_R_x_1_1_y_1_2",
+          "weight": "1 - gamma"
+        }
+      ]
+    },
+    {
+      "id": "positive_u",
+      "kind": "positive_alias",
+      "relation": "ge",
+      "expression": "u",
+      "alias": "u",
+      "parts": [
+        "(1 - eta)/eta"
+      ]
+    },
+    {
+      "id": "positive_v",
+      "kind": "positive_alias",
+      "relation": "ge",
+      "expression": "v",
+      "alias": "v",
+      "parts": [
+        "(1 - xi)/xi"
+      ]
+    },
+    {
+      "id": "positive_DR",
+      "kind": "positive_alias",
+      "relation": "ge",
+      "expression": "DR",
+      "alias": "DR",
+      "parts": [
+        "1 - gamma",
+        "gamma*v"
+      ]
+    },
+    {
+      "id": "positive_DC",
+      "kind": "positive_alias",
+      "relation": "ge",
+      "expression": "DC",
+      "alias": "DC",
+      "parts": [
+        "1 - alpha",
+        "alpha*u"
+      ]
+    },
+    {
+      "id": "Trow_s",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-A_s - rho*R_x_s_1_x_s_2 + sigma*(-C_x_s_1_x_s_2 + C_x_s_1_y_s_2)",
+      "operation": "Tdual_row",
+      "clause_ids": [
+        "T04",
+        "T02",
+        "K01"
+      ],
+      "opponent": "x_s_1"
+    },
+    {
+      "id": "Tcol_z",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-B_s - C_x_s_1_y_s_2*sigma + rho*(-R_x_s_1_y_s_2 + R_y_s_1_y_s_2)",
+      "operation": "Tdual_col",
+      "clause_ids": [
+        "T04",
+        "T02",
+        "K01"
+      ],
+      "opponent": "y_s_2"
+    },
+    {
+      "id": "joint_s_z",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "rho*(-R_x_s_1_y_s_2 + R_y_s_1_y_s_2) - g",
+      "terms": [
+        {
+          "fact": "Trow_s",
+          "weight": "1"
+        },
+        {
+          "fact": "Tcol_z",
+          "weight": "1"
+        },
+        {
+          "fact": "T_stop",
+          "weight": "1"
+        },
+        {
+          "fact": "T_value",
+          "weight": "-1"
+        }
+      ]
+    },
+    {
+      "id": "R_y_s_1_y_s_2_lower",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "R_y_s_1_y_s_2 - lambda_0",
+      "terms": [
+        {
+          "fact": "joint_s_z",
+          "weight": "1/rho"
+        },
+        {
+          "fact": "low_R_x_s_1_y_s_2",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "Trow_w",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-A_s - rho*R_y_s_1_x_s_2 + sigma*(-C_y_s_1_x_s_2 + C_y_s_1_y_s_2)",
+      "operation": "Tdual_row",
+      "clause_ids": [
+        "T04",
+        "T02",
+        "K01"
+      ],
+      "opponent": "y_s_1"
+    },
+    {
+      "id": "Tcol_v",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-B_s - C_x_s_1_x_s_2*sigma + rho*(-R_x_s_1_x_s_2 + R_y_s_1_x_s_2)",
+      "operation": "Tdual_col",
+      "clause_ids": [
+        "T04",
+        "T02",
+        "K01"
+      ],
+      "opponent": "x_s_2"
+    },
+    {
+      "id": "joint_w_v",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "sigma*(-C_y_s_1_x_s_2 + C_y_s_1_y_s_2) - g",
+      "terms": [
+        {
+          "fact": "Trow_w",
+          "weight": "1"
+        },
+        {
+          "fact": "Tcol_v",
+          "weight": "1"
+        },
+        {
+          "fact": "T_stop",
+          "weight": "1"
+        },
+        {
+          "fact": "T_value",
+          "weight": "-1"
+        }
+      ]
+    },
+    {
+      "id": "C_y_s_1_y_s_2_lower",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "C_y_s_1_y_s_2 - mu_0",
+      "terms": [
+        {
+          "fact": "joint_w_v",
+          "weight": "1/sigma"
+        },
+        {
+          "fact": "low_C_y_s_1_x_s_2",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "plane_w_z",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hw + eta*(R_y_1_1_y_s_2 - R_y_s_1_y_s_2) + (1 - eta)*(-C_y_s_1_y_s_2 + UC_y_s_1)",
+      "operation": "plane",
+      "clause_ids": [
+        "R02"
+      ],
+      "tuple": "y_s_1",
+      "opponent": "y_s_2"
+    },
+    {
+      "id": "threshold_w_z",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "eta*(R_y_1_1_y_s_2 - R_y_s_1_y_s_2) - r + (1 - eta)*(-C_y_s_1_y_s_2 + UC_y_s_1)",
+      "terms": [
+        {
+          "fact": "plane_w_z",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hw",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "Rrz_raw_lower",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "R_y_1_1_y_s_2 - lambda_0 - (r - (1 - eta)*(1 - mu_0))/eta",
+      "terms": [
+        {
+          "fact": "threshold_w_z",
+          "weight": "1/eta"
+        },
+        {
+          "fact": "R_y_s_1_y_s_2_lower",
+          "weight": "1"
+        },
+        {
+          "fact": "maxhigh_UC_y_s_1",
+          "weight": "(1 - eta)/eta"
+        },
+        {
+          "fact": "C_y_s_1_y_s_2_lower",
+          "weight": "(1 - eta)/eta"
+        }
+      ]
+    },
+    {
+      "id": "plane_z_w",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hz + xi*(C_y_s_1_y_1_2 - C_y_s_1_y_s_2) + (1 - xi)*(-R_y_s_1_y_s_2 + UR_y_s_2)",
+      "operation": "plane",
+      "clause_ids": [
+        "C02"
+      ],
+      "tuple": "y_s_2",
+      "opponent": "y_s_1"
+    },
+    {
+      "id": "threshold_z_w",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-r + xi*(C_y_s_1_y_1_2 - C_y_s_1_y_s_2) + (1 - xi)*(-R_y_s_1_y_s_2 + UR_y_s_2)",
+      "terms": [
+        {
+          "fact": "plane_z_w",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hz",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "Cwj_raw_lower",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "C_y_s_1_y_1_2 - mu_0 - (r - (1 - lambda_0)*(1 - xi))/xi",
+      "terms": [
+        {
+          "fact": "threshold_z_w",
+          "weight": "1/xi"
+        },
+        {
+          "fact": "C_y_s_1_y_s_2_lower",
+          "weight": "1"
+        },
+        {
+          "fact": "maxhigh_UR_y_s_2",
+          "weight": "(1 - xi)/xi"
+        },
+        {
+          "fact": "R_y_s_1_y_s_2_lower",
+          "weight": "(1 - xi)/xi"
+        }
+      ]
+    },
+    {
+      "id": "low_R_y_1_1_y_s_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "R_y_1_1_y_s_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_1_1_y_s_2",
+      "side": "lower"
+    },
+    {
+      "id": "Rrz_lower",
+      "kind": "selector",
+      "relation": "ge",
+      "expression": "R_y_1_1_y_s_2 + s_1 - 1",
+      "alias": "s_1",
+      "premises": [
+        "low_R_y_1_1_y_s_2",
+        "Rrz_raw_lower"
+      ]
+    },
+    {
+      "id": "low_C_y_s_1_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "C_y_s_1_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_y_s_1_y_1_2",
+      "side": "lower"
+    },
+    {
+      "id": "Cwj_lower",
+      "kind": "selector",
+      "relation": "ge",
+      "expression": "C_y_s_1_y_1_2 + s_2 - 1",
+      "alias": "s_2",
+      "premises": [
+        "low_C_y_s_1_y_1_2",
+        "Cwj_raw_lower"
+      ]
+    },
+    {
+      "id": "vr_raw_upper",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "R_y_1_1_x_s_2 - UR_x_s_2 + (-eta - r + 1)/eta",
+      "terms": [
+        {
+          "fact": "threshold_w_v",
+          "weight": "1/eta"
+        },
+        {
+          "fact": "front_R",
+          "weight": "1"
+        },
+        {
+          "fact": "maxhigh_UC_y_s_1",
+          "weight": "(1 - eta)/eta"
+        },
+        {
+          "fact": "low_C_y_s_1_x_s_2",
+          "weight": "(1 - eta)/eta"
+        }
+      ]
+    },
+    {
+      "id": "vc_raw_upper",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "C_x_s_1_y_1_2 - UC_x_s_1 + (-r - xi + 1)/xi",
+      "terms": [
+        {
+          "fact": "threshold_z_s",
+          "weight": "1/xi"
+        },
+        {
+          "fact": "front_C",
+          "weight": "1"
+        },
+        {
+          "fact": "maxhigh_UR_y_s_2",
+          "weight": "(1 - xi)/xi"
+        },
+        {
+          "fact": "low_R_x_s_1_y_s_2",
+          "weight": "(1 - xi)/xi"
+        }
+      ]
+    },
+    {
+      "id": "maxhigh_UR_x_s_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - UR_x_s_2",
+      "operation": "maximum_bound",
+      "clause_ids": [
+        "K01",
+        "K02"
+      ],
+      "quantity": "UR_x_s_2"
+    },
+    {
+      "id": "low_R_y_1_1_x_s_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "R_y_1_1_x_s_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_1_1_x_s_2",
+      "side": "lower"
+    },
+    {
+      "id": "vr_one_upper",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "R_y_1_1_x_s_2 - UR_x_s_2 + 1",
+      "terms": [
+        {
+          "fact": "maxhigh_UR_x_s_2",
+          "weight": "1"
+        },
+        {
+          "fact": "low_R_y_1_1_x_s_2",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "maxhigh_UC_x_s_1",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - UC_x_s_1",
+      "operation": "maximum_bound",
+      "clause_ids": [
+        "K01",
+        "K02"
+      ],
+      "quantity": "UC_x_s_1"
+    },
+    {
+      "id": "low_C_x_s_1_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "C_x_s_1_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_x_s_1_y_1_2",
+      "side": "lower"
+    },
+    {
+      "id": "vc_one_upper",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "C_x_s_1_y_1_2 - UC_x_s_1 + 1",
+      "terms": [
+        {
+          "fact": "maxhigh_UC_x_s_1",
+          "weight": "1"
+        },
+        {
+          "fact": "low_C_x_s_1_y_1_2",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "vr_upper",
+      "kind": "selector",
+      "relation": "ge",
+      "expression": "R_y_1_1_x_s_2 - UR_x_s_2 + vr",
+      "alias": "vr",
+      "premises": [
+        "vr_one_upper",
+        "vr_raw_upper"
+      ]
+    },
+    {
+      "id": "vc_upper",
+      "kind": "selector",
+      "relation": "ge",
+      "expression": "C_x_s_1_y_1_2 - UC_x_s_1 + vc",
+      "alias": "vc",
+      "premises": [
+        "vc_one_upper",
+        "vc_raw_upper"
+      ]
+    },
+    {
+      "id": "Tcol_j",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-B_s - C_x_s_1_y_1_2*sigma + rho*(-R_x_s_1_y_1_2 + R_y_s_1_y_1_2)",
+      "operation": "Tdual_col",
+      "clause_ids": [
+        "T04",
+        "T02",
+        "K01"
+      ],
+      "opponent": "y_1_2"
+    },
+    {
+      "id": "joint_s_j",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "rho*(-R_x_s_1_y_1_2 + R_y_s_1_y_1_2) + sigma*(-C_x_s_1_y_1_2 + C_x_s_1_y_s_2) - g",
+      "terms": [
+        {
+          "fact": "Trow_s",
+          "weight": "1"
+        },
+        {
+          "fact": "Tcol_j",
+          "weight": "1"
+        },
+        {
+          "fact": "T_stop",
+          "weight": "1"
+        },
+        {
+          "fact": "T_value",
+          "weight": "-1"
+        }
+      ]
+    },
+    {
+      "id": "low_R_x_s_1_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "R_x_s_1_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_x_s_1_y_1_2",
+      "side": "lower"
+    },
+    {
+      "id": "R_y_s_1_y_1_2_raw_lower",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "R_y_s_1_y_1_2 - lambda_0 + sigma*vc/rho",
+      "terms": [
+        {
+          "fact": "joint_s_j",
+          "weight": "1/rho"
+        },
+        {
+          "fact": "low_R_x_s_1_y_1_2",
+          "weight": "1"
+        },
+        {
+          "fact": "vc_upper",
+          "weight": "sigma/rho"
+        },
+        {
+          "fact": "front_C",
+          "weight": "-sigma/rho"
+        }
+      ]
+    },
+    {
+      "id": "Trow_r",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-A_s - rho*R_y_1_1_x_s_2 + sigma*(-C_y_1_1_x_s_2 + C_y_1_1_y_s_2)",
+      "operation": "Tdual_row",
+      "clause_ids": [
+        "T04",
+        "T02",
+        "K01"
+      ],
+      "opponent": "y_1_1"
+    },
+    {
+      "id": "joint_r_v",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "rho*(-R_y_1_1_x_s_2 + R_y_s_1_x_s_2) + sigma*(-C_y_1_1_x_s_2 + C_y_1_1_y_s_2) - g",
+      "terms": [
+        {
+          "fact": "Trow_r",
+          "weight": "1"
+        },
+        {
+          "fact": "Tcol_v",
+          "weight": "1"
+        },
+        {
+          "fact": "T_stop",
+          "weight": "1"
+        },
+        {
+          "fact": "T_value",
+          "weight": "-1"
+        }
+      ]
+    },
+    {
+      "id": "low_C_y_1_1_x_s_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "C_y_1_1_x_s_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_y_1_1_x_s_2",
+      "side": "lower"
+    },
+    {
+      "id": "C_y_1_1_y_s_2_raw_lower",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "C_y_1_1_y_s_2 + rho*vr/sigma - mu_0",
+      "terms": [
+        {
+          "fact": "joint_r_v",
+          "weight": "1/sigma"
+        },
+        {
+          "fact": "low_C_y_1_1_x_s_2",
+          "weight": "1"
+        },
+        {
+          "fact": "vr_upper",
+          "weight": "rho/sigma"
+        },
+        {
+          "fact": "front_R",
+          "weight": "-rho/sigma"
+        }
+      ]
+    },
+    {
+      "id": "low_R_y_s_1_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "R_y_s_1_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_s_1_y_1_2",
+      "side": "lower"
+    },
+    {
+      "id": "R_y_s_1_y_1_2_lower",
+      "kind": "selector",
+      "relation": "ge",
+      "expression": "-kappa_1 + R_y_s_1_y_1_2",
+      "alias": "kappa_1",
+      "premises": [
+        "low_R_y_s_1_y_1_2",
+        "R_y_s_1_y_1_2_raw_lower"
+      ]
+    },
+    {
+      "id": "low_C_y_1_1_y_s_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "C_y_1_1_y_s_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_y_1_1_y_s_2",
+      "side": "lower"
+    },
+    {
+      "id": "C_y_1_1_y_s_2_lower",
+      "kind": "selector",
+      "relation": "ge",
+      "expression": "-kappa_2 + C_y_1_1_y_s_2",
+      "alias": "kappa_2",
+      "premises": [
+        "low_C_y_1_1_y_s_2",
+        "C_y_1_1_y_s_2_raw_lower"
+      ]
+    },
+    {
+      "id": "plane_w_j",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hw + eta*(R_y_1_1_y_1_2 - R_y_s_1_y_1_2) + (1 - eta)*(-C_y_s_1_y_1_2 + UC_y_s_1)",
+      "operation": "plane",
+      "clause_ids": [
+        "R02"
+      ],
+      "tuple": "y_s_1",
+      "opponent": "y_1_2"
+    },
+    {
+      "id": "threshold_w_j",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "eta*(R_y_1_1_y_1_2 - R_y_s_1_y_1_2) - r + (1 - eta)*(-C_y_s_1_y_1_2 + UC_y_s_1)",
+      "terms": [
+        {
+          "fact": "plane_w_j",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hw",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "Rrj_raw_lower",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-kappa_1 + R_y_1_1_y_1_2 - (r - s_2*(1 - eta))/eta",
+      "terms": [
+        {
+          "fact": "threshold_w_j",
+          "weight": "1/eta"
+        },
+        {
+          "fact": "R_y_s_1_y_1_2_lower",
+          "weight": "1"
+        },
+        {
+          "fact": "maxhigh_UC_y_s_1",
+          "weight": "(1 - eta)/eta"
+        },
+        {
+          "fact": "Cwj_lower",
+          "weight": "(1 - eta)/eta"
+        }
+      ]
+    },
+    {
+      "id": "plane_z_r",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hz + xi*(C_y_1_1_y_1_2 - C_y_1_1_y_s_2) + (1 - xi)*(-R_y_1_1_y_s_2 + UR_y_s_2)",
+      "operation": "plane",
+      "clause_ids": [
+        "C02"
+      ],
+      "tuple": "y_s_2",
+      "opponent": "y_1_1"
+    },
+    {
+      "id": "threshold_z_r",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-r + xi*(C_y_1_1_y_1_2 - C_y_1_1_y_s_2) + (1 - xi)*(-R_y_1_1_y_s_2 + UR_y_s_2)",
+      "terms": [
+        {
+          "fact": "plane_z_r",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hz",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "Crj_raw_lower",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-kappa_2 + C_y_1_1_y_1_2 - (r - s_1*(1 - xi))/xi",
+      "terms": [
+        {
+          "fact": "threshold_z_r",
+          "weight": "1/xi"
+        },
+        {
+          "fact": "C_y_1_1_y_s_2_lower",
+          "weight": "1"
+        },
+        {
+          "fact": "maxhigh_UR_y_s_2",
+          "weight": "(1 - xi)/xi"
+        },
+        {
+          "fact": "Rrz_lower",
+          "weight": "(1 - xi)/xi"
+        }
+      ]
+    },
+    {
+      "id": "low_R_y_1_1_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "R_y_1_1_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_1_1_y_1_2",
+      "side": "lower"
+    },
+    {
+      "id": "Rrj_lower",
+      "kind": "selector",
+      "relation": "ge",
+      "expression": "R_y_1_1_y_1_2 + S - 1",
+      "alias": "S",
+      "premises": [
+        "low_R_y_1_1_y_1_2",
+        "Rrj_raw_lower"
+      ]
+    },
+    {
+      "id": "low_C_y_1_1_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "C_y_1_1_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_y_1_1_y_1_2",
+      "side": "lower"
+    },
+    {
+      "id": "Crj_lower",
+      "kind": "selector",
+      "relation": "ge",
+      "expression": "C_y_1_1_y_1_2 + T - 1",
+      "alias": "T",
+      "premises": [
+        "low_C_y_1_1_y_1_2",
+        "Crj_raw_lower"
+      ]
+    },
+    {
+      "id": "high_R_y_1_1_y_s_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - R_y_1_1_y_s_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_1_1_y_s_2",
+      "side": "upper"
+    },
+    {
+      "id": "s_1_nonnegative",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "s_1",
+      "terms": [
+        {
+          "fact": "Rrz_lower",
+          "weight": "1"
+        },
+        {
+          "fact": "high_R_y_1_1_y_s_2",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_C_y_s_1_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - C_y_s_1_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_y_s_1_y_1_2",
+      "side": "upper"
+    },
+    {
+      "id": "s_2_nonnegative",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "s_2",
+      "terms": [
+        {
+          "fact": "Cwj_lower",
+          "weight": "1"
+        },
+        {
+          "fact": "high_C_y_s_1_y_1_2",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_R_y_s_1_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - R_y_s_1_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_s_1_y_1_2",
+      "side": "upper"
+    },
+    {
+      "id": "h_1_nonnegative",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "h_1",
+      "terms": [
+        {
+          "fact": "R_y_s_1_y_1_2_lower",
+          "weight": "1"
+        },
+        {
+          "fact": "high_R_y_s_1_y_1_2",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_C_y_1_1_y_s_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - C_y_1_1_y_s_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_y_1_1_y_s_2",
+      "side": "upper"
+    },
+    {
+      "id": "h_2_nonnegative",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "h_2",
+      "terms": [
+        {
+          "fact": "C_y_1_1_y_s_2_lower",
+          "weight": "1"
+        },
+        {
+          "fact": "high_C_y_1_1_y_s_2",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_R_y_1_1_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - R_y_1_1_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_1_1_y_1_2",
+      "side": "upper"
+    },
+    {
+      "id": "S_nonnegative",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "S",
+      "terms": [
+        {
+          "fact": "Rrj_lower",
+          "weight": "1"
+        },
+        {
+          "fact": "high_R_y_1_1_y_1_2",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_C_y_1_1_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - C_y_1_1_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_y_1_1_y_1_2",
+      "side": "upper"
+    },
+    {
+      "id": "T_nonnegative",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "T",
+      "terms": [
+        {
+          "fact": "Crj_lower",
+          "weight": "1"
+        },
+        {
+          "fact": "high_C_y_1_1_y_1_2",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "plane_r_j",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hr + alpha*(R_y_2_1_y_1_2 - R_y_1_1_y_1_2) + (1 - alpha)*(-C_y_1_1_y_1_2 + UC_y_1_1)",
+      "operation": "plane",
+      "clause_ids": [
+        "R02"
+      ],
+      "tuple": "y_1_1",
+      "opponent": "y_1_2"
+    },
+    {
+      "id": "threshold_r_j",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "alpha*(R_y_2_1_y_1_2 - R_y_1_1_y_1_2) - r + (1 - alpha)*(-C_y_1_1_y_1_2 + UC_y_1_1)",
+      "terms": [
+        {
+          "fact": "plane_r_j",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hr",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_R_y_2_1_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - R_y_2_1_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_2_1_y_1_2",
+      "side": "upper"
+    },
+    {
+      "id": "source_H",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "S*alpha + T*(1 - alpha) - r",
+      "terms": [
+        {
+          "fact": "threshold_r_j",
+          "weight": "1"
+        },
+        {
+          "fact": "high_R_y_2_1_y_1_2",
+          "weight": "alpha"
+        },
+        {
+          "fact": "maxhigh_UC_y_1_1",
+          "weight": "1 - alpha"
+        },
+        {
+          "fact": "Rrj_lower",
+          "weight": "alpha"
+        },
+        {
+          "fact": "Crj_lower",
+          "weight": "1 - alpha"
+        }
+      ]
+    },
+    {
+      "id": "plane_r_z",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hr + alpha*(R_y_2_1_y_s_2 - R_y_1_1_y_s_2) + (1 - alpha)*(-C_y_1_1_y_s_2 + UC_y_1_1)",
+      "operation": "plane",
+      "clause_ids": [
+        "R02"
+      ],
+      "tuple": "y_1_1",
+      "opponent": "y_s_2"
+    },
+    {
+      "id": "threshold_r_z",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "alpha*(R_y_2_1_y_s_2 - R_y_1_1_y_s_2) - r + (1 - alpha)*(-C_y_1_1_y_s_2 + UC_y_1_1)",
+      "terms": [
+        {
+          "fact": "plane_r_z",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hr",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_R_y_2_1_y_s_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - R_y_2_1_y_s_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_2_1_y_s_2",
+      "side": "upper"
+    },
+    {
+      "id": "source_U",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "alpha*s_1 + h_2*(1 - alpha) - r",
+      "terms": [
+        {
+          "fact": "threshold_r_z",
+          "weight": "1"
+        },
+        {
+          "fact": "high_R_y_2_1_y_s_2",
+          "weight": "alpha"
+        },
+        {
+          "fact": "maxhigh_UC_y_1_1",
+          "weight": "1 - alpha"
+        },
+        {
+          "fact": "Rrz_lower",
+          "weight": "alpha"
+        },
+        {
+          "fact": "C_y_1_1_y_s_2_lower",
+          "weight": "1 - alpha"
+        }
+      ]
+    },
+    {
+      "id": "plane_j_r",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hj + gamma*(-C_y_1_1_y_1_2 + C_y_1_1_y_2_2) + (1 - gamma)*(-R_y_1_1_y_1_2 + UR_y_1_2)",
+      "operation": "plane",
+      "clause_ids": [
+        "C02"
+      ],
+      "tuple": "y_1_2",
+      "opponent": "y_1_1"
+    },
+    {
+      "id": "threshold_j_r",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "gamma*(-C_y_1_1_y_1_2 + C_y_1_1_y_2_2) - r + (1 - gamma)*(-R_y_1_1_y_1_2 + UR_y_1_2)",
+      "terms": [
+        {
+          "fact": "plane_j_r",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hj",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_C_y_1_1_y_2_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - C_y_1_1_y_2_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_y_1_1_y_2_2",
+      "side": "upper"
+    },
+    {
+      "id": "source_K",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "S*(1 - gamma) + T*gamma - r",
+      "terms": [
+        {
+          "fact": "threshold_j_r",
+          "weight": "1"
+        },
+        {
+          "fact": "maxhigh_UR_y_1_2",
+          "weight": "1 - gamma"
+        },
+        {
+          "fact": "high_C_y_1_1_y_2_2",
+          "weight": "gamma"
+        },
+        {
+          "fact": "Rrj_lower",
+          "weight": "1 - gamma"
+        },
+        {
+          "fact": "Crj_lower",
+          "weight": "gamma"
+        }
+      ]
+    },
+    {
+      "id": "plane_j_w",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hj + gamma*(-C_y_s_1_y_1_2 + C_y_s_1_y_2_2) + (1 - gamma)*(-R_y_s_1_y_1_2 + UR_y_1_2)",
+      "operation": "plane",
+      "clause_ids": [
+        "C02"
+      ],
+      "tuple": "y_1_2",
+      "opponent": "y_s_1"
+    },
+    {
+      "id": "threshold_j_w",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "gamma*(-C_y_s_1_y_1_2 + C_y_s_1_y_2_2) - r + (1 - gamma)*(-R_y_s_1_y_1_2 + UR_y_1_2)",
+      "terms": [
+        {
+          "fact": "plane_j_w",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hj",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_C_y_s_1_y_2_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - C_y_s_1_y_2_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_y_s_1_y_2_2",
+      "side": "upper"
+    },
+    {
+      "id": "source_V",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "gamma*s_2 + h_1*(1 - gamma) - r",
+      "terms": [
+        {
+          "fact": "threshold_j_w",
+          "weight": "1"
+        },
+        {
+          "fact": "maxhigh_UR_y_1_2",
+          "weight": "1 - gamma"
+        },
+        {
+          "fact": "high_C_y_s_1_y_2_2",
+          "weight": "gamma"
+        },
+        {
+          "fact": "R_y_s_1_y_1_2_lower",
+          "weight": "1 - gamma"
+        },
+        {
+          "fact": "Cwj_lower",
+          "weight": "gamma"
+        }
+      ]
+    },
+    {
+      "id": "plane_z_h",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hz + xi*(C_h_y_1_2 - C_h_y_s_2) + (1 - xi)*(-R_h_y_s_2 + UR_y_s_2)",
+      "operation": "plane",
+      "clause_ids": [
+        "C02"
+      ],
+      "tuple": "y_s_2",
+      "opponent": "h"
+    },
+    {
+      "id": "threshold_z_h",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-r + xi*(C_h_y_1_2 - C_h_y_s_2) + (1 - xi)*(-R_h_y_s_2 + UR_y_s_2)",
+      "terms": [
+        {
+          "fact": "plane_z_h",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hz",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "low_C_h_y_s_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "C_h_y_s_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_h_y_s_2",
+      "side": "lower"
+    },
+    {
+      "id": "common_first_C",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "C_h_y_1_2*xi - R_h_y_s_2*(1 - xi) - r - xi + 1",
+      "terms": [
+        {
+          "fact": "threshold_z_h",
+          "weight": "1"
+        },
+        {
+          "fact": "maxhigh_UR_y_s_2",
+          "weight": "1 - xi"
+        },
+        {
+          "fact": "low_C_h_y_s_2",
+          "weight": "xi"
+        }
+      ]
+    },
+    {
+      "id": "plane_j_h",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hj + gamma*(-C_h_y_1_2 + C_h_y_2_2) + (1 - gamma)*(-R_h_y_1_2 + UR_y_1_2)",
+      "operation": "plane",
+      "clause_ids": [
+        "C02"
+      ],
+      "tuple": "y_1_2",
+      "opponent": "h"
+    },
+    {
+      "id": "threshold_j_h",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "gamma*(-C_h_y_1_2 + C_h_y_2_2) - r + (1 - gamma)*(-R_h_y_1_2 + UR_y_1_2)",
+      "terms": [
+        {
+          "fact": "plane_j_h",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hj",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_C_h_y_2_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - C_h_y_2_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_h_y_2_2",
+      "side": "upper"
+    },
+    {
+      "id": "common_second_C",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-C_h_y_1_2*gamma - R_h_y_1_2*(1 - gamma) - r + 1",
+      "terms": [
+        {
+          "fact": "threshold_j_h",
+          "weight": "1"
+        },
+        {
+          "fact": "maxhigh_UR_y_1_2",
+          "weight": "1 - gamma"
+        },
+        {
+          "fact": "high_C_h_y_2_2",
+          "weight": "gamma"
+        }
+      ]
+    },
+    {
+      "id": "common_row_envelope",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-R_h_y_1_2*(1 - gamma) - R_h_y_s_2*gamma*v - gamma*(r + xi - 1)/xi - r + 1",
+      "terms": [
+        {
+          "fact": "common_second_C",
+          "weight": "1"
+        },
+        {
+          "fact": "common_first_C",
+          "weight": "gamma/xi"
+        }
+      ]
+    },
+    {
+      "id": "plane_w_k",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hw + eta*(R_y_1_1_k - R_y_s_1_k) + (1 - eta)*(-C_y_s_1_k + UC_y_s_1)",
+      "operation": "plane",
+      "clause_ids": [
+        "R02"
+      ],
+      "tuple": "y_s_1",
+      "opponent": "k"
+    },
+    {
+      "id": "threshold_w_k",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "eta*(R_y_1_1_k - R_y_s_1_k) - r + (1 - eta)*(-C_y_s_1_k + UC_y_s_1)",
+      "terms": [
+        {
+          "fact": "plane_w_k",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hw",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "low_R_y_s_1_k",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "R_y_s_1_k",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_s_1_k",
+      "side": "lower"
+    },
+    {
+      "id": "common_first_R",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-C_y_s_1_k*(1 - eta) + R_y_1_1_k*eta - eta - r + 1",
+      "terms": [
+        {
+          "fact": "threshold_w_k",
+          "weight": "1"
+        },
+        {
+          "fact": "maxhigh_UC_y_s_1",
+          "weight": "1 - eta"
+        },
+        {
+          "fact": "low_R_y_s_1_k",
+          "weight": "eta"
+        }
+      ]
+    },
+    {
+      "id": "plane_r_k",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hr + alpha*(R_y_2_1_k - R_y_1_1_k) + (1 - alpha)*(-C_y_1_1_k + UC_y_1_1)",
+      "operation": "plane",
+      "clause_ids": [
+        "R02"
+      ],
+      "tuple": "y_1_1",
+      "opponent": "k"
+    },
+    {
+      "id": "threshold_r_k",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "alpha*(R_y_2_1_k - R_y_1_1_k) - r + (1 - alpha)*(-C_y_1_1_k + UC_y_1_1)",
+      "terms": [
+        {
+          "fact": "plane_r_k",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hr",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "high_R_y_2_1_k",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - R_y_2_1_k",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_2_1_k",
+      "side": "upper"
+    },
+    {
+      "id": "common_second_R",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-C_y_1_1_k*(1 - alpha) - R_y_1_1_k*alpha - r + 1",
+      "terms": [
+        {
+          "fact": "threshold_r_k",
+          "weight": "1"
+        },
+        {
+          "fact": "high_R_y_2_1_k",
+          "weight": "alpha"
+        },
+        {
+          "fact": "maxhigh_UC_y_1_1",
+          "weight": "1 - alpha"
+        }
+      ]
+    },
+    {
+      "id": "common_column_envelope",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-C_y_1_1_k*(1 - alpha) - C_y_s_1_k*alpha*u - alpha*(eta + r - 1)/eta - r + 1",
+      "terms": [
+        {
+          "fact": "common_second_R",
+          "weight": "1"
+        },
+        {
+          "fact": "common_first_R",
+          "weight": "alpha/eta"
+        }
+      ]
+    },
+    {
+      "id": "mix_R_h_yE",
+      "kind": "mixing",
+      "relation": "eq",
+      "expression": "-R_h_y_1_2*(1 - gamma*v/DR) + R_h_yE - R_h_y_s_2*gamma*v/DR",
+      "player": "R",
+      "mixture": "yE",
+      "other": "h"
+    },
+    {
+      "id": "mix_R_y_1_1_yE",
+      "kind": "mixing",
+      "relation": "eq",
+      "expression": "-R_y_1_1_y_1_2*(1 - gamma*v/DR) + R_y_1_1_yE - R_y_1_1_y_s_2*gamma*v/DR",
+      "player": "R",
+      "mixture": "yE",
+      "other": "y_1_1"
+    },
+    {
+      "id": "mix_C_y_1_1_yE",
+      "kind": "mixing",
+      "relation": "eq",
+      "expression": "-C_y_1_1_y_1_2*(1 - gamma*v/DR) + C_y_1_1_yE - C_y_1_1_y_s_2*gamma*v/DR",
+      "player": "C",
+      "mixture": "yE",
+      "other": "y_1_1"
+    },
+    {
+      "id": "row_BR_yE_upper",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-R_h_yE + (-gamma*(r + xi - 1)/xi - r + 1)/DR",
+      "terms": [
+        {
+          "fact": "common_row_envelope",
+          "weight": "1/DR"
+        },
+        {
+          "fact": "mix_R_h_yE",
+          "weight": "-1"
+        }
+      ]
+    },
+    {
+      "id": "row_anchor_yE_lower",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "R_y_1_1_yE - (gamma*v*(1 - s_1) + (1 - S)*(1 - gamma))/DR",
+      "terms": [
+        {
+          "fact": "Rrj_lower",
+          "weight": "(1 - gamma)/DR"
+        },
+        {
+          "fact": "Rrz_lower",
+          "weight": "gamma*v/DR"
+        },
+        {
+          "fact": "mix_R_y_1_1_yE",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "col_anchor_yE_lower",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "C_y_1_1_yE - (gamma*v*(1 - h_2) + (1 - T)*(1 - gamma))/DR",
+      "terms": [
+        {
+          "fact": "Crj_lower",
+          "weight": "(1 - gamma)/DR"
+        },
+        {
+          "fact": "C_y_1_1_y_s_2_lower",
+          "weight": "gamma*v/DR"
+        },
+        {
+          "fact": "mix_C_y_1_1_yE",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "ER_arbitrary_h",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "ER - R_h_yE + R_y_1_1_yE",
+      "terms": [
+        {
+          "fact": "row_BR_yE_upper",
+          "weight": "1"
+        },
+        {
+          "fact": "row_anchor_yE_lower",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "EC_actual",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "C_y_1_1_yE + EC - UC_y_1_1",
+      "terms": [
+        {
+          "fact": "maxhigh_UC_y_1_1",
+          "weight": "1"
+        },
+        {
+          "fact": "col_anchor_yE_lower",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "ER_at_r2",
+      "kind": "instantiate",
+      "relation": "ge",
+      "expression": "ER - R_y_2_1_yE + R_y_1_1_yE",
+      "fact": "ER_arbitrary_h",
+      "variable": "h",
+      "replacement": "y_2_1"
+    },
+    {
+      "id": "plane_r_yE",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hr + alpha*(R_y_2_1_yE - R_y_1_1_yE) + (1 - alpha)*(-C_y_1_1_yE + UC_y_1_1)",
+      "operation": "plane",
+      "clause_ids": [
+        "R02"
+      ],
+      "tuple": "y_1_1",
+      "opponent": "yE"
+    },
+    {
+      "id": "threshold_r_yE",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "alpha*(R_y_2_1_yE - R_y_1_1_yE) - r + (1 - alpha)*(-C_y_1_1_yE + UC_y_1_1)",
+      "terms": [
+        {
+          "fact": "plane_r_yE",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hr",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "same_alpha_envelope",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "EC*(1 - alpha) + ER*alpha - r",
+      "terms": [
+        {
+          "fact": "threshold_r_yE",
+          "weight": "1"
+        },
+        {
+          "fact": "ER_at_r2",
+          "weight": "alpha"
+        },
+        {
+          "fact": "EC_actual",
+          "weight": "1 - alpha"
+        }
+      ]
+    },
+    {
+      "id": "mix_C_xE_k",
+      "kind": "mixing",
+      "relation": "eq",
+      "expression": "-C_y_1_1_k*(1 - alpha*u/DC) - C_y_s_1_k*alpha*u/DC + C_xE_k",
+      "player": "C",
+      "mixture": "xE",
+      "other": "k"
+    },
+    {
+      "id": "mix_C_xE_y_1_2",
+      "kind": "mixing",
+      "relation": "eq",
+      "expression": "-C_y_1_1_y_1_2*(1 - alpha*u/DC) - C_y_s_1_y_1_2*alpha*u/DC + C_xE_y_1_2",
+      "player": "C",
+      "mixture": "xE",
+      "other": "y_1_2"
+    },
+    {
+      "id": "mix_R_xE_y_1_2",
+      "kind": "mixing",
+      "relation": "eq",
+      "expression": "-R_y_1_1_y_1_2*(1 - alpha*u/DC) + R_xE_y_1_2 - R_y_s_1_y_1_2*alpha*u/DC",
+      "player": "R",
+      "mixture": "xE",
+      "other": "y_1_2"
+    },
+    {
+      "id": "col_BR_xE_upper",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-C_xE_k + (-alpha*(eta + r - 1)/eta - r + 1)/DC",
+      "terms": [
+        {
+          "fact": "common_column_envelope",
+          "weight": "1/DC"
+        },
+        {
+          "fact": "mix_C_xE_k",
+          "weight": "-1"
+        }
+      ]
+    },
+    {
+      "id": "col_anchor_xE_lower",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "C_xE_y_1_2 - (alpha*u*(1 - s_2) + (1 - T)*(1 - alpha))/DC",
+      "terms": [
+        {
+          "fact": "Crj_lower",
+          "weight": "(1 - alpha)/DC"
+        },
+        {
+          "fact": "Cwj_lower",
+          "weight": "alpha*u/DC"
+        },
+        {
+          "fact": "mix_C_xE_y_1_2",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "row_anchor_xE_lower",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "R_xE_y_1_2 - (alpha*u*(1 - h_1) + (1 - S)*(1 - alpha))/DC",
+      "terms": [
+        {
+          "fact": "Rrj_lower",
+          "weight": "(1 - alpha)/DC"
+        },
+        {
+          "fact": "R_y_s_1_y_1_2_lower",
+          "weight": "alpha*u/DC"
+        },
+        {
+          "fact": "mix_R_xE_y_1_2",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "CC_arbitrary_k",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "CC + C_xE_y_1_2 - C_xE_k",
+      "terms": [
+        {
+          "fact": "col_BR_xE_upper",
+          "weight": "1"
+        },
+        {
+          "fact": "col_anchor_xE_lower",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "CR_actual",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "CR + R_xE_y_1_2 - UR_y_1_2",
+      "terms": [
+        {
+          "fact": "maxhigh_UR_y_1_2",
+          "weight": "1"
+        },
+        {
+          "fact": "row_anchor_xE_lower",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "CC_at_j2",
+      "kind": "instantiate",
+      "relation": "ge",
+      "expression": "CC + C_xE_y_1_2 - C_xE_y_2_2",
+      "fact": "CC_arbitrary_k",
+      "variable": "k",
+      "replacement": "y_2_2"
+    },
+    {
+      "id": "plane_j_xE",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-Hj + gamma*(-C_xE_y_1_2 + C_xE_y_2_2) + (1 - gamma)*(-R_xE_y_1_2 + UR_y_1_2)",
+      "operation": "plane",
+      "clause_ids": [
+        "C02"
+      ],
+      "tuple": "y_1_2",
+      "opponent": "xE"
+    },
+    {
+      "id": "threshold_j_xE",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "gamma*(-C_xE_y_1_2 + C_xE_y_2_2) - r + (1 - gamma)*(-R_xE_y_1_2 + UR_y_1_2)",
+      "terms": [
+        {
+          "fact": "plane_j_xE",
+          "weight": "1"
+        },
+        {
+          "fact": "bad_Hj",
+          "weight": "1"
+        }
+      ]
+    },
+    {
+      "id": "same_gamma_envelope",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "CC*gamma + CR*(1 - gamma) - r",
+      "terms": [
+        {
+          "fact": "threshold_j_xE",
+          "weight": "1"
+        },
+        {
+          "fact": "CR_actual",
+          "weight": "1 - gamma"
+        },
+        {
+          "fact": "CC_at_j2",
+          "weight": "gamma"
+        }
+      ]
+    },
+    {
+      "id": "Tcol_k",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-B_s - C_x_s_1_k*sigma + rho*(-R_x_s_1_k + R_y_s_1_k)",
+      "operation": "Tdual_col",
+      "clause_ids": [
+        "T04",
+        "T02",
+        "K01"
+      ],
+      "opponent": "k"
+    },
+    {
+      "id": "joint_s_k",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "rho*(-R_x_s_1_k + R_y_s_1_k) + sigma*(-C_x_s_1_k + C_x_s_1_y_s_2) - g",
+      "terms": [
+        {
+          "fact": "Trow_s",
+          "weight": "1"
+        },
+        {
+          "fact": "Tcol_k",
+          "weight": "1"
+        },
+        {
+          "fact": "T_stop",
+          "weight": "1"
+        },
+        {
+          "fact": "T_value",
+          "weight": "-1"
+        }
+      ]
+    },
+    {
+      "id": "low_R_x_s_1_k",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "R_x_s_1_k",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_x_s_1_k",
+      "side": "lower"
+    },
+    {
+      "id": "high_R_y_1_1_k",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - R_y_1_1_k",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "R_y_1_1_k",
+      "side": "upper"
+    },
+    {
+      "id": "deficit_plane_C",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-LC + (1 - eta)*(-C_y_s_1_k + UC_y_s_1) + sigma*eta*(-C_x_s_1_k + UC_x_s_1)/rho",
+      "terms": [
+        {
+          "fact": "threshold_w_k",
+          "weight": "1"
+        },
+        {
+          "fact": "joint_s_k",
+          "weight": "eta/rho"
+        },
+        {
+          "fact": "low_R_x_s_1_k",
+          "weight": "eta"
+        },
+        {
+          "fact": "high_R_y_1_1_k",
+          "weight": "eta"
+        },
+        {
+          "fact": "front_C",
+          "weight": "-sigma*eta/rho"
+        }
+      ]
+    },
+    {
+      "id": "Trow_h",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-A_s - rho*R_h_x_s_2 + sigma*(-C_h_x_s_2 + C_h_y_s_2)",
+      "operation": "Tdual_row",
+      "clause_ids": [
+        "T04",
+        "T02",
+        "K01"
+      ],
+      "opponent": "h"
+    },
+    {
+      "id": "joint_h_v",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "rho*(-R_h_x_s_2 + R_y_s_1_x_s_2) + sigma*(-C_h_x_s_2 + C_h_y_s_2) - g",
+      "terms": [
+        {
+          "fact": "Trow_h",
+          "weight": "1"
+        },
+        {
+          "fact": "Tcol_v",
+          "weight": "1"
+        },
+        {
+          "fact": "T_stop",
+          "weight": "1"
+        },
+        {
+          "fact": "T_value",
+          "weight": "-1"
+        }
+      ]
+    },
+    {
+      "id": "low_C_h_x_s_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "C_h_x_s_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_h_x_s_2",
+      "side": "lower"
+    },
+    {
+      "id": "high_C_h_y_1_2",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "1 - C_h_y_1_2",
+      "operation": "payoff_bound",
+      "clause_ids": [
+        "K01"
+      ],
+      "quantity": "C_h_y_1_2",
+      "side": "upper"
+    },
+    {
+      "id": "deficit_plane_R",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-LR + rho*xi*(-R_h_x_s_2 + UR_x_s_2)/sigma + (1 - xi)*(-R_h_y_s_2 + UR_y_s_2)",
+      "terms": [
+        {
+          "fact": "threshold_z_h",
+          "weight": "1"
+        },
+        {
+          "fact": "joint_h_v",
+          "weight": "xi/sigma"
+        },
+        {
+          "fact": "low_C_h_x_s_2",
+          "weight": "xi"
+        },
+        {
+          "fact": "high_C_h_y_1_2",
+          "weight": "xi"
+        },
+        {
+          "fact": "front_R",
+          "weight": "-rho*xi/sigma"
+        }
+      ]
+    },
+    {
+      "id": "kC_nonnegative",
+      "kind": "selector",
+      "relation": "ge",
+      "expression": "kC",
+      "alias": "kC",
+      "premises": []
+    },
+    {
+      "id": "kC_le_first",
+      "kind": "selector",
+      "relation": "ge",
+      "expression": "-kC + pMix/(1 - eta)",
+      "alias": "kC",
+      "premises": []
+    },
+    {
+      "id": "kC_le_second",
+      "kind": "selector",
+      "relation": "ge",
+      "expression": "rho*(1 - pMix)/(sigma*eta) - kC",
+      "alias": "kC",
+      "premises": []
+    },
+    {
+      "id": "kR_nonnegative",
+      "kind": "selector",
+      "relation": "ge",
+      "expression": "kR",
+      "alias": "kR",
+      "premises": []
+    },
+    {
+      "id": "kR_le_first",
+      "kind": "selector",
+      "relation": "ge",
+      "expression": "-kR + qMix/(1 - xi)",
+      "alias": "kR",
+      "premises": []
+    },
+    {
+      "id": "kR_le_second",
+      "kind": "selector",
+      "relation": "ge",
+      "expression": "-kR + sigma*(1 - qMix)/(rho*xi)",
+      "alias": "kR",
+      "premises": []
+    },
+    {
+      "id": "coef_Cs",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-pMix + 1 - sigma*eta*kC/rho",
+      "terms": [
+        {
+          "fact": "kC_le_second",
+          "weight": "sigma*eta/rho"
+        }
+      ]
+    },
+    {
+      "id": "coef_Cw",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-kC*(1 - eta) + pMix",
+      "terms": [
+        {
+          "fact": "kC_le_first",
+          "weight": "1 - eta"
+        }
+      ]
+    },
+    {
+      "id": "coef_Rt",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-rho*kR*xi/sigma - qMix + 1",
+      "terms": [
+        {
+          "fact": "kR_le_second",
+          "weight": "rho*xi/sigma"
+        }
+      ]
+    },
+    {
+      "id": "coef_Rz",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-kR*(1 - xi) + qMix",
+      "terms": [
+        {
+          "fact": "kR_le_first",
+          "weight": "1 - xi"
+        }
+      ]
+    },
+    {
+      "id": "BRupper_C_x_s_1_k",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-C_x_s_1_k + UC_x_s_1",
+      "operation": "BR_upper",
+      "clause_ids": [
+        "K02"
+      ],
+      "player": "C",
+      "opponent": "x_s_1",
+      "deviation": "k"
+    },
+    {
+      "id": "BRupper_C_y_s_1_k",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-C_y_s_1_k + UC_y_s_1",
+      "operation": "BR_upper",
+      "clause_ids": [
+        "K02"
+      ],
+      "player": "C",
+      "opponent": "y_s_1",
+      "deviation": "k"
+    },
+    {
+      "id": "signed_C_family",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-LC*kC + pMix*(-C_y_s_1_k + UC_y_s_1) + (1 - pMix)*(-C_x_s_1_k + UC_x_s_1)",
+      "terms": [
+        {
+          "fact": "deficit_plane_C",
+          "weight": "kC",
+          "sign_fact": "kC_nonnegative"
+        },
+        {
+          "fact": "BRupper_C_x_s_1_k",
+          "weight": "-pMix + 1 - sigma*eta*kC/rho",
+          "sign_fact": "coef_Cs"
+        },
+        {
+          "fact": "BRupper_C_y_s_1_k",
+          "weight": "-kC*(1 - eta) + pMix",
+          "sign_fact": "coef_Cw"
+        }
+      ]
+    },
+    {
+      "id": "BRupper_R_v_h",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-R_h_x_s_2 + UR_x_s_2",
+      "operation": "BR_upper",
+      "clause_ids": [
+        "K02"
+      ],
+      "player": "R",
+      "opponent": "x_s_2",
+      "deviation": "h"
+    },
+    {
+      "id": "BRupper_R_z_h",
+      "kind": "primitive",
+      "relation": "ge",
+      "expression": "-R_h_y_s_2 + UR_y_s_2",
+      "operation": "BR_upper",
+      "clause_ids": [
+        "K02"
+      ],
+      "player": "R",
+      "opponent": "y_s_2",
+      "deviation": "h"
+    },
+    {
+      "id": "signed_R_family",
+      "kind": "linear",
+      "relation": "ge",
+      "expression": "-LR*kR + qMix*(-R_h_y_s_2 + UR_y_s_2) + (1 - qMix)*(-R_h_x_s_2 + UR_x_s_2)",
+      "terms": [
+        {
+          "fact": "deficit_plane_R",
+          "weight": "kR",
+          "sign_fact": "kR_nonnegative"
+        },
+        {
+          "fact": "BRupper_R_v_h",
+          "weight": "-rho*kR*xi/sigma - qMix + 1",
+          "sign_fact": "coef_Rt"
+        },
+        {
+          "fact": "BRupper_R_z_h",
+          "weight": "-kR*(1 - xi) + qMix",
+          "sign_fact": "coef_Rz"
+        }
+      ]
+    }
+  ],
+  "outputs": {
+    "Rrz_payoff_lower": "Rrz_lower",
+    "Cwj_payoff_lower": "Cwj_lower",
+    "R_y_s_1_y_1_2_payoff_lower": "R_y_s_1_y_1_2_lower",
+    "C_y_1_1_y_s_2_payoff_lower": "C_y_1_1_y_s_2_lower",
+    "Rrj_payoff_lower": "Rrj_lower",
+    "Crj_payoff_lower": "Crj_lower",
+    "old_row_deficit_upper": "vr_upper",
+    "old_column_deficit_upper": "vc_upper",
+    "source_H": "source_H",
+    "source_U": "source_U",
+    "source_K": "source_K",
+    "source_V": "source_V",
+    "arbitrary_same_row_envelope": "common_row_envelope",
+    "arbitrary_same_column_envelope": "common_column_envelope",
+    "same_alpha_envelope": "same_alpha_envelope",
+    "same_gamma_envelope": "same_gamma_envelope",
+    "common_column_deficit_plane": "deficit_plane_C",
+    "common_row_deficit_plane": "deficit_plane_R",
+    "generic_signed_Jensen_column_family": "signed_C_family",
+    "generic_signed_Jensen_row_family": "signed_R_family"
+  },
+  "scope": "ideal delta=0 algebra; arbitrary shared normalized game and actual four LP tuples; no extra block property",
+  "not_proved_here": [
+    "implementation refinement or LP strong-duality theorem",
+    "near-BR delta transport",
+    "g down to r signed projection",
+    "whole OM piecewise QE",
+    "game realizability of scalar equality root"
+  ],
+  "front_BR_rule": "delta=0 T02 support is exact BestResponse; same nonnegative normalized mixture preserves maximum (K01/K02 affine basic rule)",
+  "quantifiers": "actual tuples fixed before h,k; common planes use SAME arbitrary h/k; proof parameters pMix/qMix do not affect any actual tuple"
+}

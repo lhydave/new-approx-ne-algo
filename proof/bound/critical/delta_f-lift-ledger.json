@@ -1,0 +1,1515 @@
+{
+  "schema_version": 1,
+  "scope": "Finite near-BR delta_f-shift arithmetic templates conditional on typed primitive instantiations and ideal-cap provenance; not implementation refinement or full quantifier proof",
+  "registry": "../quantified/quantified-registry.json",
+  "algebraic_definitions": {
+    "g": "G_s+delta_f",
+    "R_x_s_1_x_s_2": "UR_x_s_2-g",
+    "R_y_s_1_x_s_2": "UR_x_s_2-tau_1",
+    "C_x_s_1_x_s_2": "UC_x_s_1-g",
+    "C_x_s_1_y_s_2": "UC_x_s_1-tau_2",
+    "R_y_s_1_y_s_2": "R_x_s_1_y_s_2+lambda_payoff",
+    "C_y_s_1_y_s_2": "C_y_s_1_x_s_2+mu_payoff",
+    "vR": "R_y_s_1_x_s_2-R_y_1_1_x_s_2",
+    "vC": "C_x_s_1_y_s_2-C_x_s_1_y_1_2",
+    "Ractual": "Urow-((1-p)*(1-q)*R_x_s_1_x_s_2+p*(1-q)*R_y_s_1_x_s_2+(1-p)*q*R_x_s_1_y_s_2+p*q*R_y_s_1_y_s_2)",
+    "Cactual": "Ucol-((1-p)*(1-q)*C_x_s_1_x_s_2+(1-p)*q*C_x_s_1_y_s_2+p*(1-q)*C_y_s_1_x_s_2+p*q*C_y_s_1_y_s_2)"
+  },
+  "nonnegative_atoms": {
+    "rho": {
+      "expression": "rho",
+      "provenance": [
+        "T02"
+      ]
+    },
+    "sigma": {
+      "expression": "sigma",
+      "provenance": [
+        "T02"
+      ]
+    },
+    "eta": {
+      "expression": "eta",
+      "provenance": [
+        "R02"
+      ]
+    },
+    "eta_bar": {
+      "expression": "1-eta",
+      "provenance": [
+        "R02"
+      ]
+    },
+    "xi": {
+      "expression": "xi",
+      "provenance": [
+        "C02"
+      ]
+    },
+    "xi_bar": {
+      "expression": "1-xi",
+      "provenance": [
+        "C02"
+      ]
+    },
+    "alpha": {
+      "expression": "alpha",
+      "provenance": [
+        "R02"
+      ]
+    },
+    "alpha_bar": {
+      "expression": "1-alpha",
+      "provenance": [
+        "R02"
+      ]
+    },
+    "gamma": {
+      "expression": "gamma",
+      "provenance": [
+        "C02"
+      ]
+    },
+    "gamma_bar": {
+      "expression": "1-gamma",
+      "provenance": [
+        "C02"
+      ]
+    },
+    "delta_f": {
+      "expression": "delta_f",
+      "provenance": [
+        "T02"
+      ]
+    },
+    "tau_1": {
+      "expression": "tau_1",
+      "provenance": [
+        "T02"
+      ]
+    },
+    "tau_2": {
+      "expression": "tau_2",
+      "provenance": [
+        "T02"
+      ]
+    },
+    "delta_f_minus_tau_1": {
+      "expression": "delta_f-tau_1",
+      "provenance": [
+        "T02"
+      ]
+    },
+    "delta_f_minus_tau_2": {
+      "expression": "delta_f-tau_2",
+      "provenance": [
+        "T02"
+      ]
+    },
+    "p": {
+      "expression": "p",
+      "provenance": [
+        "O01"
+      ]
+    },
+    "p_bar": {
+      "expression": "1-p",
+      "provenance": [
+        "O01"
+      ]
+    },
+    "q": {
+      "expression": "q",
+      "provenance": [
+        "O01"
+      ]
+    },
+    "q_bar": {
+      "expression": "1-q",
+      "provenance": [
+        "O01"
+      ]
+    },
+    "theta": {
+      "expression": "theta",
+      "provenance": [
+        "K01"
+      ]
+    },
+    "theta_bar": {
+      "expression": "1-theta",
+      "provenance": [
+        "K01"
+      ]
+    },
+    "mass": {
+      "expression": "mass",
+      "provenance": [
+        "R02"
+      ]
+    },
+    "mass_bar": {
+      "expression": "1-mass",
+      "provenance": [
+        "R02"
+      ]
+    }
+  },
+  "premises": {
+    "bad_g": {
+      "expression": "g-r-delta_f",
+      "provenance": [
+        "T01",
+        "O02",
+        "B01"
+      ],
+      "scope": "bad OM candidate, O02 input-profile domination and T01 imply g>r+delta_f+tau>=r+delta_f; strict >0 may safely be weakened"
+    },
+    "Hw_strong": {
+      "expression": "Hw-r-delta_f",
+      "provenance": [
+        "R02",
+        "B01"
+      ],
+      "scope": "actual first fixed-row value; strict may be weakened"
+    },
+    "Hz_strong": {
+      "expression": "Hz-r-delta_f",
+      "provenance": [
+        "C02",
+        "B01"
+      ],
+      "scope": "actual first fixed-column value"
+    },
+    "Hr_strong": {
+      "expression": "Hr-r-delta_f",
+      "provenance": [
+        "R02",
+        "B01"
+      ],
+      "scope": "actual second fixed-row value"
+    },
+    "Hj_strong": {
+      "expression": "Hj-r-delta_f",
+      "provenance": [
+        "C02",
+        "B01"
+      ],
+      "scope": "actual second fixed-column value"
+    },
+    "eta_br": {
+      "expression": "eta-Hw",
+      "provenance": [
+        "R02",
+        "K01",
+        "K02"
+      ],
+      "scope": "first row plane at attained BR_C(y_s_1), normalization"
+    },
+    "xi_br": {
+      "expression": "xi-Hz",
+      "provenance": [
+        "C02",
+        "K01",
+        "K02"
+      ],
+      "scope": "first column plane at attained BR_R(y_s_2), normalization"
+    },
+    "eta_old": {
+      "expression": "1-eta+eta*tau_1-Hw",
+      "provenance": [
+        "R02",
+        "T02",
+        "K01",
+        "K02"
+      ],
+      "scope": "old x_s_2: near-BR loss and column deficit<=1"
+    },
+    "xi_old": {
+      "expression": "1-xi+xi*tau_2-Hz",
+      "provenance": [
+        "C02",
+        "T02",
+        "K01",
+        "K02"
+      ],
+      "scope": "old x_s_1: mirror"
+    },
+    "row_old_dual": {
+      "expression": "-eta*vR+(1-eta)*Dt-Hw",
+      "provenance": [
+        "R02"
+      ],
+      "scope": "same first row plane at x_s_2"
+    },
+    "col_old_dual": {
+      "expression": "-xi*vC+(1-xi)*Ds-Hz",
+      "provenance": [
+        "C02"
+      ],
+      "scope": "same first column plane at x_s_1"
+    },
+    "Dt_upper": {
+      "expression": "1-Dt",
+      "provenance": [
+        "K01",
+        "K02"
+      ],
+      "scope": "Dt=u_C(y_s_1)-C(y_s_1,x_s_2)<=1"
+    },
+    "Ds_upper": {
+      "expression": "1-Ds",
+      "provenance": [
+        "K01",
+        "K02"
+      ],
+      "scope": "Ds=u_R(y_s_2)-R(x_s_1,y_s_2)<=1"
+    },
+    "old_row_cap": {
+      "expression": "Vr-vR-tau_1",
+      "provenance": [
+        "K01",
+        "K02",
+        "R02",
+        "T02"
+      ],
+      "scope": "derived by old_row_unclipped plus normalized regret<=1; guarded minimum lemma below",
+      "derived_by": {
+        "rule": "minimum_after_cancellation",
+        "cleared": "old_row_unclipped",
+        "normalized": "old_row_regret_upper",
+        "positive_mass": "eta_lower",
+        "mass": "eta",
+        "cap": "Vr"
+      }
+    },
+    "old_col_cap": {
+      "expression": "Vc-vC-tau_2",
+      "provenance": [
+        "K01",
+        "K02",
+        "C02",
+        "T02"
+      ],
+      "scope": "mirror guarded minimum lemma",
+      "derived_by": {
+        "rule": "minimum_after_cancellation",
+        "cleared": "old_col_unclipped",
+        "normalized": "old_col_regret_upper",
+        "positive_mass": "xi_lower",
+        "mass": "xi",
+        "cap": "Vc"
+      }
+    },
+    "old_row_regret_upper": {
+      "expression": "1-vR-tau_1",
+      "provenance": [
+        "K01",
+        "K02"
+      ],
+      "scope": "normalized true row regret<=1"
+    },
+    "old_col_regret_upper": {
+      "expression": "1-vC-tau_2",
+      "provenance": [
+        "K01",
+        "K02"
+      ],
+      "scope": "normalized true column regret<=1"
+    },
+    "bridge_joint_row": {
+      "expression": "rho*(R_y_s_1_y_1_2-Rsj)+sigma*vC-G_s",
+      "provenance": [
+        "T04",
+        "T05"
+      ],
+      "scope": "same Psi at (x_s_1,y_1_2), G_s=g-delta_f"
+    },
+    "bridge_joint_col": {
+      "expression": "rho*vR+sigma*(C_y_1_1_y_s_2-Crt)-G_s",
+      "provenance": [
+        "T04",
+        "T05"
+      ],
+      "scope": "same Psi at (r,x_s_2)"
+    },
+    "Rsj_nonnegative": {
+      "expression": "Rsj",
+      "provenance": [
+        "K01"
+      ],
+      "scope": "normalized payoff"
+    },
+    "Crt_nonnegative": {
+      "expression": "Crt",
+      "provenance": [
+        "K01"
+      ],
+      "scope": "normalized payoff"
+    },
+    "lambda_payoff_joint": {
+      "expression": "rho*lambda_payoff-G_s",
+      "provenance": [
+        "T04",
+        "T05"
+      ],
+      "scope": "Psi(x_s_1,y_s_2)=rho*lambda_payoff"
+    },
+    "mu_payoff_joint": {
+      "expression": "sigma*mu_payoff-G_s",
+      "provenance": [
+        "T04",
+        "T05"
+      ],
+      "scope": "Psi(y_s_1,x_s_2)=sigma*mu_payoff"
+    },
+    "lambda_payoff_upper": {
+      "expression": "1-lambda_payoff",
+      "provenance": [
+        "K01"
+      ],
+      "scope": "lambda_payoff=R(y_s_1,y_s_2)-R(x_s_1,y_s_2)<=1"
+    },
+    "mu_payoff_upper": {
+      "expression": "1-mu_payoff",
+      "provenance": [
+        "K01"
+      ],
+      "scope": "mirror"
+    },
+    "plane_joint_C": {
+      "expression": "rho*(Rwy-Rsy)+sigma*(AC-tau_2)-G_s",
+      "provenance": [
+        "T04",
+        "T05",
+        "T02"
+      ],
+      "scope": "Psi(x_s_1,y), arbitrary same y"
+    },
+    "plane_first_C": {
+      "expression": "eta*(Rry-Rwy)+(1-eta)*DC-Hw",
+      "provenance": [
+        "R02"
+      ],
+      "scope": "same first row plane at arbitrary y"
+    },
+    "Rry_upper": {
+      "expression": "1-Rry",
+      "provenance": [
+        "K01"
+      ],
+      "scope": "normalized response payoff"
+    },
+    "Rsy_nonnegative": {
+      "expression": "Rsy",
+      "provenance": [
+        "K01"
+      ],
+      "scope": "normalized old payoff"
+    },
+    "plane_joint_R": {
+      "expression": "rho*(AR-tau_1)+sigma*(Cxz-Cxt)-G_s",
+      "provenance": [
+        "T04",
+        "T05",
+        "T02"
+      ],
+      "scope": "Psi(x,x_s_2), arbitrary same x"
+    },
+    "plane_first_R": {
+      "expression": "(1-xi)*DR+xi*(Cxj-Cxz)-Hz",
+      "provenance": [
+        "C02"
+      ],
+      "scope": "same first column plane at x"
+    },
+    "Cxj_upper": {
+      "expression": "1-Cxj",
+      "provenance": [
+        "K01"
+      ],
+      "scope": "normalized response payoff"
+    },
+    "Cxt_nonnegative": {
+      "expression": "Cxt",
+      "provenance": [
+        "K01"
+      ],
+      "scope": "normalized old payoff"
+    },
+    "generic_dual": {
+      "expression": "mass*(new-old)+(1-mass)*deficit-h",
+      "provenance": [
+        "R02",
+        "C02"
+      ],
+      "scope": "one typed row-or-column plane instantiation"
+    },
+    "generic_threshold": {
+      "expression": "h-r",
+      "provenance": [
+        "R02",
+        "C02",
+        "B01"
+      ],
+      "scope": "actual LP failure implies h>=r; no additional budget"
+    },
+    "generic_old_lower": {
+      "expression": "old-base",
+      "provenance": [
+        "K01",
+        "T04",
+        "T05",
+        "R02",
+        "C02"
+      ],
+      "scope": "same payoff lower-bound provenance"
+    },
+    "generic_deficit_upper": {
+      "expression": "cap-deficit",
+      "provenance": [
+        "K01",
+        "K02",
+        "R02",
+        "C02"
+      ],
+      "scope": "same normalized payoff upper cap"
+    },
+    "alpha_BR_upper": {
+      "expression": "alpha-Hr",
+      "provenance": [
+        "R02",
+        "K01",
+        "K02"
+      ],
+      "scope": "second LP at attained opposing kappa_1"
+    },
+    "alpha_alignment_upper": {
+      "expression": "1-alpha-Hr",
+      "provenance": [
+        "R03",
+        "R02"
+      ],
+      "scope": "at first primal, exact conditional alignment"
+    },
+    "gamma_BR_upper": {
+      "expression": "gamma-Hj",
+      "provenance": [
+        "C02",
+        "K01",
+        "K02"
+      ],
+      "scope": "second LP at attained opposing kappa_1"
+    },
+    "gamma_alignment_upper": {
+      "expression": "1-gamma-Hj",
+      "provenance": [
+        "C03",
+        "C02"
+      ],
+      "scope": "at first primal, exact conditional alignment"
+    },
+    "OM_contract": {
+      "expression": "Fpq+tau-FOM",
+      "provenance": [
+        "O01"
+      ],
+      "scope": "arbitrary p,q in product hull"
+    },
+    "bad_OM": {
+      "expression": "FOM-r-delta_f-tau",
+      "provenance": [
+        "O01",
+        "B01"
+      ],
+      "scope": "bad output makes actual OM candidate strictly high"
+    },
+    "row_Jensen_upper": {
+      "expression": "(1-q)*UR_x_s_2+q*uRz-JR-Urow",
+      "provenance": [
+        "T04",
+        "T05",
+        "C02",
+        "K01",
+        "K02"
+      ],
+      "scope": "same-G_s/r universal row Jensen upper-BR bound on each supplied family; independent ideal cap ledger"
+    },
+    "col_Jensen_upper": {
+      "expression": "(1-p)*UC_x_s_1+p*uCw-JC-Ucol",
+      "provenance": [
+        "T04",
+        "T05",
+        "R02",
+        "K01",
+        "K02"
+      ],
+      "scope": "mirror"
+    },
+    "uRz_upper": {
+      "expression": "1-uRz",
+      "provenance": [
+        "K01",
+        "K02"
+      ],
+      "scope": "normalized full-BR value"
+    },
+    "uCw_upper": {
+      "expression": "1-uCw",
+      "provenance": [
+        "K01",
+        "K02"
+      ],
+      "scope": "mirror"
+    },
+    "R_x_s_1_y_s_2_nonnegative": {
+      "expression": "R_x_s_1_y_s_2",
+      "provenance": [
+        "K01"
+      ],
+      "scope": "normalized old payoff"
+    },
+    "C_y_s_1_x_s_2_nonnegative": {
+      "expression": "C_y_s_1_x_s_2",
+      "provenance": [
+        "K01"
+      ],
+      "scope": "mirror"
+    },
+    "ideal_max_row": {
+      "expression": "MI-((1-p)*(1-q)*G_s+q*(1-p*lambda_payoff)-JR)",
+      "provenance": [
+        "K03"
+      ],
+      "scope": "MI=max(ideal row cap,ideal column cap)"
+    },
+    "ideal_max_col": {
+      "expression": "MI-((1-p)*(1-q)*G_s+p*(1-q*mu_payoff)-JC)",
+      "provenance": [
+        "K03"
+      ],
+      "scope": "same maximum"
+    }
+  },
+  "nonnegative_combinations": [
+    {
+      "id": "Hw_weak",
+      "target": "Hw-r",
+      "combination": [
+        {
+          "slack": "Hw_strong",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:delta_f",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "threshold weakening uses one retained failure slack"
+    },
+    {
+      "id": "Hz_weak",
+      "target": "Hz-r",
+      "combination": [
+        {
+          "slack": "Hz_strong",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:delta_f",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "threshold weakening uses one retained failure slack"
+    },
+    {
+      "id": "Hr_weak",
+      "target": "Hr-r",
+      "combination": [
+        {
+          "slack": "Hr_strong",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:delta_f",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "threshold weakening uses one retained failure slack"
+    },
+    {
+      "id": "Hj_weak",
+      "target": "Hj-r",
+      "combination": [
+        {
+          "slack": "Hj_strong",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:delta_f",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "threshold weakening uses one retained failure slack"
+    },
+    {
+      "id": "eta_lower",
+      "target": "eta-r",
+      "combination": [
+        {
+          "slack": "eta_br",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Hw_strong",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:delta_f",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "positive branch eta>r follows from strict Hw failure"
+    },
+    {
+      "id": "xi_lower",
+      "target": "xi-r",
+      "combination": [
+        {
+          "slack": "xi_br",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Hz_strong",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:delta_f",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "mirror"
+    },
+    {
+      "id": "eta_upper",
+      "target": "1-r-eta",
+      "combination": [
+        {
+          "slack": "eta_old",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Hw_strong",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:delta_f_minus_tau_1",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:tau_1",
+          "factors": [
+            "eta_bar"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "does not divide by 1-tau_1"
+    },
+    {
+      "id": "xi_upper",
+      "target": "1-r-xi",
+      "combination": [
+        {
+          "slack": "xi_old",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Hz_strong",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:delta_f_minus_tau_2",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:tau_2",
+          "factors": [
+            "xi_bar"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "mirror"
+    },
+    {
+      "id": "old_row_unclipped",
+      "target": "1-eta-r-eta*(vR+tau_1)",
+      "combination": [
+        {
+          "slack": "row_old_dual",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Hw_strong",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Dt_upper",
+          "factors": [
+            "eta_bar"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:delta_f_minus_tau_1",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:tau_1",
+          "factors": [
+            "eta_bar"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "eta>0: true regret vR+tau_1 <= Vstar=(1-eta-r)/eta BEFORE min(1,Vstar)"
+    },
+    {
+      "id": "old_col_unclipped",
+      "target": "1-xi-r-xi*(vC+tau_2)",
+      "combination": [
+        {
+          "slack": "col_old_dual",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Hz_strong",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Ds_upper",
+          "factors": [
+            "xi_bar"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:delta_f_minus_tau_2",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:tau_2",
+          "factors": [
+            "xi_bar"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "mirror"
+    },
+    {
+      "id": "old_vR_cap",
+      "target": "Vr-vR",
+      "combination": [
+        {
+          "slack": "old_row_cap",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:tau_1",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "raw payoff difference may be negative; no nonnegative-deficit assumption"
+    },
+    {
+      "id": "old_vC_cap",
+      "target": "Vc-vC",
+      "combination": [
+        {
+          "slack": "old_col_cap",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:tau_2",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "mirror"
+    },
+    {
+      "id": "row_bridge",
+      "target": "rho*R_y_s_1_y_1_2-G_s+sigma*Vc",
+      "combination": [
+        {
+          "slack": "bridge_joint_row",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Rsj_nonnegative",
+          "factors": [
+            "rho"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "old_vC_cap",
+          "factors": [
+            "sigma"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "rho>0: R(y_s_1,y_1_2)>=(G_s-sigma*Vc)/rho; combine with R(y_s_1,y_1_2)>=0 for max branch"
+    },
+    {
+      "id": "col_bridge",
+      "target": "sigma*C_y_1_1_y_s_2-G_s+rho*Vr",
+      "combination": [
+        {
+          "slack": "bridge_joint_col",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Crt_nonnegative",
+          "factors": [
+            "sigma"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "old_vR_cap",
+          "factors": [
+            "rho"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "mirror"
+    },
+    {
+      "id": "rho_lower",
+      "target": "rho-G_s",
+      "combination": [
+        {
+          "slack": "lambda_payoff_joint",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "lambda_payoff_upper",
+          "factors": [
+            "rho"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "G_s>r>0 gives positive rho"
+    },
+    {
+      "id": "sigma_lower",
+      "target": "sigma-G_s",
+      "combination": [
+        {
+          "slack": "mu_payoff_joint",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "mu_payoff_upper",
+          "factors": [
+            "sigma"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "mirror"
+    },
+    {
+      "id": "common_column_deficit_plane",
+      "target": "eta*sigma*AC+rho*(1-eta)*DC-rho*r+eta*rho-eta*G_s",
+      "combination": [
+        {
+          "slack": "plane_first_C",
+          "factors": [
+            "rho"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Hw_weak",
+          "factors": [
+            "rho"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "plane_joint_C",
+          "factors": [
+            "eta"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Rry_upper",
+          "factors": [
+            "eta",
+            "rho"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Rsy_nonnegative",
+          "factors": [
+            "eta",
+            "rho"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:tau_2",
+          "factors": [
+            "eta",
+            "sigma"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "rho times [eta*(sigma/rho)*AC+(1-eta)*DC-(r-eta*(1-G_s/rho))]; omitted nearBR term favorable"
+    },
+    {
+      "id": "common_row_deficit_plane",
+      "target": "xi*rho*AR+sigma*(1-xi)*DR-sigma*r+xi*sigma-xi*G_s",
+      "combination": [
+        {
+          "slack": "plane_first_R",
+          "factors": [
+            "sigma"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Hz_weak",
+          "factors": [
+            "sigma"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "plane_joint_R",
+          "factors": [
+            "xi"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Cxj_upper",
+          "factors": [
+            "xi",
+            "sigma"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Cxt_nonnegative",
+          "factors": [
+            "xi",
+            "sigma"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:tau_1",
+          "factors": [
+            "xi",
+            "rho"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "mirror"
+    },
+    {
+      "id": "generic_payoff_lower",
+      "target": "mass*(new-base)-r+(1-mass)*cap",
+      "combination": [
+        {
+          "slack": "generic_dual",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "generic_threshold",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "generic_old_lower",
+          "factors": [
+            "mass"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "generic_deficit_upper",
+          "factors": [
+            "mass_bar"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "mass>0 gives new>=base+(r-(1-mass)*cap)/mass; instantiate Sr/Sc/S/T using shared payoff aliases"
+    },
+    {
+      "id": "alpha_lower",
+      "target": "alpha-r",
+      "combination": [
+        {
+          "slack": "alpha_BR_upper",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Hr_weak",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "same actual second mass"
+    },
+    {
+      "id": "alpha_upper",
+      "target": "1-r-alpha",
+      "combination": [
+        {
+          "slack": "alpha_alignment_upper",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Hr_weak",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "same actual second mass"
+    },
+    {
+      "id": "gamma_lower",
+      "target": "gamma-r",
+      "combination": [
+        {
+          "slack": "gamma_BR_upper",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Hj_weak",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "same actual second mass"
+    },
+    {
+      "id": "gamma_upper",
+      "target": "1-r-gamma",
+      "combination": [
+        {
+          "slack": "gamma_alignment_upper",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "Hj_weak",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "same actual second mass"
+    },
+    {
+      "id": "rectangle_failure",
+      "target": "Fpq-r-delta_f",
+      "combination": [
+        {
+          "slack": "OM_contract",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "bad_OM",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "OM error subtracts once BEFORE old arc instantiation"
+    },
+    {
+      "id": "rectangle_row_budget",
+      "target": "delta_f*(1-q)-((1-p)*(1-q)*delta_f+p*(1-q)*tau_1)",
+      "combination": [
+        {
+          "slack": "atom:delta_f_minus_tau_1",
+          "factors": [
+            "p",
+            "q_bar"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "uniform in ALL p,q; JR bound cancels identically"
+    },
+    {
+      "id": "rectangle_col_budget",
+      "target": "delta_f*(1-p)-((1-p)*(1-q)*delta_f+(1-p)*q*tau_2)",
+      "combination": [
+        {
+          "slack": "atom:delta_f_minus_tau_2",
+          "factors": [
+            "q",
+            "p_bar"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "mirror; JC bound cancels identically"
+    },
+    {
+      "id": "row_raw_cap",
+      "target": "(1-p)*(1-q)*(G_s+delta_f)+q*(1-p*lambda_payoff)+p*(1-q)*tau_1-JR-Ractual",
+      "combination": [
+        {
+          "slack": "row_Jensen_upper",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "uRz_upper",
+          "factors": [
+            "q"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "R_x_s_1_y_s_2_nonnegative",
+          "factors": [
+            "q"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "exact bilinear regret alias; raw nearBR cap derived, not assumed"
+    },
+    {
+      "id": "col_raw_cap",
+      "target": "(1-p)*(1-q)*(G_s+delta_f)+p*(1-q*mu_payoff)+(1-p)*q*tau_2-JC-Cactual",
+      "combination": [
+        {
+          "slack": "col_Jensen_upper",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "uCw_upper",
+          "factors": [
+            "p"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "C_y_s_1_x_s_2_nonnegative",
+          "factors": [
+            "p"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "mirror"
+    },
+    {
+      "id": "row_shift_cap",
+      "target": "((1-p)*(1-q)*G_s+q*(1-p*lambda_payoff)-JR)+delta_f*(1-q)-Ractual",
+      "combination": [
+        {
+          "slack": "row_raw_cap",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "rectangle_row_budget",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "raw cap plus proved uniform row budget; not an assumed shifted-cap premise"
+    },
+    {
+      "id": "col_shift_cap",
+      "target": "((1-p)*(1-q)*G_s+p*(1-q*mu_payoff)-JC)+delta_f*(1-p)-Cactual",
+      "combination": [
+        {
+          "slack": "col_raw_cap",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "rectangle_col_budget",
+          "factors": [],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "mirror"
+    },
+    {
+      "id": "row_family_error",
+      "target": "MI+delta_f-Ractual",
+      "combination": [
+        {
+          "slack": "row_shift_cap",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "ideal_max_row",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:delta_f",
+          "factors": [
+            "q"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "if actual maximum is row, this is whole-family max transfer"
+    },
+    {
+      "id": "col_family_error",
+      "target": "MI+delta_f-Cactual",
+      "combination": [
+        {
+          "slack": "col_shift_cap",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "ideal_max_col",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:delta_f",
+          "factors": [
+            "p"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "if actual maximum is column"
+    },
+    {
+      "id": "first_hull_row_error",
+      "target": "delta_f-alpha*theta*tau_1",
+      "combination": [
+        {
+          "slack": "atom:delta_f_minus_tau_1",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:tau_1",
+          "factors": [
+            "alpha_bar"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:tau_1",
+          "factors": [
+            "alpha",
+            "theta_bar"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "arbitrary old-source hull coefficient theta and shared dual mass alpha"
+    },
+    {
+      "id": "first_hull_col_error",
+      "target": "delta_f-gamma*theta*tau_2",
+      "combination": [
+        {
+          "slack": "atom:delta_f_minus_tau_2",
+          "factors": [],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:tau_2",
+          "factors": [
+            "gamma_bar"
+          ],
+          "coefficient": "1"
+        },
+        {
+          "slack": "atom:tau_2",
+          "factors": [
+            "gamma",
+            "theta_bar"
+          ],
+          "coefficient": "1"
+        }
+      ],
+      "scope": "mirror"
+    }
+  ],
+  "zero_identities": {
+    "G_s_single_shift": "((g-delta_f)-r)-(g-r-delta_f)",
+    "row_actual_regret": "(UR_x_s_2-R_y_1_1_x_s_2)-((R_y_s_1_x_s_2-R_y_1_1_x_s_2)+(UR_x_s_2-R_y_s_1_x_s_2))",
+    "col_actual_regret": "(UC_x_s_1-C_x_s_1_y_1_2)-((C_x_s_1_y_s_2-C_x_s_1_y_1_2)+(UC_x_s_1-C_x_s_1_y_s_2))",
+    "row_rectangle_shift": "((1-p)*(1-q)*(G_s+delta_f)+q*(1-p*lambda_payoff)+p*(1-q)*tau_1-JR)-((1-p)*(1-q)*G_s+q*(1-p*lambda_payoff)-JR)-((1-p)*(1-q)*delta_f+p*(1-q)*tau_1)",
+    "col_rectangle_shift": "((1-p)*(1-q)*(G_s+delta_f)+p*(1-q*mu_payoff)+(1-p)*q*tau_2-JC)-((1-p)*(1-q)*G_s+p*(1-q*mu_payoff)-JC)-((1-p)*(1-q)*delta_f+(1-p)*q*tau_2)",
+    "row_envelope_positive_denominator": "xi*(1-gamma+gamma*(1-xi)/xi)-(xi*(1-gamma)+gamma*(1-xi))",
+    "col_envelope_positive_denominator": "eta*(1-alpha+alpha*(1-eta)/eta)-(eta*(1-alpha)+alpha*(1-eta))"
+  },
+  "delta_f_free_ideal_aliases": {
+    "Vr": "Min(1,(1-eta-r)/eta)",
+    "Vc": "Min(1,(1-xi-r)/xi)",
+    "kappa_1": "Max(0,(G_s-sigma*Vc)/rho)",
+    "kappa_2": "Max(0,(G_s-rho*Vr)/sigma)",
+    "h_1": "1-kappa_1",
+    "h_2": "1-kappa_2",
+    "s_1": "Min(1,1-lambda_payoff-(r-(1-eta)*(1-mu_payoff))/eta)",
+    "s_2": "Min(1,1-mu_payoff-(r-(1-xi)*(1-lambda_payoff))/xi)",
+    "S": "Min(1,h_1-(r-(1-eta)*s_2)/eta)",
+    "T": "Min(1,h_2-(r-(1-xi)*s_1)/xi)",
+    "row_D": "1-gamma+gamma*(1-xi)/xi",
+    "row_ER": "((1-gamma)*S+gamma*(1-r/xi+(1-xi)*s_1/xi)-r)/row_D",
+    "row_EC": "(gamma-(1-gamma)*h_2)/row_D",
+    "row_test": "alpha*row_ER+(1-alpha)*row_EC-r",
+    "col_D": "1-alpha+alpha*(1-eta)/eta",
+    "col_CR": "(alpha-(1-alpha)*h_1)/col_D",
+    "col_CC": "((1-alpha)*T+alpha*(1-r/eta+(1-eta)*s_2/eta)-r)/col_D",
+    "col_test": "(1-gamma)*col_CR+gamma*col_CC-r"
+  },
+  "guarded_rules": [
+    {
+      "id": "minimum_after_cancellation",
+      "rule": "eta>0; eta*(Vstar-f)>=0 and 1-f>=0 imply Min(1,Vstar)-f>=0",
+      "cases": [
+        "Vstar<=1: use eta*(Vstar-f)>=0 and positive eta",
+        "Vstar>=1: use 1-f>=0"
+      ]
+    },
+    {
+      "id": "nonnegative_bridge_clip",
+      "rule": "rho>0; rho*(payoff-Braw)>=0 and payoff>=0 imply payoff-Max(0,Braw)>=0",
+      "cases": [
+        "Braw>=0: use cleared bridge",
+        "Braw<=0: use payoff>=0"
+      ]
+    },
+    {
+      "id": "family_max_transfer",
+      "rule": "row_family_error>=0 and col_family_error>=0 imply MI+delta_f-max(Ractual,Cactual)>=0",
+      "cases": [
+        "Ractual>=Cactual: maximum equals Ractual",
+        "Cactual>=Ractual: maximum equals Cactual"
+      ]
+    }
+  ],
+  "generic_source_instantiations": [
+    {
+      "alias": "s_1",
+      "mass": "eta",
+      "new": "R(y_1_1,y_s_2)",
+      "old": "R(y_s_1,y_s_2)",
+      "base": "lambda_payoff",
+      "cap": "1-mu_payoff",
+      "tuple": "T_y_s_1"
+    },
+    {
+      "alias": "s_2",
+      "mass": "xi",
+      "new": "C(y_s_1,y_1_2)",
+      "old": "C(y_s_1,y_s_2)",
+      "base": "mu_payoff",
+      "cap": "1-lambda_payoff",
+      "tuple": "T_y_s_2"
+    },
+    {
+      "alias": "S",
+      "mass": "eta",
+      "new": "R(y_1_1,y_1_2)",
+      "old": "R(y_s_1,y_1_2)",
+      "base": "kappa_1",
+      "cap": "s_2",
+      "tuple": "T_y_s_1"
+    },
+    {
+      "alias": "T",
+      "mass": "xi",
+      "new": "C(y_1_1,y_1_2)",
+      "old": "C(y_1_1,y_s_2)",
+      "base": "kappa_2",
+      "cap": "s_1",
+      "tuple": "T_y_s_2"
+    }
+  ],
+  "second_envelope_provenance": {
+    "same_masses": [
+      "alpha",
+      "gamma"
+    ],
+    "inputs": [
+      "s_1",
+      "s_2",
+      "S",
+      "T",
+      "h_1",
+      "h_2",
+      "r"
+    ],
+    "nearBR_error_variables": [],
+    "note": "ideal-cap ledger derives universal envelopes from these unchanged payoff-lower-bound aliases and exact second-LP planes at threshold r; no independent old nearBR loss is inserted"
+  },
+  "trust_boundary": [
+    "Provenance-to-contract instantiation and normalized payoff/deficit facts are typed mathematical interfaces; this file verifies their finite arithmetic consequences.",
+    "LP strong duality, conditional complementary slackness, finite maximum attainment and convex-family regret upper bounds are mathematical/primitive interfaces, not re-proved by this ledger.",
+    "Raw rectangle signed-cap validity and ideal common-envelope validity must connect to the independent ideal-cap ledger. This checker verifies the delta_f transport identities, not their game semantics."
+  ]
+}

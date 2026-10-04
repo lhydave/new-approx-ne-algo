@@ -1,0 +1,27 @@
+{
+  "scope": "T=0, canonical preclip full box",
+  "expression": "-(3*rho**4*r**2*v**2 + rho**4*r**2*v + 2*rho**4*r**2 - 5*rho**4*r*v**2 - 5*rho**4*r + 2*rho**4*v**2 + 2*rho**4 - 5*rho**3*r**2*v**2 - 4*rho**3*r**2*v - 4*rho**3*r**2 + 11*rho**3*r*v**2 + 2*rho**3*r*v + 8*rho**3*r - 5*rho**3*v**2 - 3*rho**3 + 2*rho**2*r**2*v**2 + 2*rho**2*r**2*v + 4*rho**2*r**2 - 7*rho**2*r*v**2 - 2*rho**2*r*v - 3*rho**2*r + 4*rho**2*v**2 + rho**2 - rho*r**2*v**2 + rho*r**2*v + rho*r*v**2 - rho*v**2 + r**2*v**2)/(rho**2*(rho - 1)*(rho*r*v - rho*r - rho*v + rho - 2*r*v + v))",
+  "positive_denominator_to_justify": "-rho**2*(rho - 1)*(rho*r*v - rho*r - rho*v + rho - 2*r*v + v)",
+  "substitution_denominator": "44494628906250000000000000000000000000000000000*(1784503*a - 51784503)**2",
+  "degree": [
+    8,
+    4,
+    2
+  ],
+  "count": 135,
+  "all_positive": true,
+  "minimum": "173409400487993845511418707299218750000000000000000000000000",
+  "negative_count": 0,
+  "canonical_lower_v": {
+    "expression": "-(13*rho**2*r**2 - 7*rho**2*r - rho**2 - 28*rho*r**2 + 25*rho*r - 3*rho + 10*r**2 - 18*r + 4)/(5*rho*(rho - 1)*(r - 1))",
+    "positive_denominator": "5*rho*(rho - 1)*(r - 1)",
+    "degree": [
+      4,
+      2
+    ],
+    "count": 15,
+    "all_positive": true,
+    "minimum": "165064875319003/2500000000000000",
+    "mass_margin_at_lower_r": "11827724042991/667890541134995"
+  }
+}

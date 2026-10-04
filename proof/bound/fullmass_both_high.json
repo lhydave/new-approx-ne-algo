@@ -1,0 +1,102 @@
+{
+  "jacobian": {
+    "positive_denominator": "rho**2*(rho - 1)**2",
+    "substitution_denominator": "177978515625000000000000000000000000000000000000",
+    "original_degree": [
+      6,
+      4,
+      1,
+      1
+    ],
+    "degree": [
+      6,
+      4,
+      1,
+      1
+    ],
+    "count": 140,
+    "all_positive": true,
+    "minimum": "1220703125000000000000000000000000000000000000",
+    "negative_count": 0
+  },
+  "endpoint_r_minus_T": {
+    "positive_denominator": "-rho*(rho - 1)**2*(2*r - 1)",
+    "substitution_denominator": "19775390625000000000000000000000000000000000000",
+    "original_degree": [
+      6,
+      4
+    ],
+    "degree": [
+      6,
+      16
+    ],
+    "count": 119,
+    "all_positive": true,
+    "minimum": "1654522135921570327733628110586692943936801729/130",
+    "negative_count": 0
+  },
+  "vs0": {
+    "positive_denominator": "(rho - 1)*(r - 1)",
+    "substitution_denominator": "5625000000000000",
+    "original_degree": [
+      2,
+      1
+    ],
+    "degree": [
+      2,
+      1
+    ],
+    "count": 6,
+    "all_positive": true,
+    "minimum": "800689799042991",
+    "negative_count": 0
+  },
+  "vs1": {
+    "positive_denominator": "(rho - 1)*(2*r - 1)",
+    "substitution_denominator": "140625000000000000000000",
+    "original_degree": [
+      3,
+      2
+    ],
+    "degree": [
+      3,
+      2
+    ],
+    "count": 12,
+    "all_positive": true,
+    "minimum": "22162579789863414568473",
+    "negative_count": 0
+  },
+  "vs0_upper": {
+    "positive_denominator": "3*(rho - 1)*(r - 1)",
+    "substitution_denominator": "1406250000000000",
+    "original_degree": [
+      2,
+      1
+    ],
+    "degree": [
+      2,
+      1
+    ],
+    "count": 6,
+    "all_positive": true,
+    "minimum": "1250000000000000",
+    "negative_count": 0
+  },
+  "vs1_upper": {
+    "positive_denominator": "3*(rho - 1)*(2*r - 1)",
+    "substitution_denominator": "140625000000000000000000",
+    "original_degree": [
+      3,
+      2
+    ],
+    "degree": [
+      3,
+      2
+    ],
+    "count": 12,
+    "all_positive": true,
+    "minimum": "15625000000000000000000",
+    "negative_count": 0
+  }
+}

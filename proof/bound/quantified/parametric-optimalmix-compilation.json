@@ -1,0 +1,406 @@
+{
+  "schema_version": 1,
+  "success": true,
+  "scope": "NC-style parametric piecewise linearization extension; not original S2.3 outer-edge-only template",
+  "input_algorithm_coefficients": [],
+  "generic_deficit_template": {
+    "premises": "A,B>=0; aA+bB>=l; a,b>0; l signed",
+    "coefficient_min": "min((1-t)/a,t/b)",
+    "cut_equation": "(1-t)/a=t/b",
+    "cut_solution": "b/(a+b)",
+    "remainder": "((1-t)-min_coeff*a)*A+(t-min_coeff*b)*B>=0"
+  },
+  "column_plane": {
+    "A_coefficient": "sigma*eta/rho",
+    "B_coefficient": "1 - eta",
+    "signed_intercept": "-eta*(1 - g/rho) + r"
+  },
+  "row_plane": {
+    "A_coefficient": "rho*xi/sigma",
+    "B_coefficient": "1 - xi",
+    "signed_intercept": "r - xi*(1 - g/sigma)"
+  },
+  "automatically_solved_cuts": {
+    "p_dagger": "(rho*eta - rho)/(rho*eta - rho - sigma*eta)",
+    "q_dagger": "(-sigma*xi + sigma)/(rho*xi - sigma*xi + sigma)"
+  },
+  "cells": 4,
+  "unique_coordinate_edges": 12,
+  "edges": [
+    {
+      "id": "v_0_0",
+      "orientation": "vertical",
+      "level": 0,
+      "interval": 0,
+      "cell": [
+        0,
+        0
+      ],
+      "endpoints": {
+        "start": {
+          "p": "0",
+          "q": "0"
+        },
+        "end": {
+          "p": "0",
+          "q": "(-sigma*xi + sigma)/(rho*xi - sigma*xi + sigma)"
+        }
+      },
+      "caps": {
+        "a_R": "g",
+        "b_R": "(rho*g*xi - sigma*r + sigma - g*xi)/(rho*xi - sigma*xi + sigma)",
+        "a_C": "g",
+        "b_C": "rho*g*xi/(rho*xi - sigma*xi + sigma)"
+      },
+      "D": "(-sigma*r + sigma - g*xi)/(rho*xi - sigma*xi + sigma)",
+      "N": "0",
+      "W": "(-sigma*g*r + sigma*g - g**2*xi)/(rho*xi - sigma*xi + sigma)",
+      "exact_quantifier_discharge": "E04b complete D/N/W guarded segment formula"
+    },
+    {
+      "id": "v_0_1",
+      "orientation": "vertical",
+      "level": 0,
+      "interval": 1,
+      "cell": [
+        0,
+        1
+      ],
+      "endpoints": {
+        "start": {
+          "p": "0",
+          "q": "(-sigma*xi + sigma)/(rho*xi - sigma*xi + sigma)"
+        },
+        "end": {
+          "p": "0",
+          "q": "1"
+        }
+      },
+      "caps": {
+        "a_R": "(rho*g*xi - sigma*r + sigma - g*xi)/(rho*xi - sigma*xi + sigma)",
+        "b_R": "1",
+        "a_C": "rho*g*xi/(rho*xi - sigma*xi + sigma)",
+        "b_C": "0"
+      },
+      "D": "(rho*xi + sigma*r - sigma*xi + g*xi)/(rho*xi - sigma*xi + sigma)",
+      "N": "(sigma*r - sigma + g*xi)/(rho*xi - sigma*xi + sigma)",
+      "W": "rho*g*xi/(rho*xi - sigma*xi + sigma)",
+      "exact_quantifier_discharge": "E04b complete D/N/W guarded segment formula"
+    },
+    {
+      "id": "v_1_0",
+      "orientation": "vertical",
+      "level": 1,
+      "interval": 0,
+      "cell": [
+        1,
+        0
+      ],
+      "endpoints": {
+        "start": {
+          "p": "(rho*eta - rho)/(rho*eta - rho - sigma*eta)",
+          "q": "0"
+        },
+        "end": {
+          "p": "(rho*eta - rho)/(rho*eta - rho - sigma*eta)",
+          "q": "(-sigma*xi + sigma)/(rho*xi - sigma*xi + sigma)"
+        }
+      },
+      "caps": {
+        "a_R": "-sigma*eta*g/(rho*eta - rho - sigma*eta)",
+        "b_R": "(-rho*sigma*eta*g*xi + rho*sigma*eta*lambda_payoff*xi - rho*sigma*eta*lambda_payoff - rho*sigma*eta*r + rho*sigma*eta - rho*sigma*lambda_payoff*xi + rho*sigma*lambda_payoff + rho*sigma*r - rho*sigma - rho*eta*g*xi + rho*g*xi + sigma**2*eta*r - sigma**2*eta + sigma*eta*g*xi)/(rho**2*eta*xi - rho**2*xi - 2*rho*sigma*eta*xi + rho*sigma*eta + rho*sigma*xi - rho*sigma + sigma**2*eta*xi - sigma**2*eta)",
+        "a_C": "(rho*r - rho - sigma*eta*g + eta*g)/(rho*eta - rho - sigma*eta)",
+        "b_C": "(rho**2*r*xi - rho**2*xi - rho*sigma*eta*g*xi + rho*sigma*eta*mu_payoff*xi - rho*sigma*eta*mu_payoff - rho*sigma*mu_payoff*xi + rho*sigma*mu_payoff - rho*sigma*r*xi + rho*sigma*r + rho*sigma*xi - rho*sigma + rho*eta*g*xi - sigma*eta*g*xi + sigma*eta*g)/(rho**2*eta*xi - rho**2*xi - 2*rho*sigma*eta*xi + rho*sigma*eta + rho*sigma*xi - rho*sigma + sigma**2*eta*xi - sigma**2*eta)"
+      },
+      "D": "(rho*sigma*eta*lambda_payoff*xi - rho*sigma*eta*lambda_payoff - rho*sigma*eta*mu_payoff*xi + rho*sigma*eta*mu_payoff - rho*sigma*eta*r + rho*sigma*eta - rho*sigma*lambda_payoff*xi + rho*sigma*lambda_payoff + rho*sigma*mu_payoff*xi - rho*sigma*mu_payoff + rho*sigma*r - rho*sigma - rho*eta*g*xi + rho*g*xi + sigma**2*eta*r - sigma**2*eta + sigma*eta*g*xi)/(rho**2*eta*xi - rho**2*xi - 2*rho*sigma*eta*xi + rho*sigma*eta + rho*sigma*xi - rho*sigma + sigma**2*eta*xi - sigma**2*eta)",
+      "N": "(rho*r - rho + eta*g)/(rho*eta - rho - sigma*eta)",
+      "W": "(rho**2*sigma*eta*lambda_payoff*r*xi - rho**2*sigma*eta*lambda_payoff*r - rho**2*sigma*eta*lambda_payoff*xi + rho**2*sigma*eta*lambda_payoff - rho**2*sigma*eta*r**2 + 2*rho**2*sigma*eta*r - rho**2*sigma*eta - rho**2*sigma*lambda_payoff*r*xi + rho**2*sigma*lambda_payoff*r + rho**2*sigma*lambda_payoff*xi - rho**2*sigma*lambda_payoff + rho**2*sigma*r**2 - 2*rho**2*sigma*r + rho**2*sigma - rho**2*eta*g*r*xi + rho**2*eta*g*xi + rho**2*g*r*xi - rho**2*g*xi - rho*sigma**2*eta**2*g*lambda_payoff*xi + rho*sigma**2*eta**2*g*lambda_payoff + rho*sigma**2*eta**2*g*mu_payoff*xi - rho*sigma**2*eta**2*g*mu_payoff + rho*sigma**2*eta**2*g*r - rho*sigma**2*eta**2*g + rho*sigma**2*eta*g*lambda_payoff*xi - rho*sigma**2*eta*g*lambda_payoff - rho*sigma**2*eta*g*mu_payoff*xi + rho*sigma**2*eta*g*mu_payoff - rho*sigma**2*eta*g*r*xi + rho*sigma**2*eta*g*xi + rho*sigma**2*eta*r**2 - 2*rho*sigma**2*eta*r + rho*sigma**2*eta + rho*sigma*eta**2*g**2*xi + rho*sigma*eta**2*g*lambda_payoff*xi - rho*sigma*eta**2*g*lambda_payoff - rho*sigma*eta**2*g*r + rho*sigma*eta**2*g - rho*sigma*eta*g**2*xi - rho*sigma*eta*g*lambda_payoff*xi + rho*sigma*eta*g*lambda_payoff + rho*sigma*eta*g*r*xi + rho*sigma*eta*g*r - rho*sigma*eta*g*xi - rho*sigma*eta*g - rho*eta**2*g**2*xi + rho*eta*g**2*xi - sigma**3*eta**2*g*r + sigma**3*eta**2*g - 2*sigma**2*eta**2*g**2*xi + sigma**2*eta**2*g**2 + sigma**2*eta**2*g*r - sigma**2*eta**2*g + sigma*eta**2*g**2*xi)/(rho**3*eta**2*xi - 2*rho**3*eta*xi + rho**3*xi - 3*rho**2*sigma*eta**2*xi + rho**2*sigma*eta**2 + 4*rho**2*sigma*eta*xi - 2*rho**2*sigma*eta - rho**2*sigma*xi + rho**2*sigma + 3*rho*sigma**2*eta**2*xi - 2*rho*sigma**2*eta**2 - 2*rho*sigma**2*eta*xi + 2*rho*sigma**2*eta - sigma**3*eta**2*xi + sigma**3*eta**2)",
+      "exact_quantifier_discharge": "E04b complete D/N/W guarded segment formula"
+    },
+    {
+      "id": "v_1_1",
+      "orientation": "vertical",
+      "level": 1,
+      "interval": 1,
+      "cell": [
+        1,
+        1
+      ],
+      "endpoints": {
+        "start": {
+          "p": "(rho*eta - rho)/(rho*eta - rho - sigma*eta)",
+          "q": "(-sigma*xi + sigma)/(rho*xi - sigma*xi + sigma)"
+        },
+        "end": {
+          "p": "(rho*eta - rho)/(rho*eta - rho - sigma*eta)",
+          "q": "1"
+        }
+      },
+      "caps": {
+        "a_R": "(-rho*sigma*eta*g*xi + rho*sigma*eta*lambda_payoff*xi - rho*sigma*eta*lambda_payoff - rho*sigma*eta*r + rho*sigma*eta - rho*sigma*lambda_payoff*xi + rho*sigma*lambda_payoff + rho*sigma*r - rho*sigma - rho*eta*g*xi + rho*g*xi + sigma**2*eta*r - sigma**2*eta + sigma*eta*g*xi)/(rho**2*eta*xi - rho**2*xi - 2*rho*sigma*eta*xi + rho*sigma*eta + rho*sigma*xi - rho*sigma + sigma**2*eta*xi - sigma**2*eta)",
+        "b_R": "(-rho*eta*lambda_payoff + rho*eta + rho*lambda_payoff - rho - sigma*eta)/(rho*eta - rho - sigma*eta)",
+        "a_C": "(rho**2*r*xi - rho**2*xi - rho*sigma*eta*g*xi + rho*sigma*eta*mu_payoff*xi - rho*sigma*eta*mu_payoff - rho*sigma*mu_payoff*xi + rho*sigma*mu_payoff - rho*sigma*r*xi + rho*sigma*r + rho*sigma*xi - rho*sigma + rho*eta*g*xi - sigma*eta*g*xi + sigma*eta*g)/(rho**2*eta*xi - rho**2*xi - 2*rho*sigma*eta*xi + rho*sigma*eta + rho*sigma*xi - rho*sigma + sigma**2*eta*xi - sigma**2*eta)",
+        "b_C": "(-rho*eta*mu_payoff + rho*mu_payoff + rho*r - rho + eta*g)/(rho*eta - rho - sigma*eta)"
+      },
+      "D": "(-rho**2*eta*lambda_payoff*xi + rho**2*eta*mu_payoff*xi + rho**2*eta*xi + rho**2*lambda_payoff*xi - rho**2*mu_payoff*xi - rho**2*xi + rho*sigma*eta*r - 2*rho*sigma*eta*xi - rho*sigma*r + rho*sigma*xi + rho*eta*g*xi - rho*g*xi - sigma**2*eta*r + sigma**2*eta*xi - sigma*eta*g*xi)/(rho**2*eta*xi - rho**2*xi - 2*rho*sigma*eta*xi + rho*sigma*eta + rho*sigma*xi - rho*sigma + sigma**2*eta*xi - sigma**2*eta)",
+      "N": "(rho**2*r*xi - rho**2*xi - rho*sigma*eta*lambda_payoff*xi + rho*sigma*eta*lambda_payoff + rho*sigma*eta*mu_payoff*xi - rho*sigma*eta*mu_payoff + rho*sigma*eta*r - rho*sigma*eta + rho*sigma*lambda_payoff*xi - rho*sigma*lambda_payoff - rho*sigma*mu_payoff*xi + rho*sigma*mu_payoff - rho*sigma*r*xi + rho*sigma*xi + 2*rho*eta*g*xi - rho*g*xi - sigma**2*eta*r + sigma**2*eta - 2*sigma*eta*g*xi + sigma*eta*g)/(rho**2*eta*xi - rho**2*xi - 2*rho*sigma*eta*xi + rho*sigma*eta + rho*sigma*xi - rho*sigma + sigma**2*eta*xi - sigma**2*eta)",
+      "W": "(-rho**3*eta*lambda_payoff*r*xi + rho**3*eta*lambda_payoff*xi + rho**3*eta*r*xi - rho**3*eta*xi + rho**3*lambda_payoff*r*xi - rho**3*lambda_payoff*xi - rho**3*r*xi + rho**3*xi + rho**2*sigma*eta**2*g*lambda_payoff*xi - rho**2*sigma*eta**2*g*mu_payoff*xi - rho**2*sigma*eta**2*g*xi - rho**2*sigma*eta**2*mu_payoff*r + rho**2*sigma*eta**2*mu_payoff*xi - rho**2*sigma*eta*g*lambda_payoff*xi + rho**2*sigma*eta*g*mu_payoff*xi + rho**2*sigma*eta*g*r*xi + 2*rho**2*sigma*eta*mu_payoff*r - 2*rho**2*sigma*eta*mu_payoff*xi + rho**2*sigma*eta*r**2 - 2*rho**2*sigma*eta*r*xi - rho**2*sigma*eta*r + 2*rho**2*sigma*eta*xi - rho**2*sigma*mu_payoff*r + rho**2*sigma*mu_payoff*xi - rho**2*sigma*r**2 + rho**2*sigma*r*xi + rho**2*sigma*r - rho**2*sigma*xi - rho**2*eta**2*g*lambda_payoff*xi - rho**2*eta**2*g*mu_payoff*xi + rho**2*eta**2*g*xi + rho**2*eta*g*lambda_payoff*xi + 2*rho**2*eta*g*mu_payoff*xi + rho**2*eta*g*r*xi - 2*rho**2*eta*g*xi - rho**2*g*mu_payoff*xi - rho**2*g*r*xi + rho**2*g*xi + rho*sigma**2*eta**2*g*xi + rho*sigma**2*eta**2*mu_payoff*r - rho*sigma**2*eta**2*mu_payoff*xi - rho*sigma**2*eta*mu_payoff*r + rho*sigma**2*eta*mu_payoff*xi - rho*sigma**2*eta*r**2 + rho*sigma**2*eta*r*xi + rho*sigma**2*eta*r - rho*sigma**2*eta*xi + rho*sigma*eta**2*g**2*xi + rho*sigma*eta**2*g*mu_payoff*xi + rho*sigma*eta**2*g*r - 2*rho*sigma*eta**2*g*xi - rho*sigma*eta*g*mu_payoff*xi - rho*sigma*eta*g*r*xi - rho*sigma*eta*g*r + 2*rho*sigma*eta*g*xi + rho*eta**2*g**2*xi - rho*eta*g**2*xi - sigma**2*eta**2*g*r + sigma**2*eta**2*g*xi - sigma*eta**2*g**2*xi)/(rho**3*eta**2*xi - 2*rho**3*eta*xi + rho**3*xi - 3*rho**2*sigma*eta**2*xi + rho**2*sigma*eta**2 + 4*rho**2*sigma*eta*xi - 2*rho**2*sigma*eta - rho**2*sigma*xi + rho**2*sigma + 3*rho*sigma**2*eta**2*xi - 2*rho*sigma**2*eta**2 - 2*rho*sigma**2*eta*xi + 2*rho*sigma**2*eta - sigma**3*eta**2*xi + sigma**3*eta**2)",
+      "exact_quantifier_discharge": "E04b complete D/N/W guarded segment formula"
+    },
+    {
+      "id": "v_2_0",
+      "orientation": "vertical",
+      "level": 2,
+      "interval": 0,
+      "cell": [
+        1,
+        0
+      ],
+      "endpoints": {
+        "start": {
+          "p": "1",
+          "q": "0"
+        },
+        "end": {
+          "p": "1",
+          "q": "(-sigma*xi + sigma)/(rho*xi - sigma*xi + sigma)"
+        }
+      },
+      "caps": {
+        "a_R": "0",
+        "b_R": "(sigma*lambda_payoff*xi - sigma*lambda_payoff - sigma*r + sigma - g*xi)/(rho*xi - sigma*xi + sigma)",
+        "a_C": "1",
+        "b_C": "(rho*xi + sigma*mu_payoff*xi - sigma*mu_payoff - sigma*xi + sigma)/(rho*xi - sigma*xi + sigma)"
+      },
+      "D": "(sigma*lambda_payoff*xi - sigma*lambda_payoff - sigma*mu_payoff*xi + sigma*mu_payoff - sigma*r + sigma - g*xi)/(rho*xi - sigma*xi + sigma)",
+      "N": "1",
+      "W": "(sigma*lambda_payoff*xi - sigma*lambda_payoff - sigma*r + sigma - g*xi)/(rho*xi - sigma*xi + sigma)",
+      "exact_quantifier_discharge": "E04b complete D/N/W guarded segment formula"
+    },
+    {
+      "id": "v_2_1",
+      "orientation": "vertical",
+      "level": 2,
+      "interval": 1,
+      "cell": [
+        1,
+        1
+      ],
+      "endpoints": {
+        "start": {
+          "p": "1",
+          "q": "(-sigma*xi + sigma)/(rho*xi - sigma*xi + sigma)"
+        },
+        "end": {
+          "p": "1",
+          "q": "1"
+        }
+      },
+      "caps": {
+        "a_R": "(sigma*lambda_payoff*xi - sigma*lambda_payoff - sigma*r + sigma - g*xi)/(rho*xi - sigma*xi + sigma)",
+        "b_R": "1 - lambda_payoff",
+        "a_C": "(rho*xi + sigma*mu_payoff*xi - sigma*mu_payoff - sigma*xi + sigma)/(rho*xi - sigma*xi + sigma)",
+        "b_C": "1 - mu_payoff"
+      },
+      "D": "(-rho*lambda_payoff*xi + rho*mu_payoff*xi + rho*xi + sigma*r - sigma*xi + g*xi)/(rho*xi - sigma*xi + sigma)",
+      "N": "(rho*xi - sigma*lambda_payoff*xi + sigma*lambda_payoff + sigma*mu_payoff*xi - sigma*mu_payoff + sigma*r - sigma*xi + g*xi)/(rho*xi - sigma*xi + sigma)",
+      "W": "(-rho*lambda_payoff*xi + rho*xi - sigma*mu_payoff*r + sigma*mu_payoff*xi + sigma*r - sigma*xi - g*mu_payoff*xi + g*xi)/(rho*xi - sigma*xi + sigma)",
+      "exact_quantifier_discharge": "E04b complete D/N/W guarded segment formula"
+    },
+    {
+      "id": "h_0_0",
+      "orientation": "horizontal",
+      "level": 0,
+      "interval": 0,
+      "cell": [
+        0,
+        0
+      ],
+      "endpoints": {
+        "start": {
+          "p": "0",
+          "q": "0"
+        },
+        "end": {
+          "p": "(rho*eta - rho)/(rho*eta - rho - sigma*eta)",
+          "q": "0"
+        }
+      },
+      "caps": {
+        "a_R": "g",
+        "b_R": "-sigma*eta*g/(rho*eta - rho - sigma*eta)",
+        "a_C": "g",
+        "b_C": "(rho*r - rho - sigma*eta*g + eta*g)/(rho*eta - rho - sigma*eta)"
+      },
+      "D": "(-rho*r + rho - eta*g)/(rho*eta - rho - sigma*eta)",
+      "N": "0",
+      "W": "(-rho*g*r + rho*g - eta*g**2)/(rho*eta - rho - sigma*eta)",
+      "exact_quantifier_discharge": "E04b complete D/N/W guarded segment formula"
+    },
+    {
+      "id": "h_0_1",
+      "orientation": "horizontal",
+      "level": 0,
+      "interval": 1,
+      "cell": [
+        1,
+        0
+      ],
+      "endpoints": {
+        "start": {
+          "p": "(rho*eta - rho)/(rho*eta - rho - sigma*eta)",
+          "q": "0"
+        },
+        "end": {
+          "p": "1",
+          "q": "0"
+        }
+      },
+      "caps": {
+        "a_R": "-sigma*eta*g/(rho*eta - rho - sigma*eta)",
+        "b_R": "0",
+        "a_C": "(rho*r - rho - sigma*eta*g + eta*g)/(rho*eta - rho - sigma*eta)",
+        "b_C": "1"
+      },
+      "D": "(-rho*eta + rho*r + sigma*eta + eta*g)/(rho*eta - rho - sigma*eta)",
+      "N": "(rho*r - rho + eta*g)/(rho*eta - rho - sigma*eta)",
+      "W": "sigma*eta*g/(rho*eta - rho - sigma*eta)",
+      "exact_quantifier_discharge": "E04b complete D/N/W guarded segment formula"
+    },
+    {
+      "id": "h_1_0",
+      "orientation": "horizontal",
+      "level": 1,
+      "interval": 0,
+      "cell": [
+        0,
+        1
+      ],
+      "endpoints": {
+        "start": {
+          "p": "0",
+          "q": "(-sigma*xi + sigma)/(rho*xi - sigma*xi + sigma)"
+        },
+        "end": {
+          "p": "(rho*eta - rho)/(rho*eta - rho - sigma*eta)",
+          "q": "(-sigma*xi + sigma)/(rho*xi - sigma*xi + sigma)"
+        }
+      },
+      "caps": {
+        "a_R": "(rho*g*xi - sigma*r + sigma - g*xi)/(rho*xi - sigma*xi + sigma)",
+        "b_R": "(-rho*sigma*eta*g*xi + rho*sigma*eta*lambda_payoff*xi - rho*sigma*eta*lambda_payoff - rho*sigma*eta*r + rho*sigma*eta - rho*sigma*lambda_payoff*xi + rho*sigma*lambda_payoff + rho*sigma*r - rho*sigma - rho*eta*g*xi + rho*g*xi + sigma**2*eta*r - sigma**2*eta + sigma*eta*g*xi)/(rho**2*eta*xi - rho**2*xi - 2*rho*sigma*eta*xi + rho*sigma*eta + rho*sigma*xi - rho*sigma + sigma**2*eta*xi - sigma**2*eta)",
+        "a_C": "rho*g*xi/(rho*xi - sigma*xi + sigma)",
+        "b_C": "(rho**2*r*xi - rho**2*xi - rho*sigma*eta*g*xi + rho*sigma*eta*mu_payoff*xi - rho*sigma*eta*mu_payoff - rho*sigma*mu_payoff*xi + rho*sigma*mu_payoff - rho*sigma*r*xi + rho*sigma*r + rho*sigma*xi - rho*sigma + rho*eta*g*xi - sigma*eta*g*xi + sigma*eta*g)/(rho**2*eta*xi - rho**2*xi - 2*rho*sigma*eta*xi + rho*sigma*eta + rho*sigma*xi - rho*sigma + sigma**2*eta*xi - sigma**2*eta)"
+      },
+      "D": "(-rho**2*r*xi + rho**2*xi + rho*sigma*eta*lambda_payoff*xi - rho*sigma*eta*lambda_payoff - rho*sigma*eta*mu_payoff*xi + rho*sigma*eta*mu_payoff - rho*sigma*lambda_payoff*xi + rho*sigma*lambda_payoff + rho*sigma*mu_payoff*xi - rho*sigma*mu_payoff + rho*sigma*r*xi - rho*sigma*r - rho*sigma*xi + rho*sigma - rho*eta*g*xi + sigma*eta*g*xi - sigma*eta*g)/(rho**2*eta*xi - rho**2*xi - 2*rho*sigma*eta*xi + rho*sigma*eta + rho*sigma*xi - rho*sigma + sigma**2*eta*xi - sigma**2*eta)",
+      "N": "(sigma*r - sigma + g*xi)/(rho*xi - sigma*xi + sigma)",
+      "W": "(-rho**3*g*r*xi**2 + rho**3*g*xi**2 + rho**2*sigma*eta*g*lambda_payoff*xi**2 - rho**2*sigma*eta*g*lambda_payoff*xi - rho**2*sigma*eta*g*mu_payoff*xi**2 + rho**2*sigma*eta*g*mu_payoff*xi - rho**2*sigma*eta*g*r*xi + rho**2*sigma*eta*g*xi - rho**2*sigma*g*lambda_payoff*xi**2 + rho**2*sigma*g*lambda_payoff*xi + rho**2*sigma*g*mu_payoff*xi**2 - rho**2*sigma*g*mu_payoff*xi + rho**2*sigma*g*r*xi**2 - rho**2*sigma*g*xi**2 + rho**2*sigma*r**2*xi - 2*rho**2*sigma*r*xi + rho**2*sigma*xi - 2*rho**2*eta*g**2*xi**2 + rho**2*g**2*xi**2 + rho**2*g*r*xi**2 - rho**2*g*xi**2 + rho*sigma**2*eta*mu_payoff*r*xi - rho*sigma**2*eta*mu_payoff*r - rho*sigma**2*eta*mu_payoff*xi + rho*sigma**2*eta*mu_payoff - rho*sigma**2*mu_payoff*r*xi + rho*sigma**2*mu_payoff*r + rho*sigma**2*mu_payoff*xi - rho*sigma**2*mu_payoff - rho*sigma**2*r**2*xi + rho*sigma**2*r**2 + 2*rho*sigma**2*r*xi - 2*rho*sigma**2*r - rho*sigma**2*xi + rho*sigma**2 + rho*sigma*eta*g**2*xi**2 - rho*sigma*eta*g**2*xi + rho*sigma*eta*g*mu_payoff*xi**2 - rho*sigma*eta*g*mu_payoff*xi + rho*sigma*eta*g*r*xi - rho*sigma*eta*g*xi - rho*sigma*g*mu_payoff*xi**2 + rho*sigma*g*mu_payoff*xi - rho*sigma*g*r*xi**2 + rho*sigma*g*r*xi + rho*sigma*g*xi**2 - rho*sigma*g*xi + rho*eta*g**2*xi**2 - sigma**2*eta*g*r*xi + sigma**2*eta*g*r + sigma**2*eta*g*xi - sigma**2*eta*g - sigma*eta*g**2*xi**2 + sigma*eta*g**2*xi)/(rho**3*eta*xi**2 - rho**3*xi**2 - 3*rho**2*sigma*eta*xi**2 + 2*rho**2*sigma*eta*xi + 2*rho**2*sigma*xi**2 - 2*rho**2*sigma*xi + 3*rho*sigma**2*eta*xi**2 - 4*rho*sigma**2*eta*xi + rho*sigma**2*eta - rho*sigma**2*xi**2 + 2*rho*sigma**2*xi - rho*sigma**2 - sigma**3*eta*xi**2 + 2*sigma**3*eta*xi - sigma**3*eta)",
+      "exact_quantifier_discharge": "E04b complete D/N/W guarded segment formula"
+    },
+    {
+      "id": "h_1_1",
+      "orientation": "horizontal",
+      "level": 1,
+      "interval": 1,
+      "cell": [
+        1,
+        1
+      ],
+      "endpoints": {
+        "start": {
+          "p": "(rho*eta - rho)/(rho*eta - rho - sigma*eta)",
+          "q": "(-sigma*xi + sigma)/(rho*xi - sigma*xi + sigma)"
+        },
+        "end": {
+          "p": "1",
+          "q": "(-sigma*xi + sigma)/(rho*xi - sigma*xi + sigma)"
+        }
+      },
+      "caps": {
+        "a_R": "(-rho*sigma*eta*g*xi + rho*sigma*eta*lambda_payoff*xi - rho*sigma*eta*lambda_payoff - rho*sigma*eta*r + rho*sigma*eta - rho*sigma*lambda_payoff*xi + rho*sigma*lambda_payoff + rho*sigma*r - rho*sigma - rho*eta*g*xi + rho*g*xi + sigma**2*eta*r - sigma**2*eta + sigma*eta*g*xi)/(rho**2*eta*xi - rho**2*xi - 2*rho*sigma*eta*xi + rho*sigma*eta + rho*sigma*xi - rho*sigma + sigma**2*eta*xi - sigma**2*eta)",
+        "b_R": "(sigma*lambda_payoff*xi - sigma*lambda_payoff - sigma*r + sigma - g*xi)/(rho*xi - sigma*xi + sigma)",
+        "a_C": "(rho**2*r*xi - rho**2*xi - rho*sigma*eta*g*xi + rho*sigma*eta*mu_payoff*xi - rho*sigma*eta*mu_payoff - rho*sigma*mu_payoff*xi + rho*sigma*mu_payoff - rho*sigma*r*xi + rho*sigma*r + rho*sigma*xi - rho*sigma + rho*eta*g*xi - sigma*eta*g*xi + sigma*eta*g)/(rho**2*eta*xi - rho**2*xi - 2*rho*sigma*eta*xi + rho*sigma*eta + rho*sigma*xi - rho*sigma + sigma**2*eta*xi - sigma**2*eta)",
+        "b_C": "(rho*xi + sigma*mu_payoff*xi - sigma*mu_payoff - sigma*xi + sigma)/(rho*xi - sigma*xi + sigma)"
+      },
+      "D": "(-rho**2*eta*xi + rho**2*r*xi + 2*rho*sigma*eta*xi - rho*sigma*eta - rho*sigma*r*xi + rho*sigma*r + rho*eta*g*xi - sigma**2*eta*lambda_payoff*xi + sigma**2*eta*lambda_payoff + sigma**2*eta*mu_payoff*xi - sigma**2*eta*mu_payoff - sigma**2*eta*xi + sigma**2*eta - sigma*eta*g*xi + sigma*eta*g)/(rho**2*eta*xi - rho**2*xi - 2*rho*sigma*eta*xi + rho*sigma*eta + rho*sigma*xi - rho*sigma + sigma**2*eta*xi - sigma**2*eta)",
+      "N": "(rho**2*r*xi - rho**2*xi - rho*sigma*eta*lambda_payoff*xi + rho*sigma*eta*lambda_payoff + rho*sigma*eta*mu_payoff*xi - rho*sigma*eta*mu_payoff + rho*sigma*eta*r - rho*sigma*eta + rho*sigma*lambda_payoff*xi - rho*sigma*lambda_payoff - rho*sigma*mu_payoff*xi + rho*sigma*mu_payoff - rho*sigma*r*xi + rho*sigma*xi + 2*rho*eta*g*xi - rho*g*xi - sigma**2*eta*r + sigma**2*eta - 2*sigma*eta*g*xi + sigma*eta*g)/(rho**2*eta*xi - rho**2*xi - 2*rho*sigma*eta*xi + rho*sigma*eta + rho*sigma*xi - rho*sigma + sigma**2*eta*xi - sigma**2*eta)",
+      "W": "(rho**2*sigma*eta*g*xi**2 - rho**2*sigma*eta*lambda_payoff*xi**2 + rho**2*sigma*eta*lambda_payoff*xi + rho**2*sigma*eta*r*xi - rho**2*sigma*eta*xi + rho**2*sigma*lambda_payoff*r*xi**2 - rho**2*sigma*lambda_payoff*r*xi - rho**2*sigma*r**2*xi + rho**2*sigma*r*xi + rho**2*eta*g*xi**2 - rho**2*g*r*xi**2 - rho*sigma**2*eta*g*lambda_payoff*xi**2 + rho*sigma**2*eta*g*lambda_payoff*xi + rho*sigma**2*eta*g*mu_payoff*xi**2 - rho*sigma**2*eta*g*mu_payoff*xi + rho*sigma**2*eta*g*r*xi - rho*sigma**2*eta*g*xi**2 + rho*sigma**2*eta*lambda_payoff*xi**2 - 2*rho*sigma**2*eta*lambda_payoff*xi + rho*sigma**2*eta*lambda_payoff - 2*rho*sigma**2*eta*r*xi + rho*sigma**2*eta*r + 2*rho*sigma**2*eta*xi - rho*sigma**2*eta - rho*sigma**2*lambda_payoff*r*xi**2 + 2*rho*sigma**2*lambda_payoff*r*xi - rho*sigma**2*lambda_payoff*r + rho*sigma**2*r**2*xi - rho*sigma**2*r**2 - rho*sigma**2*r*xi + rho*sigma**2*r + rho*sigma*eta*g**2*xi**2 + rho*sigma*eta*g*lambda_payoff*xi**2 - rho*sigma*eta*g*lambda_payoff*xi - rho*sigma*eta*g*r*xi - 2*rho*sigma*eta*g*xi**2 + 2*rho*sigma*eta*g*xi + rho*sigma*g*r*xi**2 - rho*sigma*g*r*xi - rho*eta*g**2*xi**2 - sigma**3*eta*mu_payoff*r*xi + sigma**3*eta*mu_payoff*r + sigma**3*eta*mu_payoff*xi - sigma**3*eta*mu_payoff + sigma**3*eta*r*xi - sigma**3*eta*r - sigma**3*eta*xi + sigma**3*eta - sigma**2*eta*g*lambda_payoff*xi**2 + 2*sigma**2*eta*g*lambda_payoff*xi - sigma**2*eta*g*lambda_payoff - sigma**2*eta*g*mu_payoff*xi**2 + sigma**2*eta*g*mu_payoff*xi + sigma**2*eta*g*r*xi - sigma**2*eta*g*r + sigma**2*eta*g*xi**2 - 2*sigma**2*eta*g*xi + sigma**2*eta*g + sigma*eta*g**2*xi**2 - sigma*eta*g**2*xi)/(rho**3*eta*xi**2 - rho**3*xi**2 - 3*rho**2*sigma*eta*xi**2 + 2*rho**2*sigma*eta*xi + 2*rho**2*sigma*xi**2 - 2*rho**2*sigma*xi + 3*rho*sigma**2*eta*xi**2 - 4*rho*sigma**2*eta*xi + rho*sigma**2*eta - rho*sigma**2*xi**2 + 2*rho*sigma**2*xi - rho*sigma**2 - sigma**3*eta*xi**2 + 2*sigma**3*eta*xi - sigma**3*eta)",
+      "exact_quantifier_discharge": "E04b complete D/N/W guarded segment formula"
+    },
+    {
+      "id": "h_2_0",
+      "orientation": "horizontal",
+      "level": 2,
+      "interval": 0,
+      "cell": [
+        0,
+        1
+      ],
+      "endpoints": {
+        "start": {
+          "p": "0",
+          "q": "1"
+        },
+        "end": {
+          "p": "(rho*eta - rho)/(rho*eta - rho - sigma*eta)",
+          "q": "1"
+        }
+      },
+      "caps": {
+        "a_R": "1",
+        "b_R": "(-rho*eta*lambda_payoff + rho*eta + rho*lambda_payoff - rho - sigma*eta)/(rho*eta - rho - sigma*eta)",
+        "a_C": "0",
+        "b_C": "(-rho*eta*mu_payoff + rho*mu_payoff + rho*r - rho + eta*g)/(rho*eta - rho - sigma*eta)"
+      },
+      "D": "(-rho*eta*lambda_payoff + rho*eta*mu_payoff + rho*lambda_payoff - rho*mu_payoff - rho*r + rho - eta*g)/(rho*eta - rho - sigma*eta)",
+      "N": "-1",
+      "W": "(rho*eta*mu_payoff - rho*mu_payoff - rho*r + rho - eta*g)/(rho*eta - rho - sigma*eta)",
+      "exact_quantifier_discharge": "E04b complete D/N/W guarded segment formula"
+    },
+    {
+      "id": "h_2_1",
+      "orientation": "horizontal",
+      "level": 2,
+      "interval": 1,
+      "cell": [
+        1,
+        1
+      ],
+      "endpoints": {
+        "start": {
+          "p": "(rho*eta - rho)/(rho*eta - rho - sigma*eta)",
+          "q": "1"
+        },
+        "end": {
+          "p": "1",
+          "q": "1"
+        }
+      },
+      "caps": {
+        "a_R": "(-rho*eta*lambda_payoff + rho*eta + rho*lambda_payoff - rho - sigma*eta)/(rho*eta - rho - sigma*eta)",
+        "b_R": "1 - lambda_payoff",
+        "a_C": "(-rho*eta*mu_payoff + rho*mu_payoff + rho*r - rho + eta*g)/(rho*eta - rho - sigma*eta)",
+        "b_C": "1 - mu_payoff"
+      },
+      "D": "(-rho*eta + rho*r + sigma*eta*lambda_payoff - sigma*eta*mu_payoff + sigma*eta + eta*g)/(rho*eta - rho - sigma*eta)",
+      "N": "(rho*eta*lambda_payoff - rho*eta*mu_payoff - rho*eta - rho*lambda_payoff + rho*mu_payoff + rho*r + sigma*eta + eta*g)/(rho*eta - rho - sigma*eta)",
+      "W": "(rho*eta*lambda_payoff - rho*eta - rho*lambda_payoff*r + rho*r - sigma*eta*mu_payoff + sigma*eta - eta*g*lambda_payoff + eta*g)/(rho*eta - rho - sigma*eta)",
+      "exact_quantifier_discharge": "E04b complete D/N/W guarded segment formula"
+    }
+  ],
+  "retained_edge_ids": [
+    "v_1_0",
+    "v_1_1",
+    "h_1_0",
+    "h_1_1"
+  ],
+  "forgetting": "All 12 generated predicates are necessary; safely forget 8 unused outer subedges to recover the adopted projected model",
+  "local_QE_kind": "exact forall-theta discharge within each affine cap segment",
+  "global_soundness_direction": "primitive global OM failure => whole cap-family failure => every generated edge predicate => retained old four knot predicates",
+  "not_claimed": [
+    "equivalence to original game semantics",
+    "official NC compiler execution",
+    "tightness of full 12-edge extension",
+    "manual choice of algorithm mixing coefficients"
+  ]
+}

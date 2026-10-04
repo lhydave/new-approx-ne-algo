@@ -1,0 +1,510 @@
+{
+  "schema_version": 1,
+  "algorithm_id": "retained-enlarged-TS-four-fullside-LP-plus-global-2x2-OptimalMixing-five-candidates",
+  "legacy_arithmetic_model": "six-fullside-LP-projected-SAME-second-dual-necessary-system",
+  "document": "stage-i-contracts.json",
+  "stage_i": {
+    "scope": "Typed original-game conventions, building-block logical properties and SSA composition only",
+    "target_parameters": [],
+    "block_inputs": [
+      "original normalized R,C",
+      "frontend precision delta_f",
+      "OptimalMixing precision tau (zero means ideal)"
+    ],
+    "games": "arbitrary fixed positive m,n; theorem is a scheme for every pair m,n",
+    "primitive_blocks": [
+      "TSenlarged",
+      "FixedRowMix",
+      "FixedColumnMix",
+      "OptimalMixing",
+      "SelectBest"
+    ],
+    "explicit_special_mixing_assignments": [],
+    "ssa_order": [
+      "T=TSenlarged",
+      "T_y_s_1=FixedRowMix(y_s_1)",
+      "T_y_s_2=FixedColumnMix(y_s_2)",
+      "T_y_1_1=FixedRowMix(y_1_1)",
+      "T_y_1_2=FixedColumnMix(y_1_2)",
+      "O=OptimalMixing([x_s_1,y_s_1],[x_s_2,y_s_2])",
+      "o=SelectBest(first4,O)"
+    ],
+    "early_branches": [],
+    "tie_semantics": "Every legal optimal primal/dual tuple and every minimizer/SelectBest tie is permitted; masses fixed once per actual tuple",
+    "clauses": [
+      {
+        "id": "K01",
+        "block": "convention",
+        "property": "One R,C in [0,1]^(m*n); all strategies in original full simplices; U(x,y)=x^T U y",
+        "quantifier_order": [
+          "fixed m,n",
+          "shared R,C",
+          "strategy arguments"
+        ],
+        "status": "specification"
+      },
+      {
+        "id": "K02",
+        "block": "full-BR convention",
+        "property": "u_R(y) has a full-simplex universal upper bound and an attained equality; mirror for u_C(x)",
+        "quantifier_order": [
+          "forall y",
+          "exists h_y",
+          "forall x upper bound"
+        ],
+        "mirror_quantifier_order": [
+          "forall x",
+          "exists k_x",
+          "forall y upper bound"
+        ],
+        "forbidden_change": "One common existential attainer cannot serve every opponent",
+        "status": "specification"
+      },
+      {
+        "id": "K03",
+        "block": "convention",
+        "property": "f_R=u_R-R; f_C=u_C-C; F=max(f_R,f_C); repeated terms and mixed strategies share same payoff function",
+        "quantifier_order": [
+          "shared game",
+          "profile arguments"
+        ],
+        "status": "definition"
+      },
+      {
+        "id": "T01",
+        "block": "TSenlarged",
+        "property": "actual equal-regret x_s_1,x_s_2; g=f_R(x_s_1,x_s_2)=f_C(x_s_1,x_s_2)",
+        "quantifier_order": [
+          "game,delta_f input",
+          "actual terminal tuple"
+        ],
+        "status": "primitive contract"
+      },
+      {
+        "id": "T02",
+        "block": "TSenlarged",
+        "property": "rho*y_s_1 and sigma*y_s_2 are nonnegative dual vectors supported in the delta_f-nearBR row and column sets, with total masses rho and sigma and rho+sigma=1; zero-mass returned y_s_1 or y_s_2 is arbitrary typed strategy",
+        "quantifier_order": [
+          "actual terminal tuple",
+          "support index tests"
+        ],
+        "zero_mass": "y_s_1 or y_s_2 arbitrary typed strategy, no nearBR/alignment assertion",
+        "status": "primitive contract"
+      },
+      {
+        "id": "T03",
+        "block": "TSenlarged",
+        "property": "same enlarged primal feasibility for every nearBR row and column",
+        "quantifier_order": [
+          "actual x_s_1,x_s_2,primal,dual",
+          "forall nearBR indices"
+        ],
+        "status": "primitive contract"
+      },
+      {
+        "id": "T04",
+        "block": "TSenlarged",
+        "property": "A_s,B_s are stationary LP offsets satisfying the raw dual constraints over full original x,y",
+        "quantifier_order": [
+          "actual rho,sigma,rho*y_s_1,sigma*y_s_2,A_s,B_s",
+          "forall x in full simplex",
+          "forall y in full simplex"
+        ],
+        "status": "primitive contract",
+        "raw_dual_constraints": [
+          "A_s<=-rho*R(x,x_s_2)+sigma*(C(x,y_s_2)-C(x,x_s_2)) for every x in full row simplex",
+          "B_s<=-sigma*C(x_s_1,y)+rho*(R(y_s_1,y)-R(x_s_1,y)) for every y in full column simplex"
+        ]
+      },
+      {
+        "id": "T05",
+        "block": "TSenlarged",
+        "property": "V=rho*R(x_s_1,x_s_2)+sigma*C(x_s_1,x_s_2)+A_s+B_s and V>=g-delta_f",
+        "quantifier_order": [
+          "same actual primal and dual"
+        ],
+        "status": "primitive contract"
+      },
+      {
+        "id": "R01",
+        "block": "FixedRowMix",
+        "property": "primal h upper-bounds all row deviations at y_x and exact column regret",
+        "quantifier_order": [
+          "fixed input x",
+          "actual tuple y_x,h,eta,y_1_1,d",
+          "forall x_1_prime in full row simplex"
+        ],
+        "status": "primitive contract"
+      },
+      {
+        "id": "R02",
+        "block": "FixedRowMix",
+        "property": "eta*(R(y_1_1,y)-R(x,y))+(1-eta)*(u_C(x)-C(x,y))>=h for every original y; same primal-dual value; h=F(x,y_x)<=F(x,y)",
+        "quantifier_order": [
+          "fixed input x",
+          "actual eta,y_1_1,h,y_x",
+          "forall y in full column simplex"
+        ],
+        "forbidden_change": "forall y exists eta_y,y_1_1_y",
+        "status": "primitive contract"
+      },
+      {
+        "id": "R03",
+        "block": "FixedRowMix",
+        "property": "d=eta*y_1_1,sum d=eta; conditional BR alignment and player-value complementarity",
+        "quantifier_order": [
+          "same actual tuple",
+          "if eta>0 then forall x_1_prime BR comparison"
+        ],
+        "zero_mass": "y_1_1 arbitrary; no unconditional BR alignment",
+        "status": "primitive contract"
+      },
+      {
+        "id": "C01",
+        "block": "FixedColumnMix",
+        "property": "mirror primal full-domain constraints and optimal value",
+        "quantifier_order": [
+          "fixed input y",
+          "actual tuple x_y,h,xi,y_1_2,e",
+          "forall k in full column simplex"
+        ],
+        "status": "primitive contract"
+      },
+      {
+        "id": "C02",
+        "block": "FixedColumnMix",
+        "property": "(1-xi)*(u_R(y)-R(x,y))+xi*(C(x,y_1_2)-C(x,y))>=h for every original x; xi is column mass",
+        "quantifier_order": [
+          "fixed input y",
+          "actual xi,y_1_2,h,x_y",
+          "forall x in full row simplex"
+        ],
+        "forbidden_change": "forall x exists xi_x,y_1_2_x",
+        "status": "primitive contract"
+      },
+      {
+        "id": "C03",
+        "block": "FixedColumnMix",
+        "property": "e=xi*y_1_2,sum e=xi; conditional BR alignment and player-value complementarity",
+        "quantifier_order": [
+          "same actual tuple",
+          "if xi>0 then forall k BR comparison"
+        ],
+        "zero_mass": "y_1_2 arbitrary; no unconditional BR alignment",
+        "status": "primitive contract"
+      },
+      {
+        "id": "O01",
+        "block": "OptimalMixing",
+        "property": "x_o in conv(x_s_1,y_s_1),y_o in conv(x_s_2,y_s_2); F(x_o,y_o)<=F((1-p)x_s_1+p*y_s_1,(1-q)x_s_2+q*y_s_2)+tau for every p,q in [0,1]",
+        "quantifier_order": [
+          "shared game and anchors",
+          "one actual x_o,y_o",
+          "forall p,q"
+        ],
+        "ideal": "tau=0 is true global product-hull minimum",
+        "implementation": "tau>0 permits rational additive approximation",
+        "forbidden_change": "boundary-edge optimizer replacing global hull primitive",
+        "status": "primitive contract"
+      },
+      {
+        "id": "O02",
+        "block": "OptimalMixing",
+        "property": "F(x_o,y_o)<=min(F(x_s_1,x_s_2),F(x_s_1,y_s_2),F(y_s_1,x_s_2),F(y_s_1,y_s_2))",
+        "quantifier_order": [
+          "same actual OptimalMixing tuple",
+          "all four input profiles"
+        ],
+        "ideal": "follows from O01 with tau=0 at the four corners",
+        "implementation": "return a minimizer on a rational coefficient grid containing 0 and 1 in each coordinate; holds exactly even for tau>0",
+        "status": "implementation contract"
+      },
+      {
+        "id": "B01",
+        "block": "SelectBest",
+        "property": "output belongs to five actual profiles [first4,O] and has F no greater than every list member",
+        "quantifier_order": [
+          "actual shared profile list",
+          "one actual output",
+          "forall list members"
+        ],
+        "status": "primitive contract"
+      }
+    ],
+    "zero_mass_convention": "Every normalized response strategy is a typed arbitrary return when its mass is zero; complementary-slackness alignment only under positive mass. Straight-line top-level never reads masses.",
+    "candidate_profiles": [
+      [
+        "y_s_1",
+        "x_1_2"
+      ],
+      [
+        "x_1_1",
+        "y_s_2"
+      ],
+      [
+        "y_1_1",
+        "x_2_2"
+      ],
+      [
+        "x_2_1",
+        "y_1_2"
+      ],
+      [
+        "x_o",
+        "y_o"
+      ]
+    ]
+  },
+  "stage_ii": {
+    "scope": "Guarantee logic, quantified bad execution, instantiation, forgetting and derived pure arithmetic",
+    "threshold": "proof variable r, never read by algorithm",
+    "quantifier_order": {
+      "guarantee": [
+        "forall fixed-dimension normalized game",
+        "forall legal frontend tuple",
+        "forall legal first4 primal-dual returns",
+        "forall legal OptimalMixing return",
+        "forall legal SelectBest return",
+        "contracts imply F(out)<=r+delta_f+tau"
+      ],
+      "bad_execution": [
+        "exists one game",
+        "exists one frontend and four actual LP tuples including same eta,xi,alpha,gamma",
+        "exists one OptimalMixing tuple and output",
+        "retain full universal contract clauses",
+        "F(out)>r+delta_f+tau"
+      ],
+      "finite_max_witnesses": "For finite named profiles, exact full-BR attainers can be added after trace variables; do not prenex all-function forall opponent exists attainer as one global attainer",
+      "same_mass_rule": "Actual masses are fixed before universal candidate variables and before every proof-side parameter instantiation"
+    },
+    "eliminations": [
+      {
+        "id": "E00",
+        "kind": "logical equivalence",
+        "from": "bad SelectBest output",
+        "to": "all five candidate values exceed r+delta_f+tau",
+        "machine_status": "human logical proof",
+        "initial_profile_consequence": "O02 and T01 then imply g=F(x_s_1,x_s_2)>=F(O)>r+delta_f+tau; the initial profile is not a SelectBest member"
+      },
+      {
+        "id": "E01",
+        "kind": "equivalent fixed-dimension affine vertex reduction",
+        "from": "full simplex universal affine clauses",
+        "to": "all m or n original pure vertices",
+        "does_not_do": "constant-size forgetting",
+        "machine_status": "human mathematical proof"
+      },
+      {
+        "id": "E02a",
+        "kind": "sound necessary instantiation",
+        "from": "full universal contracts",
+        "to": "named-strategy and proof-side candidate tests",
+        "reverse_implication": false,
+        "machine_status": "Ideal ledger reconstructs named-strategy bindings; fullBR bridge independently checks two full-BR attainer bindings and their parameter dependencies; universal instantiation is a trusted inference rule"
+      },
+      {
+        "id": "E02b",
+        "kind": "sound necessary forgetting",
+        "from": "one realized shared payoff function/table",
+        "to": "finite payoff variables preserving required identities and aliases",
+        "reverse_implication": false,
+        "machine_status": "Ideal provenance ledger type-checks same-game terms and checks every retained nonnegative combination; forgetting reverse implication is deliberately absent"
+      },
+      {
+        "id": "E03",
+        "kind": "strong-duality and nonnegative-slack consequences",
+        "from": "same actual optimal primal/dual",
+        "to": "conditional exact BR alignment, positive-failure mass bounds, joint stopping plane",
+        "does_not_do": "change exists/forall order or choose mass per candidate",
+        "machine_status": "global/ideal-cap-provenance-ledger.json independent replay:211 nodes,101 primitive instances,84 nonnegative combinations,4 positive aliases,14 selectors,6 mixing,2 instantiations",
+        "artifacts": [
+          "../global/ideal-cap-provenance-ledger.json",
+          "../global/replay_ideal_cap_provenance_ledger.py",
+          "../global/ideal-cap-provenance-ledger-replay.json"
+        ]
+      },
+      {
+        "id": "E04a",
+        "kind": "sound convexity/chord necessary projection",
+        "from": "actual regret family over a full-side segment or OM rectangle",
+        "to": "affine cap-family failure",
+        "reverse_implication": false,
+        "machine_status": "Full-side convexity is a mathematical rule; fullbr-rectangle-bridge.json independently checks 14 polynomial identities,6 nonnegative-combination templates,2 full-BR attainer bindings,2 joint-plane positive divisions for rectangle caps",
+        "artifacts": [
+          "fullbr-rectangle-bridge.json",
+          "replay_fullbr_rectangle_bridge.py",
+          "fullbr-rectangle-bridge-replay.json"
+        ],
+        "actual_gap_connector": {
+          "row": "lambda_payoff=R(y_s_1,y_s_2)-R(x_s_1,y_s_2); joint(x=x_s_1,y=y_s_2) gives rho*lambda_payoff>=G_s; rho>0 gives lambda_payoff>=lambda_0=G_s/rho",
+          "column": "mu_payoff=C(y_s_1,y_s_2)-C(y_s_1,x_s_2); joint(x=y_s_1,y=x_s_2) gives sigma*mu_payoff>=G_s; sigma>0 gives mu_payoff>=mu_0=G_s/sigma",
+          "cap_differences": [
+            "p*q*(lambda_payoff-lambda_0)",
+            "p*q*(mu_payoff-mu_0)"
+          ],
+          "actual_gaps_equated_to_lower_aliases": false,
+          "direction": "Larger necessary upper caps, not payoff equality"
+        }
+      },
+      {
+        "id": "E04b",
+        "kind": "equivalent one-dimensional elimination within chord model",
+        "from": "forall segment parameter max(two affine lines)>=r",
+        "to": "endpoint/intersection minimax predicate",
+        "does_not_do": "exact nonlinear-regret QE",
+        "machine_status": "Complete D/N/W crossing-guard identities and exact rational cases replayed; general piecewise-affine minimum theorem is a mathematical lemma"
+      },
+      {
+        "id": "E04c",
+        "kind": "sound generic signed-deficit linearization and automatic coordinate-edge instantiation",
+        "from": "O_tau whole rectangle failure plus shared first4 deficit planes",
+        "to": "4 piecewise-bilinear cells,12 coordinate-edge predicates, then safely forget 8 unused outer subedges to adopted4 internal arcs",
+        "removed_algorithm_parameters": [
+          "a",
+          "b"
+        ],
+        "forbidden_legacy_strengthening": "compact necessary-system section 6 SAME final-LP beta/z_eta reformulation is excluded",
+        "machine_status": "Independent replay of 131 exact symbolic identities, complete affine segment discharge schema, all4 old internal-arc caps, and existing outer-edge-only fixture",
+        "derived_cut_coefficients": [
+          "p_dagger=rho(1-eta)/(rho(1-eta)+sigma*eta)",
+          "q_dagger=sigma(1-xi)/(sigma(1-xi)+rho*xi)"
+        ],
+        "input_algorithm_coefficients": [],
+        "generic_cut_rule": "For A,B>=0 and aA+bB>=signed_l,a,b>0: min_coeff=min((1-x_s_2)/a,x_s_2/b); ratio equation yields x_s_2*=b/(a+b), including signed_l=0",
+        "artifacts": [
+          "parametric-optimalmix-compilation.json",
+          "replay_parametric_optimalmix.py",
+          "parametric-optimalmix-replay.json"
+        ],
+        "not_claimed": "No equivalence of cell-edge tests to full bilinear rectangle or official NC compiler; necessary forgetting only"
+      },
+      {
+        "id": "E05a",
+        "kind": "sound retained-nearBR plus-delta_f lift",
+        "from": "same joint stopping and four full-LP/OM failure properties",
+        "to": "ideal threshold-r necessary cap model",
+        "keeps_actual_variables": [
+          "alpha",
+          "gamma"
+        ],
+        "machine_status": "critical/delta_f-lift-ledger.json replay:34 nonnegative combinations,7 identities,23 factor atoms,2 guarded clips,4 source aliases; typed primitive-instantiation rules remain trusted",
+        "artifacts": [
+          "../critical/delta_f-lift-ledger.json",
+          "../critical/replay_delta_f_lift_ledger.py",
+          "../critical/delta_f-lift-ledger-replay.json"
+        ]
+      },
+      {
+        "id": "E05b",
+        "kind": "sound monotone necessary projection",
+        "from": "G_s/rho,G_s/sigma lower-alias cap model after actual-gap connector",
+        "to": "ideal threshold cap model with G_s=r",
+        "reverse_implication": false,
+        "machine_status": "Actual-gap to lower-alias connector is checked in fullBR bridge; subsequent G_s-to-r crossing-arc sign sub-obligations have exact Bernstein replay; projection direction remains necessary only"
+      },
+      {
+        "id": "E06a",
+        "kind": "equivalent affine source interval elimination at fixed outer point",
+        "from": "alpha/gamma source inequalities",
+        "to": "two exact closed mass intervals with zero-slope cases",
+        "machine_status": "scalar division implemented in exact checker; scope audit human"
+      },
+      {
+        "id": "E06b",
+        "kind": "sound separate bilinear corner enclosure",
+        "from": "exists common alpha,gamma with both envelopes nonnegative",
+        "to": "each envelope has nonnegative separate corner maximum",
+        "reverse_implication": false,
+        "joint_QE_complete": false,
+        "machine_status": "corner interpolation identity replayed; outward interval checker separately certified"
+      },
+      {
+        "id": "E06c",
+        "kind": "conditional dominance/projection in natural-bound route",
+        "from": "full necessary mass/chart system plus certified side conditions",
+        "to": "selected lower-dimensional critical face",
+        "reverse_implication": false,
+        "joint_QE_complete": false,
+        "machine_status": "refer to unified manifest per chart and stop event"
+      },
+      {
+        "id": "E07",
+        "kind": "threshold/open-closed proof interface",
+        "from": "bad execution implies closed necessary system",
+        "to": "scalar bound or exclusion for all r>r_star gives original F<=r_star+delta_f+tau",
+        "forbidden_claim": "closed Phi(r_star) infeasible if equality scalar witness exists",
+        "machine_status": "logical bridge human; scalar machine proof separately required",
+        "proof_threshold_choice": "If F(out)>r_star+delta_f+tau and r_star<1/3, choose rational r in (r_star,min(F(out)-delta_f-tau,1/3)); no assumption on actual output <=1/3"
+      }
+    ],
+    "exact_joint_mass_QE": {
+      "implemented_here": false,
+      "existing_math_route": "Manuscript Appendix E.2: shared-mass reduction and selected-envelope comparisons",
+      "status": "mathematical criterion only, no fully certified outer-parameter QE in this artifact"
+    },
+    "unmachineized_bridges": [
+      "StageI implementation refinement/runtime and standard LP/full-BR meta theorems are accepted primitive mathematical semantics, not recertified implementations",
+      "Typed universal-instantiation/attainment,affinity-convexity and nonnegative-combination inference rules are trusted; finite bindings and derived identities are checked",
+      "No complete original-game or entire-rectangle exact QE; all scalar projections preserve necessary conditions only",
+      "No realizability proof for the scalar equality point and no game-tightness claim"
+    ],
+    "tightness_scope": "Tightness of necessary arithmetic model is not tightness of a realizable game or actual algorithm",
+    "symbolic_replay": "quantified-identities-replay.json",
+    "optimalmix_transfer_audit": "Manuscript Section 4.2 and Appendices B and F",
+    "legacy_transfer_scope": {
+      "adopted_model": "second_dual_global/projected_second_dual_certificate.py evaluate: first4 actual duals and four knot arcs only",
+      "excluded": [
+        "optional SAME final-LP beta/z_eta strengthening, excluded from the manuscript proof",
+        "baseline_audit/six_lp_shared_certificate.py evaluate and repair_upper(mixr,mixc) generic fullside repair"
+      ],
+      "allowed_baseline_reuse": "Fraction I and pure interval/segment helper routines; not historical evaluate predicate"
+    },
+    "generic_parameter_linearization": {
+      "scope": "Convenient lightweight search-dimension reduction; latest user does not require official NC replication",
+      "compiler": "compile_parametric_optimalmix.py",
+      "proof_object": "parametric-optimalmix-compilation.json",
+      "independent_replayer": "replay_parametric_optimalmix.py",
+      "replay": "parametric-optimalmix-replay.json",
+      "old_outer_edge_only_backend_insufficient_fixture": "../critical/alignment-exact-fixture.json, independently checked including canonical player swap",
+      "tightness_scope": "The adopted final relaxation has its own natural bound; no claim that full generated12-edge extension or real OM is tight at the same value"
+    },
+    "core_arithmetic_derivation_objects": {
+      "ideal": {
+        "proof": "../global/ideal-cap-provenance-ledger.json",
+        "replay": "../global/ideal-cap-provenance-ledger-replay.json",
+        "nodes": 211,
+        "status": "independent replay passed"
+      },
+      "delta_f": {
+        "proof": "../critical/delta_f-lift-ledger.json",
+        "replay": "../critical/delta_f-lift-ledger-replay.json",
+        "nonnegative_combinations": 34,
+        "identities": 7,
+        "status": "independent replay passed"
+      },
+      "generic_parametric_cuts_edges": {
+        "proof": "parametric-optimalmix-compilation.json",
+        "replay": "parametric-optimalmix-replay.json",
+        "identities": 131,
+        "status": "independent replay passed"
+      },
+      "local_quantifier_interface": {
+        "replay": "quantified-identities-replay.json",
+        "checks": 14,
+        "exact_segment_fixtures": 1024,
+        "status": "passed"
+      },
+      "fullbr_rectangle_bridge": {
+        "proof": "fullbr-rectangle-bridge.json",
+        "checker": "replay_fullbr_rectangle_bridge.py",
+        "replay": "fullbr-rectangle-bridge-replay.json",
+        "identities": 14,
+        "nonnegative_combination_templates": 6,
+        "attainer_bindings": 2,
+        "positive_gap_divisions": 2,
+        "actual_gap_to_lambda_0_mu_0_caps_connected": true,
+        "status": "independent replay passed"
+      }
+    }
+  }
+}

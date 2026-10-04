@@ -1,0 +1,161 @@
+{
+  "ut": "-(rho - 1)*(2*rho**2*r**2 - rho**2 - rho*r**2 - rho*r + rho - 2*r**2)/(rho*(2*rho**2*r**2 - 3*rho**2*r + rho**2 - 5*rho*r**2 + 5*rho*r - rho + 4*r**2 - 2*r))",
+  "t1": "(2*rho**2*r**2 - 3*rho**2*r + rho**2 - 5*rho*r**2 + 5*rho*r - rho + 4*r**2 - 2*r)/((rho - 1)**2*(r - 1))",
+  "scope": "T >= 0 retained, kappa_1=0 side; individual numerator signs only",
+  "results": {
+    "small_negative_Kv_at_ut": {
+      "positive_denominator_to_justify": "rho*(2*rho**2*r**2 - 3*rho**2*r + rho**2 - 5*rho*r**2 + 5*rho*r - rho + 4*r**2 - 2*r)**2",
+      "degree": [
+        13,
+        7
+      ],
+      "count": 112,
+      "all_positive": true,
+      "minimum": "9624362388061702216780091386167549819001/244140625000000000000000000000000000000000000",
+      "negative_count": 0
+    },
+    "small_negative_Kvu_at_ut": {
+      "positive_denominator_to_justify": "-rho*(2*rho**2*r**2 - 3*rho**2*r + rho**2 - 5*rho*r**2 + 5*rho*r - rho + 4*r**2 - 2*r)",
+      "degree": [
+        9,
+        5
+      ],
+      "count": 60,
+      "all_positive": true,
+      "minimum": "1187578013156906956971921001/390625000000000000000000000000",
+      "negative_count": 0
+    },
+    "small_negative_Kvuu": {
+      "positive_denominator_to_justify": "1",
+      "degree": [
+        4,
+        2
+      ],
+      "count": 15,
+      "all_positive": true,
+      "minimum": "25693726976999/312500000000000",
+      "negative_count": 0
+    },
+    "small_negative_KBv_at_v0_ut": {
+      "positive_denominator_to_justify": "rho*(r - 1)*(2*rho**2*r**2 - 3*rho**2*r + rho**2 - 5*rho*r**2 + 5*rho*r - rho + 4*r**2 - 2*r)",
+      "degree": [
+        10,
+        5
+      ],
+      "count": 66,
+      "all_positive": true,
+      "minimum": "77830796155754899570534783405107491/39062500000000000000000000000000000000",
+      "negative_count": 0
+    },
+    "small_negative_KBvv_ut": {
+      "positive_denominator_to_justify": "-rho*(2*rho**2*r**2 - 3*rho**2*r + rho**2 - 5*rho*r**2 + 5*rho*r - rho + 4*r**2 - 2*r)",
+      "degree": [
+        8,
+        5
+      ],
+      "count": 54,
+      "all_positive": true,
+      "minimum": "1187578013156906956971921001/390625000000000000000000000000",
+      "negative_count": 0
+    },
+    "small_negative_KBv_at_v0_one": {
+      "positive_denominator_to_justify": "(rho - 1)*(r - 1)",
+      "degree": [
+        6,
+        3
+      ],
+      "count": 28,
+      "all_positive": true,
+      "minimum": "3047915698079751638533/125000000000000000000000",
+      "negative_count": 0
+    },
+    "small_negative_KBvv_one": {
+      "positive_denominator_to_justify": "1",
+      "degree": [
+        4,
+        2
+      ],
+      "count": 15,
+      "all_positive": true,
+      "minimum": "8578108226999/125000000000000",
+      "negative_count": 0
+    },
+    "large_negative_Kv_at_ut": {
+      "positive_denominator_to_justify": "rho*(2*rho**2*r**2 - 3*rho**2*r + rho**2 - 5*rho*r**2 + 5*rho*r - rho + 4*r**2 - 2*r)**2",
+      "degree": [
+        13,
+        7
+      ],
+      "count": 112,
+      "all_positive": true,
+      "minimum": "52020154837009052275176190782065686982684207401043917327/4272460937500000000000000000000000000000000000000000000000000",
+      "negative_count": 0
+    },
+    "large_negative_Kvu_at_ut": {
+      "positive_denominator_to_justify": "-rho*(2*rho**2*r**2 - 3*rho**2*r + rho**2 - 5*rho*r**2 + 5*rho*r - rho + 4*r**2 - 2*r)",
+      "degree": [
+        9,
+        5
+      ],
+      "count": 60,
+      "all_positive": true,
+      "minimum": "294978062078785830306413543005402507/97656250000000000000000000000000000000",
+      "negative_count": 0
+    },
+    "large_negative_Kvuu": {
+      "positive_denominator_to_justify": "1",
+      "degree": [
+        4,
+        2
+      ],
+      "count": 15,
+      "all_positive": true,
+      "minimum": "1218932997497008103503/15625000000000000000000",
+      "negative_count": 0
+    },
+    "large_negative_KBv_at_v0_ut": {
+      "positive_denominator_to_justify": "rho*(r - 1)*(2*rho**2*r**2 - 3*rho**2*r + rho**2 - 5*rho*r**2 + 5*rho*r - rho + 4*r**2 - 2*r)",
+      "degree": [
+        10,
+        5
+      ],
+      "count": 66,
+      "all_positive": true,
+      "minimum": "69970534922949396381399024163890368004064132186493/61035156250000000000000000000000000000000000000000000",
+      "negative_count": 0
+    },
+    "large_negative_KBvv_ut": {
+      "positive_denominator_to_justify": "-rho*(2*rho**2*r**2 - 3*rho**2*r + rho**2 - 5*rho*r**2 + 5*rho*r - rho + 4*r**2 - 2*r)",
+      "degree": [
+        8,
+        5
+      ],
+      "count": 54,
+      "all_positive": true,
+      "minimum": "5879404394472386718396130370625469561233007/2441406250000000000000000000000000000000000000",
+      "negative_count": 0
+    },
+    "large_negative_KBv_at_v0_one": {
+      "positive_denominator_to_justify": "(rho - 1)*(r - 1)",
+      "degree": [
+        6,
+        3
+      ],
+      "count": 28,
+      "all_positive": true,
+      "minimum": "255052482530577780038610009653500829/19531250000000000000000000000000000000",
+      "negative_count": 0
+    },
+    "large_negative_KBvv_one": {
+      "positive_denominator_to_justify": "1",
+      "degree": [
+        4,
+        2
+      ],
+      "count": 15,
+      "all_positive": true,
+      "minimum": "787124056100863965499/15625000000000000000000",
+      "negative_count": 0
+    }
+  }
+}

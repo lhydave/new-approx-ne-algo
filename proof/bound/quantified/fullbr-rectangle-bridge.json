@@ -1,0 +1,275 @@
+{
+  "schema_version": 1,
+  "scope": "Typed full-BR attainer instantiation converts generic signed deficit families to exact shared Jensen gaps; bilinear rectangle caps then follow by nonnegative combinations",
+  "source_registry": "quantified-registry.json",
+  "source_ideal_ledger": "../global/ideal-cap-provenance-ledger.json",
+  "actual_tuple_order": "The actual game and all four actual LP tuples/masses are fixed before free pMix,qMix; kMix/hMix are proof witnesses dependent only on the corresponding mixture",
+  "premises": [
+    {
+      "id": "full_column_attainment",
+      "clause": "K02",
+      "binding": {
+        "input": "xMix",
+        "witness": "kMix"
+      },
+      "equality": "UC_xMix=C_xMix_kMix"
+    },
+    {
+      "id": "full_row_attainment",
+      "clause": "K02",
+      "binding": {
+        "input": "yMix",
+        "witness": "hMix"
+      },
+      "equality": "UR_yMix=R_hMix_yMix"
+    },
+    {
+      "id": "same_game_affine_payoff",
+      "clause": "K01",
+      "binding": {
+        "game": "G",
+        "xMix": "(1-pMix)x_s_1+pMix*y_s_1",
+        "yMix": "(1-qMix)x_s_2+qMix*y_s_2"
+      }
+    },
+    {
+      "id": "column_signed_family",
+      "ledger_output": "generic_signed_Jensen_column_family",
+      "fact": "signed_C_family",
+      "binding": {
+        "k": "kMix"
+      },
+      "relation": "(1-pMix)(UC_x_s_1-C_s_kMix)+pMix(UC_y_s_1-C_w_kMix)-LC*kC>=0"
+    },
+    {
+      "id": "row_signed_family",
+      "ledger_output": "generic_signed_Jensen_row_family",
+      "fact": "signed_R_family",
+      "binding": {
+        "h": "hMix"
+      },
+      "relation": "(1-qMix)(UR_x_s_2-R_hMix_t)+qMix(UR_y_s_2-R_hMix_z)-LR*kR>=0"
+    },
+    {
+      "id": "front_equal_regret",
+      "clause": "T01",
+      "binding": {
+        "row": "x_s_1,x_s_2",
+        "column": "x_s_1,x_s_2"
+      },
+      "equalities": [
+        "R_x_s_1_x_s_2=UR_x_s_2-g",
+        "C_x_s_1_x_s_2=UC_x_s_1-g"
+      ]
+    },
+    {
+      "id": "front_losses",
+      "clauses": [
+        "T02",
+        "K02"
+      ],
+      "equalities": [
+        "R_y_s_1_x_s_2=UR_x_s_2-tau_1",
+        "C_x_s_1_y_s_2=UC_x_s_1-tau_2"
+      ],
+      "ideal_specialization": "tau_1=tau_2=0 for delta_f=0"
+    },
+    {
+      "id": "same_payoff_aliases",
+      "clause": "K01",
+      "equalities": [
+        "lambda_payoff=R_y_s_1_y_s_2-R_x_s_1_y_s_2",
+        "mu_payoff=C_y_s_1_y_s_2-C_y_s_1_x_s_2",
+        "row_normalization_gap=UR_y_s_2-R_x_s_1_y_s_2",
+        "column_normalization_gap=UC_y_s_1-C_y_s_1_x_s_2"
+      ]
+    },
+    {
+      "id": "row_actual_gap_from_joint",
+      "clauses": [
+        "T04",
+        "T05"
+      ],
+      "binding": {
+        "x": "x_s_1",
+        "y": "y_s_2"
+      },
+      "identity": "Psi(x_s_1,y_s_2)=rho*(R_y_s_1_y_s_2-R_x_s_1_y_s_2)=rho*lambda_payoff",
+      "lower_bound": "Psi(x_s_1,y_s_2)>=G_s",
+      "positive_denominator": "rho>0"
+    },
+    {
+      "id": "column_actual_gap_from_joint",
+      "clauses": [
+        "T04",
+        "T05"
+      ],
+      "binding": {
+        "x": "y_s_1",
+        "y": "x_s_2"
+      },
+      "identity": "Psi(y_s_1,x_s_2)=sigma*(C_y_s_1_y_s_2-C_y_s_1_x_s_2)=sigma*mu_payoff",
+      "lower_bound": "Psi(y_s_1,x_s_2)>=G_s",
+      "positive_denominator": "sigma>0"
+    }
+  ],
+  "derivations": [
+    {
+      "id": "exact_Jensen_C",
+      "source": "column_signed_family",
+      "binding": "k=kMix",
+      "equality": "JCgap=(1-pMix)UC_x_s_1+pMix*UC_y_s_1-UC_xMix=(1-pMix)(UC_x_s_1-C_s_kMix)+pMix(UC_y_s_1-C_w_kMix)",
+      "output": "JCgap>=LC*kC",
+      "multipliers": [
+        1
+      ]
+    },
+    {
+      "id": "exact_Jensen_R",
+      "source": "row_signed_family",
+      "binding": "h=hMix",
+      "equality": "JRgap=(1-qMix)UR_x_s_2+qMix*UR_y_s_2-UR_yMix=(1-qMix)(UR_x_s_2-R_hMix_t)+qMix(UR_y_s_2-R_hMix_z)",
+      "output": "JRgap>=LR*kR",
+      "multipliers": [
+        1
+      ]
+    },
+    {
+      "id": "actual_rectangle_row_regret",
+      "identity": "f_R(xMix,yMix)=(1-pMix)(1-qMix)g+qMix*(row_normalization_gap-pMix*lambda_payoff)+pMix*(1-qMix)*tau_1-JRgap"
+    },
+    {
+      "id": "actual_rectangle_column_regret",
+      "identity": "f_C(xMix,yMix)=(1-pMix)(1-qMix)g+pMix*(column_normalization_gap-qMix*mu_payoff)+(1-pMix)*qMix*tau_2-JCgap"
+    },
+    {
+      "id": "row_normalization_defect",
+      "clause": "K01+K02",
+      "identity": "1-row_normalization_gap=(1-UR_y_s_2)+R_x_s_1_y_s_2",
+      "nonnegative_sources": [
+        "1-UR_y_s_2>=0",
+        "R_x_s_1_y_s_2>=0"
+      ],
+      "multipliers": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "column_normalization_defect",
+      "clause": "K01+K02",
+      "identity": "1-column_normalization_gap=(1-UC_y_s_1)+C_y_s_1_x_s_2",
+      "nonnegative_sources": [
+        "1-UC_y_s_1>=0",
+        "C_y_s_1_x_s_2>=0"
+      ],
+      "multipliers": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "row_cap_dominates_actual",
+      "identity": "raw_row_cap-f_R=qMix*(1-row_normalization_gap)+(JRgap-LR*kR)",
+      "nonnegative_sources": [
+        "row_normalization_defect",
+        "exact_Jensen_R"
+      ],
+      "multipliers": [
+        "qMix",
+        1
+      ]
+    },
+    {
+      "id": "column_cap_dominates_actual",
+      "identity": "raw_column_cap-f_C=pMix*(1-column_normalization_gap)+(JCgap-LC*kC)",
+      "nonnegative_sources": [
+        "column_normalization_defect",
+        "exact_Jensen_C"
+      ],
+      "multipliers": [
+        "pMix",
+        1
+      ]
+    },
+    {
+      "id": "row_gap_positive_division",
+      "identity": "lambda_payoff-G_s/rho=(rho*lambda_payoff-G_s)/rho",
+      "source": "row_actual_gap_from_joint",
+      "multiplier": "1/rho",
+      "sign": "rho>0"
+    },
+    {
+      "id": "column_gap_positive_division",
+      "identity": "mu_payoff-G_s/sigma=(sigma*mu_payoff-G_s)/sigma",
+      "source": "column_actual_gap_from_joint",
+      "multiplier": "1/sigma",
+      "sign": "sigma>0"
+    },
+    {
+      "id": "row_actual_gap_to_lambda_0_cap",
+      "identity": "raw_row_cap(lambda_0)-raw_row_cap(lambda_payoff)=pMix*qMix*(lambda_payoff-lambda_0)",
+      "alias": "lambda_0=G_s/rho",
+      "nonnegative_sources": [
+        "row_gap_positive_division"
+      ],
+      "multipliers": [
+        "pMix*qMix"
+      ]
+    },
+    {
+      "id": "column_actual_gap_to_mu_0_cap",
+      "identity": "raw_column_cap(mu_0)-raw_column_cap(mu_payoff)=pMix*qMix*(mu_payoff-mu_0)",
+      "alias": "mu_0=G_s/sigma",
+      "nonnegative_sources": [
+        "column_gap_positive_division"
+      ],
+      "multipliers": [
+        "pMix*qMix"
+      ]
+    },
+    {
+      "id": "final_row_alias_cap",
+      "identity": "raw_row_cap(lambda_0)-f_R=qMix*(1-row_normalization_gap)+(JRgap-LR*kR)+pMix*qMix*(lambda_payoff-lambda_0)",
+      "nonnegative_sources": [
+        "row_cap_dominates_actual",
+        "row_actual_gap_to_lambda_0_cap"
+      ],
+      "multipliers": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "final_column_alias_cap",
+      "identity": "raw_column_cap(mu_0)-f_C=pMix*(1-column_normalization_gap)+(JCgap-LC*kC)+pMix*qMix*(mu_payoff-mu_0)",
+      "nonnegative_sources": [
+        "column_cap_dominates_actual",
+        "column_actual_gap_to_mu_0_cap"
+      ],
+      "multipliers": [
+        1,
+        1
+      ]
+    }
+  ],
+  "raw_caps": {
+    "row": "(1-pMix)(1-qMix)g+qMix*(1-pMix*lambda_payoff)+pMix*(1-qMix)*tau_1-LR*kR",
+    "column": "(1-pMix)(1-qMix)g+pMix*(1-qMix*mu_payoff)+(1-pMix)*qMix*tau_2-LC*kC"
+  },
+  "signed_intercepts": "No LC/LR sign assumption; cone coefficient minimum is formed before multiplying signed intercept",
+  "delta_f_connection": "critical/delta_f-lift-ledger.json replaces g by G_s+delta_f and bounds the two loss terms by the same single delta_f family budget",
+  "trusted_rules": [
+    "typed universal instantiation",
+    "K02 full-BR witness attainment",
+    "K01 bilinear payoff convention",
+    "nonnegative-combination arithmetic inference"
+  ],
+  "not_claimed": [
+    "new runtime BR query",
+    "official compiler execution",
+    "entire rectangle exact QE",
+    "game realization of scalar equality"
+  ],
+  "actual_gap_alias_connector": "Actual payoff gaps lambda_payoff,mu_payoff are not silently identified with lambda_0=G_s/rho,mu_0=G_s/sigma. The same joint-plane instances prove the two gap lower bounds, and the cap increases by nonnegative pMix*qMix times their slack."
+}
