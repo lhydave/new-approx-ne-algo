@@ -639,12 +639,14 @@ arbitrarily. Moreover, the same dual solution satisfies
  \label{eq:stationary}
 \end{equation}
 We regard this procedure as the $\spoint$ building block of
-LegoNE~\cite{legone2026}, with four strategy outputs:
+LegoNE~\cite{legone2026}, with accuracy input $\delta_f$ and four
+strategy outputs:
 \[
- (x_s^1,x_s^2,y_s^1,y_s^2)=\spoint().
+ (x_s^1,x_s^2,y_s^1,y_s^2)=\spoint(\delta_f).
 \]
-For a fixed bimatrix game, this block has no strategy inputs and
-computes the four strategies in time polynomial in the input encoding
+For a fixed bimatrix game, this block has no strategy input;
+$\delta_f$ is its only explicit input. It computes the four
+strategies in time polynomial in the input encoding
 length and $1/\delta_f$~\cite{ts2008,dfm2023}.
 
 We call $\boldsymbol x_s$ the stationary profile below, meaning the
@@ -737,9 +739,10 @@ The optimization problem is
 \]
 
 For a fixed accuracy parameter $\tau>0$, $\om$ returns a profile whose
-maximum regret is at most $\tau$ above this minimum. Its two strategy outputs are
+maximum regret is at most $\tau$ above this minimum. We separate the
+four strategy inputs from the accuracy input by a semicolon:
 \[
- (x_o^1,x_o^2)=\om(x_s^1,y_s^1,x_s^2,y_s^2).
+ (x_o^1,x_o^2)=\om(x_s^1,y_s^1,x_s^2,y_s^2;\tau).
 \]
 Formally, the profile $\boldsymbol{x}_o=(x_o^1,x_o^2)$ satisfies
 \begin{equation}
@@ -761,6 +764,10 @@ player; namely,
 For rational input
 and rational $\tau>0$, $\om$ can be computed in time polynomial
 in the input encoding length and $1/\tau$~\cite{mixing2025}.
+When the accuracies are fixed and clear from context, we omit them
+from the notation and write $\spoint()$ and
+$\om(x_s^1,y_s^1,x_s^2,y_s^2)$. We display them explicitly in
+Algorithm~\ref{alg:main}, where their values are inputs.
 
 To analyze this operation in LegoNE, its optimality comparisons must
 be combined with relations between the payoffs and regrets of mixed
@@ -1020,7 +1027,8 @@ In $x_j^i,y_j^i$, the subscript $j\in[2]$ indicates the round and
 the superscript $i\in[2]$ identifies the player who uses the strategy.
 
 Algorithm~\ref{alg:main} makes one $\spoint$ call, four $\sm$ calls,
-and one $\om$ call. Its running time is therefore polynomial
+and one $\om$ call. The algorithm displays the two accuracy inputs
+at the calls that use them. Its running time is therefore polynomial
 in the input encoding length, $1/\delta_f$, and $1/\tau$.
 
 \begin{algorithm}[htbp]
@@ -1028,12 +1036,12 @@ in the input encoding length, $1/\delta_f$, and $1/\tau$.
 \label{alg:main}
 \begin{algorithmic}[1]
  \Require A bimatrix game with rational payoffs and rational $\delta_f,\tau>0$.
- \State $(x_s^1,x_s^2,y_s^1,y_s^2)=\spoint()$
+ \State $(x_s^1,x_s^2,y_s^1,y_s^2)=\spoint(\delta_f)$
  \State $(x_1^2,y_1^1)=\sm(y_s^1)$
  \State $(x_1^1,y_1^2)=\sm(y_s^2)$
  \State $(x_2^2,y_2^1)=\sm(y_1^1)$
  \State $(x_2^1,y_2^2)=\sm(y_1^2)$
- \State $(x_o^1,x_o^2)=\om(x_s^1,y_s^1,x_s^2,y_s^2)$
+ \State $(x_o^1,x_o^2)=\om(x_s^1,y_s^1,x_s^2,y_s^2;\tau)$
  \State $\mathcal S=\{(y_s^1,x_1^2),\ (x_1^1,y_s^2),\
                    (y_1^1,x_2^2),\ (x_2^1,y_1^2),\ (x_o^1,x_o^2)\}$
  \State \Return $\boldsymbol{x}_{\mathrm{out}}\in
@@ -1129,7 +1137,7 @@ in the input encoding length, $1/\delta_f$, and $1/\tau$.
  \end{scope}
  % StationaryPoint produces the four original strategies.
  \draw[stem,draw=dagstation] (.35,0) --
-   node[op,above=5pt,pos=.35,text=dagstation] {$\spoint()$} (2.05,0);
+   node[op,above=5pt,pos=.35,text=dagstation] {$\spoint$} (2.05,0);
  \draw[edge,draw=dagstation] (2.05,0)
    .. controls (2.4,0) and (2.7,1.8) .. (ys1.west);
  \draw[edge,draw=dagstation] (2.05,0)
@@ -1198,7 +1206,9 @@ in the input encoding length, $1/\delta_f$, and $1/\tau$.
      }\quad with minimal $f$};
 \end{tikzpicture}
 \caption{Construction of the candidate profiles. Vertices represent
-strategies, and labelled edges indicate building-block calls.
+strategies, and labelled edges indicate building-block calls;
+the labels show operation names, while Algorithm~\ref{alg:main}
+shows their accuracy inputs.
 $\spoint$ has no strategy input and produces four strategies.
 Each purple dashed frame pairs the two players' strategies in one
 candidate profile. The output minimizes
@@ -1211,38 +1221,51 @@ The strategies $y_2^1,y_2^2$ are used only in the analysis.}
 \section{Approximation analysis}
 \label{sec:analysis}
 
-We prove the guarantee of Algorithm~\ref{alg:main} by refuting a
-hypothetical execution in which all candidates have large regret.
-After recalling the encodings, we use the LegoNE operations of
-instantiation and forgetting~\cite{computeraided2026,legone2026} to obtain a small necessary arithmetic
-system. We explain how exploration of this system identifies the
-bound, then prove global infeasibility above it and transfer the
-conclusion to the approximate building blocks. The main text gives
-the strategy comparisons and reductions that guide the proof;
-Appendices~\ref{app:instantiation}--\ref{app:errors} give the complete
-arithmetic details and identify the corresponding checker paths where
-machine verification is used.
+We first consider the formal zero-error versions of the two
+operations' output properties, written $\delta_f=\tau=0$, and prove
+their guarantee by contradiction. The implemented calls use positive
+accuracy inputs. Suppose the selected output has
+regret above a proposed threshold $r$. Because it selects the best
+of five candidates, all five must then exceed $r$. We will show
+that this cannot happen when $r$ is above the claimed bound.
 
-\subsection{Properties of the algorithm}
+The argument proceeds from the game to arithmetic. The properties
+of the algorithm's calls first impose restrictions on any such bad
+output. We combine and simplify those restrictions until they are
+a finite list of inequalities in a few numbers, rather than in the
+game's strategies and payoffs. Numerical exploration suggests the
+threshold where these inequalities become critical; an exact
+calculation defines that threshold, and a global argument shows
+that the inequalities cannot hold above it. Finally, we account
+for the errors $\delta_f$ and $\tau$ in the actual calls. The main
+text explains these transitions; Appendices~\ref{app:instantiation}--\ref{app:errors}
+give the detailed calculations and exact-checker paths.
+
+\subsection{Properties needed for the contradiction}
 \label{sec:properties}
 
-We briefly recall the form of the building-block encodings from
-Section~\ref{sec:algorithm}, following the stationary-point
-properties in~\cite{ts2008,tightness2023} and the mixing operations
-in~\cite{automating2025,mixing2025}. Their universal strategy variables can
-be instantiated with strategies constructed anywhere in the algorithm;
-each call's dual solution stays fixed across these comparisons.
+This subsection gathers the comparisons used later in the proof.
+$\spoint$ relates the two players' payoffs at its output; each
+$\sm$ call chooses an opponent strategy and compares the result
+with other choices; and $\om$ compares its output with profiles formed by
+mixing the stationary and best-response strategies. We state the
+precise inequalities below and explain what each will contribute.
+They follow from the stationary-point results~\cite{ts2008,tightness2023}
+and the mixing operations~\cite{automating2025,mixing2025}.
 
-\paragraph{\texorpdfstring{$\spoint$ encoding}{StationaryPoint encoding}.}
-The output consists of a stationary profile $\boldsymbol{x}_s$ and
-two dual strategies $\boldsymbol{y}_s$. The descent procedure
-equalizes the two players' regrets. We denote their common regret by
+\paragraph{\texorpdfstring{$\spoint$}{StationaryPoint}: one comparison for both players.}
+The operation returns a stationary profile $\boldsymbol{x}_s$ and
+one auxiliary strategy for each player; write the pair as
+$\boldsymbol{y}_s=(y_s^1,y_s^2)$. It makes the two players' regrets at
+$\boldsymbol{x}_s$ equal; call their common value $g$:
 \begin{equation}
  g=f_1(\boldsymbol{x}_s)=f_2(\boldsymbol{x}_s)=f(\boldsymbol{x}_s).
  \label{eq:properties-g}
 \end{equation}
-Approximate stationarity gives a joint comparison for both players,
-using one dual weight fixed before the comparison strategies are chosen:
+The operation also returns a number $\rho\in[0,1]$ that weighs the
+row player's part of a payoff comparison; $1-\rho$ weighs the
+column player's part. The same $\rho$ and $\boldsymbol y_s$ work
+against every pair of comparison strategies:
 \begin{equation}
  \exists\rho\in[0,1],
  \forall x^{1\prime}\in\Delta_{n_1},
@@ -1251,39 +1274,39 @@ using one dual weight fixed before the comparison strategies are chosen:
  T(\boldsymbol{x}_s,(x^{1\prime},x^{2\prime}),\rho,\boldsymbol{y}_s).
  \label{eq:properties-stationary}
 \end{equation}
-Here $T$ is the weighted payoff expression in~\eqref{eq:stationary-T}. The same dual solution supplies
-approximate best-response comparisons. For the row player,
+Here $T$ is the payoff expression in~\eqref{eq:stationary-T}.
+The returned strategies also nearly maximize each player's payoff
+against the other player's stationary strategy. For the row player,
 \begin{equation}
  \forall x^{1\prime}\in\Delta_{n_1},\quad
  \rho>0\quad\Longrightarrow\quad
  u_1(x^{1\prime},x_s^2)\le u_1(y_s^1,x_s^2)+\delta_f.
  \label{eq:properties-stationary-br}
 \end{equation}
-The column-player property is symmetric. These inequalities can
-therefore be instantiated at additional comparison strategies.
+The column-player property is symmetric. Later we will choose
+comparison strategies produced by both $\sm$ rounds. The same
+$\rho$ and $\boldsymbol y_s$ must satisfy every resulting inequality.
 
-\paragraph{\texorpdfstring{$\sm$ encoding}{SimpleMixing encoding}.}
-We recall primal optimality, LP duality, and complementary slackness
-for a representative call~\cite{automating2025}; the general LP
-optimality conditions are described in~\cite{boyd2004}.
-For a row input
-$x^1$, the primal output $x^2$ minimizes the maximum regret and
-$y^1$ is the associated dual strategy. The call is written as
+\paragraph{\texorpdfstring{$\sm$}{SimpleMixing}: comparing a fixed-side choice with alternatives.}
+For a fixed row strategy $x^1$, the operation chooses the column
+strategy $x^2$ that minimizes the two players' maximum regret. Its
+linear program also returns a row strategy $y^1$ derived from the
+constraints that certify this choice. Write the outputs as
 \[
  (x^2,y^1)=\sm(x^1).
 \]
-Primal optimality means that changing the column strategy alone
+The chosen $x^2$ minimizes maximum regret with $x^1$ fixed, so changing the column strategy alone
 cannot reduce the candidate's maximum regret:
 \begin{equation}
  \forall x^{2\prime}\in\Delta_{n_2},\quad
  f(x^1,x^2)\le f(x^1,x^{2\prime}).
  \label{eq:properties-primal}
 \end{equation}
-Let $\omega$ be the total dual weight on the row-deviation
-constraints of this call, as in Section~\ref{sec:simplemixing}.
-It is distinct from the stationary LP's weight $\rho$.
-LP duality certifies this optimality through a comparison with a
-weighted combination of row payoff gain and column regret:
+The same LP assigns a number $\omega\in[0,1]$ to the row
+player's possible payoff gain and $1-\omega$ to the column player's
+regret, as explained in Section~\ref{sec:simplemixing}. Unlike
+$\rho$, this $\omega$ belongs to the particular $\sm$ call. It
+gives a second comparison that holds for every column strategy:
 \begin{equation}
  \exists\omega\in[0,1],\forall x^{2\prime}\in\Delta_{n_2},\quad
  f(x^1,x^2)\le
@@ -1291,18 +1314,19 @@ weighted combination of row payoff gain and column regret:
  +(1-\omega)f_2(x^1,x^{2\prime}).
  \label{eq:properties-dual}
 \end{equation}
-This relates one candidate's regret to a row payoff gain and a
-column regret at any comparison strategy, using the same dual
-strategy and weight throughout. At the primal output, strong duality
-makes the comparison tight:
+The same $y^1$ and $\omega$ work for every $x^{2\prime}$ in this
+inequality. This is what lets us compare the output of one call
+with strategies from another. At the chosen $x^2$, the inequality
+is an equality:
 \begin{equation}
  f(x^1,x^2)=
  \omega\bigl[u_1(y^1,x^2)-u_1(x^1,x^2)\bigr]
  +(1-\omega)f_2(x^1,x^2).
  \label{eq:properties-strong-duality}
 \end{equation}
-Complementary slackness means that each regret with positive dual
-weight equals the optimal maximum regret:
+If a player's regret has positive total weight, that player's regret
+equals the candidate's maximum regret. The LP's complementary-slackness
+conditions state this as
 \begin{equation}
  \begin{aligned}
   \omega\bigl[f(x^1,x^2)-f_1(x^1,x^2)\bigr]&=0,\\
@@ -1311,7 +1335,7 @@ weight equals the optimal maximum regret:
  \label{eq:properties-cs}
 \end{equation}
 It also makes every positively weighted row-deviation constraint
-tight. Consequently, when $\omega>0$, the dual strategy is a best
+tight. Consequently, when $\omega>0$, the returned $y^1$ is a best
 response to $x^2$:
 \begin{equation}
  \forall x^{1\prime}\in\Delta_{n_1},\quad
@@ -1319,15 +1343,18 @@ response to $x^2$:
  u_1(x^{1\prime},x^2)\le u_1(y^1,x^2).
  \label{eq:properties-sm-br}
 \end{equation}
-These properties use the same dual solution; the properties of
-$\sm(x^2)$ are symmetric. We use this encoding for all four calls in
-Algorithm~\ref{alg:main}.
+These are properties of the same LP solution~\cite{automating2025,boyd2004};
+the properties of $\sm(x^2)$ are symmetric. We apply them to all
+four calls in Algorithm~\ref{alg:main}. The first round's $y$
+strategies become the second round's inputs, so the comparisons
+from the two rounds constrain some of the same payoffs.
 
-\paragraph{\texorpdfstring{$\om$ encoding}{OptimalMixing encoding}.}
-Recall the mixed profile $\boldsymbol{x}(p,q)$ from
-Section~\ref{sec:optimalmixing}. The output mixes each player's
-stationary and dual strategies, with a separate coefficient for
-each player:
+\paragraph{\texorpdfstring{$\om$}{OptimalMixing}: comparing all pairs of mixtures.}
+As defined in Section~\ref{sec:optimalmixing},
+$\boldsymbol{x}(p,q)$ uses probability $p$ to mix the row player's
+two given strategies and probability $q$ for the column player's
+two. The two probabilities vary independently over $[0,1]$. The
+output is one such profile:
 \[
  \exists p_o,q_o\in[0,1],\quad
  \boldsymbol{x}_o=\boldsymbol{x}(p_o,q_o).
@@ -1340,44 +1367,17 @@ mixed profile:
  f(\boldsymbol{x}_o)\le f(\boldsymbol{x}(p,q))+\tau.
  \label{eq:om}
 \end{equation}
-To use this comparison, we also need the mixing relations from
-Section~\ref{sec:optimalmixing}. We recall the row-player properties;
-the column-player properties are symmetric. The row best-response
-payoff is
-\[
- \forall x^2\in\Delta_{n_2},\quad
- B_1(x^2)=\max_{x^{1\prime}\in\Delta_{n_1}}u_1(x^{1\prime},x^2).
-\]
-Its convexity gives a nonnegative Jensen gap~\cite{boyd2004}. Since $B_1$ is a
-maximum over row strategies, the Jensen gap is also the minimum of the
-weighted regrets at the two endpoints:
-\[
- \begin{aligned}
-  \forall q\in[0,1],\quad
-  J_1(q)={}&(1-q)B_1(x_s^2)+qB_1(y_s^2)-B_1(x^2(q))\\
-  ={}&\min_{x^{1\prime}\in\Delta_{n_1}}\bigl\{
-     (1-q)[B_1(x_s^2)-u_1(x^{1\prime},x_s^2)]\\
-   &\qquad+q[B_1(y_s^2)-u_1(x^{1\prime},y_s^2)]\bigr\}\ge0.
- \end{aligned}
-\]
-The same comparison strategy occurs in both regrets. Shared dual
-constraints that bound their weighted sum for every strategy
-therefore give a lower bound on $J_1(q)$.
-
-Payoff linearity expresses regret as the interpolation of endpoint
-regrets minus this Jensen gap:
-\[
- \begin{aligned}
-  \forall p,q\in[0,1],\quad
-  f_1(\boldsymbol{x}(p,q))={}&
-    (1-p)(1-q)g+p(1-q)f_1(y_s^1,x_s^2)\\
-   &+(1-p)qf_1(x_s^1,y_s^2)
-    +pqf_1(\boldsymbol{y}_s)-J_1(q).
- \end{aligned}
-\]
-A positive lower bound on the Jensen gap thus strengthens the regret bound
-at mixed profiles, including interior points. The operation also
-compares with the four endpoint profiles without an additive error:
+To bound regret at these mixtures, we use two identities from
+Section~\ref{sec:optimalmixing}. Equation~\eqref{eq:mixing-regrets}
+starts with the four unmixed profiles and interpolates their regrets.
+It then subtracts a nonnegative correction, called the Jensen gap.
+The correction arises because a best response to a mixture must
+use one strategy against both endpoint opponents, whereas the
+endpoints may have different best responses. Equation~\eqref{eq:mixing-gap-losses}
+expresses the correction as a minimum over that one response
+strategy. Later comparisons will bound it from below. The
+operation also compares with the four unmixed profiles without
+an additive error:
 \[
  \forall p,q\in\{0,1\},\quad
  f(\boldsymbol{x}_o)\le f(\boldsymbol{x}(p,q)).
@@ -1398,70 +1398,43 @@ regret. With $\mathcal S$ as in Algorithm~\ref{alg:main}, this gives
  f(\boldsymbol{x}_{\mathrm{out}})\le f(\boldsymbol{z}).
  \label{eq:properties-selection}
 \end{equation}
-Thus a regret bound for any one candidate suffices. The following
-subsections explain how these encodings give a finite necessary
-system; the accompanying materials\codefootref record the full
-logical description.
+Thus a regret bound for any one candidate suffices. We now assume
+all five candidates exceed a proposed threshold and combine these
+comparisons to rule out that possibility; the accompanying
+materials\codefootref record the full logical description.
 
-\subsection{Refuting a failed execution}
+\subsection{From a failed output to inequalities it must satisfy}
 \label{sec:reduction}
 
-We now use these properties to prove a regret bound for every normalized
-bimatrix game, of arbitrary size, and every execution of
-Algorithm~\ref{alg:main}. As in Section~\ref{sec:legone-instantiation},
-this is a universally quantified implication from the encoding.
-Fix the accuracy parameters and a proposed bound $r$. Let $\mathcal I$
-range over the game data and assignments to the program's strategy
-variables. Write $\mathcal P(\mathcal I)$ for the conjunction of the
-inherent formulas and building-block properties, and
-$\mathcal Q_r(\mathcal I)$ for the conclusion
-$f(\boldsymbol x_{\mathrm{out}})\le r$ in that assignment.
-Every actual execution gives an assignment satisfying $\mathcal P$.
-It therefore suffices to prove
-\[
- \forall\mathcal I,\quad
- \mathcal P(\mathcal I)\Rightarrow\mathcal Q_r(\mathcal I).
-\]
-We ask whether any assignment can satisfy the encoding and violate
-the proposed bound. The universally quantified
-implication is equivalent to
-\[
- \neg\exists\mathcal I,\quad
- \mathcal P(\mathcal I)\land\neg\mathcal Q_r(\mathcal I).
-\]
-Thus we fix a hypothetical assignment satisfying $\mathcal P$
-whose output has regret greater than $r$, and seek a contradiction.
-Fixing this assignment suppresses only the outer quantification
-over games and program variables. The comparison-strategy quantifiers
-inside $\mathcal P$ remain; any existentially supplied dual solution
-is chosen once and shared across its comparisons. We use these
-quantified properties to derive finite necessary arithmetic
-conditions through instantiation and forgetting.
+Fix $0<r\le1/3$ and any normalized bimatrix game. In the
+zero-error analysis, suppose for contradiction that the selected
+output has regret greater than $r$:
+\begin{equation}
+ f(\boldsymbol x_{\mathrm{out}})>r.
+ \label{eq:failure-hypothesis}
+\end{equation}
+We derive inequalities that any such run must satisfy. We then
+eliminate the strategies and payoff values, leaving conditions on
+a few real numbers. If these conditions have no solution, the
+assumed failure is impossible.
 
-LegoNE converts a finite arithmetic encoding into an optimization
-or quantifier-elimination problem~\cite{computeraided2026,legone2026};
-algorithms for real quantifier elimination are treated
-in~\cite{basu2006}.
-For our algorithm, a direct application would produce many payoff
-and regret variables coupled nonlinearly to several dual weights,
-making exact solution too expensive.
-
-We reduce this cost by interleaving instantiation, forgetting, and
-mathematical deductions. Each round simplifies selected comparisons;
-the resulting bounds guide the next instantiations and variable
-eliminations. The machine checks the smaller arithmetic obligations
-left by this process.
-
-We first apply this refutation argument to the zero-error encoding.
-For this ideal analysis, $\mathcal P$ denotes the encoding with the
-parameters in Section~\ref{sec:properties} set to
+We obtain these conditions by applying one call's inequality to
+strategies produced by another call, then keeping only the
+consequences needed later. This is the instantiation-and-forgetting
+step of LegoNE~\cite{computeraided2026,legone2026}. For each call,
+its returned strategies and comparison coefficients stay fixed
+while the strategies being compared vary. The resulting inequalities
+may also admit numbers that do not describe any game; ruling out
+this larger set still rules out every actual failure. Throughout
+this reduction we use the zero-error versions of their comparison
+properties:
 \begin{equation}
  \delta_f=\tau=0.
  \label{eq:ideal-parameters}
 \end{equation}
 Section~\ref{sec:accuracy-transfer} restores the approximation errors.
-We now fix one game and one hypothetical assignment satisfying this
-ideal encoding, and choose one optimal dual solution for each LP.
+For the fixed game, fix one optimal solution of each LP, including
+the strategies and comparison coefficients it returns.
 Denote the four $\sm$ candidates and their regrets by
 \begin{equation}
  \begin{gathered}
@@ -1478,8 +1451,9 @@ player whose input is fixed, and the subscript identifies the round.
 This differs from the superscript on a single strategy $x_j^i$ or
 $y_j^i$, which identifies the player using that strategy.
 
-The dual weight $\omega$ from Section~\ref{sec:simplemixing}
-is denoted by a different letter for each of the four $\sm$ calls:
+Each $\sm$ call supplies a coefficient $\omega$ that balances the
+two players' regret terms in~\eqref{eq:properties-dual}. We give
+the four calls' coefficients different names:
 \begin{equation}
  \begin{aligned}
  \sm(y_s^1)&:\quad\omega=\eta,&\sm(y_s^2)&:\quad\omega=\xi,\\
@@ -1488,50 +1462,52 @@ is denoted by a different letter for each of the four $\sm$ calls:
  \label{eq:call-weight-definitions}
 \end{equation}
 
-Assume that the selected output has maximum regret greater than
-$r$, where
-\begin{equation}
- 0<r\le1/3,\qquad f(\boldsymbol x_{\mathrm{out}})>r.
- \label{eq:failure-hypothesis}
-\end{equation}
-Output selection~\eqref{eq:properties-selection}, the mixing
-comparison~\eqref{eq:om}, and~\eqref{eq:properties-om-g} then give
+The algorithm chooses the least-regret candidate. Therefore its
+failure means that all four fixed-side candidates are bad; the
+stationary regret $g$ also exceeds $r$, and every allowable mixture
+by $\om$ must exceed $r$. Formally,
 \begin{equation}
  \forall i,j\in[2],\ F_j^i>r,\qquad
  g\ge f(\boldsymbol x_o)>r,\qquad
  \forall p,q\in[0,1],\ f(\boldsymbol x(p,q))>r.
  \label{eq:failure-candidates}
 \end{equation}
-Here $g=f(\boldsymbol x_s)$ and $\boldsymbol x(p,q)$ is the
-stationary/dual mixture defined in Section~\ref{sec:optimalmixing}.
-The last condition is particularly useful: failure excludes every
-profile in the mixing rectangle, including mixtures chosen during
-the proof. Restricting $r$ to $1/3$ loses no counterexample to a
+Here $g=f(\boldsymbol x_s)$ and $\boldsymbol x(p,q)$ mixes the
+stationary strategies with the auxiliary strategies returned by
+$\spoint$, as defined in Section~\ref{sec:optimalmixing}.
+The last condition lets us choose the mixing probabilities $p,q$
+later to test the supposed failure. Restricting $r$ to $1/3$ loses no counterexample to a
 smaller bound, since any output above $1/3$ also exceeds a threshold
 strictly below $1/3$.
 
-Before using a dual strategy as a best response, we must check
-that its deviation constraints have positive total dual weight.
-Otherwise the best-response conclusions in
-\eqref{eq:properties-stationary-br} and~\eqref{eq:properties-sm-br}
-need not apply. The next lemma obtains positivity from the assumption
-that every selected candidate exceeds $r$ in~\eqref{eq:failure-candidates}.
-It also allows complementary slackness~\eqref{eq:properties-cs} to
-identify both regrets at each $\sm$ output.
+We now simplify what a failed run would require. First we show
+that the comparison coefficients lie strictly between zero and one;
+this makes the returned auxiliary strategies best responses. Next
+we bound the payoffs used in later comparisons, combine the two
+$\sm$ rounds, and test selected mixtures. Finally we remove the
+stationary regret $g$ from the conditions. The remaining five
+numbers are $\rho,\eta,\xi,\alpha,\gamma$.
 
-\begin{lemma}[Positive dual weights]
+First we need positive coefficients; otherwise the best-response
+conclusions in~\eqref{eq:properties-stationary-br}
+and~\eqref{eq:properties-sm-br} need not apply. The next lemma
+derives positivity from~\eqref{eq:failure-candidates} and uses
+complementary slackness to identify both regrets at each $\sm$
+candidate.
+
+\begin{lemma}[Positive comparison coefficients]
 \label{lem:positive-weights}
 For an execution satisfying the properties of
 Section~\ref{sec:properties}, suppose that there is no approximation
 error as in~\eqref{eq:ideal-parameters} and that the selected output
 has regret above $r$ as in~\eqref{eq:failure-hypothesis}.
-Then all five dual weights satisfy
+Then all five comparison coefficients satisfy
 \[
  r<\rho,\eta,\xi,\alpha,\gamma<1-r.
 \]
-The stationary dual strategies are best responses to their
-opponents' stationary strategies, and every $\sm$ dual strategy is
-a best response to its corresponding primal output:
+The auxiliary strategies from $\spoint$ are best responses to the
+opponents' stationary strategies, and every auxiliary strategy from
+$\sm$ is a best response to that call's chosen strategy:
 \[
  \begin{aligned}
  B_1(x_s^2)&=u_1(y_s^1,x_s^2),&B_2(x_s^1)&=u_2(x_s^1,y_s^2),\\
@@ -1560,60 +1536,58 @@ One bracket vanishes in each substitution, leaving
 \]
 Each payoff difference is at most one, so $g>r$ from
 \eqref{eq:failure-candidates} implies $r<\rho,\sigma$.
-This justifies using the stationary dual strategies as best responses.
+This justifies using the stationary auxiliary strategies as best responses.
 Nonnegative payoffs also give
 \begin{equation}
  u_1(y_s^1,y_s^2)\ge g/\rho,\qquad
  u_2(y_s^1,y_s^2)\ge g/\sigma.
  \label{eq:main-stationary-payoff-lower-bounds}
 \end{equation}
-For the first-round call $\sm(y_s^1)$, instantiate
+For the first-round call $\sm(y_s^1)$, apply
 \eqref{eq:properties-dual}, with $\omega=\eta$, first at a
 column best response to $y_s^1$, where the column regret is zero,
 and then at $x_s^2$, to which $y_s^1$ is a row best response.
-Payoff differences are at most one, so these instantiations yield
+Payoff differences are at most one, so these comparisons yield
 \[
  F_1^1\le\eta,\qquad F_1^1\le1-\eta.
 \]
-Since $F_1^1>r$ in~\eqref{eq:failure-candidates}, both weights are
+Since $F_1^1>r$ in~\eqref{eq:failure-candidates}, both coefficients are
 positive. Complementary slackness~\eqref{eq:properties-cs} gives
 \[
  \eta(F_1^1-f_1(\boldsymbol z_1^1))=0,\qquad
  (1-\eta)(F_1^1-f_2(\boldsymbol z_1^1))=0,
 \]
 and $y_1^1$ is a best response to $x_1^2$.
-For the second-round call $\sm(y_1^1)$, instantiate the same dual
+For the second-round call $\sm(y_1^1)$, apply the same comparison
 inequality, now with $\omega=\alpha$, at $x_1^2$ and at a column
 best response to $y_1^1$. The best-response property just established
 gives $F_2^1\le1-\alpha$ at $x_1^2$, and zero column regret at the
 other comparison gives $F_2^1\le\alpha$. The corresponding
-instantiations for $\sm(y_s^2)$ and $\sm(y_1^2)$ are symmetric.
+applications for $\sm(y_s^2)$ and $\sm(y_1^2)$ are symmetric.
 The complete substitutions are in Appendix~\ref{app:instantiation}.
 \end{proof}
 
-\paragraph{Eliminating payoffs by strategy comparisons.}
-Lemma~\ref{lem:positive-weights} supplies positive dual weights,
-best-response identities, and equality of the two regrets at each
-$\sm$ candidate. We now combine these conclusions with further
-instantiations of stationarity~\eqref{eq:properties-stationary} and
-the dual inequality~\eqref{eq:properties-dual} for the first-round
-calls $\sm(y_s^1)$ and $\sm(y_s^2)$. Choosing stationary and dual
-strategies as comparisons gives the following payoff bounds.
-They allow us to replace payoff variables by scalar functions.
-These bounds use the stationary weight $\rho$ and the first-round
-weights $\eta,\xi$ from~\eqref{eq:call-weight-definitions}.
-Their common parameter tuple is
+\paragraph{Bounding the cross-profile payoffs.}
+The best-response identities from Lemma~\ref{lem:positive-weights}
+let us bound the payoffs appearing when we compare strategies from
+different calls. Because all payoffs lie in $[0,1]$, each player's
+regret satisfies $f_i(\boldsymbol x)\le1-u_i(\boldsymbol x)$.
+We therefore bound these payoff shortfalls at three profiles made
+from first-round strategies. The six bounds below follow by
+applying~\eqref{eq:properties-stationary} and
+\eqref{eq:properties-dual}; later comparisons use them in place
+of game-specific payoffs.
+For compactness, collect the threshold, stationary regret, and
+first-round comparison coefficients in
 \begin{equation}
  \boldsymbol\lambda=(r,g,\rho,\eta,\xi).
  \label{eq:payoff-bound-parameters}
 \end{equation}
-We display this tuple as the argument of each of the six functions
-below. For a fixed threshold $r$, the stationary regret and the
-three weights in this tuple remain variables.
-The second-round calls $\sm(y_1^1)$ and $\sm(y_1^2)$ carry the
-dual weights $\alpha$ and $\gamma$, respectively,
-as specified in~\eqref{eq:call-weight-definitions}.
-The formulas for the six payoff bounds are given in
+For fixed $r$, the other entries of $\boldsymbol\lambda$ can vary.
+Each entry in the next table bounds the payoff shortfall $1-u_i$
+for the player named by its column, and therefore also that
+player's regret. The six symbols $s_1,s_2,h_1,h_2,S,T$ depend
+only on $\boldsymbol\lambda$; their formulas are given in
 \eqref{eq:payoff-bound-s}, \eqref{eq:payoff-bound-h}, and
 \eqref{eq:payoff-bound-st}; Appendix~\ref{app:instantiation}
 gives the substitutions.
@@ -1626,19 +1600,16 @@ gives the substitutions.
  \end{array}
  \label{eq:main-payoff-bounds}
 \end{equation}
-Here the scalar bound $T(\boldsymbol\lambda)$ is distinct from the stationary
+Here the numerical bound $T(\boldsymbol\lambda)$ is distinct from the stationary
 expression $T(\boldsymbol x,\boldsymbol x',\rho,\boldsymbol y)$;
 the number and types of their arguments distinguish them.
-This table specifies which payoff each function bounds.
-Since a best-response payoff is at most one,
-the same numbers also bound the corresponding regrets. In
-particular, to obtain the bounds at $(y_1^1,y_1^2)$, define the
-ratios of the two dual weights in each first-round call by
+To obtain the last row, we abbreviate two ratios
+of the first-round comparison coefficients as
 \begin{equation}
  u=\frac{1-\eta}{\eta},\qquad v=\frac{1-\xi}{\xi}.
  \label{eq:main-relative-weights}
 \end{equation}
-Instantiating~\eqref{eq:properties-dual} for $\sm(y_s^1)$ at
+Applying~\eqref{eq:properties-dual} for $\sm(y_s^1)$ at
 $y_1^2$ and its column-player counterpart for $\sm(y_s^2)$ at
 $y_1^1$ gives
 \begin{equation}
@@ -1646,16 +1617,18 @@ $y_1^1$ gives
  T(\boldsymbol\lambda)=h_2(\boldsymbol\lambda)-r+v(s_1(\boldsymbol\lambda)-r),
  \label{eq:main-payoff-st}
 \end{equation}
-The point of these bounds is to replace many payoff
-variables by functions of a few weights while preserving the
-relations needed in later comparisons.
+We have now bounded the payoff shortfalls needed below in terms of
+$r,g$ and the first-round coefficients $\rho,\eta,\xi$. The second-round
+coefficients enter when we compare the two rounds.
 
-\paragraph{Combining two $\sm$ dual inequalities.}
-The payoff bounds above eliminate individual payoff variables.
-To obtain inequalities linking the two rounds, we also instantiate
-the dual inequalities for the first-round call $\sm(y_s^2)$ and
+\paragraph{Using both $\sm$ rounds together.}
+The auxiliary strategy returned by the first round becomes the
+input of the second. Applying both calls' inequalities to the same
+comparison strategy gives a lower and an upper bound on one payoff.
+Eliminating that payoff will link the rounds. To do so, apply
+the comparison inequalities for the first-round call $\sm(y_s^2)$ and
 the second-round call $\sm(y_1^2)$ at the same arbitrary row
-strategy $x^{1\prime}\in\Delta_{n_1}$. Their dual weights are
+strategy $x^{1\prime}\in\Delta_{n_1}$. Their coefficients are
 $\xi$ and $\gamma$, respectively, by~\eqref{eq:call-weight-definitions}.
 The column-player version
 of~\eqref{eq:properties-dual}, together with
@@ -1696,13 +1669,15 @@ By payoff linearity and the definition of $B_1$, inequality
  \frac{1-r-\frac\gamma\xi[r-(1-\xi)]}{D_E}.
  \label{eq:main-column-mixture-br-bound}
 \end{equation}
-We can therefore instantiate the dual inequality
+We can therefore apply the comparison inequality
 \eqref{eq:properties-dual} for the second-round call
 $\sm(y_1^1)$ at $y_E^2$, since that inequality holds throughout
-the column simplex. This call has dual weight $\alpha$.
-Instantiating its inequality at $y_s^2$ and $y_1^2$, and that
-of $\sm(y_1^2)$ with weight $\gamma$ at $y_s^1$ and $y_1^1$,
-using~\eqref{eq:main-payoff-bounds}, requires
+the column simplex. This call has coefficient $\alpha$.
+Applying its inequality at $y_s^2$ and $y_1^2$, and that
+of $\sm(y_1^2)$ with coefficient $\gamma$ at $y_s^1$ and $y_1^1$,
+using~\eqref{eq:main-payoff-bounds}, gives four upper bounds on
+second-round candidate regret. Since all those candidates exceed
+$r$ under the failure assumption, these bounds must be at least $r$:
 \begin{equation}
  \begin{aligned}
  U_g&=\alpha s_1(\boldsymbol\lambda)+(1-\alpha)h_2(\boldsymbol\lambda)\ge r,&
@@ -1712,10 +1687,13 @@ using~\eqref{eq:main-payoff-bounds}, requires
  \end{aligned}
  \label{eq:main-weighted-regret-bounds}
 \end{equation}
-These four expressions depend on the full tuple $\boldsymbol\lambda$
-and the second-round weights $\alpha,\gamma$.
-At $y_E^2$, combining~\eqref{eq:main-column-mixture-br-bound}
-with the same payoff bounds gives
+These four expressions depend on $\boldsymbol\lambda$ and the
+second-round coefficients $\alpha,\gamma$.
+At $y_E^2$, the row player's best-response term in the second-round
+comparison is bounded by~\eqref{eq:main-column-mixture-br-bound}.
+Because $y_E^2$ mixes $y_1^2$ and $y_s^2$, its other payoff terms
+are weighted averages of terms already bounded in $H_g$ and $U_g$.
+Collecting these bounds gives
 \begin{equation}
  F_2^1\le
  \frac{(1-\gamma)H_g+\gamma vU_g
@@ -1729,24 +1707,27 @@ necessary inequality
                +\alpha\gamma(1-r-rv)-\alpha r\ge0.
  \label{eq:main-shared-coupling}
 \end{equation}
-Thus the shared comparison links both players' $\sm$ calls across
+The shared inequality $E_{1,g}\ge0$ is therefore a new necessary
+condition for failure: it links both players' $\sm$ calls across
 the two rounds. Its remaining variables are the threshold,
-stationary regret, and all five dual weights.
+stationary regret, and all five comparison coefficients.
 Appendix~\ref{app:instantiation} gives
 the substitution before regrouping terms and its symmetric counterpart.
 
-\paragraph{Interior mixing comparisons.}
-The preceding inequalities connect the four $\sm$ calls.
-We now use the failure condition supplied by $\om$ in
-\eqref{eq:failure-candidates}: every mixture $\boldsymbol x(p,q)$
-has regret above $r$. Our next goal is to obtain finite necessary
-conditions from this comparison. We first bound both players'
-regrets throughout the mixing rectangle, then choose segments on
-which these bounds are affine. Their endpoint and intersection
-values will eliminate the mixing parameters.
+\paragraph{Using $\om$ to test selected mixtures.}
+The preceding inequalities connect the four $\sm$ calls. We now
+use $\om$: every profile $\boldsymbol x(p,q)$ must have regret above
+$r$ under~\eqref{eq:failure-candidates}. We derive upper bounds on
+both players' regrets at these profiles. If both bounds are at most
+$r$ for even one choice of $p,q$, the assumed failure is impossible.
+The bounds have simple linear pieces, so we will test four selected
+segments rather than carry $p,q$ through the rest of the proof.
 
-By~\eqref{eq:mixing-regrets}, each mixed regret equals the weighted
-endpoint regrets minus a Jensen gap. To bound the column Jensen gap,
+By~\eqref{eq:mixing-regrets}, each mixed regret equals an average
+of endpoint regrets minus the Jensen gap explained in
+Section~\ref{sec:properties}. The gap reflects the fact that one
+response strategy must serve against both endpoint opponents.
+To bound the column player's gap from below,
 consider the regrets of the same column strategy $x^{2\prime}$
 against the two row strategies $x_s^1$ and $y_s^1$:
 \begin{equation}
@@ -1755,9 +1736,9 @@ against the two row strategies $x_s^1$ and $y_s^1$:
  \label{eq:main-column-payoff-losses}
 \end{equation}
 Both numbers are nonnegative, and the same strategy is used at both
-endpoints. Instantiate stationarity~\eqref{eq:properties-stationary}
+endpoints. Apply stationarity~\eqref{eq:properties-stationary}
 at $(x_s^1,x^{2\prime})$, then substitute the resulting payoff
-lower bound into the dual inequality~\eqref{eq:properties-dual}
+lower bound into the comparison inequality~\eqref{eq:properties-dual}
 for the first-round call $\sm(y_s^1)$ at $x^{2\prime}$, with
 $\omega=\eta$. This gives
 \begin{equation}
@@ -1767,7 +1748,7 @@ $\omega=\eta$. This gives
  \label{eq:main-column-loss-comparison}
 \end{equation}
 The function $\ell_c$ is the lower bound obtained by these two
-instantiations; the index identifies the column player.
+comparisons; the index identifies the column player.
 If it is positive, every column strategy has positive regret against
 at least one of the two row strategies. The Jensen-gap identity
 \eqref{eq:mixing-gap-losses} takes the weighted minimum of these same
@@ -1778,7 +1759,7 @@ regrets:
 The following lemma therefore converts the joint regret comparison
 into the correction needed in the mixed profile's regret bound.
 
-\begin{lemma}[A joint payoff comparison bounds the Jensen gap]
+\begin{lemma}[A lower bound on the gain from mixing]
 \label{lem:main-jensen}
 Consider an execution satisfying the building-block properties of
 Section~\ref{sec:properties} with zero errors~\eqref{eq:ideal-parameters},
@@ -1820,9 +1801,17 @@ Using $J_1(q)\ge j_r(\boldsymbol\lambda,q)$ gives
 \]
 The first two terms interpolate the four row-regret bounds
 $g,0,1,1-g/\rho$; the last term is the improvement from the Jensen gap.
-The column bound $C_g$ is defined symmetrically by exchanging
-$1,2$, $p,q$, $\rho,\sigma$, and $\eta,\xi$ in this formula;
-Its formula and the two Jensen-gap bounds are stated in
+For the column player, the corresponding formulas are
+\[
+ \begin{aligned}
+ j_c(\boldsymbol\lambda,p)
+   &=\ell_c(\boldsymbol\lambda)
+       \min\left\{\frac{(1-p)\rho}{\eta\sigma},\frac p{1-\eta}\right\},\\
+ C_g(p,q)
+   &=(1-p)(1-q)g+p(1-qg/\sigma)-j_c(\boldsymbol\lambda,p).
+ \end{aligned}
+\]
+Both formulas and the two Jensen-gap bounds are also stated in
 \eqref{eq:rectangle-upper-bounds} and~\eqref{eq:gap-lower-bounds};
 Appendix~\ref{app:mixing} gives the derivation.
 Since both actual regrets are bounded above by these functions,
@@ -1841,8 +1830,8 @@ Solving these equations gives
  p_\dagger=\frac{\rho(1-\eta)}{\rho(1-\eta)+\sigma\eta},\qquad
  q_\dagger=\frac{\sigma(1-\xi)}{\sigma(1-\xi)+\rho\xi}.
 \]
-We use these cuts to reduce the universal mixing comparison to four
-\emph{segment conditions}:
+It is enough for our contradiction to keep four necessary
+\emph{segment conditions} along these cuts:
 \begin{equation}
  \begin{aligned}
  \min_{0\le q\le q_\dagger}\max\{R_g(p_\dagger,q),C_g(p_\dagger,q)\}&\ge r,\\
@@ -1861,22 +1850,16 @@ reconstructs their identities. This turns
 eliminates the mixing parameters.
 Appendix~\ref{app:mixing} expands these inequalities.
 
-\paragraph{From payoff comparisons to five scalar variables.}
-At this stage, the building-block properties have supplied a finite
-collection of necessary comparisons. Forgetting replaces their
-payoff terms consistently by real variables, as in
-Section~\ref{sec:legone-review}; the upper bounds derived above
-then eliminate these variables. The four segment conditions
-\eqref{eq:main-segment-conditions} have
-also eliminated the mixing parameters. For a fixed threshold $r$,
-the remaining unknowns are the stationary regret $g$ and the five
-weights $\rho,\eta,\xi,\alpha,\gamma$.
-
-Our next goal is to remove $g$. Every failed execution has $g>r$.
-We will show that a feasible scalar point can be moved to $g=r$
-while keeping the five weights fixed. Excluding all such points
-at $g=r$ will then exclude every admissible stationary regret at
-once. The following lemma justifies this reduction.
+\paragraph{Removing the stationary regret.}
+The payoff bounds have removed the individual payoff variables, and
+the segment tests have removed the mixing parameters $p,q$. For
+fixed $r$, only $g$ and the five comparison coefficients
+$\rho,\eta,\xi,\alpha,\gamma$ remain. We now remove $g$ as well.
+Every assumed failure has $g>r$. The next lemma shows that its
+necessary inequalities still hold if we substitute $g=r$ while
+keeping those coefficients fixed. This is an algebraic substitution
+in the inequalities; it does not require another game or algorithm
+execution.
 
 \begin{lemma}[Eliminating the stationary regret]
 \label{lem:main-g-projection}
@@ -1885,7 +1868,7 @@ Section~\ref{sec:properties}, with zero errors~\eqref{eq:ideal-parameters}
 and output regret above $r$ as in~\eqref{eq:failure-hypothesis},
 where $3/10\le r\le1/3$.
 Hold $r,\rho,\eta,\xi,\alpha,\gamma$ fixed and replace $g$ by $r$
-in the scalar functions. The six payoff upper bounds remain
+in the numerical bounds. The six payoff upper bounds remain
 nonnegative; the second-round inequalities
 \eqref{eq:main-weighted-regret-bounds}, the shared inequality
 \eqref{eq:main-shared-coupling}, and its symmetric counterpart
@@ -1896,7 +1879,7 @@ remain valid, as do the four segment conditions
 We present only the main proof ideas here;
 Lemma~\ref{lem:app-g-projection} in Appendix~\ref{app:scalar}
 provides the complete proof of Lemma~\ref{lem:main-g-projection}.
-Instantiating the dual inequalities for $\sm(y_s^1)$ at $y_s^2$
+Applying the comparison inequalities for $\sm(y_s^1)$ at $y_s^2$
 and for $\sm(y_s^2)$ at $y_s^1$, and using the stationary payoff
 bounds~\eqref{eq:main-stationary-payoff-lower-bounds}, gives
 \begin{equation}
@@ -1949,22 +1932,9 @@ We use an exact machine check to establish
  \frac{\partial\mathcal D(g)}{\partial g}<0
 \]
 on the admissible parameter ranges. After clearing positive
-denominators, this is a polynomial sign condition. The check uses
-the Bernstein representation~\cite{garloff1986}: for degree at most $d$,
-its basis on $[0,1]$ is
-\begin{equation}
- b_i^{(d)}(t)=\binom di t^i(1-t)^{d-i},\quad i=0,\ldots,d,\quad
- b_i^{(d)}(t)\ge0,\quad\sum_{i=0}^d b_i^{(d)}(t)=1.
- \label{eq:bernstein-basis}
-\end{equation}
-On a rational box $\prod_j[a_j,b_j]$, substitute
-$x_j=a_j+(b_j-a_j)t_j$ and expand in products of these basis
-functions. The polynomial's value is a convex combination of its
-coefficients, so their signs certify its sign throughout the box.
-The implementation uses Python~3 rational arithmetic with
-\nolinkurl{fractions.Fraction}~\cite{python3} to check the coefficients
-exactly. Appendix~\ref{app:scalar} gives the polynomials, domains,
-and checkers for this derivative sign.
+denominators, this becomes a polynomial sign condition, verified
+exactly as detailed in Appendix~\ref{app:scalar}~\cite{garloff1986}.
+That appendix gives the polynomial, domain, and checker.
 Thus $\mathcal D(g)$ increases
 as $g$ decreases, preserving the intersection condition.
 An intersection enters or leaves the segment through an endpoint,
@@ -1973,13 +1943,13 @@ gives the segment ending at $p=0$. All four finite segment conditions
 therefore continue to hold down to $g=r$.
 \end{proof}
 
-The resulting arithmetic point uses the parameter tuple
+After substituting $g=r$, write the remaining parameters as
 \begin{equation}
  \boldsymbol\lambda_r=(r,r,\rho,\eta,\xi).
  \label{eq:projected-payoff-parameters}
 \end{equation}
 We now simplify the first-round regret bounds to obtain explicit
-scalar formulas. Instantiating the dual inequalities of $\sm(y_s^1)$
+formulas. Applying the comparison inequalities of $\sm(y_s^1)$
 at $x_s^2$ and of $\sm(y_s^2)$ at $x_s^1$ gives
 \begin{equation}
  f_1(y_1^1,x_s^2)\le\min\{1,(1-\eta-r)/\eta\},\qquad
@@ -2010,17 +1980,16 @@ Using them in~\eqref{eq:main-weighted-regret-bounds} and
 $U,V,H,K,E_1$ after the relaxation. The mixing bounds become
 $R_r(p,q)=R_g(p,q)|_{g=r}$ and $C_r(p,q)=C_g(p,q)|_{g=r}$.
 
-The next proposition records the resulting implication from
-algorithm failure to feasibility in the five dual weights
-$\rho,\eta,\xi,\alpha,\gamma$, which remain variables after eliminating $g$.
-Proving this
-smaller system infeasible will rule out the failed execution.
-The complete conjunction defining $\Sigma_r$ is
+The next proposition states the implication we need. A failed run
+would assign values to $\rho,\eta,\xi,\alpha,\gamma$ that satisfy
+all the remaining necessary inequalities. Call this finite
+collection $\Sigma_r$. Proving that no five values satisfy it will
+rule out the assumed failure. The complete list is
 \eqref{eq:scalar-system} in Appendix~\ref{app:scalar}.
 
-\begin{proposition}[A finite necessary system]
+\begin{proposition}[Necessary inequalities for a failed run]
 \label{prop:finite-system}
-There is an explicit system $\Sigma_r(\boldsymbol\theta)$ in the
+There is an explicit collection of inequalities $\Sigma_r(\boldsymbol\theta)$ in the
 five real variables
 \[
  \boldsymbol\theta=(\rho,\eta,\xi,\alpha,\gamma)
@@ -2032,18 +2001,22 @@ Section~\ref{sec:properties} and zero errors~\eqref{eq:ideal-parameters},
  f(\boldsymbol x_{\mathrm{out}})>r
  \ \Longrightarrow\ \exists\boldsymbol\theta,\ \Sigma_r(\boldsymbol\theta).
 \]
-The system consists of weight bounds, the payoff bounds and shared
+The collection consists of coefficient bounds, the payoff bounds and shared
 comparisons derived above, and the four finite segment conditions.
 \end{proposition}
-\subsection{Discovering and defining the bound}
+\subsection{Finding and defining the candidate threshold}
 \label{sec:bound-discovery}
 
-Proposition~\ref{prop:finite-system} reduces a failed execution at
-threshold $r$ to a solution of $\Sigma_r$ in the five weights
-$\boldsymbol\theta=(\rho,\eta,\xi,\alpha,\gamma)$.
-We still need to determine the numerical value of the bound.
-To find a candidate, we ask how large $r$ can be while this necessary
-system remains feasible. This gives the exploratory optimization problem
+Proposition~\ref{prop:finite-system} has reduced a failed run to
+five real numbers $\boldsymbol\theta=(\rho,\eta,\xi,\alpha,\gamma)$
+that must satisfy $\Sigma_r$; strategies, payoffs, the mixing
+probabilities $p,q$, and $g$ no longer appear. We now search for
+where these inequalities come closest to holding at a large $r$.
+Numerical exploration suggests the comparisons responsible;
+exact equations then define a candidate threshold $r_*$. This
+subsection defines that candidate. The next one proves that no
+other assignment satisfies $\Sigma_r$ above it.
+The exploratory problem is
 \begin{equation}
  \begin{aligned}
  \operatorname*{maximize}_{r,\boldsymbol\theta}&\quad r\\
@@ -2052,26 +2025,24 @@ system remains feasible. This gives the exploratory optimization problem
  \end{aligned}
  \label{eq:main-bound-search}
 \end{equation}
-A candidate maximum suggests the threshold above which the global
-proof should exclude every solution of $\Sigma_r$.
+We explore~\eqref{eq:main-bound-search} from several initial points
+using SciPy's SLSQP routine~\cite{scipy2020,kraft1988}. The search
+suggests a threshold near $0.30954$ and identifies comparisons close
+to equality; Appendix~\ref{app:discovery} records the script and
+these observations. They guide the following algebraic definition,
+but the numerical search is not used to prove the bound.
 
-We explore~\eqref{eq:main-bound-search} with SciPy~\cite{scipy2020},
-using its implementation of Kraft's sequential least-squares
-programming routine (SLSQP)~\cite{kraft1988}.
-The routine minimizes $-r$ subject to the weight bounds and scalar
-inequalities. Each segment condition is evaluated at its endpoints
-and at the intersection of its two affine regret bounds, when that
-intersection lies on the segment. We restart the local optimizer
-from several initial weight tuples and compare the returned values
-and constraint residuals. This numerical discovery step gives a
-candidate bound near $0.30954$. It also identifies inequalities whose
-residuals are close to zero, suggesting equality cases for an algebraic
-definition of the bound. Appendix~\ref{app:discovery} identifies
-the bound-finding script and records the resulting active comparisons.
-We derive the algebraic equations next.
+Near the numerical candidate, two second-round comparisons equal
+$r$, the payoff bound $h_1$ reaches its upper limit of one, and
+both a selected mixing comparison and the comparison linking the
+two $\sm$ rounds become equalities. The first three observations
+let us express $\alpha,\gamma,\xi$ using fewer variables. The
+remaining two equalities, plus a condition identifying the top of
+their local solution curve, define $r_*$ exactly.
 
-First consider the two second-round comparisons at the common
-first-round dual profile $(y_1^1,y_1^2)$. They are
+First consider the two second-round comparisons at the profile
+$(y_1^1,y_1^2)$ formed by the auxiliary strategies returned in the
+first round. They are
 \eqref{eq:main-weighted-regret-bounds} after the projection and
 relaxation:
 \begin{equation}
@@ -2100,15 +2071,15 @@ Recall the upper-bound function from~\eqref{eq:main-projected-payoff-bounds}:
  \qquad \sigma=1-\rho,\quad v=\frac{1-\xi}{\xi}.
  \label{eq:main-discovery-h1}
 \end{equation}
-The numerical points approach the boundary where the two expressions
-inside this minimum agree. Equating the displayed affine expression
-to one and solving for $v$ gives a value which we denote by $v_0$:
+The numerical points approach the place where this minimum changes
+which formula it uses. Equating the second expression to one and
+solving for $v$ gives that formula-change value, denoted by $v_0$:
 \begin{equation}
  v_0=\frac{r(1+\sigma)}{\sigma(1-r)},\qquad
  v=v_0,\qquad \xi=\frac{\sigma(1-r)}{\sigma+r}.
  \label{eq:main-discovery-cap-switch}
 \end{equation}
-On this boundary $h_1=1$, and $\xi$ is determined by $r,\rho$.
+On the line $v=v_0$, $h_1=1$, and $\xi$ is determined by $r,\rho$.
 The same numerical points have $h_2<1$. For the local calculation
 we therefore use the second expression in the minimum defining $h_2$:
 \begin{equation}
@@ -2137,7 +2108,8 @@ specifies the positive factors that fix their exact normalization.
 
 The equations $N_1=N_2=0$ define a curve near the candidate in
 coordinates $(r,\rho,\eta)$, with linearly independent constraint
-gradients. At a constrained local extremum of $r$, the Lagrange
+gradients. We want its locally largest value of $r$. At such a
+point, the Lagrange
 multiplier condition~\cite{nocedal2006} gives real
 multipliers $\nu_1,\nu_2$ such that
 \begin{equation}
@@ -2165,26 +2137,34 @@ existence and uniqueness in that box, and gives
  (0.3095399654,\ 0.4799488361,\ 0.5461144474),\qquad
  0.30953996<r_*<0.30953997.
 \]
-This certifies a local algebraic root. The remaining global task is
-to show that every possible failure point above $r_*$ is
-excluded, including points far from the numerical solution.
+This certifies the local algebraic root suggested by the equalities
+seen in the search. It does not yet bound the algorithm: the
+inequalities $\Sigma_r$ could have a solution far from this root.
+We must exclude every such solution for $r>r_*$.
 
-\subsection{Reducing the global exclusion to boundary cases}
+\subsection{Ruling out every failure above the threshold}
 \label{sec:guarantee}
 
-Section~\ref{sec:bound-discovery} has defined $r_*$ from equality
-cases suggested by numerical optimization and certified the
-corresponding local root. To prove the approximation guarantee,
-we must exclude every solution of $\Sigma_r$ for $r_*<r\le1/3$.
-The equality cases give a useful destination for this proof:
-we will move any hypothetical feasible point to the boundary
-$v=v_0$ from~\eqref{eq:main-discovery-cap-switch}, where $h_1=1$
-and the polynomials $N_1,N_2$ describe two of the necessary
-comparisons. We first eliminate the second-round weights, then
-construct paths to this boundary, and finally exclude its points
-using exact polynomial signs.
+Fix $r_*<r\le1/3$. The previous subsection identified $r_*$ from
+equalities near one candidate assignment. We must now rule out
+\emph{every} assignment satisfying $\Sigma_r$, including ones far
+from that candidate. First, we show that any such assignment would
+still satisfy the inequalities needed below after setting the two
+second-round coefficients to the values that balance $S$ and $T$.
+That leaves $\rho,\eta,\xi$. Next, we move their values, while
+preserving the needed inequalities, to the line $v=v_0$ where the
+formula for $h_1$ changes. On that line, the comparison linking the
+two $\sm$ rounds conflicts with one of two mixing tests. Thus
+\[
+ \Sigma_r\text{ has a solution}
+ \quad\Longrightarrow\quad
+ \text{the necessary inequalities hold on }v=v_0
+ \quad\Longrightarrow\quad
+ \text{contradiction}.
+\]
+The algebraic root $r_*$ enters in the final exclusion on that line;
+the preceding reductions cover the entire domain.
 
-Throughout this section, $r$ is fixed with $r_*<r\le1/3$.
 Recall $\sigma=1-\rho$ and the relative weights
 $u=(1-\eta)/\eta$, $v=(1-\xi)/\xi$ from
 \eqref{eq:main-relative-weights}. The bounds on $\eta,\xi$ in
@@ -2193,11 +2173,12 @@ $\Sigma_r$ become
  k=\frac r{1-r},\qquad k\le u,v\le1/k.
  \label{eq:main-global-weight-domain}
 \end{equation}
-All moves below concern scalar points satisfying necessary
-inequalities. Their purpose is to reduce the number of variables
-in the infeasibility proof.
+The moves below change numerical values satisfying necessary
+inequalities; they need not correspond to new games. Each move
+preserves the inequalities used at its destination. If no
+destination is possible, no starting assignment is possible.
 
-\paragraph{Eliminating the second-round weights.}
+\paragraph{Removing the two second-round coefficients.}
 The comparisons $H,K\ge r$ in~\eqref{eq:main-discovery-hk} are
 convex combinations of $S,T$, so at least one of $S,T$ is at least
 $r$. The payoff and segment conditions exclude $S,T\ge r$
@@ -2227,15 +2208,14 @@ Then
  \label{eq:main-weight-source-restrictions}
 \end{equation}
 The numerical discovery used equality in these two comparisons.
-For the global proof, we must justify moving arbitrary admissible
-weights to those equality values while preserving enough
-inequalities to obtain a contradiction. The following lemma
-provides that justification.
+For the global proof, we must justify replacing arbitrary allowed
+$\alpha,\gamma$ by those balancing values while retaining the
+inequalities needed for the contradiction. The next lemma does so.
 
-\begin{lemma}[Eliminating the second-round weights]
+\begin{lemma}[Eliminating the second-round coefficients]
 \label{lem:weight-reduction}
 For $r_*<r\le1/3$, any solution of $\Sigma_r$ can, after exchanging
-both players' labels if necessary, be changed to a scalar point with
+both players' labels if necessary, be changed to an assignment with
 \[
  S>r>T,\qquad \alpha=A_0,\qquad\gamma=1-A_0,
  \qquad 0<A_0\le1-r.
@@ -2281,9 +2261,13 @@ positive. Raising $\gamma$ to $1-A_0$ preserves $E_1\ge0$ and
 leaves $U$ unchanged. The payoff functions and mixing comparisons
 are independent of these two weights.
 \end{proof}
-We now express the three comparisons preserved by
-Lemma~\ref{lem:weight-reduction} without $\alpha,\gamma$.
-Set $z=n/m>0$ and $c=1-2r>0$.
+Lemma~\ref{lem:weight-reduction} has moved any putative solution to
+the balancing values of $\alpha,\gamma$. Only three comparisons
+will be needed in the remaining reduction: $U\ge r$, the bound
+$A_0\le1-r$, and the shared comparison $E_1\ge0$. We rewrite them
+so their signs can be tracked as the other variables move.
+Let $z=n/m>0$ be the ratio of the two distances from $r$, and set
+$c=1-2r>0$.
 Multiply $U(A_0)-r\ge0$ and $1-r-A_0\ge0$ by $m+n>0$,
 and divide $E_1(A_0,1-A_0)\ge0$ by $(1-A_0)^2>0$.
 Define the resulting nonnegative expressions by
@@ -2296,18 +2280,21 @@ Define the resulting nonnegative expressions by
  \end{aligned}
  \label{eq:main-reduced-comparisons}
 \end{equation}
-Thus $G$ is the selected second-round comparison, $B_{\mathrm{mass}}$
-is the upper bound on the balancing weight, and $E$ is the shared
-comparison. We use these three inequalities in the paths below;
-the other weighted comparisons can be dropped from the necessary
-system.
+Thus $G\ge0$ is $U\ge r$ rewritten, $B_{\mathrm{mass}}\ge0$ is
+$A_0\le1-r$ rewritten, and $E\ge0$ is the shared comparison
+rewritten. We use these three inequalities in the paths below;
+the other weighted comparisons are not needed there.
 
-\paragraph{Choosing the mixing conditions for the paths.}
-The four segment conditions~\eqref{eq:main-segment-conditions}
-are still available. We will use the two segments joining
-$(p_\dagger,q_\dagger)$ to $(p_\dagger,0)$ and $(0,q_\dagger)$.
-To write their finite intersection conditions, define the positive
-common denominator and the central numerators by
+\paragraph{Selecting the mixing tests for the boundary paths.}
+After eliminating $\alpha,\gamma$, we need mixing conditions that
+remain useful as $u,v$ change. The four segment conditions
+\eqref{eq:main-segment-conditions} are still available. We use the
+two segments joining $(p_\dagger,q_\dagger)$ to
+$(p_\dagger,0)$ and $(0,q_\dagger)$.
+At the common endpoint $(p_\dagger,q_\dagger)$, we first need to
+know which player's regret upper bound can exceed $r$. The factor
+$D_{\mathrm{mix}}$ below is positive, so multiplying by it does not
+change signs; $N_R,N_C$ are the resulting differences from $r$:
 \begin{equation}
  \begin{aligned}
  D_{\mathrm{mix}}&=(\rho u+\sigma)(\sigma v+\rho)>0,\\
@@ -2316,12 +2303,13 @@ common denominator and the central numerators by
  \end{aligned}
  \label{eq:main-mixing-numerators}
 \end{equation}
-Their signs identify which regret upper bound at the central
-point reaches $r$. For compact expressions, write
+To keep the two line-segment tests short, write
 $\chi_1=1-r-r/\rho$ and $\chi_2=1-r-r/\sigma$, the coefficients
 in $s_1=\chi_1+\chi_2u$ and $s_2=\chi_2+\chi_1v$.
-The corresponding segment intersection expressions, up to
-positive factors, are
+Along either selected segment, the two regret upper bounds are
+affine and may cross. After fixing the endpoint signs, the next
+expressions test whether such a crossing can stay at or above $r$;
+positive factors have been removed without changing their signs:
 \begin{equation}
  L=(\chi_1+cu)N_R+ruN_C,\qquad
  B_{\mathrm{mix}}=(\chi_2+cv)N_C+rvN_R.
@@ -2344,7 +2332,9 @@ checks the endpoint signs. The paths use the weaker first
 alternative $L\ge0$ alone. The second alternative continues to
 require $N_R<0\le N_C$.
 
-Exact machine checks combine the coefficient bound
+We next want one fixed formula for $h_2$, so that only the change
+in $h_1$ separates the cases in the path argument. Exact machine
+checks combine the coefficient bound
 $B_{\mathrm{mass}}\ge0$ with the applicable mixing condition to exclude
 $u\ge1$ on the full weight range $r\le\rho\le1-r$.
 Appendix~\ref{app:weights} gives the corresponding polynomial signs
@@ -2354,13 +2344,16 @@ require
 \[
  u\ge\frac{r(1+\rho)}{\rho(1-r)}>1.
 \]
-Hence $h_2$ always uses its affine expression in the reduced
-problem. The only remaining change of formula is that of $h_1$:
+Hence $h_2$ always uses the second expression in its minimum in
+the reduced problem. The only remaining change of formula is that of $h_1$:
 it uses the affine expression in~\eqref{eq:main-discovery-h1}
 for $v<v_0$, and equals one for $v\ge v_0$.
 
-We have reduced feasibility of $\Sigma_r$ to the following
-necessary conditions in $(r,\rho,u,v)$:
+Any solution of $\Sigma_r$ would therefore give values
+$(r,\rho,u,v)$ satisfying the following shorter list. We keep only
+the payoff signs needed by the paths below; dropping other
+conditions admits more assignments, so excluding this list still
+excludes every failed run.
 \begin{equation}
  \begin{gathered}
  r_*<r\le1/3,\quad r\le\rho\le1-r,\quad
@@ -2377,10 +2370,11 @@ The functions are those defined in
 \eqref{eq:main-reduced-comparisons}, and
 \eqref{eq:main-mixing-numerators}--\eqref{eq:main-mixing-determinants}.
 For $\rho>1/2$, allowing $s_1$ to become negative enlarges the
-necessary system and permits the paths used next.
+list of necessary conditions and permits the paths used next.
 
-\paragraph{Moving the remaining points to the switch boundary.}
-For each fixed pair $(r,\rho)$, the remaining freedom is in $u,v$.
+\paragraph{Moving solutions to where $h_1$ changes formula.}
+The reduced conditions now involve $(r,\rho,u,v)$. For each fixed
+pair $(r,\rho)$, the remaining freedom is in $u,v$.
 The two formulas for $h_1$ suggest two paths. From $v\ge v_0$,
 we can try decreasing $v$ directly to the switch. From $v<v_0$,
 we first increase $u$ until a mixing condition becomes an equality,
@@ -2460,24 +2454,28 @@ Appendix~\ref{app:paths} gives the path selection, stopping arguments,
 and the code paths for each check.
 \end{proof}
 
-\paragraph{Excluding points on the switch boundary.}
+\paragraph{Ruling out the switch boundary.}
 The path reduction leaves $v=v_0$, so $\xi$ is determined by
 $r,\rho$ as in~\eqref{eq:main-discovery-cap-switch}.
 We return to $\eta=1/(1+u)>1/2$ and work in $(r,\rho,\eta)$.
 Here $h_1=1$, and $h_2$ uses precisely the formula
 \eqref{eq:main-discovery-h2} used to define the local root.
-The polynomials from Section~\ref{sec:bound-discovery} now describe
-necessary inequalities: clearing their positive denominators gives
+This is why the switch was chosen: the polynomials from
+Section~\ref{sec:bound-discovery} now describe necessary
+inequalities. Clearing their positive denominators gives
 \begin{equation}
  L\ge0\ \Longleftrightarrow\ N_1(r,\rho,\eta)\ge0,\qquad
  E\ge0\ \Longleftrightarrow\ N_2(r,\rho,\eta)\ge0.
  \label{eq:main-switch-polynomial-conditions}
 \end{equation}
-Thus the first mixing alternative reduces to excluding
-$N_1,N_2\ge0$. The second alternative uses the other segment
-polynomial, treated at the end of the proof below.
-This is where the local algebraic definition of $r_*$ becomes
-useful for the global exclusion.
+For the first mixing alternative, we must exclude simultaneous
+$N_1,N_2\ge0$; the second alternative replaces $N_1$ by the
+polynomial for its other segment. In each case, we find the first
+value of $\eta$ allowed by the mixing condition, show that the
+shared condition is already negative there, and prove it cannot
+recover as $\eta$ increases. Thus the first branch reuses the local
+equations defining $r_*$; the second uses the same shared comparison
+with a different mixing test.
 
 \begin{lemma}[Exclusion on the switch boundary]
 \label{lem:switch-exclusion}
@@ -2496,9 +2494,10 @@ root $\eta_-(r,\rho)>1/2$, and $N_1\ge0$ requires $\eta\ge\eta_-$.
 We will prove $N_2<0$ at this mixing boundary and propagate that
 sign to any proposed feasible value of $\eta$.
 
-To establish the boundary sign, eliminate $\eta$ from the two
-polynomials using their resultant~\cite{cox2015}.
-Define the polynomial factor $R_{\mathrm{resultant}}$ by
+To prove $N_2<0$ at $\eta_-$, we first rule out a zero there.
+The resultant of $N_1$ and $N_2$ with respect to $\eta$ is a
+polynomial in $r,\rho$ that must vanish if they have a common
+$\eta$-root~\cite{cox2015}. Define its relevant factor by
 \begin{equation}
  \operatorname{Res}_\eta(N_1,N_2)
    =\sigma^6\rho^2r^2R_{\mathrm{resultant}}(r,\rho).
@@ -2507,7 +2506,9 @@ Define the polynomial factor $R_{\mathrm{resultant}}$ by
 The prefactor is positive. A zero of $N_2$ at $\eta_-$ would be a
 common root of $N_1,N_2$ and would force
 $R_{\mathrm{resultant}}=0$. We therefore seek a strict sign for
-this factor above $r_*$.
+this factor above $r_*$. Once common zeros are excluded, one
+negative reference value and continuity will fix the sign of
+$N_2$ along the whole boundary.
 
 The extremum equation~\eqref{eq:main-root-system}, together with
 the regularity check at the isolated root, yields a double factor
@@ -2529,13 +2530,14 @@ Hence increasing $r$ from $r_*$ gives
 $R_{\mathrm{resultant}}(r,\rho)<0$ at every required pair with
 $r>r_*$, and excludes a common root.
 
-An exact machine check at the reference point gives
+Because the resultant is nonzero on the relevant region, $N_2$
+cannot cross zero along the smaller-root boundary $\eta_-(r,\rho)$.
+An exact check gives
 $N_2(r_*,1/2,\eta_-(r_*,1/2))<0$.
-Every real smaller-root point needed above can be connected to
-this reference within the real-root domain, along a path on which
-the resultant is nonzero. Continuity therefore gives $N_2<0$
-at every such $\eta_-$. The connection paths, including coincident
-quadratic roots, are justified in Appendix~\ref{app:switch}.
+The connection paths in Appendix~\ref{app:switch} link every
+relevant smaller-root point to this reference within the real-root
+domain, including cases of coincident quadratic roots. Continuity
+therefore gives $N_2<0$ at every such $\eta_-$.
 
 We must still exclude the inequalities at larger $\eta$.
 At fixed $(r,\rho,v_0)$, consider the shared residual
@@ -2591,7 +2593,8 @@ These implications cover every point with $r_*<r\le1/3$ and give
 the following conclusion.
 \begin{proposition}[Global arithmetic bound]
 \label{prop:global-arithmetic}
-For every $r$ with $r_*<r\le1/3$, the finite system is infeasible:
+For every $r$ with $r_*<r\le1/3$, no five values satisfy the
+necessary inequalities:
 \[
  \nexists\boldsymbol\theta,\quad\Sigma_r(\boldsymbol\theta).
 \]
@@ -2602,33 +2605,33 @@ The last conclusion follows by choosing a comparison threshold
 strictly between $r_*$ and a hypothetical larger output regret,
 with the threshold below $1/3$.
 The exact checks used in these reductions verify specified arithmetic
-identities, signs, and coverage; the strategy-to-scalar implications
-follow from the building-block properties and the comparisons in
+identities, signs, and coverage; the implication from an algorithm
+failure to the numerical inequalities follows from the comparisons in
 Section~\ref{sec:reduction}. All proof computations are offline and
 are absent from Algorithm~\ref{alg:main}.
 The constant is an upper bound for the algorithm. An exact machine
-check also verifies an equality point in the selected necessary
-scalar relaxation at $r_*$; Appendix~\ref{app:discovery} identifies
-that check. An algorithmic tightness claim would additionally require
-a game realizing the point.
+check also verifies that the necessary inequalities can hold with
+equality at $r_*$; Appendix~\ref{app:discovery} identifies that
+check. This alone does not show the algorithm attains regret $r_*$:
+that would require a game realizing those numerical values.
 Section~\ref{sec:accuracy-transfer} now restores the approximation
 errors.
 
 \subsection{Restoring the approximation errors}
 \label{sec:accuracy-transfer}
 
-Proposition~\ref{prop:global-arithmetic} proves the ideal bound $r_*$.
+The preceding subsection proved that $\Sigma_r$ has no solution for
+$r_*<r\le1/3$ and hence established the ideal guarantee.
 The actual algorithm uses accuracy $\delta_f$ for $\spoint$ and
 $\tau$ for $\om$, as specified in Section~\ref{sec:complete-algorithm}.
-We now show that their contributions to the output regret are at
-most $\delta_f+\tau$. The key is to start with a failed-output
-threshold $r+\delta_f+\tau$: the mixing comparison uses $\tau$
-once, and the remaining surplus absorbs the stationary and
-near-best-response errors in all selected comparisons.
-
-Our goal is to obtain the same necessary system $\Sigma_r$ used
-in the ideal proof. Its global infeasibility will then give the
-actual guarantee. The following lemma states this transfer.
+To prove the actual guarantee, suppose the output exceeds
+$r+\delta_f+\tau$. The $\om$ guarantee then makes every tested
+mixture exceed $r+\delta_f$. We next account for the stationary
+comparison and its nearly best-response strategies using a single
+$\delta_f$ margin. This recovers the same necessary inequalities
+$\Sigma_r$, contradicting the preceding subsection. The four
+$\sm$ LPs are solved exactly and add no error. The next lemma
+states this transfer.
 
 \begin{lemma}[Transfer to approximate building blocks]
 \label{lem:error-transfer}
@@ -2656,31 +2659,34 @@ $p,q\in[0,1]$. Therefore
  \label{eq:main-error-rectangle-failure}
 \end{equation}
 This is the only subtraction of $\tau$. All four $\sm$ LPs are
-exact, so their dual inequalities and complementary slackness
+exact, so their comparison inequalities and complementary slackness
 introduce no additional accuracy term.
 
-Next move the error in stationarity~\eqref{eq:properties-stationary}
-to the left side, defining
+The stationary comparison guarantees only $g-\delta_f$ where the
+ideal proof used $g$. To reuse the earlier inequalities, call this
+conservative value $G_s$:
 \begin{equation}
  G_s=g-\delta_f>r.
  \label{eq:main-error-stationary-value}
 \end{equation}
-We use this single adjusted stationary value in every subsequent
-instantiation. The comparisons at $(x_s^1,y_s^2)$ and
+We use this same value in every subsequent comparison. The
+comparisons at $(x_s^1,y_s^2)$ and
 $(y_s^1,x_s^2)$ give $G_s\le\rho,\sigma$, so both stationary
-weights are above $r$.
+coefficients are above $r$.
 The near-best-response error also fits within the same surplus.
-For the row player, write the regrets at $(y_s^1,x_s^2)$ and
-$(y_1^1,x_s^2)$ as
+For the row player, let $\tau_1$ measure how far $y_s^1$ is from
+being a best response to $x_s^2$; it is at most $\delta_f$ and is
+unrelated to the $\om$ accuracy $\tau$. Also let $d$ be the row
+regret after replacing $y_s^1$ by $y_1^1$:
 \begin{equation}
  \tau_1=f_1(y_s^1,x_s^2)=B_1(x_s^2)-u_1(y_s^1,x_s^2),\quad
  0\le\tau_1\le\delta_f,\qquad d=f_1(y_1^1,x_s^2)\ge0.
  \label{eq:main-error-row-shortfall}
 \end{equation}
-Instantiating the dual inequality~\eqref{eq:properties-dual} of
+Applying the comparison inequality~\eqref{eq:properties-dual} of
 $\sm(y_s^1)$ at a column best response to $y_s^1$ gives
 $F_1^1\le\eta$, hence $\eta>r$.
-Instantiating it at $x_s^2$ instead gives
+Applying it at $x_s^2$ instead gives
 \begin{equation}
  \begin{aligned}
  r+\delta_f<F_1^1&\le\eta(\tau_1-d)+(1-\eta),\\
@@ -2694,10 +2700,11 @@ in~\eqref{eq:main-first-round-regret-bounds}.
 The error has canceled before taking the minimum with one.
 An exact machine check reconstructs this cancellation identity
 and both cases of the minimum.
-The symmetric instantiations give $r<\xi<1-r$ and the corresponding
-column-regret bound. The first-round dual strategies are then exact
-best responses to their primal outputs; the second-round
-instantiations give $r<\alpha,\gamma<1-r$ as in the ideal proof.
+The symmetric comparisons give $r<\xi<1-r$ and the corresponding
+column-regret bound. The auxiliary strategies from the first round
+are then exact best responses to those calls' chosen strategies;
+the second-round comparisons give $r<\alpha,\gamma<1-r$ as in the
+ideal proof.
 
 Using the stationary value $G_s$ and these regret bounds, the six
 payoff bounds are now evaluated at
@@ -2705,7 +2712,8 @@ payoff bounds are now evaluated at
  \boldsymbol\lambda_s=(r,G_s,\rho,\eta,\xi).
  \label{eq:main-error-payoff-parameters}
 \end{equation}
-The same dual instantiations from Section~\ref{sec:reduction}
+The same applications of the comparison inequalities from
+Section~\ref{sec:reduction}
 give their nonnegativity and the weighted and shared comparisons
 \eqref{eq:main-weighted-regret-bounds} and
 \eqref{eq:main-shared-coupling}, with $g=G_s$.
@@ -2745,13 +2753,12 @@ The four segment conditions~\eqref{eq:main-segment-conditions}
 therefore hold at this same adjusted parameter.
 
 The first-round comparisons~\eqref{eq:main-first-round-g-comparisons},
-with $g=G_s$, give the admissible interval for the arithmetic
-projection underlying Lemma~\ref{lem:main-g-projection}.
-That preservation argument uses only the weight bounds,
-nonnegativity, weighted and shared comparisons, segment conditions,
-and first-round comparisons established above. It therefore applies
-to this adjusted scalar point. Projecting $G_s$ down to $r$ and
-then applying the payoff-bound relaxation
+with $g=G_s$, give the interval needed for the substitution in
+Lemma~\ref{lem:main-g-projection}. Its preservation argument uses
+only the coefficient bounds, nonnegativity, weighted and shared
+comparisons, segment conditions, and first-round comparisons
+established above. It therefore applies to these adjusted numerical
+values. Substituting $G_s=r$ and then using the payoff bounds
 \eqref{eq:main-projected-payoff-bounds} produces $\Sigma_r$.
 Appendix~\ref{app:errors} identifies the checker path for these
 error calculations.
@@ -4242,8 +4249,20 @@ Let $t_r,t_\rho,t_\eta,t_\xi\in[0,1]$, and substitute
 These substitutions cover all four regions, including their
 boundaries. After clearing positive denominators, the checker
 reconstructs the resulting polynomials and their rational
-Bernstein coefficients~\cite{garloff1986}. The basis and its convex-combination
-sign property are defined in~\eqref{eq:bernstein-basis}.
+Bernstein coefficients~\cite{garloff1986}. For degree at most $d$,
+the Bernstein basis on $[0,1]$ satisfies
+\begin{equation}
+ b_i^{(d)}(t)=\binom di t^i(1-t)^{d-i},\quad i=0,\ldots,d,\quad
+ b_i^{(d)}(t)\ge0,\quad\sum_{i=0}^d b_i^{(d)}(t)=1.
+ \label{eq:bernstein-basis}
+\end{equation}
+On a rational box $\prod_j[a_j,b_j]$, substitute
+$x_j=a_j+(b_j-a_j)t_j$ and expand in products of these basis
+functions. The polynomial's value is a convex combination of its
+coefficients, so their signs certify its sign throughout the box.
+The checker uses Python~3 rational arithmetic with
+\nolinkurl{fractions.Fraction}~\cite{python3} to verify these signs
+exactly.
 
 On the two regions with $\rho\le1/2$, choose the positive rational
 certificate multiplier $m_Q=12609/50000$. Subtracting
