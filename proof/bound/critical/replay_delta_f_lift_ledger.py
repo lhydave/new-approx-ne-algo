@@ -31,7 +31,7 @@ definitions={}
 def parse(expr):return s.sympify(expr,locals=symbols).xreplace(definitions)
 def equal(a,b):assert s.factor(s.together(a-b))==0
 expected_definitions={
- 'g':'G_s+delta_f','R_x_s_1_x_s_2':'UR_x_s_2-g','R_y_s_1_x_s_2':'UR_x_s_2-tau_1',
+ 'g':'g_hat+delta_f','R_x_s_1_x_s_2':'UR_x_s_2-g','R_y_s_1_x_s_2':'UR_x_s_2-tau_1',
  'C_x_s_1_x_s_2':'UC_x_s_1-g','C_x_s_1_y_s_2':'UC_x_s_1-tau_2','R_y_s_1_y_s_2':'R_x_s_1_y_s_2+lambda_payoff','C_y_s_1_y_s_2':'C_y_s_1_x_s_2+mu_payoff',
  'vR':'R_y_s_1_x_s_2-R_y_1_1_x_s_2','vC':'C_x_s_1_y_s_2-C_x_s_1_y_1_2',
  'Ractual':'Urow-((1-p)*(1-q)*R_x_s_1_x_s_2+p*(1-q)*R_y_s_1_x_s_2+(1-p)*q*R_x_s_1_y_s_2+p*q*R_y_s_1_y_s_2)',
@@ -109,9 +109,9 @@ expected_targets={
  'eta_upper':'1-r-eta','xi_upper':'1-r-xi',
  'old_row_unclipped':'1-eta-r-eta*(vR+tau_1)',
  'old_col_unclipped':'1-xi-r-xi*(vC+tau_2)',
- 'row_bridge':'rho*R_y_s_1_y_1_2-G_s+sigma*Vc','col_bridge':'sigma*C_y_1_1_y_s_2-G_s+rho*Vr',
- 'common_column_deficit_plane':'eta*sigma*AC+rho*(1-eta)*DC-rho*r+eta*rho-eta*G_s',
- 'common_row_deficit_plane':'xi*rho*AR+sigma*(1-xi)*DR-sigma*r+xi*sigma-xi*G_s',
+ 'row_bridge':'rho*R_y_s_1_y_1_2-g_hat+sigma*Vc','col_bridge':'sigma*C_y_1_1_y_s_2-g_hat+rho*Vr',
+ 'common_column_deficit_plane':'eta*sigma*AC+rho*(1-eta)*DC-rho*r+eta*rho-eta*g_hat',
+ 'common_row_deficit_plane':'xi*rho*AR+sigma*(1-xi)*DR-sigma*r+xi*sigma-xi*g_hat',
  'generic_payoff_lower':'mass*(new-base)-r+(1-mass)*cap',
  'rectangle_failure':'Fpq-r-delta_f',
  'rectangle_row_budget':'delta_f*(1-q)-((1-p)*(1-q)*delta_f+p*(1-q)*tau_1)',
@@ -123,8 +123,8 @@ for expr in cert['zero_identities'].values():equal(parse(expr),s.Integer(0))
 
 # Guarded clipping is finite arithmetic, not a claim that a raw difference
 # must itself be nonnegative.  The first rule is applied AFTER cancellation.
-eta,xi,r,rho,sigma,G_s,vR,vC,tau_1,tau_2=[symbols[z] for z in
- ('eta','xi','r','rho','sigma','G_s','vR','vC','tau_1','tau_2')]
+eta,xi,r,rho,sigma,g_hat,vR,vC,tau_1,tau_2=[symbols[z] for z in
+ ('eta','xi','r','rho','sigma','g_hat','vR','vC','tau_1','tau_2')]
 Vstar=(1-eta-r)/eta;Wstar=(1-xi-r)/xi
 equal(eta*(Vstar-parse('vR')-tau_1),available['old_row_unclipped'])
 equal(xi*(Wstar-parse('vC')-tau_2),available['old_col_unclipped'])
@@ -138,8 +138,8 @@ clip_cases=[
 ]
 # For max(0, bridge), the zero branch uses normalized payoff>=0;
 # the positive branch uses the exact cleared bridge below.
-equal(rho*(symbols['R_y_s_1_y_1_2']-(G_s-sigma*symbols['Vc'])/rho),available['row_bridge'])
-equal(sigma*(symbols['C_y_1_1_y_s_2']-(G_s-rho*symbols['Vr'])/sigma),available['col_bridge'])
+equal(rho*(symbols['R_y_s_1_y_1_2']-(g_hat-sigma*symbols['Vc'])/rho),available['row_bridge'])
+equal(sigma*(symbols['C_y_1_1_y_s_2']-(g_hat-rho*symbols['Vr'])/sigma),available['col_bridge'])
 assert {x['id'] for x in cert['guarded_rules']}=={
  'minimum_after_cancellation','nonnegative_bridge_clip','family_max_transfer'}
 

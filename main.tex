@@ -616,7 +616,7 @@ Thus $y^1,y^2$ are best responses to $x^2,x^1$, respectively.
 For $\rho\in[0,1]$, define
 \begin{equation}
 \begin{aligned}
- T(\boldsymbol{x},\boldsymbol{x}',\rho,\boldsymbol{y})={}&
+ \Phi(\boldsymbol{x},\boldsymbol{x}',\rho,\boldsymbol{y})={}&
  \rho\bigl[u_1(y^1,x^{2\prime})-u_1(x^1,x^{2\prime})
        -u_1(x^{1\prime},x^2)+u_1(\boldsymbol{x})\bigr]\\
  &+(1-\rho)\bigl[u_2(x^{1\prime},y^2)-u_2(x^{1\prime},x^2)
@@ -628,7 +628,7 @@ The corresponding \emph{minimax value} is
 \[
  V(\boldsymbol{x})
    =\min_{\boldsymbol{x}'}\max_{\rho,\boldsymbol{y}}
-       T(\boldsymbol{x},\boldsymbol{x}',\rho,\boldsymbol{y}),
+       \Phi(\boldsymbol{x},\boldsymbol{x}',\rho,\boldsymbol{y}),
 \]
 where $\boldsymbol{x}'\in\Delta_{n_1}\times\Delta_{n_2}$,
 $\rho\in[0,1]$, and
@@ -692,7 +692,7 @@ When a weight is zero, its corresponding strategy can be chosen
 arbitrarily. Moreover, the same dual solution satisfies
 \begin{equation}
  f(\boldsymbol{x}_s)-\delta_f\le
- T(\boldsymbol{x}_s,\boldsymbol{x}',\rho,\boldsymbol{y}_s)
+ \Phi(\boldsymbol{x}_s,\boldsymbol{x}',\rho,\boldsymbol{y}_s)
  \quad\forall\boldsymbol{x}'\in\Delta_{n_1}\times\Delta_{n_2}.
  \label{eq:stationary}
 \end{equation}
@@ -743,7 +743,7 @@ quantified strategy variables, one for each player:
  \forall x^{1\prime}\in\Delta_{n_1},
  \forall x^{2\prime}\in\Delta_{n_2},\quad
  f(\boldsymbol{x}_s)-\delta_f\le
- T(\boldsymbol{x}_s,(x^{1\prime},x^{2\prime}),\rho,\boldsymbol{y}_s).
+ \Phi(\boldsymbol{x}_s,(x^{1\prime},x^{2\prime}),\rho,\boldsymbol{y}_s).
 \]
 Both players' payoff terms occur in this single inequality, and the
 same dual weight $\rho$ is shared by all its instantiations. If the
@@ -861,9 +861,9 @@ Write the two players' best-response payoff functions as
 \[
  \begin{aligned}
   \forall x^2\in\Delta_{n_2},\quad
-  B_1(x^2)&=\max_{x^{1\prime}\in\Delta_{n_1}}u_1(x^{1\prime},x^2),\\
+  u_1^*(x^2)&=\max_{x^{1\prime}\in\Delta_{n_1}}u_1(x^{1\prime},x^2),\\
   \forall x^1\in\Delta_{n_1},\quad
-  B_2(x^1)&=\max_{x^{2\prime}\in\Delta_{n_2}}u_2(x^1,x^{2\prime}).
+  u_2^*(x^1)&=\max_{x^{2\prime}\in\Delta_{n_2}}u_2(x^1,x^{2\prime}).
  \end{aligned}
 \]
 Jensen's inequality bounds a best-response payoff at a mixture by
@@ -872,9 +872,9 @@ differences are the \emph{Jensen gaps}:
 \begin{equation}
  \begin{aligned}
   \forall q\in[0,1],\quad
-  J_1(q)&=(1-q)B_1(x_s^2)+q B_1(y_s^2)-B_1(x^2(q))\ge0,\\
+  J_1(q)&=(1-q)u_1^*(x_s^2)+q u_1^*(y_s^2)-u_1^*(x^2(q))\ge0,\\
   \forall p\in[0,1],\quad
-  J_2(p)&=(1-p)B_2(x_s^1)+p B_2(y_s^1)-B_2(x^1(p))\ge0.
+  J_2(p)&=(1-p)u_2^*(x_s^1)+p u_2^*(y_s^1)-u_2^*(x^1(p))\ge0.
  \end{aligned}
  \label{eq:mixing-gaps}
 \end{equation}
@@ -905,12 +905,12 @@ two regrets gives the corresponding Jensen gap:
  \begin{aligned}
   \forall q\in[0,1],\quad
   J_1(q)=\min_{x^{1\prime}\in\Delta_{n_1}}\bigl\{
-   &(1-q)[B_1(x_s^2)-u_1(x^{1\prime},x_s^2)]\\
-   &+q[B_1(y_s^2)-u_1(x^{1\prime},y_s^2)]\bigr\},\\
+   &(1-q)[u_1^*(x_s^2)-u_1(x^{1\prime},x_s^2)]\\
+   &+q[u_1^*(y_s^2)-u_1(x^{1\prime},y_s^2)]\bigr\},\\
   \forall p\in[0,1],\quad
   J_2(p)=\min_{x^{2\prime}\in\Delta_{n_2}}\bigl\{
-   &(1-p)[B_2(x_s^1)-u_2(x_s^1,x^{2\prime})]\\
-   &+p[B_2(y_s^1)-u_2(y_s^1,x^{2\prime})]\bigr\}.
+   &(1-p)[u_2^*(x_s^1)-u_2(x_s^1,x^{2\prime})]\\
+   &+p[u_2^*(y_s^1)-u_2(y_s^1,x^{2\prime})]\bigr\}.
  \end{aligned}
  \label{eq:mixing-gap-losses}
 \end{equation}
@@ -1329,7 +1329,9 @@ $\delta_f$ and $\tau$ in the actual calls
 (Section~\ref{sec:accuracy-transfer}). The main text explains these
 steps; Appendices~\ref{app:instantiation}--\ref{app:errors} give the
 detailed calculations and the paths of the exact-arithmetic checking
-scripts in the accompanying repository.
+scripts in the accompanying repository; the file
+\nolinkurl{proof/README.md} there lists how the paper's symbols are
+spelled in the scripts.
 
 \subsection{Properties needed for the contradiction}
 \label{sec:properties}
@@ -1358,7 +1360,7 @@ $\boldsymbol{x}_s$ equal; call their common value $g$:
  \label{eq:properties-g}
 \end{equation}
 The operation also returns a number $\rho\in[0,1]$ that weights the
-row player's payoff terms in the expression $T$ below; $1-\rho$
+row player's payoff terms in the expression $\Phi$ below; $1-\rho$
 weights the column player's terms. The same $\rho$ and
 $\boldsymbol y_s$ work against every pair of comparison strategies:
 \begin{equation}
@@ -1366,10 +1368,10 @@ $\boldsymbol y_s$ work against every pair of comparison strategies:
  \forall x^{1\prime}\in\Delta_{n_1},
  \forall x^{2\prime}\in\Delta_{n_2},\quad
  g-\delta_f\le
- T(\boldsymbol{x}_s,(x^{1\prime},x^{2\prime}),\rho,\boldsymbol{y}_s).
+ \Phi(\boldsymbol{x}_s,(x^{1\prime},x^{2\prime}),\rho,\boldsymbol{y}_s).
  \label{eq:properties-stationary}
 \end{equation}
-Here $T$ is the payoff expression in~\eqref{eq:stationary-T}.
+Here $\Phi$ is the payoff expression in~\eqref{eq:stationary-T}.
 The returned strategies also nearly maximize each player's payoff
 against the other player's stationary strategy. For the row player,
 \begin{equation}
@@ -1613,9 +1615,9 @@ opponents' stationary strategies, and every auxiliary strategy from
 $\sm$ is a best response to that call's chosen strategy:
 \[
  \begin{aligned}
- B_1(x_s^2)&=u_1(y_s^1,x_s^2),&B_2(x_s^1)&=u_2(x_s^1,y_s^2),\\
- \forall j\in[2],\quad B_1(x_j^2)&=u_1(y_j^1,x_j^2),&
- B_2(x_j^1)&=u_2(x_j^1,y_j^2).
+ u_1^*(x_s^2)&=u_1(y_s^1,x_s^2),&u_2^*(x_s^1)&=u_2(x_s^1,y_s^2),\\
+ \forall j\in[2],\quad u_1^*(x_j^2)&=u_1(y_j^1,x_j^2),&
+ u_2^*(x_j^1)&=u_2(x_j^1,y_j^2).
  \end{aligned}
 \]
 Both players' regrets at each $\sm$ candidate equal its maximum regret:
@@ -1706,9 +1708,6 @@ gives the substitutions.
  \end{array}
  \label{eq:main-payoff-bounds}
 \end{equation}
-Here the numerical bound $T(\boldsymbol\lambda)$ is distinct from the stationary
-expression $T(\boldsymbol x,\boldsymbol x',\rho,\boldsymbol y)$;
-the number and types of their arguments distinguish them.
 To obtain the last row, we abbreviate two ratios
 of the first-round comparison coefficients as
 \begin{equation}
@@ -1768,10 +1767,10 @@ Define a mixed column strategy to use as a comparison in the proof:
  y_E^2=\frac{(1-\gamma)y_1^2+\gamma v y_s^2}{D_E}\in\Delta_{n_2}.
  \label{eq:main-column-comparison-mixture}
 \end{equation}
-By payoff linearity and the definition of $B_1$, inequality
+By payoff linearity and the definition of $u_1^*$, inequality
 \eqref{eq:main-shared-comparison} implies
 \begin{equation}
- B_1(y_E^2)\le
+ u_1^*(y_E^2)\le
  \frac{1-r-\frac\gamma\xi[r-(1-\xi)]}{D_E}.
  \label{eq:main-column-mixture-br-bound}
 \end{equation}
@@ -1841,10 +1840,11 @@ To bound the column player's gap from below,
 consider the regrets of the same column strategy $x^{2\prime}$
 against the two row strategies $x_s^1$ and $y_s^1$:
 \begin{equation}
- A=f_2(x_s^1,x^{2\prime}),\qquad
- B=f_2(y_s^1,x^{2\prime}).
+ a_{\mathrm s}=f_2(x_s^1,x^{2\prime}),\qquad
+ a_{\mathrm d}=f_2(y_s^1,x^{2\prime}).
  \label{eq:main-column-payoff-losses}
 \end{equation}
+The subscripts indicate the stationary and the dual row strategy.
 Both numbers are nonnegative, and the same strategy is used at both
 endpoints. Apply stationarity~\eqref{eq:properties-stationary}
 at $(x_s^1,x^{2\prime})$, then substitute the resulting payoff
@@ -1853,7 +1853,7 @@ for the first-round call $\sm(y_s^1)$ at $x^{2\prime}$, with
 $\omega=\eta$. This gives
 \begin{equation}
  \forall x^{2\prime}\in\Delta_{n_2},\quad
- \frac{\eta\sigma}{\rho}A+(1-\eta)B\ge\ell_c(\boldsymbol\lambda),
+ \frac{\eta\sigma}{\rho}a_{\mathrm s}+(1-\eta)a_{\mathrm d}\ge\ell_c(\boldsymbol\lambda),
  \qquad \ell_c(\boldsymbol\lambda)=r-\eta(1-g/\rho).
  \label{eq:main-column-loss-comparison}
 \end{equation}
@@ -1864,7 +1864,7 @@ at least one of the two row strategies. The Jensen-gap identity
 \eqref{eq:mixing-gap-losses} takes the weighted minimum of these same
 regrets:
 \[
- J_2(p)=\min_{x^{2\prime}\in\Delta_{n_2}}\{(1-p)A+pB\}.
+ J_2(p)=\min_{x^{2\prime}\in\Delta_{n_2}}\{(1-p)a_{\mathrm s}+pa_{\mathrm d}\}.
 \]
 The following lemma therefore converts the lower
 bound~\eqref{eq:main-column-loss-comparison} on weighted regrets into
@@ -1887,10 +1887,10 @@ There is a symmetric bound for the row Jensen gap $J_1(q)$.
 \begin{proof}
 Set $c_1=\eta\sigma/\rho$, $c_2=1-\eta$, and
 $M=\min\{(1-p)/c_1,p/c_2\}$. Both $c_1,c_2$ are positive.
-For each comparison strategy, nonnegativity of $A,B$ gives
+For each comparison strategy, nonnegativity of $a_{\mathrm s},a_{\mathrm d}$ gives
 \[
- (1-p)A+pB
- \ge M(c_1A+c_2B)\ge M\ell_c(\boldsymbol\lambda).
+ (1-p)a_{\mathrm s}+pa_{\mathrm d}
+ \ge M(c_1a_{\mathrm s}+c_2a_{\mathrm d})\ge M\ell_c(\boldsymbol\lambda).
 \]
 Minimizing the left side over $x^{2\prime}$ gives $J_2(p)$ by its
 regret identity in Section~\ref{sec:optimalmixing}.
@@ -2224,13 +2224,13 @@ Exchanging the players if necessary, we describe the numerical
 candidate in the orientation $S>r>T$. Both $H-r$ and $K-r$
 are close to zero. We therefore impose $H=r$ and $K=r$ in the
 local algebraic calculation. Solving these two equations determines
-$\alpha$ and $\gamma$. Denote the resulting value of $\alpha$ by $A_0$:
+$\alpha$ and $\gamma$. Denote the resulting value of $\alpha$ by $\alpha_0$:
 \begin{equation}
- A_0=\frac{r-T}{S-T},\qquad \alpha=A_0,\qquad\gamma=1-A_0.
+ \alpha_0=\frac{r-T}{S-T},\qquad \alpha=\alpha_0,\qquad\gamma=1-\alpha_0.
  \label{eq:main-discovery-weights}
 \end{equation}
 The denominator is positive because $S>r>T$.
-Thus $A_0$ is the coefficient that makes the weighted average of
+Thus $\alpha_0$ is the coefficient that makes the weighted average of
 $S$ and $T$ equal to $r$.
 
 Another observed equality determines the first-round weight $\xi$.
@@ -2321,7 +2321,7 @@ equalities near one candidate assignment. We must now show that
 from that candidate. First, we show that any such assignment would
 still satisfy the inequalities needed below after the two
 second-round coefficients are reset to the values
-$\alpha=A_0$, $\gamma=1-A_0$ of~\eqref{eq:main-discovery-weights},
+$\alpha=\alpha_0$, $\gamma=1-\alpha_0$ of~\eqref{eq:main-discovery-weights},
 at which $H=K=r$.
 That leaves $\rho,\eta,\xi$. Next, we move their values, while
 preserving the needed inequalities, to the line $v=v_0$ where
@@ -2367,18 +2367,18 @@ gives the complete argument, including the bound $s_1,s_2<r$,
 and names the checker for each sign condition.
 
 In this orientation, $H,K\ge r$ restrict the two second-round
-weights to opposite sides of the balancing value $A_0$ defined
+weights to opposite sides of the balancing value $\alpha_0$ defined
 in~\eqref{eq:main-discovery-weights}. Define the positive distances
 of $S$ and $T$ from $r$ by
 \begin{equation}
  m=S-r>0,\qquad n=r-T>0,\qquad
- A_0=\frac n{m+n}=\frac{r-T}{S-T}.
+ \alpha_0=\frac n{m+n}=\frac{r-T}{S-T}.
  \label{eq:main-weight-balancing-values}
 \end{equation}
 Then
 \begin{equation}
  H-r=\alpha(m+n)-n,\qquad K-r=m-\gamma(m+n),
- \qquad \alpha\ge A_0,\quad\gamma\le1-A_0.
+ \qquad \alpha\ge \alpha_0,\quad\gamma\le1-\alpha_0.
  \label{eq:main-weight-source-restrictions}
 \end{equation}
 The numerical discovery used equality in these two comparisons.
@@ -2391,8 +2391,8 @@ inequalities needed for the contradiction. The next lemma does so.
 For $r_*<r\le1/3$, any solution of $\Sigma_r$ can, after exchanging
 both players' labels if necessary, be changed to an assignment with
 \[
- S>r>T,\qquad \alpha=A_0,\qquad\gamma=1-A_0,
- \qquad 0<A_0\le1-r.
+ S>r>T,\qquad \alpha=\alpha_0,\qquad\gamma=1-\alpha_0,
+ \qquad 0<\alpha_0\le1-r.
 \]
 Changing only $\alpha,\gamma$ preserves the inequality $U\ge r$
 from~\eqref{eq:main-weighted-regret-bounds} and the shared inequality
@@ -2405,12 +2405,12 @@ are unchanged.
 \begin{proof}[Proof idea]
 We present only the main proof ideas here; the complete proof of
 Lemma~\ref{lem:weight-reduction} is given in Appendix~\ref{app:weights}.
-We first lower $\alpha$ to $A_0$. Differentiating the projected
+We first lower $\alpha$ to $\alpha_0$. Differentiating the projected
 expression in~\eqref{eq:main-shared-coupling} gives
 \begin{equation}
  \partial_\alpha E_1
  =(1-\gamma)(S-T)+\gamma(1+T-h_2/\xi)-r<0
- \qquad(r\le\gamma\le1-A_0).
+ \qquad(r\le\gamma\le1-\alpha_0).
  \label{eq:main-weight-derivative}
 \end{equation}
 To prove the sign, it suffices to check the two endpoints in
@@ -2422,40 +2422,40 @@ Appendix~\ref{app:weights} specifies the domains and code paths
 for these checks.
 Thus lowering $\alpha$ increases $E_1$.
 It also increases $U=\alpha s_1+(1-\alpha)h_2$, since $s_1<r<h_2$.
-The inequality $A_0\le\alpha\le1-r$ gives the stated upper bound
-on $A_0$.
+The inequality $\alpha_0\le\alpha\le1-r$ gives the stated upper bound
+on $\alpha_0$.
 
-With $\alpha=A_0$, we have $H=r$ and
+With $\alpha=\alpha_0$, we have $H=r$ and
 \[
- E_1(A_0,0)=-A_0r<0.
+ E_1(\alpha_0,0)=-\alpha_0 r<0.
 \]
-The function $E_1(A_0,\gamma)$ is affine in $\gamma$ and
+The function $E_1(\alpha_0,\gamma)$ is affine in $\gamma$ and
 nonnegative at the current positive $\gamma$. Its slope is therefore
-positive. Raising $\gamma$ to $1-A_0$ preserves $E_1\ge0$ and
+positive. Raising $\gamma$ to $1-\alpha_0$ preserves $E_1\ge0$ and
 leaves $U$ unchanged. The payoff functions and segment conditions
 are independent of these two weights.
 \end{proof}
 Lemma~\ref{lem:weight-reduction} has moved any putative solution to
 the balancing values of $\alpha,\gamma$. Only three inequalities
 will be needed in the remaining reduction: $U\ge r$, the bound
-$A_0\le1-r$, and the shared inequality $E_1\ge0$. We rewrite them
+$\alpha_0\le1-r$, and the shared inequality $E_1\ge0$. We rewrite them
 so their signs can be tracked as the other variables move.
 Let $z=n/m>0$ be the ratio of the two distances from $r$, and set
 $c=1-2r>0$.
-Multiply $U(A_0)-r\ge0$ and $1-r-A_0\ge0$ by $m+n>0$,
-and divide $E_1(A_0,1-A_0)\ge0$ by $(1-A_0)^2>0$.
+Multiply $U(\alpha_0)-r\ge0$ and $1-r-\alpha_0\ge0$ by $m+n>0$,
+and divide $E_1(\alpha_0,1-\alpha_0)\ge0$ by $(1-\alpha_0)^2>0$.
 Define the resulting nonnegative expressions by
 \begin{equation}
  \begin{aligned}
- G&=(m+n)[U(A_0)-r]=m(h_2-r)-n(r-s_1)\ge0,\\
- B_{\mathrm{mass}}&=(m+n)[1-r-A_0]=(1-r)m-rn\ge0,\\
- E&=\frac{E_1(A_0,1-A_0)}{(1-A_0)^2}
+ G&=(m+n)[U(\alpha_0)-r]=m(h_2-r)-n(r-s_1)\ge0,\\
+ \Theta&=(m+n)[1-r-\alpha_0]=(1-r)m-rn\ge0,\\
+ E&=\frac{E_1(\alpha_0,1-\alpha_0)}{(1-\alpha_0)^2}
    =v(h_2-r)+z[c+v(s_1-2r)]-rz^2\ge0.
  \end{aligned}
  \label{eq:main-reduced-comparisons}
 \end{equation}
-Thus $G\ge0$ is $U\ge r$ rewritten, $B_{\mathrm{mass}}\ge0$ is
-$A_0\le1-r$ rewritten, and $E\ge0$ is the shared inequality
+Thus $G\ge0$ is $U\ge r$ rewritten, $\Theta\ge0$ is
+$\alpha_0\le1-r$ rewritten, and $E\ge0$ is the shared inequality
 rewritten. We use these three inequalities in the rest of the
 argument, which moves the remaining variables along paths; the other
 second-round inequalities are not needed there.
@@ -2511,7 +2511,7 @@ the second alternative keeps the requirement $N_R<0\le N_C$.
 We next want one fixed formula for $h_2$, so that only the change
 in $h_1$ separates the cases in the path argument. Exact machine
 checks combine the coefficient bound
-$B_{\mathrm{mass}}\ge0$ with the applicable alternative
+$\Theta\ge0$ with the applicable alternative
 of~\eqref{eq:main-mixing-branch-guards} to rule out
 $u\ge1$ for every $\rho$ with $r\le\rho\le1-r$.
 Appendix~\ref{app:weights} gives the corresponding polynomial signs
@@ -2536,7 +2536,7 @@ no solution still rules out every failed run.
  r_*<r\le1/3,\quad r\le\rho\le1-r,\quad
  k\le u<1,\quad k\le v\le1/k,\quad S>r>T,\\
  T,s_2\ge0,\qquad (\rho\le1/2\ \Longrightarrow\ s_1\ge0),\qquad
- G,B_{\mathrm{mass}},E\ge0,\\
+ G,\Theta,E\ge0,\\
  L\ge0\quad\text{or}\quad
  (N_R<0\le N_C\ \land\ B_{\mathrm{mix}}\ge0).
  \end{gathered}
@@ -2578,9 +2578,9 @@ $z=(r-T)/(S-r)$ decrease during this move. Since
 $s_1,h_2$ are fixed, the identities
 \[
  G=m[(h_2-r)-z(r-s_1)],\qquad
- B_{\mathrm{mass}}=m[(1-r)-rz]
+ \Theta=m[(1-r)-rz]
 \]
-show that $G,B_{\mathrm{mass}}\ge0$ persist while $m>0$.
+show that $G,\Theta\ge0$ persist while $m>0$.
 The same machine check establishes the sign needed at a zero of
 the shared inequality:
 \[
@@ -2597,7 +2597,7 @@ remaining stopping arguments. Thus this path reaches $v_0$.
 
 Suppose now that $v<v_0$. Keep $v$ fixed and increase $u$.
 Here exact machine checks of the derivatives show that $z$
-decreases and $(h_2-r)/(r-s_1)$ increases. These signs preserve $G,B_{\mathrm{mass}}\ge0$ by the same two
+decreases and $(h_2-r)/(r-s_1)$ increases. These signs preserve $G,\Theta\ge0$ by the same two
 identities. The same derivative checks give
 \[
  E=0\quad\Longrightarrow\quad \partial_uE>0,
@@ -2728,16 +2728,16 @@ roots. Continuity therefore gives $N_2<0$ at every such $\eta_-$.
 It remains to rule out $N_2\ge0$ at larger $\eta$.
 At fixed $(r,\rho,v_0)$, consider the left side of the shared
 inequality,
-$E_1(A_0,1-A_0)=(1-A_0)^2E$, with all payoff functions and $A_0$
+$E_1(\alpha_0,1-\alpha_0)=(1-\alpha_0)^2E$, with all payoff functions and $\alpha_0$
 evaluated at the varying $\eta$.
 Exact machine checks provide the derivative signs that keep
-$S>r>T$, $0<A_0\le1-r$, and $h_2>r$ on the interval from
+$S>r>T$, $0<\alpha_0\le1-r$, and $h_2>r$ on the interval from
 $\eta_-$ to any $\eta$ with $N_1\ge0$. At a zero of this
 expression, the chain rule and the derivative of the quadratic
 expression for $E$ in~\eqref{eq:main-reduced-comparisons} then give
 \begin{equation}
- E_1(A_0,1-A_0)=0\quad\Longrightarrow\quad
- \frac{d}{d\eta}E_1(A_0,1-A_0)<0.
+ E_1(\alpha_0,1-\alpha_0)=0\quad\Longrightarrow\quad
+ \frac{d}{d\eta}E_1(\alpha_0,1-\alpha_0)<0.
  \label{eq:main-switch-zero-derivative}
 \end{equation}
 By~\eqref{eq:main-switch-polynomial-conditions}, its starting value
@@ -2763,7 +2763,7 @@ Substitution at this zero gives $N_2(r,\rho,\eta_B)<0$ throughout
 the stated domain. Here an exact machine check verifies the
 strictly negative Bernstein coefficients after substitution.
 The interval conditions and the same zero derivative
-\eqref{eq:main-switch-zero-derivative} then show that $E_1(A_0,1-A_0)$
+\eqref{eq:main-switch-zero-derivative} then show that $E_1(\alpha_0,1-\alpha_0)$
 stays negative at every larger feasible $\eta$.
 Both alternatives are therefore impossible.
 Appendix~\ref{app:switch} specifies the domains of the sign checks,
@@ -2861,14 +2861,14 @@ introduce no additional accuracy term.
 The stationarity inequality~\eqref{eq:properties-stationary} has
 $g-\delta_f$ on its left side, where the zero-error proof had $g$.
 To reuse the earlier inequalities, call this
-conservative value $G_s$:
+conservative value $\hat g$:
 \begin{equation}
- G_s=g-\delta_f>r.
+ \hat g=g-\delta_f>r.
  \label{eq:main-error-stationary-value}
 \end{equation}
 We use this same value in every subsequent inequality. Applying
 stationarity at $(x_s^1,y_s^2)$ and
-$(y_s^1,x_s^2)$ gives $G_s\le\rho,\sigma$, so both stationary
+$(y_s^1,x_s^2)$ gives $\hat g\le\rho,\sigma$, so both stationary
 coefficients are above $r$.
 The error in the near-best-response property is also absorbed by
 the same margin $\delta_f$.
@@ -2877,7 +2877,7 @@ being a best response to $x_s^2$; it is at most $\delta_f$ and is
 unrelated to the $\om$ accuracy $\tau$. Also let $d$ be the row
 regret after replacing $y_s^1$ by $y_1^1$:
 \begin{equation}
- \tau_1=f_1(y_s^1,x_s^2)=B_1(x_s^2)-u_1(y_s^1,x_s^2),\quad
+ \tau_1=f_1(y_s^1,x_s^2)=u_1^*(x_s^2)-u_1(y_s^1,x_s^2),\quad
  0\le\tau_1\le\delta_f,\qquad d=f_1(y_1^1,x_s^2)\ge0.
  \label{eq:main-error-row-shortfall}
 \end{equation}
@@ -2905,28 +2905,28 @@ are then exact best responses to those calls' chosen strategies;
 the second-round comparisons give $r<\alpha,\gamma<1-r$ as in the
 zero-error proof.
 
-Using the stationary value $G_s$ and these regret bounds, the six
+Using the stationary value $\hat g$ and these regret bounds, the six
 payoff bounds are now evaluated at
 \begin{equation}
- \boldsymbol\lambda_s=(r,G_s,\rho,\eta,\xi).
+ \boldsymbol\lambda_s=(r,\hat g,\rho,\eta,\xi).
  \label{eq:main-error-payoff-parameters}
 \end{equation}
 The same applications of the comparison inequalities from
 Section~\ref{sec:reduction}
 give their nonnegativity and the second-round and shared inequalities
 \eqref{eq:main-weighted-regret-bounds} and
-\eqref{eq:main-shared-coupling}, with $g=G_s$.
+\eqref{eq:main-shared-coupling}, with $g=\hat g$.
 The inequality~\eqref{eq:main-column-loss-comparison} and its row
 counterpart, used for the Jensen-gap bounds, now have
 additional nonnegative terms proportional to $\tau_1$ and its
 column counterpart. Dropping these terms and applying the weighted
 minimum argument of Lemma~\ref{lem:main-jensen} gives the row
 lower bound $j_r(\boldsymbol\lambda_s,q)$ and the symmetric
-column bound, both evaluated at $g=G_s$.
+column bound, both evaluated at $g=\hat g$.
 
 It remains to recover the segment conditions. In the row-regret
 interpolation~\eqref{eq:mixing-regrets}, the stationary corner
-contributes $g=G_s+\delta_f$ and the corner $(y_s^1,x_s^2)$
+contributes $g=\hat g+\delta_f$ and the corner $(y_s^1,x_s^2)$
 contributes $\tau_1$. Their total error is bounded by
 \[
  \delta_f(1-p)(1-q)+\tau_1p(1-q)
@@ -2937,29 +2937,29 @@ bounds just obtained, this gives
 \begin{equation}
  \begin{aligned}
  \forall p,q\in[0,1],\quad f_1(\boldsymbol x(p,q))
-   &\le R_{G_s}(p,q)+\delta_f(1-q),\\
+   &\le R_{\hat g}(p,q)+\delta_f(1-q),\\
  \forall p,q\in[0,1],\quad f_2(\boldsymbol x(p,q))
-   &\le C_{G_s}(p,q)+\delta_f(1-p).
+   &\le C_{\hat g}(p,q)+\delta_f(1-p).
  \end{aligned}
  \label{eq:main-error-rectangle-bounds}
 \end{equation}
-Here $R_{G_s},C_{G_s}$ are $R_g,C_g$ with $g$ replaced by $G_s$.
+Here $R_{\hat g},C_{\hat g}$ are $R_g,C_g$ with $g$ replaced by $\hat g$.
 The same machine check verifies these error identities and
 the nonnegative combinations giving the payoff and regret bounds.
 If their maximum were at most $r$ at any $(p,q)$, both actual
 regrets would be at most $r+\delta_f$, contradicting
 \eqref{eq:main-error-rectangle-failure}.
 The four segment conditions~\eqref{eq:main-segment-conditions}
-therefore hold with $g$ replaced by $G_s$.
+therefore hold with $g$ replaced by $\hat g$.
 
 The first-round inequalities~\eqref{eq:main-first-round-g-comparisons},
-with $g=G_s$, give the interval needed for the substitution in
+with $g=\hat g$, give the interval needed for the substitution in
 Lemma~\ref{lem:main-g-projection}. The proof of that lemma uses
 only the bounds on the comparison coefficients, the nonnegativity
 of the payoff bounds, the second-round and shared inequalities, the
 segment conditions, and the first-round inequalities, all
-established above with $g=G_s$. It therefore applies to these
-adjusted numerical values. Replacing $G_s$ by $r$ and then using the
+established above with $g=\hat g$. It therefore applies to these
+adjusted numerical values. Replacing $\hat g$ by $r$ and then using the
 payoff bounds
 \eqref{eq:main-projected-payoff-bounds} produces $\Sigma_r$.
 Appendix~\ref{app:errors} gives the location of the checker for these
@@ -3291,26 +3291,26 @@ both at strategies returned by the algorithm and at strategies
 chosen in the proof, such as a best response to a returned strategy.
 
 \paragraph{The stationarity inequality as an LP.}
-The expression $T$ in the stationarity
+The expression $\Phi$ in the stationarity
 inequality~\eqref{eq:properties-stationary} is a sum of a part
 depending only on $x^{1\prime}$ and a part depending only on
 $x^{2\prime}$. The inequality can therefore be
 represented by two additive constants from the stationary LP:
-write $A_s,B_s$ for lower bounds on these two separate
+write $\Phi_1,\Phi_2$ for lower bounds on these two separate
 parts. These constants are chosen for the fixed stationary dual
 solution, independently of the comparison strategies. With zero
 error, their conditions are
 \begin{equation}
  \begin{gathered}
- \exists A_s,B_s\in\mathbb R\text{ such that}\\
+ \exists \Phi_1,\Phi_2\in\mathbb R\text{ such that}\\
  \begin{aligned}
  \forall x^{1\prime}\in\Delta_{n_1},\quad
- A_s&\le-\rho u_1(x^{1\prime},x_s^2)
+ \Phi_1&\le-\rho u_1(x^{1\prime},x_s^2)
        +\sigma[u_2(x^{1\prime},y_s^2)-u_2(x^{1\prime},x_s^2)],\\
  \forall x^{2\prime}\in\Delta_{n_2},\quad
- B_s&\le-\sigma u_2(x_s^1,x^{2\prime})
+ \Phi_2&\le-\sigma u_2(x_s^1,x^{2\prime})
        +\rho[u_1(y_s^1,x^{2\prime})-u_1(x_s^1,x^{2\prime})],\\
- g&\le\rho u_1(\boldsymbol x_s)+\sigma u_2(\boldsymbol x_s)+A_s+B_s.
+ g&\le\rho u_1(\boldsymbol x_s)+\sigma u_2(\boldsymbol x_s)+\Phi_1+\Phi_2.
  \end{aligned}
  \end{gathered}
  \label{eq:stationary-lp-offsets}
@@ -3323,7 +3323,7 @@ gives the last line. Conversely, adding the
 three lines gives~\eqref{eq:properties-stationary}.
 The registry of quantified building-block properties in the
 accompanying repository records this LP representation. We use the
-combined inequality directly, eliminating $A_s,B_s$ before forming
+combined inequality directly, eliminating $\Phi_1,\Phi_2$ before forming
 the finite system $\Sigma_r$. With approximation error, the last
 line has $g-\delta_f$ in place of $g$.
 
@@ -3396,11 +3396,11 @@ at most one. Since $g>r$ in~\eqref{eq:failure-candidates}, this gives
 \end{equation}
 Thus~\eqref{eq:properties-stationary-br}, with zero error, implies
 \begin{equation}
- B_1(x_s^2)=u_1(y_s^1,x_s^2),\qquad
- B_2(x_s^1)=u_2(x_s^1,y_s^2).
+ u_1^*(x_s^2)=u_1(y_s^1,x_s^2),\qquad
+ u_2^*(x_s^1)=u_2(x_s^1,y_s^2).
  \label{eq:app-stationary-best-responses}
 \end{equation}
-The functions $B_1,B_2$ are the best-response payoff functions
+The functions $u_1^*,u_2^*$ are the best-response payoff functions
 defined in Section~\ref{sec:optimalmixing}.
 Nonnegativity of $u_1(x_s^1,y_s^2)$ and $u_2(y_s^1,x_s^2)$ in
 \eqref{eq:app-stationary-weight-tests} also gives
@@ -3463,7 +3463,7 @@ Every inequality is an equality. Since $\eta>0$, $y_1^1$ attains
 the row best-response payoff against $x_1^2$. Since $\eta$ and
 $1-\eta$ are both positive, both regrets equal the maximum regret:
 \begin{equation}
- B_1(x_1^2)=u_1(y_1^1,x_1^2),\qquad
+ u_1^*(x_1^2)=u_1(y_1^1,x_1^2),\qquad
  f_1(\boldsymbol z_1^1)=f_2(\boldsymbol z_1^1)=F_1^1.
  \label{eq:app-first-row-best-response-output}
 \end{equation}
@@ -3479,7 +3479,7 @@ primal output $x_1^1$, now with input $y_s^2$, dual strategy
 $y_1^2$, and weight $\xi$ of $\sm(y_s^2)$. This gives
 \begin{equation}
  r<\xi<1-r,\qquad
- B_2(x_1^1)=u_2(x_1^1,y_1^2),\qquad
+ u_2^*(x_1^1)=u_2(x_1^1,y_1^2),\qquad
  f_1(\boldsymbol z_1^2)=f_2(\boldsymbol z_1^2)=F_1^2.
  \label{eq:app-first-column-best-response-output}
 \end{equation}
@@ -3502,8 +3502,8 @@ of $\sm(y_1^1)$ and $\sm(y_1^2)$ and repeating the equality chain
 \begin{equation}
  \begin{gathered}
  r<\eta,\xi,\alpha,\gamma<1-r,\\
- B_1(x_2^2)=u_1(y_2^1,x_2^2),\qquad
- B_2(x_2^1)=u_2(x_2^1,y_2^2),\\
+ u_1^*(x_2^2)=u_1(y_2^1,x_2^2),\qquad
+ u_2^*(x_2^1)=u_2(x_2^1,y_2^2),\\
  f_1(\boldsymbol z_2^1)=f_2(\boldsymbol z_2^1)=F_2^1,\qquad
  f_1(\boldsymbol z_2^2)=f_2(\boldsymbol z_2^2)=F_2^2.
  \end{gathered}
@@ -3584,9 +3584,9 @@ of $y_1^2$ against $x_s^1$:
 \begin{equation}
  \begin{aligned}
  d_1&=\min\{1,(1-\eta-r)/\eta\},&
- B_1(x_s^2)-u_1(y_1^1,x_s^2)&\le d_1,\\
+ u_1^*(x_s^2)-u_1(y_1^1,x_s^2)&\le d_1,\\
  d_2&=\min\{1,(1-\xi-r)/\xi\},&
- B_2(x_s^1)-u_2(x_s^1,y_1^2)&\le d_2.
+ u_2^*(x_s^1)-u_2(x_s^1,y_1^2)&\le d_2.
  \end{aligned}
  \label{eq:app-stationary-payoff-loss-bounds}
 \end{equation}
@@ -3599,8 +3599,8 @@ inequalities are
 \begin{equation}
  \begin{aligned}
  g&\le\rho[u_1(y_s^1,y_1^2)-u_1(x_s^1,y_1^2)]
-              +\sigma[B_2(x_s^1)-u_2(x_s^1,y_1^2)],\\
- g&\le\rho[B_1(x_s^2)-u_1(y_1^1,x_s^2)]
+              +\sigma[u_2^*(x_s^1)-u_2(x_s^1,y_1^2)],\\
+ g&\le\rho[u_1^*(x_s^2)-u_1(y_1^1,x_s^2)]
               +\sigma[u_2(y_1^1,y_s^2)-u_2(y_1^1,x_s^2)].
  \end{aligned}
  \label{eq:app-cross-stationary-tests}
@@ -3655,10 +3655,6 @@ In particular,
  1-u_2(y_1^1,y_1^2)\le T(\boldsymbol\lambda).
  \label{eq:app-payoff-bound-st-meaning}
 \end{equation}
-Here the one-argument notation $T(\boldsymbol\lambda)$ always denotes the scalar
-upper-bound function in~\eqref{eq:payoff-bound-st}.
-The four-argument expression used in~\eqref{eq:properties-stationary}
-continues to denote the stationary payoff expression~\eqref{eq:stationary-T}.
 The six functions $s_i(\boldsymbol\lambda),h_i(\boldsymbol\lambda),S(\boldsymbol\lambda),T(\boldsymbol\lambda)$ are nonnegative at the
 scalar values supplied by the execution, since each bounds
 a nonnegative quantity of the form $1-u_i$.
@@ -3707,13 +3703,13 @@ Fix $x^{1\prime}\in\Delta_{n_1}$. Equations
 \begin{equation}
  \begin{aligned}
  r&\le\xi[u_2(x^{1\prime},y_1^2)-u_2(x^{1\prime},y_s^2)]
-             +(1-\xi)[B_1(y_s^2)-u_1(x^{1\prime},y_s^2)],\\
+             +(1-\xi)[u_1^*(y_s^2)-u_1(x^{1\prime},y_s^2)],\\
  r&\le\gamma[u_2(x^{1\prime},y_2^2)-u_2(x^{1\prime},y_1^2)]
-             +(1-\gamma)[B_1(y_1^2)-u_1(x^{1\prime},y_1^2)].
+             +(1-\gamma)[u_1^*(y_1^2)-u_1(x^{1\prime},y_1^2)].
  \end{aligned}
  \label{eq:app-shared-column-tests}
 \end{equation}
-Use $u_2(x^{1\prime},y_s^2)\ge0$, $B_1\le1$, and
+Use $u_2(x^{1\prime},y_s^2)\ge0$, $u_1^*\le1$, and
 $u_2(x^{1\prime},y_2^2)\le1$, then rearrange:
 \begin{equation}
  \begin{aligned}
@@ -3751,7 +3747,7 @@ of the dual inequality~\eqref{eq:app-second-row-instance} of
 $\sm(y_1^1)$, whose comparison domain is the entire column simplex. Payoff linearity and~\eqref{eq:common-payoff}
 give
 \begin{equation}
- B_1(y_E^2)\le
+ u_1^*(y_E^2)\le
  \frac{1-r-(\gamma/\xi)[r-(1-\xi)]}{D_E}.
  \label{eq:app-column-mixture-best-response-bound}
 \end{equation}
@@ -3800,7 +3796,7 @@ Define the row comparison strategy and its positive denominator by
  y_E^1=\frac{(1-\alpha)y_1^1+\alpha u y_s^1}{D_{E,1}}\in\Delta_{n_1}.
  \label{eq:app-row-comparison-mixture}
 \end{equation}
-The best-response payoff $B_2(y_E^1)$ is bounded by the right side
+The best-response payoff $u_2^*(y_E^1)$ is bounded by the right side
 of~\eqref{eq:app-shared-row-payoff-bound} divided by $D_{E,1}$.
 Instantiate the dual inequality~\eqref{eq:app-second-column-instance}
 of $\sm(y_1^2)$ with $x^{1\prime}=y_E^1$, expand payoffs, and
@@ -3857,18 +3853,16 @@ the comparison simplex:
 \begin{equation}
  \begin{aligned}
  \forall x^{2\prime}\in\Delta_{n_2},\quad
- A_c(x^{2\prime})&=f_2(x_s^1,x^{2\prime})\ge0,\\
- B_c(x^{2\prime})&=f_2(y_s^1,x^{2\prime})\ge0.
+ a_{\mathrm s}(x^{2\prime})&=f_2(x_s^1,x^{2\prime})\ge0,\\
+ a_{\mathrm d}(x^{2\prime})&=f_2(y_s^1,x^{2\prime})\ge0.
  \end{aligned}
  \label{eq:app-column-endpoint-losses}
 \end{equation}
-These are the same regrets introduced in
+These are the regrets $a_{\mathrm s},a_{\mathrm d}$ introduced in
 \eqref{eq:main-column-payoff-losses}, now written as functions of
-the comparison strategy:
-\[
- A=A_c(x^{2\prime}),\qquad B=B_c(x^{2\prime}).
-\]
-The subscript $c$ identifies column-player regrets.
+the comparison strategy. The subscripts $\mathrm s$ and $\mathrm d$
+indicate whether the row player uses the stationary strategy $x_s^1$
+or the dual strategy $y_s^1$.
 The same comparison strategy occurs at the two row-strategy endpoints.
 Instantiate~\eqref{eq:properties-stationary} at
 $(x_s^1,x^{2\prime})$, and use
@@ -3876,9 +3870,9 @@ $(x_s^1,x^{2\prime})$, and use
 \begin{equation}
  \begin{aligned}
  g&\le\rho[u_1(y_s^1,x^{2\prime})-u_1(x_s^1,x^{2\prime})]
-                         +\sigma A_c(x^{2\prime}),\\
+                         +\sigma a_{\mathrm s}(x^{2\prime}),\\
  u_1(y_s^1,x^{2\prime})
- &\ge g/\rho-(\sigma/\rho)A_c(x^{2\prime}).
+ &\ge g/\rho-(\sigma/\rho)a_{\mathrm s}(x^{2\prime}).
  \end{aligned}
  \label{eq:app-column-loss-stationary-test}
 \end{equation}
@@ -3887,8 +3881,8 @@ of the first-round operation $\sm(y_s^1)$ at the same
 $x^{2\prime}$, and use this lower bound and
 $u_1(y_1^1,x^{2\prime})\le1$. Since $F_1^1>r$, this gives
 \begin{equation}
- r\le\eta[1-g/\rho+(\sigma/\rho)A_c(x^{2\prime})]
-                         +(1-\eta)B_c(x^{2\prime}).
+ r\le\eta[1-g/\rho+(\sigma/\rho)a_{\mathrm s}(x^{2\prime})]
+                         +(1-\eta)a_{\mathrm d}(x^{2\prime}).
  \label{eq:app-column-loss-first-row-test}
 \end{equation}
 Rearrangement yields a joint lower bound valid for every column strategy.
@@ -3921,8 +3915,8 @@ The two conclusions and their right sides are
 \begin{equation}
  \begin{aligned}
  \forall x^{2\prime}\in\Delta_{n_2},\quad
- \frac{\eta\sigma}{\rho}A_c(x^{2\prime})
-       +(1-\eta)B_c(x^{2\prime})&\ge\ell_c(\boldsymbol\lambda),&
+ \frac{\eta\sigma}{\rho}a_{\mathrm s}(x^{2\prime})
+       +(1-\eta)a_{\mathrm d}(x^{2\prime})&\ge\ell_c(\boldsymbol\lambda),&
  \ell_c(\boldsymbol\lambda)&=r-\eta(1-g/\rho),\\
  \forall x^{1\prime}\in\Delta_{n_1},\quad
  \frac{\xi\rho}{\sigma}A_r(x^{1\prime})
@@ -3962,7 +3956,7 @@ The calculation uses $M(t)\ge0$ and does not require $\ell\ge0$.
 \end{proof}
 
 For the column regrets, apply the lemma with
-$a=A_c(x^{2\prime})$, $b=B_c(x^{2\prime})$,
+$a=a_{\mathrm s}(x^{2\prime})$, $b=a_{\mathrm d}(x^{2\prime})$,
 $c_1=\eta\sigma/\rho$, $c_2=1-\eta$, $\ell=\ell_c(\boldsymbol\lambda)$,
 and $t=p$. For the row regrets, use
 $a=A_r(x^{1\prime})$, $b=B_r(x^{1\prime})$,
@@ -4092,7 +4086,7 @@ The maximum is affine on either side of an intersection, so its
 minimum occurs at an endpoint or an intersection in the segment.
 Define the segment predicate by
 \begin{equation}
- \mathcal T_r(\boldsymbol a,\boldsymbol b)
+ \mathrm{Seg}_r(\boldsymbol a,\boldsymbol b)
  \quad\Longleftrightarrow\quad
  \begin{gathered}
  \max\{R_0,C_0\}\ge r,\qquad \max\{R_1,C_1\}\ge r,\\
@@ -4130,7 +4124,7 @@ The four segment conditions~\eqref{eq:main-segment-conditions}
 are expressed by this finite predicate as
 \begin{equation}
  \forall j\in[4],\qquad
- \mathcal T_r(\boldsymbol c_0(\boldsymbol\lambda),\boldsymbol c_j(\boldsymbol\lambda)).
+ \mathrm{Seg}_r(\boldsymbol c_0(\boldsymbol\lambda),\boldsymbol c_j(\boldsymbol\lambda)).
  \label{eq:app-four-segment-comparisons}
 \end{equation}
 This calculation replaces each one-dimensional minimization along a
@@ -4249,7 +4243,7 @@ For a general scalar point, record these premises as
  s_1(\boldsymbol\lambda),s_2(\boldsymbol\lambda),h_1(\boldsymbol\lambda),h_2(\boldsymbol\lambda),S(\boldsymbol\lambda),T(\boldsymbol\lambda)\ge0,\\
  U_g,V_g,H_g,K_g\ge r,\qquad E_{1,g},E_{2,g}\ge0,\\
  \forall j\in[4],\qquad
- \mathcal T_r(\boldsymbol c_0(\boldsymbol\lambda),\boldsymbol c_j(\boldsymbol\lambda)).
+ \mathrm{Seg}_r(\boldsymbol c_0(\boldsymbol\lambda),\boldsymbol c_j(\boldsymbol\lambda)).
  \end{gathered}
  \label{eq:app-g-projection-premises}
 \end{equation}
@@ -4634,7 +4628,7 @@ the conjunction
  s_1,s_2,h_1,h_2,S,T\ge0,\\
  U,V,H,K\ge r,\qquad E_1,E_2\ge0,\\
  \forall j\in[4],\qquad
- \mathcal T_r(\boldsymbol c_0,\boldsymbol c_j).
+ \mathrm{Seg}_r(\boldsymbol c_0,\boldsymbol c_j).
  \end{gathered}
  \label{eq:scalar-system}
 \end{equation}
@@ -4745,7 +4739,7 @@ At the numerical candidate $S>r>T$. Under this condition, substituting
 $H=K=r$ into their linear formulas in~\eqref{eq:scalar-sources}
 determines both second-round weight variables:
 \begin{equation}
- A_0=\frac{r-T}{S-T},\qquad \alpha=A_0,\qquad\gamma=1-A_0.
+ \alpha_0=\frac{r-T}{S-T},\qquad \alpha=\alpha_0,\qquad\gamma=1-\alpha_0.
  \label{eq:app-observed-weights}
 \end{equation}
 The candidate also has $h_2<1$. For the following local calculation,
@@ -4766,12 +4760,12 @@ solution.
 
 Substitute~\eqref{eq:app-observed-weights} into $E_1$
 in~\eqref{eq:scalar-sources}. Define the quadratic $\Psi$ with a real
-argument $a$; evaluation at the balancing coefficient $A_0$ gives
+argument $a$; evaluation at the balancing coefficient $\alpha_0$ gives
 \begin{equation}
  \begin{aligned}
  \forall a\in\mathbb R,\quad
  \Psi(a)&=a(1-a)K_0+(1-a)^2v h_2-ra-r(1-a)v,\\
- K_0&=1-r/\xi+vs_1,\qquad E_1(A_0,1-A_0)=\Psi(A_0).
+ K_0&=1-r/\xi+vs_1,\qquad E_1(\alpha_0,1-\alpha_0)=\Psi(\alpha_0).
  \end{aligned}
  \label{eq:app-root-comparison}
 \end{equation}
@@ -5372,10 +5366,10 @@ throughout.
 Define the two distances from $r$ and their ratio by
 \begin{equation}
  m=S-r>0,\qquad n=r-T>0,\qquad
- z=\frac nm>0,\qquad A_0=\frac{n}{m+n}=\frac{r-T}{S-T}.
+ z=\frac nm>0,\qquad \alpha_0=\frac{n}{m+n}=\frac{r-T}{S-T}.
  \label{eq:weight-balancing-values}
 \end{equation}
-This is the same coefficient $A_0$ used in
+This is the same coefficient $\alpha_0$ used in
 \eqref{eq:app-observed-weights}; it is the weight $a$ for which
 $aS+(1-a)T=r$.
 Substitute~\eqref{eq:weight-balancing-values} into $H,K$
@@ -5383,11 +5377,11 @@ in~\eqref{eq:scalar-sources}. The results are
 \begin{equation}
  H-r=\alpha(m+n)-n,\qquad K-r=m-\gamma(m+n),
  \qquad
- \alpha\ge A_0,\quad\gamma\le1-A_0,\quad0<A_0\le1-r.
+ \alpha\ge \alpha_0,\quad\gamma\le1-\alpha_0,\quad0<\alpha_0\le1-r.
  \label{eq:weight-source-restrictions}
 \end{equation}
 The two weight inequalities use $H,K\ge r$ and $m+n>0$;
-the upper bound on $A_0$ also uses $\alpha\le1-r$
+the upper bound on $\alpha_0$ also uses $\alpha\le1-r$
 from~\eqref{eq:scalar-system}. They do not yet justify changing
 the weights, because $E_1\ge0$ must be preserved.
 
@@ -5573,45 +5567,45 @@ Now differentiate the particular expression $E_1$ in
  \partial_\alpha E_1
    &=(1-\gamma)(S-T)+\gamma(1+T-h_2/\xi)-r,\\
  \left.\partial_\alpha E_1\right|_{\gamma=r}&=M<0,\\
- \left.\partial_\alpha E_1\right|_{\gamma=1-A_0}
+ \left.\partial_\alpha E_1\right|_{\gamma=1-\alpha_0}
    &=\frac{(S-r)(1-h_2/\xi)+T(T-r)}{S-T}<0.
  \end{aligned}
  \label{eq:weight-E1-derivative}
 \end{equation}
 The second endpoint is negative because $S-r>0$, $S-T>0$,
 $0\le T<r$, and $h_2>\xi$. The derivative is affine in $\gamma$,
-so it is negative throughout $r\le\gamma\le1-A_0$.
-Lowering $\alpha$ to $A_0$ therefore cannot decrease $E_1$.
+so it is negative throughout $r\le\gamma\le1-\alpha_0$.
+Lowering $\alpha$ to $\alpha_0$ therefore cannot decrease $E_1$.
 It cannot decrease $U=\alpha s_1+(1-\alpha)h_2$ either:
 $s_1<r$ by~\eqref{eq:small-payoff-bounds}, and
 $h_2>\xi\ge r$ by~\eqref{eq:weight-derivative-signs}.
 
 After this move $E_1$ is affine in $\gamma$, with
 \begin{equation}
- E_1(A_0,0)=-A_0r<0.
+ E_1(\alpha_0,0)=-\alpha_0 r<0.
  \label{eq:weight-E1-zero}
 \end{equation}
 Its nonnegativity at the present $\gamma>0$ therefore forces its
-$\gamma$-slope to be positive. Raising $\gamma$ to $1-A_0$ preserves
+$\gamma$-slope to be positive. Raising $\gamma$ to $1-\alpha_0$ preserves
 $E_1\ge0$ and does not affect $U$. We have justified
-$\alpha=A_0$, $\gamma=1-A_0$ by necessary inequalities, without
+$\alpha=\alpha_0$, $\gamma=1-\alpha_0$ by necessary inequalities, without
 assuming the observed numerical equalities.
 
-The inequalities needed next are $U(A_0)\ge r$, $A_0\le1-r$,
-and $E_1(A_0,1-A_0)\ge0$. Their positive rescalings are
+The inequalities needed next are $U(\alpha_0)\ge r$, $\alpha_0\le1-r$,
+and $E_1(\alpha_0,1-\alpha_0)\ge0$. Their positive rescalings are
 \begin{equation}
  \begin{aligned}
- G&=(m+n)[U(A_0)-r]
+ G&=(m+n)[U(\alpha_0)-r]
        =m(h_2-r)-n(r-s_1)\ge0,\\
- B_{\mathrm{mass}}&=(m+n)[(1-r)-A_0]
+ \Theta&=(m+n)[(1-r)-\alpha_0]
        =(1-r)m-rn\ge0,\\
- E&=\frac{E_1(A_0,1-A_0)}{(1-A_0)^2}
+ E&=\frac{E_1(\alpha_0,1-\alpha_0)}{(1-\alpha_0)^2}
        =v(h_2-r)+z[c+v(s_1-2r)]-rz^2\ge0.
  \end{aligned}
  \label{eq:relaxed}
 \end{equation}
-Thus $B_{\mathrm{mass}}$ is exactly the upper coefficient bound
-$A_0\le1-r$, while $B_{\mathrm{mix}}$ is the distinct segment
+Thus $\Theta$ is exactly the upper coefficient bound
+$\alpha_0\le1-r$, while $B_{\mathrm{mix}}$ is the distinct segment
 expression in~\eqref{eq:mixing-determinants}. At the initial point,
 changing only $\alpha,\gamma$ leaves the payoff bounds (including
 their caps) and the guards in~\eqref{eq:mixing-branch-guards}
@@ -5623,7 +5617,7 @@ domain, with the functions still defined by~\eqref{eq:scalar-caps}:
  k\le u,v\le1/k,\quad \sigma=1-\rho,\quad k=r/(1-r),\\
  m=S-r>0,\quad n=r-T>0,\quad T\ge0,\quad s_2\ge0,\quad
  (\rho\le1/2\ \Longrightarrow\ s_1\ge0),\\
- G\ge0,\quad B_{\mathrm{mass}}\ge0,\quad E\ge0,\\
+ G\ge0,\quad \Theta\ge0,\quad E\ge0,\\
  (N_R\ge0\ \land\ L\ge0)
  \quad\text{or}\quad
  (N_R<0\le N_C\ \land\ B_{\mathrm{mix}}\ge0).
@@ -5636,7 +5630,7 @@ The guarded alternatives specify how a segment inequality is chosen
 at the start; each later path will state which guards it needs
 throughout the move. We have dropped $E_2$ and the remaining
 second-round inequalities. We have also dropped the lower bound
-$A_0\ge r$, which has not been proved for this reduction.
+$\alpha_0\ge r$, which has not been proved for this reduction.
 The second-round weights have therefore disappeared, leaving only
 $(r,\rho,u,v)$.
 
@@ -5653,30 +5647,30 @@ For $\rho\ge1/2$, replace both capped expressions by
 \eqref{eq:uncapped-common-bounds} and define
 \begin{equation}
  \begin{aligned}
- B_{\mathrm{mass}}^{\mathrm{raw}}
+ \Theta^{\mathrm{raw}}
     &=(1-r)\bar S+r\bar T-r
-      =\beta_0^{\mathrm{mass}}+\beta_1^{\mathrm{mass}}v,\\
+      =\beta_{\Theta,0}+\beta_{\Theta,1}v,\\
  L&=\ell_0+\ell_1v.
  \end{aligned}
  \label{eq:weight-u-barrier-coefficients}
 \end{equation}
 The four coefficients are the constant and linear coefficients in
 $v$, and depend on $(r,\rho,u)$. Since $S\le\bar S$ and $T\le\bar T$,
-$B_{\mathrm{mass}}\le B_{\mathrm{mass}}^{\mathrm{raw}}$.
+$\Theta\le \Theta^{\mathrm{raw}}$.
 The unit \nolinkurl{fixed-v-and-u1}\footnote{Checker:
 \nolinkurl{proof/bound/global/replay_preclip_left_projection_signs.py}.\label{fn:checker-fixed-v-and-u1}} certifies, on
 $619/2000\le r\le1/3$, $1/2\le\rho\le1-r$, $1\le u\le1/k$,
 \begin{equation}
- \beta_1^{\mathrm{mass}}>0,\qquad \ell_1<0,\qquad
- \Omega=\beta_0^{\mathrm{mass}}\ell_1
-                  -\beta_1^{\mathrm{mass}}\ell_0>0.
+ \beta_{\Theta,1}>0,\qquad \ell_1<0,\qquad
+ \Omega=\beta_{\Theta,0}\ell_1
+                  -\beta_{\Theta,1}\ell_0>0.
  \label{eq:weight-left-u-barrier}
 \end{equation}
 If $L\ge0$, its affine formula gives $v\le-\ell_0/\ell_1$.
 Substitution into the increasing affine expression
 in~\eqref{eq:weight-u-barrier-coefficients} yields
 \[
- B_{\mathrm{mass}}\le B_{\mathrm{mass}}^{\mathrm{raw}}
+ \Theta\le \Theta^{\mathrm{raw}}
        \le\Omega/\ell_1<0,
 \]
 contradicting~\eqref{eq:reduced-domain}.
@@ -5688,23 +5682,23 @@ b_1^{\mathrm{mix}}v+b_2^{\mathrm{mix}}v^2$ by collecting powers of $v$.
 On the same $(r,\rho,u)$ domain, it certifies
 \begin{equation}
  \begin{aligned}
- Q_0&=(\beta_1^{\mathrm{mass}})^2b_0^{\mathrm{mix}}
-   -\beta_0^{\mathrm{mass}}\beta_1^{\mathrm{mass}}b_1^{\mathrm{mix}}
-   +(\beta_0^{\mathrm{mass}})^2b_2^{\mathrm{mix}}<0,\\
- Q_1&=\beta_1^{\mathrm{mass}}b_1^{\mathrm{mix}}
-                    -2\beta_0^{\mathrm{mass}}b_2^{\mathrm{mix}}<0,\\
+ Q_0&=(\beta_{\Theta,1})^2b_0^{\mathrm{mix}}
+   -\beta_{\Theta,0}\beta_{\Theta,1}b_1^{\mathrm{mix}}
+   +(\beta_{\Theta,0})^2b_2^{\mathrm{mix}}<0,\\
+ Q_1&=\beta_{\Theta,1}b_1^{\mathrm{mix}}
+                    -2\beta_{\Theta,0}b_2^{\mathrm{mix}}<0,\\
  Q_2&=b_2^{\mathrm{mix}}<0.
  \end{aligned}
  \label{eq:weight-opposite-u-barrier}
 \end{equation}
-The bound $B_{\mathrm{mass}}\ge0$ in~\eqref{eq:reduced-domain}
-implies $B_{\mathrm{mass}}^{\mathrm{raw}}\ge0$, hence
-$v\ge v_W=-\beta_0^{\mathrm{mass}}/\beta_1^{\mathrm{mass}}$.
+The bound $\Theta\ge0$ in~\eqref{eq:reduced-domain}
+implies $\Theta^{\mathrm{raw}}\ge0$, hence
+$v\ge v_W=-\beta_{\Theta,0}/\beta_{\Theta,1}$.
 Putting $d=v-v_W\ge0$ gives the exact identity
 \[
  B_{\mathrm{mix}}(v_W+d)
-   =\frac{Q_0}{(\beta_1^{\mathrm{mass}})^2}
-        +\frac{Q_1}{\beta_1^{\mathrm{mass}}}d+Q_2d^2<0.
+   =\frac{Q_0}{(\beta_{\Theta,1})^2}
+        +\frac{Q_1}{\beta_{\Theta,1}}d+Q_2d^2<0.
 \]
 This contradicts the segment inequality $B_{\mathrm{mix}}\ge0$ of
 the second alternative. Neither argument
@@ -5732,33 +5726,33 @@ We now show that a point satisfying the reduced necessary conditions
 can be moved to $v=v_0$, or to one of two boundaries excluded below.
 The moves vary scalar variables and preserve the specified
 inequalities, producing new solutions of the necessary system.
-Throughout, $r$ and $\rho$ are fixed. With $m,n,z,A_0$ defined in
+Throughout, $r$ and $\rho$ are fixed. With $m,n,z,\alpha_0$ defined in
 \eqref{eq:weight-balancing-values}, the conditions used by the paths are
 \begin{equation}
  \begin{gathered}
  r_0\le r\le1/3,\qquad r\le\rho\le1-r,\qquad
  k\le u<1,\quad k\le v\le1/k,\qquad S>r>T,\\
  m=S-r>0,\quad n=r-T>0,\quad z=n/m,\quad
- A_0=z/(1+z),\qquad T,s_2\ge0,\\
- G\ge0,\quad B_{\mathrm{mass}}\ge0,\quad E\ge0,\qquad
+ \alpha_0=z/(1+z),\qquad T,s_2\ge0,\\
+ G\ge0,\quad \Theta\ge0,\quad E\ge0,\qquad
  L\ge0\ \text{or}\
  \bigl(N_R<0\le N_C\ \text{and}\ B_{\mathrm{mix}}\ge0\bigr).
  \end{gathered}
  \label{eq:path-conditions}
 \end{equation}
-The three inequalities involving $G,B_{\mathrm{mass}},E$ are
+The three inequalities involving $G,\Theta,E$ are
 \eqref{eq:relaxed}; the segment expressions $L,B_{\mathrm{mix}}$
 are defined in~\eqref{eq:mixing-determinants}. When $\rho\le1/2$, we also use
 $s_1\ge0$. No such lower bound is imposed for $\rho>1/2$.
 For differentiating $E$, it is convenient to define
 \begin{equation}
- F=E/z,\qquad R_s=r-s_1>0,\qquad A_h=h_2-r>0.
+ F=E/z,\qquad \zeta_s=r-s_1>0,\qquad \zeta_h=h_2-r>0.
  \label{eq:path-derivative-quantities}
 \end{equation}
 Since $z>0$, $F$ and $E$ have the same sign. The symbol $F$ here
 is distinct from the candidate regrets $F_j^i$.
-The preliminary bound $s_1<r$ gives $R_s>0$, and
-$G=m(A_h-zR_s)\ge0$ gives $A_h\ge zR_s>0$.
+The preliminary bound $s_1<r$ gives $\zeta_s>0$, and
+$G=m(\zeta_h-z\zeta_s)\ge0$ gives $\zeta_h\ge z\zeta_s>0$.
 
 The switch value lies within the allowed range of $v$. Indeed,
 $v_0/k=(1+\sigma)/\sigma>1$, and
@@ -5784,8 +5778,8 @@ the directional derivative would be nonpositive, whereas
 preserved, including when the initial point satisfies $E=0$.
 The variables $s_1,h_2$ are constant during this move, and
 \begin{equation}
- G=m(A_h-zR_s),\qquad
- B_{\mathrm{mass}}=m[(1-r)-rz].
+ G=m(\zeta_h-z\zeta_s),\qquad
+ \Theta=m[(1-r)-rz].
  \label{eq:path-positive-factors}
 \end{equation}
 Since $z$ decreases, both inequalities in
@@ -5822,7 +5816,7 @@ to the cap bound. If $m=0$ while $n>0$, then $z=n/m$ would diverge,
 contrary to its decrease in \eqref{eq:capped-path-signs}.
 The denominator $m=S-r$ therefore remains positive throughout
 this move, including its endpoint.
-The endpoint satisfies $S>r>T$, $0<A_0\le1-r$, $h_2>r$, $E\ge0$,
+The endpoint satisfies $S>r>T$, $0<\alpha_0\le1-r$, $h_2>r$, $E\ge0$,
 and one of the two segment alternatives in \eqref{eq:path-conditions}.
 
 Now suppose $v<v_0$, so $h_1$ equals the affine expression inside
@@ -5835,31 +5829,31 @@ Here $S_u=s_2-r<0$,
 $T_u=\rho(1-r)/\sigma+v\chi_2$, and
 \begin{equation}
  z_u=\frac{-T_u+z(r-s_2)}m,\qquad
- T_uR_s-A_h(r-s_2)>0,\qquad
- \partial_u(A_h/R_s)>0.
+ T_u\zeta_s-\zeta_h(r-s_2)>0,\qquad
+ \partial_u(\zeta_h/\zeta_s)>0.
  \label{eq:fixed-v-source-signs}
 \end{equation}
 The inequality $G\ge0$ in \eqref{eq:path-positive-factors} is
-$z\le A_h/R_s$. Substituting it into
+$z\le \zeta_h/\zeta_s$. Substituting it into
 \eqref{eq:fixed-v-source-signs} gives $z_u<0$; the increasing upper
-bound $A_h/R_s$ then preserves $G\ge0$.
+bound $\zeta_h/\zeta_s$ then preserves $G\ge0$.
 For $E\ge0$, differentiation of $F=E/z$ gives
 \begin{equation}
  F_u=v\bigl(\chi_2+(h_2)_u/z\bigr)
-       -(r+vA_h/z^2)z_u,
- \qquad (h_2)_uR_s+\chi_2A_h>0.
+       -(r+v\zeta_h/z^2)z_u,
+ \qquad (h_2)_u\zeta_s+\chi_2\zeta_h>0.
  \label{eq:fixed-v-envelope-signs}
 \end{equation}
 When $\chi_2\ge0$, the first bracket is positive because
 $(h_2)_u=\rho(1-r)/\sigma>0$. When $\chi_2<0$, the positive
-quantities $A_h,R_s,z$ and $z\le A_h/R_s$ give
+quantities $\zeta_h,\zeta_s,z$ and $z\le \zeta_h/\zeta_s$ give
 \[
  \chi_2+(h_2)_u/z
- \ge[\chi_2A_h+(h_2)_uR_s]/A_h>0.
+ \ge[\chi_2\zeta_h+(h_2)_u\zeta_s]/\zeta_h>0.
 \]
 Both terms in \eqref{eq:fixed-v-envelope-signs} are thus positive,
 so $F_u>0$ preserves $E\ge0$. The decrease of $z$ also preserves
-$B_{\mathrm{mass}}\ge0$ through \eqref{eq:path-positive-factors}.
+$\Theta\ge0$ through \eqref{eq:path-positive-factors}.
 These sign checks cover the full range $r\le\rho\le1-r$ and allow
 the affine expression for $s_1$ to become negative when $\rho>1/2$.
 
@@ -5872,7 +5866,7 @@ $B_{\mathrm{mix}}=rvN_R<0$, contradicting $B_{\mathrm{mix}}\ge0$.
 The previously proved implication $S\ge r,\ u\le1\Rightarrow T<r$
 rules out $n=0$. A limit with $m=0$ and $n>0$ would contradict the
 decrease of $z$. Finally, the arguments of Appendix~\ref{app:weights}
-that use $B_{\mathrm{mass}}$ and the segment expressions rule out
+that use $\Theta$ and the segment expressions rule out
 reaching $u=1$. Thus the move reaches $L=0$ or
 $B_{\mathrm{mix}}=0$ before any other condition can fail.
 
@@ -5907,9 +5901,9 @@ $L=-u^2v/18<0$, so no contact is possible. At a contact with $v>0$,
 This proves that division in the affine graph is valid before any
 additional bound on $z$ is used.
 
-To obtain $A_0>r$, define
+To obtain $\alpha_0>r$, define
 \begin{equation}
- W_2=rS+(1-r)T-r,\qquad A_0-r=-W_2/(S-T).
+ W_2=rS+(1-r)T-r,\qquad \alpha_0-r=-W_2/(S-T).
  \label{eq:opposite-weight-test}
 \end{equation}
 On the present domain, the checked bound $T_u\ge r$ and $s_2\ge0$
@@ -5918,8 +5912,8 @@ imply
  (W_2)_u=r(s_2-r)+(1-r)T_u
  \ge rs_2+r(1-2r)>0.
 \]
-The unit \nolinkurl{canonical-A_0-stop}\footnote{Checker:
-\nolinkurl{proof/bound/simplify/replay-A_0-mass-stop-exclusion.py}.\label{fn:checker-canonical-A_0-stop}} gives $W_2(9/10,k)<0$ and
+The unit \nolinkurl{canonical-alpha_0-stop}\footnote{Checker:
+\nolinkurl{proof/bound/simplify/replay-alpha_0-mass-stop-exclusion.py}.\label{fn:checker-canonical-alpha_0-stop}} gives $W_2(9/10,k)<0$ and
 $W_2(9/10,v_0)<0$. Since $W_2$ is affine in $v$, it is negative
 at $u=9/10$ throughout $k\le v\le v_0$.
 Thus $W_2\ge0$ requires $u>9/10$.
@@ -5934,15 +5928,15 @@ If $W_2\ge0$, then $w_1>0$ and
 $Lw_1=\ell_1W_2-\Omega_2<0$, contradicting $L=0$.
 By \eqref{eq:opposite-weight-test}, this proves
 \begin{equation}
- A_0>r,\qquad z>k.
+ \alpha_0>r,\qquad z>k.
  \label{eq:left-lower-weight}
 \end{equation}
-The equivalence uses $A_0=z/(1+z)$ and $k=r/(1-r)$.
+The equivalence uses $\alpha_0=z/(1+z)$ and $k=r/(1-r)$.
 
 To bound $z$ from above, use the quadratic obtained from $E$ in
 \eqref{eq:relaxed}:
 \begin{equation}
- \mathcal E(t)=vA_h+[c-v(r+R_s)]t-rt^2\quad(t\in\mathbb R),
+ \mathcal E(t)=v\zeta_h+[c-v(r+\zeta_s)]t-rt^2\quad(t\in\mathbb R),
  \qquad E=\mathcal E(z).
  \label{eq:envelope-quadratic}
 \end{equation}
@@ -5974,14 +5968,14 @@ This proves \eqref{eq:envelope-at-one} without requiring each
 individual coefficient to be positive.
 Since $G\ge0$, it follows that $\mathcal E(1)<0$.
 The identity
-$\mathcal E(z)=z\mathcal E(1)+(1-z)(vA_h+rz)$
+$\mathcal E(z)=z\mathcal E(1)+(1-z)(v\zeta_h+rz)$
 would then give $E<0$ for $z\ge1$. Hence
 \begin{equation}
- z<1,\qquad B_{\mathrm{mass}}=m[(1-r)-rz]>mc>0.
+ z<1,\qquad \Theta=m[(1-r)-rz]>mc>0.
  \label{eq:left-upper-weight}
 \end{equation}
 The second inequality shows that the condition
-$B_{\mathrm{mass}}\ge0$ holds automatically on this part of $L=0$.
+$\Theta\ge0$ holds automatically on this part of $L=0$.
 
 One further bound excludes small $v$. On the branch $v<v_0$,
 $S_u=s_2-r<0$ and $S_v>0$, so $u\ge k$ and $v\le4/5$ would imply
@@ -6025,7 +6019,7 @@ For completeness, we check the other possible exits.
 The calculations establishing \eqref{eq:left-lower-weight},
 \eqref{eq:left-upper-weight}, and \eqref{eq:left-v-lower} apply
 at every point satisfying the same inequalities on $L=0$.
-If $G=0$, then $A_h=zR_s$ and
+If $G=0$, then $\zeta_h=z\zeta_s$ and
 \[
  E=z[c-r(v+z)]<0,
 \]
@@ -6036,7 +6030,7 @@ The strict signs in \eqref{eq:continuation-signs} rule out
 $u=k$, $s_1=0$, $s_2=0$, $L_u=0$, and $L_v=0$.
 The implication $S\ge r,\ u\le1\Rightarrow T<r$ rules out $n=0$,
 and $z<1$ then rules out $m=0$. Equation~\eqref{eq:left-upper-weight}
-rules out $B_{\mathrm{mass}}=0$.
+rules out $\Theta=0$.
 The domain bounds and these strict signs prevent the curve from
 stopping before $v_0$; the continuation therefore reaches $v=v_0$.
 
@@ -6046,7 +6040,7 @@ stop on either boundary $L=0$ or $B_{\mathrm{mix}}=0$. Their common conditions a
  \begin{gathered}
  r_0\le r\le1/3,\quad 1/2\le\rho\le1-r,\quad
  k\le u<1,\quad k\le v\le v_0,\\
- S>r>T,\quad T,s_2\ge0,\quad G,B_{\mathrm{mass}},E\ge0.
+ S>r>T,\quad T,s_2\ge0,\quad G,\Theta,E\ge0.
  \end{gathered}
  \label{eq:large-weight-contact-domain}
 \end{equation}
@@ -6056,7 +6050,7 @@ The unit \nolinkurl{high-rho-left}\footnote{Checker:
 $N_R,N_C$. The unit \nolinkurl{high-rho-below}\footnote{Checker:
 \nolinkurl{proof/bound/global/replay_preclip_below_interval.py}.\label{fn:checker-high-rho-below}} adds
 $B_{\mathrm{mix}}=0$ and $N_R<0\le N_C$.
-Both domains allow $s_1<0$ and $A_0<r$.
+Both domains allow $s_1<0$ and $\alpha_0<r$.
 The two exclusion certificates have 19,771 and 4,945 leaves;
 the continuation certificate has 5,098 leaves.
 Each leaf is checked by exact rational interval or Bernstein bounds.
@@ -6081,7 +6075,7 @@ We use only the following conditions on this boundary:
  \begin{gathered}
  r_0\le r\le1/3,\quad r\le\rho\le1-r,\quad
  v=v_0,\quad 1/2<\eta\le1-r,\\
- S>r>T,\quad 0<A_0\le1-r,\quad h_2>r,\quad E\ge0,
+ S>r>T,\quad 0<\alpha_0\le1-r,\quad h_2>r,\quad E\ge0,
  \end{gathered}
  \label{eq:switch-domain}
 \end{equation}
@@ -6107,7 +6101,7 @@ Appendix~\ref{app:discovery}. Exact substitution gives
  \begin{aligned}
  N_1&=\rho\sigma\eta^2(1-r)L,\\
  N_B&=\sigma^2\eta(1-r)^2B_{\mathrm{mix}},\\
- \Psi(A_0)&=(1-A_0)^2E=N_2/D_2.
+ \Psi(\alpha_0)&=(1-\alpha_0)^2E=N_2/D_2.
  \end{aligned}
  \label{eq:switch-polynomial-scales}
 \end{equation}
@@ -6136,7 +6130,7 @@ $C_k<r$, or $N_C<0$ by \eqref{eq:mixing-numerators}.
 The alternative $N_R<0\le N_C$ is therefore impossible there.
 
 Both segment alternatives will use the same sign argument
-for $\Psi(A_0)$ as $\eta$ increases. With its coefficients
+for $\Psi(\alpha_0)$ as $\eta$ increases. With its coefficients
 fixed, the quadratic $\Psi$ satisfies
 $\Psi(0)=v(h_2-r)>0$ and $\Psi(1)=-r<0$.
 It has a unique zero in $(0,1)$, and $\Psi_a<0$ at that zero.
@@ -6152,11 +6146,11 @@ The bracket is affine in $a$ and has positive endpoint values
 $\rho(1-r)/\sigma$ and $(1-r)(1-2r)$.
 Consequently, on any interval satisfying the conditions in
 \eqref{eq:switch-domain} other than $E\ge0$, and also
-$(A_0)_\eta>0$, a zero of $\Psi(A_0)$ satisfies
+$(\alpha_0)_\eta>0$, a zero of $\Psi(\alpha_0)$ satisfies
 \begin{equation}
- \frac{d}{d\eta}\Psi(A_0)
- =\left.\partial_\eta\Psi(a)\right|_{a=A_0}
-      +\Psi_a(A_0)(A_0)_\eta<0.
+ \frac{d}{d\eta}\Psi(\alpha_0)
+ =\left.\partial_\eta\Psi(a)\right|_{a=\alpha_0}
+      +\Psi_a(\alpha_0)(\alpha_0)_\eta<0.
  \label{eq:switch-zero-derivative}
 \end{equation}
 A negative value therefore cannot become nonnegative as $\eta$
@@ -6222,16 +6216,16 @@ The derivative checks of \nolinkurl{full-rho-kink-face}\textsuperscript{\ref{fn:
 \eqref{eq:switch-rectangles} give
 \begin{equation}
  S_\eta>0,\quad T_\eta<0,\quad \left.S\right|_{\eta=1/2}>r>\left.T\right|_{\eta=1/2},\qquad
- (A_0)_\eta>0.
+ (\alpha_0)_\eta>0.
  \label{eq:first-switch-interval-signs}
 \end{equation}
 The last sign holds throughout $[\eta_-,\eta]$ for any feasible
-endpoint $\eta$, that is, any $\eta\ge\eta_-$ with $N_1(\eta)\ge0$. For the lower rectangle, positivity of $(A_0)_\eta$ uses
+endpoint $\eta$, that is, any $\eta\ge\eta_-$ with $N_1(\eta)\ge0$. For the lower rectangle, positivity of $(\alpha_0)_\eta$ uses
 $\Delta\ge0$. For the upper rectangle, it uses
 $N_1(1-r)\ge0$, which follows from $N_1(\eta)\ge0$ and the
 checked positive derivative $(N_1)_\eta(1-r)$.
 Throughout $[\eta_-,\eta]$, the first three signs give $S>r>T$.
-The increasing $A_0$ stays positive and at most its final value
+The increasing $\alpha_0$ stays positive and at most its final value
 $1-r$. The explicit formula for $h_2$ gives $(h_2)_\eta<0$, so
 $h_2$ stays above its final value $r$.
 These facts justify applying \eqref{eq:switch-zero-derivative}
@@ -6299,10 +6293,10 @@ Continuity of $\eta_-$ and $N_2$ therefore propagates the negative
 reference sign to every such point. Points with $\Delta=0$, where
 the two roots coincide, follow by continuity; $N_2=0$ there would
 also contradict the nonzero resultant.
-Thus \eqref{eq:switch-polynomial-scales} gives $\Psi(A_0)<0$
+Thus \eqref{eq:switch-polynomial-scales} gives $\Psi(\alpha_0)<0$
 at $\eta_-$. Equations~\eqref{eq:first-switch-interval-signs} and
 \eqref{eq:switch-zero-derivative} rule out a nonnegative value of
-$\Psi(A_0)$ at any larger feasible $\eta$. Hence $N_1\ge0$ and
+$\Psi(\alpha_0)$ at any larger feasible $\eta$. Hence $N_1\ge0$ and
 $N_2\ge0$ cannot hold simultaneously.
 
 We now treat $N_B\ge0$ on $1/2\le\rho\le1-r$.
@@ -6341,7 +6335,7 @@ The checks of \nolinkurl{full-rho-kink-face}\textsuperscript{\ref{fn:checker-ful
  \begin{gathered}
  S_\eta>0,\quad T_\eta<0,\quad \left.S\right|_{\eta=1/2}\ge r>\left.T\right|_{\eta=1/2},\\
  N_B(1-r)\ge0\quad\Longrightarrow\quad
- (A_0)_\eta>0\text{ for every }\eta\in[\eta_B,1-r].
+ (\alpha_0)_\eta>0\text{ for every }\eta\in[\eta_B,1-r].
  \end{gathered}
  \label{eq:second-switch-interval-signs}
 \end{equation}
@@ -6349,7 +6343,7 @@ A feasible endpoint has $\eta_B\le\eta\le1-r$, so the increasing
 $N_B$ gives $N_B(1-r)\ge0$.
 The equality $\left.S\right|_{\eta=1/2}=r$ occurs only at $(r,\rho)=(1/3,2/3)$;
 $\eta_B>1/2$ then ensures $S>r$ on the interval used.
-As in the first alternative, $A_0$ increases toward a final value
+As in the first alternative, $\alpha_0$ increases toward a final value
 at most $1-r$, and $h_2$ decreases toward a final value greater
 than $r$. Thus all hypotheses of \eqref{eq:switch-zero-derivative}
 hold from $\eta_B$ to the proposed endpoint. The starting sign
@@ -6427,18 +6421,18 @@ To use stationarity, substitute $(x_s^1,y_s^2)$ and
 $(y_s^1,x_s^2)$ into \eqref{eq:properties-stationary}.
 With $\lambda_{\mathrm{payoff}},\mu_{\mathrm{payoff}}$ the payoff differences in~\eqref{eq:stationary-payoff-differences}, this yields
 \begin{equation}
- G_s=g-\delta_f>r,\qquad
- \rho\lambda_{\mathrm{payoff}}\ge G_s,\qquad \sigma\mu_{\mathrm{payoff}}\ge G_s,
+ \hat g=g-\delta_f>r,\qquad
+ \rho\lambda_{\mathrm{payoff}}\ge \hat g,\qquad \sigma\mu_{\mathrm{payoff}}\ge \hat g,
  \qquad r<\rho<1-r.
  \label{eq:finite-error-stationary-value}
 \end{equation}
 The last interval follows because $\lambda_{\mathrm{payoff}},\mu_{\mathrm{payoff}}\le1$ and
 $\rho+\sigma=1$. In particular, both stationary weights are positive.
-The notation $G_s$ denotes this single error-adjusted stationary
+The notation $\hat g$ denotes this single error-adjusted stationary
 value; it differs from the polynomial $G$ in \eqref{eq:relaxed}.
 The error-adjusted lower-bound values are
 \begin{equation}
- \lambda_0=G_s/\rho,\qquad \mu_0=G_s/\sigma.
+ \lambda_0=\hat g/\rho,\qquad \mu_0=\hat g/\sigma.
  \label{eq:finite-error-gap-lower-values}
 \end{equation}
 They reduce to~\eqref{eq:stationary-gap-lower-values} when
@@ -6446,8 +6440,8 @@ $\delta_f=0$.
 Equation~\eqref{eq:ts-best-response} gives the actual errors
 \begin{equation}
  \begin{aligned}
- \tau_1&=B_1(x_s^2)-u_1(y_s^1,x_s^2),\\
- \tau_2&=B_2(x_s^1)-u_2(x_s^1,y_s^2),
+ \tau_1&=u_1^*(x_s^2)-u_1(y_s^1,x_s^2),\\
+ \tau_2&=u_2^*(x_s^1)-u_2(x_s^1,y_s^2),
  \end{aligned}
  \qquad 0\le\tau_1,\tau_2\le\delta_f.
  \label{eq:finite-error-best-responses}
@@ -6480,7 +6474,7 @@ instantiations for $\sm(y_1^2)$ are symmetric. We therefore have
 The row regret of $y_1^1$, the dual strategy returned by
 $\sm(y_s^1)$, against $x_s^2$ must be bounded before taking the
 minimum with one. Set
-$d=B_1(x_s^2)-u_1(y_1^1,x_s^2)\ge0$.
+$d=u_1^*(x_s^2)-u_1(y_1^1,x_s^2)\ge0$.
 Instantiate the dual inequality~\eqref{eq:first-row-instance}
 for $\sm(y_s^1)$ at $x_s^2$. This gives
 \begin{equation}
@@ -6503,7 +6497,7 @@ minimum with one.
 
 The payoff bounds can now be evaluated at
 \begin{equation}
- \boldsymbol\lambda_s=(r,G_s,\rho,\eta,\xi).
+ \boldsymbol\lambda_s=(r,\hat g,\rho,\eta,\xi).
  \label{eq:finite-error-payoff-parameters}
 \end{equation}
 For example, instantiate the dual inequality~\eqref{eq:first-row-instance}
@@ -6512,8 +6506,8 @@ for $\sm(y_s^1)$ at $y_s^2$ and use the stationary payoff lower bounds in
 \begin{equation}
  \begin{aligned}
  r+\delta_f<F_1^1
- &\le\eta[u_1(y_1^1,y_s^2)-G_s/\rho]
-                   +(1-\eta)(1-G_s/\sigma),\\
+ &\le\eta[u_1(y_1^1,y_s^2)-\hat g/\rho]
+                   +(1-\eta)(1-\hat g/\sigma),\\
  1-u_1(y_1^1,y_s^2)
  &<s_1(\boldsymbol\lambda_s)-\delta_f/\eta\le s_1(\boldsymbol\lambda_s).
  \end{aligned}
@@ -6527,10 +6521,10 @@ For the payoff at $(y_1^1,y_s^2)$, substitute $(y_1^1,x_s^2)$ into
 \eqref{eq:properties-stationary}. Using
 \eqref{eq:finite-error-old-payoff-loss} gives
 \[
- G_s\le\rho(d-\tau_1)
+ \hat g\le\rho(d-\tau_1)
        +\sigma[u_2(y_1^1,y_s^2)-u_2(y_1^1,x_s^2)],
  \qquad
- u_2(y_1^1,y_s^2)\ge G_s/\sigma-(\rho/\sigma)d_1.
+ u_2(y_1^1,y_s^2)\ge \hat g/\sigma-(\rho/\sigma)d_1.
 \]
 This is the lower bound giving $h_2(\boldsymbol\lambda_s)$ in
 \eqref{eq:payoff-bound-h}; the symmetric substitution gives $h_1(\boldsymbol\lambda_s)$.
@@ -6546,10 +6540,10 @@ For arbitrary $x^{1\prime}\in\Delta_{n_1}$ and
 $x^{2\prime}\in\Delta_{n_2}$, define
 \begin{equation}
  \begin{aligned}
- \ell_1^s&=B_1(x_s^2)-u_1(x^{1\prime},x_s^2),&
- \ell_1^y&=B_1(y_s^2)-u_1(x^{1\prime},y_s^2),\\
- \ell_2^s&=B_2(x_s^1)-u_2(x_s^1,x^{2\prime}),&
- \ell_2^y&=B_2(y_s^1)-u_2(y_s^1,x^{2\prime}).
+ \ell_1^s&=u_1^*(x_s^2)-u_1(x^{1\prime},x_s^2),&
+ \ell_1^y&=u_1^*(y_s^2)-u_1(x^{1\prime},y_s^2),\\
+ \ell_2^s&=u_2^*(x_s^1)-u_2(x_s^1,x^{2\prime}),&
+ \ell_2^y&=u_2^*(y_s^1)-u_2(y_s^1,x^{2\prime}).
  \end{aligned}
  \label{eq:finite-error-payoff-losses}
 \end{equation}
@@ -6563,26 +6557,26 @@ $\sm(y_s^2)$ is symmetric. The resulting inequalities are
 \begin{equation}
  \begin{aligned}
  \frac{\eta\sigma}{\rho}\ell_2^s+(1-\eta)\ell_2^y
- &\ge r-\eta(1-G_s/\rho)+\frac{\eta\sigma}{\rho}\tau_2,\\
+ &\ge r-\eta(1-\hat g/\rho)+\frac{\eta\sigma}{\rho}\tau_2,\\
  \frac{\xi\rho}{\sigma}\ell_1^s+(1-\xi)\ell_1^y
- &\ge r-\xi(1-G_s/\sigma)+\frac{\xi\rho}{\sigma}\tau_1.
+ &\ge r-\xi(1-\hat g/\sigma)+\frac{\xi\rho}{\sigma}\tau_1.
  \end{aligned}
  \label{eq:finite-error-joint-losses}
 \end{equation}
 The last term on each right side is nonnegative, so omitting it
 weakens the lower bound and gives exactly the joint regret
 bound~\eqref{eq:app-joint-endpoint-loss-bounds} of the zero-error
-analysis, evaluated at $g=G_s$.
+analysis, evaluated at $g=\hat g$.
 Applying the same minimum argument as in
 \eqref{eq:gap-lower-bounds} therefore bounds the actual Jensen
 gaps from below by $j_r(\boldsymbol\lambda_s,q),j_c(\boldsymbol\lambda_s,p)$.
 
 For the regrets of the mixed profiles $\boldsymbol x(p,q)$, use
 \eqref{eq:mixing-regrets} with
-$g=G_s+\delta_f$. The endpoint regrets against the stationary
+$g=\hat g+\delta_f$. The endpoint regrets against the stationary
 opponent are $\tau_1,\tau_2$, while
 \eqref{eq:finite-error-stationary-value} gives the opposite endpoint
-bounds $1-G_s/\rho,1-G_s/\sigma$.
+bounds $1-\hat g/\rho,1-\hat g/\sigma$.
 The error contributions satisfy, for every $p,q\in[0,1]$,
 \begin{equation}
  \begin{aligned}
@@ -6598,32 +6592,32 @@ functions in \eqref{eq:rectangle-upper-bounds}, this gives
 \begin{equation}
  \begin{aligned}
  \forall p,q\in[0,1],\quad f_1(\boldsymbol x(p,q))
-     &\le R_{G_s}(p,q)+\delta_f(1-q),\\
+     &\le R_{\hat g}(p,q)+\delta_f(1-q),\\
  \forall p,q\in[0,1],\quad f_2(\boldsymbol x(p,q))
-     &\le C_{G_s}(p,q)+\delta_f(1-p).
+     &\le C_{\hat g}(p,q)+\delta_f(1-p).
  \end{aligned}
  \label{eq:finite-error-rectangle-bounds}
 \end{equation}
-Here $R_{G_s},C_{G_s}$ are the functions $R_g,C_g$ evaluated at
-$g=G_s$. If their maximum were at most $r$ at any $(p,q)$,
+Here $R_{\hat g},C_{\hat g}$ are the functions $R_g,C_g$ evaluated at
+$g=\hat g$. If their maximum were at most $r$ at any $(p,q)$,
 \eqref{eq:finite-error-rectangle-budget}--\eqref{eq:finite-error-rectangle-bounds}
 would give $f(\boldsymbol x(p,q))\le r+\delta_f$, contradicting
 \eqref{eq:finite-error-rectangle-failure}.
 Thus all four segment predicates \eqref{eq:segment-test} hold
-with $g$ replaced by $G_s$.
+with $g$ replaced by $\hat g$.
 
 The remaining necessary inequalities of the zero-error analysis
 follow from the same payoff bounds and the exact dual inequalities
 of the $\sm$ calls. In particular, the six bounds $s_i(\boldsymbol\lambda_s),h_i(\boldsymbol\lambda_s),S(\boldsymbol\lambda_s),T(\boldsymbol\lambda_s)$ are all
-nonnegative, $U_{G_s},V_{G_s},H_{G_s},K_{G_s}\ge r$, and
-$E_{1,G_s},E_{2,G_s}\ge0$.
+nonnegative, $U_{\hat g},V_{\hat g},H_{\hat g},K_{\hat g}\ge r$, and
+$E_{1,\hat g},E_{2,\hat g}\ge0$.
 The calculation of the shared inequalities \eqref{eq:common-payoff}--\eqref{eq:common-envelope}
 uses only these bounds and the same actual $\alpha,\gamma$;
 it introduces no further stationary error.
 Instantiating the dual inequalities for $\sm(y_s^1)$ at $y_s^2$
 and for $\sm(y_s^2)$ at $y_s^1$ also gives the parameter range
 \begin{equation}
- r<G_s\le\min\left\{
+ r<\hat g\le\min\left\{
     \frac{\rho\sigma(1-r)}{D_c},
     \frac{\rho\sigma(1-r)}{D_r}\right\}.
  \label{eq:finite-error-projection-domain}
@@ -6632,7 +6626,7 @@ Equations~\eqref{eq:finite-error-weight-ranges} and
 \eqref{eq:finite-error-projection-domain} meet the hypotheses
 \eqref{eq:g-projection-domain}. Since
 $(r_*,1/3)\subset[3/10,1/3]$, Lemma~\ref{lem:app-g-projection},
-which lowers the stationary value from $G_s$ to $r$, preserves the
+which lowers the stationary value from $\hat g$ to $r$, preserves the
 four segment predicates and the other necessary inequalities. At
 this projected point,
 replacing $d_i$ by the uncapped bounds used in~\eqref{eq:scalar-caps}

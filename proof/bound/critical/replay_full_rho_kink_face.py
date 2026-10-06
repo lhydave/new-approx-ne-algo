@@ -13,10 +13,10 @@ r,rho,eta=s.symbols('r rho eta');t_1,t_2,t_3=s.symbols('t_1 t_2 t_3')
 m=json.loads((OUT/'kink-polynomials.json').read_text())
 b=json.loads((OUT/'below-alignment-polynomials.json').read_text())
 N_1,N_2,H_root=[s.sympify(m[k]) for k in ['N_1','N_2','H_root']]
-S,T,s_1,s_2,A_0=[s.sympify(m['cap_expressions'][k]) for k in ['S','T','s_1','s_2','alpha']]
+S,T,s_1,s_2,alpha_0=[s.sympify(m['cap_expressions'][k]) for k in ['S','T','s_1','s_2','alpha']]
 aa,bb,cc=[s.Poly(N_1,eta).nth(k) for k in [2,1,0]]
 delta=s.cancel((bb*bb-4*aa*cc)/(rho-1)**2)
-A_eta_num=s.cancel(s.fraction(s.factor(s.diff(A_0,eta)))[0]/(rho-1)**2)
+alpha_0_eta_num=s.cancel(s.fraction(s.factor(s.diff(alpha_0,eta)))[0]/(rho-1)**2)
 N_B=s.sympify(b['N_B']);G_B=s.sympify(b['N_2_etaB_numerator_factors']['factors'][-1]['polynomial'])
 R_resultant=s.sympify(json.loads((OUT/'kink-two-equation-resultant.json').read_text())['factors'][-1]['polynomial'])
 lo=s.Rational(30953996,10**8)
@@ -57,7 +57,7 @@ Rl=(1-p_dagger)*r;Cl=(1-p_dagger)*r+p_dagger-J_C
 assert s.cancel((Cl-r)*(Rk-r)-(Rl-r)*(Ck-r)-N_1/s.sympify(m['D_1']))==0
 xi=sigma*(1-r)/(sigma+r);v_0=(1-xi)/xi
 h_2=1-r/sigma+(rho/sigma)*(1-eta-r)/eta;K_0=1-r/xi+v_0*s_1
-Psi_A_0=A_0*(1-A_0)*K_0+(1-A_0)**2*v_0*h_2-r*A_0-r*(1-A_0)*v_0
+Psi_alpha_0=alpha_0*(1-alpha_0)*K_0+(1-alpha_0)**2*v_0*h_2-r*alpha_0-r*(1-alpha_0)*v_0
 # Independently reconstruct the defining cap and root-polynomial bridges.
 # Stored polynomial coefficients are proof inputs, not assumed identities.
 u=(1-eta)/eta
@@ -66,11 +66,11 @@ sr_expected=chi_1+chi_2*u
 sc_expected=chi_2+chi_1*v_0
 S_expected=1-r+u*(sc_expected-r)
 T_expected=h_2-r+v_0*(sr_expected-r)
-A_expected=(r-T_expected)/(S_expected-T_expected)
-for actual,expected in [(s_1,sr_expected),(s_2,sc_expected),(S,S_expected),(T,T_expected),(A_0,A_expected)]:
+alpha_0_expected=(r-T_expected)/(S_expected-T_expected)
+for actual,expected in [(s_1,sr_expected),(s_2,sc_expected),(S,S_expected),(T,T_expected),(alpha_0,alpha_0_expected)]:
     assert s.cancel(actual-expected)==0
 D_2=rho*eta*sigma*(1-r)*(rho*eta*sigma**2*(1-r)*(S-T))**2
-assert s.cancel(Psi_A_0*D_2-N_2)==0
+assert s.cancel(Psi_alpha_0*D_2-N_2)==0
 assert s.Poly(s.expand(H_root-(s.diff(N_1,rho)*s.diff(N_2,eta)-s.diff(N_1,eta)*s.diff(N_2,rho))),r,rho,eta).is_zero
 res=s.resultant(N_1,N_2,eta)
 assert s.Poly(s.expand(res-sigma**6*rho**2*r**2*R_resultant),r,rho).is_zero
@@ -85,7 +85,7 @@ check('canonical r>=.32 exclusion',-N_1,{r:rx,rho:px,eta:ex},[t_1,t_2,t_3])
 rx=lo+(s.Rational(8,25)-lo)*t_1;px=s.Rational(21,50)+s.Rational(2,25)*t_2
 for label,expr in [('a<0',-aa),('N_1(.5)<0',-N_1.subs(eta,s.Rational(1,2))),
  ('N_1_eta(.5)>0',s.diff(N_1,eta).subs(eta,s.Rational(1,2))),('delta_rho>0',s.diff(delta,rho)),
- ('delta_r<0',-s.diff(delta,r)),('canonical A_0_eta implication',A_eta_num-6*delta),
+ ('delta_r<0',-s.diff(delta,r)),('canonical alpha_0_eta implication',alpha_0_eta_num-6*delta),
  ('S_eta>0',num(r-s_2)),('T_eta<0',num(-s.diff(T,eta)*eta**2)),
  ('S(.5)>r',num(S.subs(eta,s.Rational(1,2))-r)),('T(.5)<r',num(r-T.subs(eta,s.Rational(1,2)))),
  ('canonical R_resultant_r<0',-s.diff(R_resultant,r))]:check(label,expr,{r:rx,rho:px},[t_1,t_2])
@@ -94,7 +94,7 @@ for label,expr in [('a<0',-aa),('N_1(.5)<0',-N_1.subs(eta,s.Rational(1,2))),
 px=s.Rational(1,2)+(1-lo-s.Rational(1,2))*t_2
 for label,expr in [('high a<0',-aa),('high N_1(.5)<0',-N_1.subs(eta,s.Rational(1,2))),
  ('high N_1_eta(.5)>0',s.diff(N_1,eta).subs(eta,s.Rational(1,2))),('high delta_rho>0',s.diff(delta,rho)),
- ('high delta_r<0',-s.diff(delta,r)),('high A_0_eta implication',A_eta_num-2*N_1.subs(eta,1-r)),
+ ('high delta_r<0',-s.diff(delta,r)),('high alpha_0_eta implication',alpha_0_eta_num-2*N_1.subs(eta,1-r)),
  ('high N_1_eta(1-r)>0',s.diff(N_1,eta).subs(eta,1-r)),('high S_eta>0',num(r-s_2)),
  ('high T_eta<0',num(-s.diff(T,eta)*eta**2)),('high S(.5)>r',num(S.subs(eta,s.Rational(1,2))-r)),
  ('high T(.5)<r',num(r-T.subs(eta,s.Rational(1,2)))),('high R_resultant_r<0',-s.diff(R_resultant,r))]:
@@ -113,7 +113,7 @@ NE=sum(np2.nth(j)*numB**j*denB**(3-j) for j in range(4))
 assert s.Poly(s.expand(NE-sigma**3*r*G_B),r,rho).is_zero
 rx=lo+(s.Rational(1,3)-lo)*t_1;px=s.Rational(1,2)+(1-rx-s.Rational(1,2))*t_2
 for label,expr in [('N_B(.5)<0',-N_B.subs(eta,s.Rational(1,2))),('N_B_eta>0',s.diff(N_B,eta)),
- ('below A_0_eta implication',A_eta_num-s.Rational(7,2)*N_B.subs(eta,1-r)),('below S_eta>0',num(r-s_2)),
+ ('below alpha_0_eta implication',alpha_0_eta_num-s.Rational(7,2)*N_B.subs(eta,1-r)),('below S_eta>0',num(r-s_2)),
  ('below T_eta<0',num(-s.diff(T,eta)*eta**2)),('below T(.5)<r',num(r-T.subs(eta,s.Rational(1,2)))),
  ('N_2(etaB)<0 core',-G_B)]:check(label,expr,{r:rx,rho:px},[t_1,t_2])
 check('below S(.5)>=r',num(S.subs(eta,s.Rational(1,2))-r),{r:rx,rho:px},[t_1,t_2],weak=True)

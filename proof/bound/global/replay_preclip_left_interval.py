@@ -90,8 +90,8 @@ def independent_contradiction(box):
     if n.upper<=0:return 'n<=0'
     if T.upper<0:return 'T<0'
     m=m.intersect(lower=0);n=n.intersect(lower=0,upper=r.upper)
-    B_mass=(1-r)*m-r*n
-    if B_mass.upper<0:return 'upper-mass<0'
+    Theta=(1-r)*m-r*n
+    if Theta.upper<0:return 'upper-mass<0'
     gap_r=r-s_1;gap_h=h_2-r
     if gap_r.upper<=0:return 's_1>=r'
     if gap_h.upper<=0:return 'h_2<=r'

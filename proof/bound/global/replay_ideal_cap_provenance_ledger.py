@@ -174,14 +174,14 @@ class Replay:
             return self.C('x_1_1','y_1_2')-self.UC('x_1_1'),'eq'
         if op=='Tdual_row':
             assert node['clause_ids']==['T04','T02','K01'];x=node['opponent']
-            return -n['rho']*self.R(x,'x_s_2')+n['sigma']*(self.C(x,'y_s_2')-self.C(x,'x_s_2'))-n['A_s'],'ge'
+            return -n['rho']*self.R(x,'x_s_2')+n['sigma']*(self.C(x,'y_s_2')-self.C(x,'x_s_2'))-n['Phi_1'],'ge'
         if op=='Tdual_col':
             assert node['clause_ids']==['T04','T02','K01'];y=node['opponent']
-            return -n['sigma']*self.C('x_s_1',y)+n['rho']*(self.R('y_s_1',y)-self.R('x_s_1',y))-n['B_s'],'ge'
+            return -n['sigma']*self.C('x_s_1',y)+n['rho']*(self.R('y_s_1',y)-self.R('x_s_1',y))-n['Phi_2'],'ge'
         if op=='Tstop':assert node['clause_ids']==['T05'];return n['V']-n['g'],'ge'
         if op=='Tvalue':
             assert node['clause_ids']==['T05']
-            return n['V']-n['rho']*self.R('x_s_1','x_s_2')-n['sigma']*self.C('x_s_1','x_s_2')-n['A_s']-n['B_s'],'eq'
+            return n['V']-n['rho']*self.R('x_s_1','x_s_2')-n['sigma']*self.C('x_s_1','x_s_2')-n['Phi_1']-n['Phi_2'],'eq'
         raise AssertionError(op)
 
     def run(self):

@@ -5,7 +5,7 @@ from pathlib import Path
 import sympy as s
 
 base=Path(__file__).resolve().parent
-data=json.loads((base/'A_0-mass-stop-exclusion.json').read_text())
+data=json.loads((base/'alpha_0-mass-stop-exclusion.json').read_text())
 rho,r,u,v,z,w,t=s.symbols('rho r u v z w t')
 symbols={str(k):k for k in [rho,r,u,v,z,w,t]}
 results=[]
@@ -21,5 +21,5 @@ for chart in data['charts']:
     assert s.Poly(s.expand(rebuilt-original),*variables).is_zero
     results.append({'name':chart['name'],'coefficient_count':len(co),'exact_reconstruction':True})
 report={'all_passed':True,'scope':'Independent positive rational coefficient reconstruction','charts':results}
-(base/'A_0-mass-stop-exclusion-replay.json').write_text(json.dumps(report,indent=2)+'\n')
+(base/'alpha_0-mass-stop-exclusion-replay.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps({'all_passed':True,'charts':len(results),'coefficients':sum(k['coefficient_count'] for k in results)}))

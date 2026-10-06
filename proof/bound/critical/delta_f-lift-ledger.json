@@ -3,7 +3,7 @@
   "scope": "Finite near-BR delta_f-shift arithmetic templates conditional on typed primitive instantiations and ideal-cap provenance; not implementation refinement or full quantifier proof",
   "registry": "../quantified/quantified-registry.json",
   "algebraic_definitions": {
-    "g": "G_s+delta_f",
+    "g": "g_hat+delta_f",
     "R_x_s_1_x_s_2": "UR_x_s_2-g",
     "R_y_s_1_x_s_2": "UR_x_s_2-tau_1",
     "C_x_s_1_x_s_2": "UC_x_s_1-g",
@@ -318,20 +318,20 @@
       "scope": "normalized true column regret<=1"
     },
     "bridge_joint_row": {
-      "expression": "rho*(R_y_s_1_y_1_2-Rsj)+sigma*vC-G_s",
+      "expression": "rho*(R_y_s_1_y_1_2-Rsj)+sigma*vC-g_hat",
       "provenance": [
         "T04",
         "T05"
       ],
-      "scope": "same Psi at (x_s_1,y_1_2), G_s=g-delta_f"
+      "scope": "same Phi at (x_s_1,y_1_2), g_hat=g-delta_f"
     },
     "bridge_joint_col": {
-      "expression": "rho*vR+sigma*(C_y_1_1_y_s_2-Crt)-G_s",
+      "expression": "rho*vR+sigma*(C_y_1_1_y_s_2-Crt)-g_hat",
       "provenance": [
         "T04",
         "T05"
       ],
-      "scope": "same Psi at (r,x_s_2)"
+      "scope": "same Phi at (r,x_s_2)"
     },
     "Rsj_nonnegative": {
       "expression": "Rsj",
@@ -348,20 +348,20 @@
       "scope": "normalized payoff"
     },
     "lambda_payoff_joint": {
-      "expression": "rho*lambda_payoff-G_s",
+      "expression": "rho*lambda_payoff-g_hat",
       "provenance": [
         "T04",
         "T05"
       ],
-      "scope": "Psi(x_s_1,y_s_2)=rho*lambda_payoff"
+      "scope": "Phi(x_s_1,y_s_2)=rho*lambda_payoff"
     },
     "mu_payoff_joint": {
-      "expression": "sigma*mu_payoff-G_s",
+      "expression": "sigma*mu_payoff-g_hat",
       "provenance": [
         "T04",
         "T05"
       ],
-      "scope": "Psi(y_s_1,x_s_2)=sigma*mu_payoff"
+      "scope": "Phi(y_s_1,x_s_2)=sigma*mu_payoff"
     },
     "lambda_payoff_upper": {
       "expression": "1-lambda_payoff",
@@ -378,13 +378,13 @@
       "scope": "mirror"
     },
     "plane_joint_C": {
-      "expression": "rho*(Rwy-Rsy)+sigma*(AC-tau_2)-G_s",
+      "expression": "rho*(Rwy-Rsy)+sigma*(AC-tau_2)-g_hat",
       "provenance": [
         "T04",
         "T05",
         "T02"
       ],
-      "scope": "Psi(x_s_1,y), arbitrary same y"
+      "scope": "Phi(x_s_1,y), arbitrary same y"
     },
     "plane_first_C": {
       "expression": "eta*(Rry-Rwy)+(1-eta)*DC-Hw",
@@ -408,13 +408,13 @@
       "scope": "normalized old payoff"
     },
     "plane_joint_R": {
-      "expression": "rho*(AR-tau_1)+sigma*(Cxz-Cxt)-G_s",
+      "expression": "rho*(AR-tau_1)+sigma*(Cxz-Cxt)-g_hat",
       "provenance": [
         "T04",
         "T05",
         "T02"
       ],
-      "scope": "Psi(x,x_s_2), arbitrary same x"
+      "scope": "Phi(x,x_s_2), arbitrary same x"
     },
     "plane_first_R": {
       "expression": "(1-xi)*DR+xi*(Cxj-Cxz)-Hz",
@@ -533,7 +533,7 @@
         "K01",
         "K02"
       ],
-      "scope": "same-G_s/r universal row Jensen upper-BR bound on each supplied family; independent ideal cap ledger"
+      "scope": "same-g_hat/r universal row Jensen upper-BR bound on each supplied family; independent ideal cap ledger"
     },
     "col_Jensen_upper": {
       "expression": "(1-p)*UC_x_s_1+p*uCw-JC-Ucol",
@@ -577,14 +577,14 @@
       "scope": "mirror"
     },
     "ideal_max_row": {
-      "expression": "MI-((1-p)*(1-q)*G_s+q*(1-p*lambda_payoff)-JR)",
+      "expression": "MI-((1-p)*(1-q)*g_hat+q*(1-p*lambda_payoff)-JR)",
       "provenance": [
         "K03"
       ],
       "scope": "MI=max(ideal row cap,ideal column cap)"
     },
     "ideal_max_col": {
-      "expression": "MI-((1-p)*(1-q)*G_s+p*(1-q*mu_payoff)-JC)",
+      "expression": "MI-((1-p)*(1-q)*g_hat+p*(1-q*mu_payoff)-JC)",
       "provenance": [
         "K03"
       ],
@@ -870,7 +870,7 @@
     },
     {
       "id": "row_bridge",
-      "target": "rho*R_y_s_1_y_1_2-G_s+sigma*Vc",
+      "target": "rho*R_y_s_1_y_1_2-g_hat+sigma*Vc",
       "combination": [
         {
           "slack": "bridge_joint_row",
@@ -892,11 +892,11 @@
           "coefficient": "1"
         }
       ],
-      "scope": "rho>0: R(y_s_1,y_1_2)>=(G_s-sigma*Vc)/rho; combine with R(y_s_1,y_1_2)>=0 for max branch"
+      "scope": "rho>0: R(y_s_1,y_1_2)>=(g_hat-sigma*Vc)/rho; combine with R(y_s_1,y_1_2)>=0 for max branch"
     },
     {
       "id": "col_bridge",
-      "target": "sigma*C_y_1_1_y_s_2-G_s+rho*Vr",
+      "target": "sigma*C_y_1_1_y_s_2-g_hat+rho*Vr",
       "combination": [
         {
           "slack": "bridge_joint_col",
@@ -922,7 +922,7 @@
     },
     {
       "id": "rho_lower",
-      "target": "rho-G_s",
+      "target": "rho-g_hat",
       "combination": [
         {
           "slack": "lambda_payoff_joint",
@@ -937,11 +937,11 @@
           "coefficient": "1"
         }
       ],
-      "scope": "G_s>r>0 gives positive rho"
+      "scope": "g_hat>r>0 gives positive rho"
     },
     {
       "id": "sigma_lower",
-      "target": "sigma-G_s",
+      "target": "sigma-g_hat",
       "combination": [
         {
           "slack": "mu_payoff_joint",
@@ -960,7 +960,7 @@
     },
     {
       "id": "common_column_deficit_plane",
-      "target": "eta*sigma*AC+rho*(1-eta)*DC-rho*r+eta*rho-eta*G_s",
+      "target": "eta*sigma*AC+rho*(1-eta)*DC-rho*r+eta*rho-eta*g_hat",
       "combination": [
         {
           "slack": "plane_first_C",
@@ -1008,11 +1008,11 @@
           "coefficient": "1"
         }
       ],
-      "scope": "rho times [eta*(sigma/rho)*AC+(1-eta)*DC-(r-eta*(1-G_s/rho))]; omitted nearBR term favorable"
+      "scope": "rho times [eta*(sigma/rho)*AC+(1-eta)*DC-(r-eta*(1-g_hat/rho))]; omitted nearBR term favorable"
     },
     {
       "id": "common_row_deficit_plane",
-      "target": "xi*rho*AR+sigma*(1-xi)*DR-sigma*r+xi*sigma-xi*G_s",
+      "target": "xi*rho*AR+sigma*(1-xi)*DR-sigma*r+xi*sigma-xi*g_hat",
       "combination": [
         {
           "slack": "plane_first_R",
@@ -1210,7 +1210,7 @@
     },
     {
       "id": "row_raw_cap",
-      "target": "(1-p)*(1-q)*(G_s+delta_f)+q*(1-p*lambda_payoff)+p*(1-q)*tau_1-JR-Ractual",
+      "target": "(1-p)*(1-q)*(g_hat+delta_f)+q*(1-p*lambda_payoff)+p*(1-q)*tau_1-JR-Ractual",
       "combination": [
         {
           "slack": "row_Jensen_upper",
@@ -1236,7 +1236,7 @@
     },
     {
       "id": "col_raw_cap",
-      "target": "(1-p)*(1-q)*(G_s+delta_f)+p*(1-q*mu_payoff)+(1-p)*q*tau_2-JC-Cactual",
+      "target": "(1-p)*(1-q)*(g_hat+delta_f)+p*(1-q*mu_payoff)+(1-p)*q*tau_2-JC-Cactual",
       "combination": [
         {
           "slack": "col_Jensen_upper",
@@ -1262,7 +1262,7 @@
     },
     {
       "id": "row_shift_cap",
-      "target": "((1-p)*(1-q)*G_s+q*(1-p*lambda_payoff)-JR)+delta_f*(1-q)-Ractual",
+      "target": "((1-p)*(1-q)*g_hat+q*(1-p*lambda_payoff)-JR)+delta_f*(1-q)-Ractual",
       "combination": [
         {
           "slack": "row_raw_cap",
@@ -1279,7 +1279,7 @@
     },
     {
       "id": "col_shift_cap",
-      "target": "((1-p)*(1-q)*G_s+p*(1-q*mu_payoff)-JC)+delta_f*(1-p)-Cactual",
+      "target": "((1-p)*(1-q)*g_hat+p*(1-q*mu_payoff)-JC)+delta_f*(1-p)-Cactual",
       "combination": [
         {
           "slack": "col_raw_cap",
@@ -1398,19 +1398,19 @@
     }
   ],
   "zero_identities": {
-    "G_s_single_shift": "((g-delta_f)-r)-(g-r-delta_f)",
+    "g_hat_single_shift": "((g-delta_f)-r)-(g-r-delta_f)",
     "row_actual_regret": "(UR_x_s_2-R_y_1_1_x_s_2)-((R_y_s_1_x_s_2-R_y_1_1_x_s_2)+(UR_x_s_2-R_y_s_1_x_s_2))",
     "col_actual_regret": "(UC_x_s_1-C_x_s_1_y_1_2)-((C_x_s_1_y_s_2-C_x_s_1_y_1_2)+(UC_x_s_1-C_x_s_1_y_s_2))",
-    "row_rectangle_shift": "((1-p)*(1-q)*(G_s+delta_f)+q*(1-p*lambda_payoff)+p*(1-q)*tau_1-JR)-((1-p)*(1-q)*G_s+q*(1-p*lambda_payoff)-JR)-((1-p)*(1-q)*delta_f+p*(1-q)*tau_1)",
-    "col_rectangle_shift": "((1-p)*(1-q)*(G_s+delta_f)+p*(1-q*mu_payoff)+(1-p)*q*tau_2-JC)-((1-p)*(1-q)*G_s+p*(1-q*mu_payoff)-JC)-((1-p)*(1-q)*delta_f+(1-p)*q*tau_2)",
+    "row_rectangle_shift": "((1-p)*(1-q)*(g_hat+delta_f)+q*(1-p*lambda_payoff)+p*(1-q)*tau_1-JR)-((1-p)*(1-q)*g_hat+q*(1-p*lambda_payoff)-JR)-((1-p)*(1-q)*delta_f+p*(1-q)*tau_1)",
+    "col_rectangle_shift": "((1-p)*(1-q)*(g_hat+delta_f)+p*(1-q*mu_payoff)+(1-p)*q*tau_2-JC)-((1-p)*(1-q)*g_hat+p*(1-q*mu_payoff)-JC)-((1-p)*(1-q)*delta_f+(1-p)*q*tau_2)",
     "row_envelope_positive_denominator": "xi*(1-gamma+gamma*(1-xi)/xi)-(xi*(1-gamma)+gamma*(1-xi))",
     "col_envelope_positive_denominator": "eta*(1-alpha+alpha*(1-eta)/eta)-(eta*(1-alpha)+alpha*(1-eta))"
   },
   "delta_f_free_ideal_aliases": {
     "Vr": "Min(1,(1-eta-r)/eta)",
     "Vc": "Min(1,(1-xi-r)/xi)",
-    "kappa_1": "Max(0,(G_s-sigma*Vc)/rho)",
-    "kappa_2": "Max(0,(G_s-rho*Vr)/sigma)",
+    "kappa_1": "Max(0,(g_hat-sigma*Vc)/rho)",
+    "kappa_2": "Max(0,(g_hat-rho*Vr)/sigma)",
     "h_1": "1-kappa_1",
     "h_2": "1-kappa_2",
     "s_1": "Min(1,1-lambda_payoff-(r-(1-eta)*(1-mu_payoff))/eta)",

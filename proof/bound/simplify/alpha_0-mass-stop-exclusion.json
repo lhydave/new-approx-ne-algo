@@ -1,5 +1,5 @@
 {
-  "scope": "Full rho in [r,1-r], r>=619/2000, original odds and caps, u<1. Old left arc when N_C<0 and old below arc when N_C>=0 exclude A_0<=r.",
+  "scope": "Full rho in [r,1-r], r>=619/2000, original odds and caps, u<1. Old left arc when N_C<0 and old below arc when N_C>=0 exclude alpha_0<=r.",
   "cutoff": "9/10",
   "charts": [
     {

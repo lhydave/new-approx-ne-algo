@@ -94,8 +94,8 @@
         "x": "x_s_1",
         "y": "y_s_2"
       },
-      "identity": "Psi(x_s_1,y_s_2)=rho*(R_y_s_1_y_s_2-R_x_s_1_y_s_2)=rho*lambda_payoff",
-      "lower_bound": "Psi(x_s_1,y_s_2)>=G_s",
+      "identity": "Phi(x_s_1,y_s_2)=rho*(R_y_s_1_y_s_2-R_x_s_1_y_s_2)=rho*lambda_payoff",
+      "lower_bound": "Phi(x_s_1,y_s_2)>=g_hat",
       "positive_denominator": "rho>0"
     },
     {
@@ -108,8 +108,8 @@
         "x": "y_s_1",
         "y": "x_s_2"
       },
-      "identity": "Psi(y_s_1,x_s_2)=sigma*(C_y_s_1_y_s_2-C_y_s_1_x_s_2)=sigma*mu_payoff",
-      "lower_bound": "Psi(y_s_1,x_s_2)>=G_s",
+      "identity": "Phi(y_s_1,x_s_2)=sigma*(C_y_s_1_y_s_2-C_y_s_1_x_s_2)=sigma*mu_payoff",
+      "lower_bound": "Phi(y_s_1,x_s_2)>=g_hat",
       "positive_denominator": "sigma>0"
     }
   ],
@@ -194,14 +194,14 @@
     },
     {
       "id": "row_gap_positive_division",
-      "identity": "lambda_payoff-G_s/rho=(rho*lambda_payoff-G_s)/rho",
+      "identity": "lambda_payoff-g_hat/rho=(rho*lambda_payoff-g_hat)/rho",
       "source": "row_actual_gap_from_joint",
       "multiplier": "1/rho",
       "sign": "rho>0"
     },
     {
       "id": "column_gap_positive_division",
-      "identity": "mu_payoff-G_s/sigma=(sigma*mu_payoff-G_s)/sigma",
+      "identity": "mu_payoff-g_hat/sigma=(sigma*mu_payoff-g_hat)/sigma",
       "source": "column_actual_gap_from_joint",
       "multiplier": "1/sigma",
       "sign": "sigma>0"
@@ -209,7 +209,7 @@
     {
       "id": "row_actual_gap_to_lambda_0_cap",
       "identity": "raw_row_cap(lambda_0)-raw_row_cap(lambda_payoff)=pMix*qMix*(lambda_payoff-lambda_0)",
-      "alias": "lambda_0=G_s/rho",
+      "alias": "lambda_0=g_hat/rho",
       "nonnegative_sources": [
         "row_gap_positive_division"
       ],
@@ -220,7 +220,7 @@
     {
       "id": "column_actual_gap_to_mu_0_cap",
       "identity": "raw_column_cap(mu_0)-raw_column_cap(mu_payoff)=pMix*qMix*(mu_payoff-mu_0)",
-      "alias": "mu_0=G_s/sigma",
+      "alias": "mu_0=g_hat/sigma",
       "nonnegative_sources": [
         "column_gap_positive_division"
       ],
@@ -258,7 +258,7 @@
     "column": "(1-pMix)(1-qMix)g+pMix*(1-qMix*mu_payoff)+(1-pMix)*qMix*tau_2-LC*kC"
   },
   "signed_intercepts": "No LC/LR sign assumption; cone coefficient minimum is formed before multiplying signed intercept",
-  "delta_f_connection": "critical/delta_f-lift-ledger.json replaces g by G_s+delta_f and bounds the two loss terms by the same single delta_f family budget",
+  "delta_f_connection": "critical/delta_f-lift-ledger.json replaces g by g_hat+delta_f and bounds the two loss terms by the same single delta_f family budget",
   "trusted_rules": [
     "typed universal instantiation",
     "K02 full-BR witness attainment",
@@ -271,5 +271,5 @@
     "entire rectangle exact QE",
     "game realization of scalar equality"
   ],
-  "actual_gap_alias_connector": "Actual payoff gaps lambda_payoff,mu_payoff are not silently identified with lambda_0=G_s/rho,mu_0=G_s/sigma. The same joint-plane instances prove the two gap lower bounds, and the cap increases by nonnegative pMix*qMix times their slack."
+  "actual_gap_alias_connector": "Actual payoff gaps lambda_payoff,mu_payoff are not silently identified with lambda_0=g_hat/rho,mu_0=g_hat/sigma. The same joint-plane instances prove the two gap lower bounds, and the cap increases by nonnegative pMix*qMix times their slack."
 }

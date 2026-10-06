@@ -143,7 +143,7 @@
       "id": "full-BR-rectangle-bridge",
       "group": "necessary_instantiation",
       "status": "replay_verified",
-      "scope": "Finite typed same-game full-BR attainer bindings convert arbitrary signed deficit families to shared Jensen gaps;14exact identities,6nonnegative templates,2attainers,2positive joint-plane gap divisions. Actual payoff gaps are bounded below by lambda_0=G_s/rho,mu_0=G_s/sigma, not identified with them; cap increases by p*q times each gap slack. Actual4tuple masses fixed before free parameters. Standard full-BR/affinity semantics assumed, not game realization or full QE",
+      "scope": "Finite typed same-game full-BR attainer bindings convert arbitrary signed deficit families to shared Jensen gaps;14exact identities,6nonnegative templates,2attainers,2positive joint-plane gap divisions. Actual payoff gaps are bounded below by lambda_0=g_hat/rho,mu_0=g_hat/sigma, not identified with them; cap increases by p*q times each gap slack. Actual4tuple masses fixed before free parameters. Standard full-BR/affinity semantics assumed, not game realization or full QE",
       "requires": [
         "quantified-interface-identities",
         "ideal-cap-provenance-ledger"
@@ -251,7 +251,7 @@
       "id": "near-BR-delta-ledger",
       "group": "necessary_instantiation",
       "status": "replay_verified",
-      "scope": "Finite arithmetic nonnegative-combination proof from explicitly typed contract instantiations: shared G_s=g-delta_f, cancellation before minclip, arbitrary p/q whole-family errors<=delta_f, actual first4 SAME masses, tau subtracted once. Standard instantiation/LP/maximum semantic rules are not proof-assistant formalized",
+      "scope": "Finite arithmetic nonnegative-combination proof from explicitly typed contract instantiations: shared g_hat=g-delta_f, cancellation before minclip, arbitrary p/q whole-family errors<=delta_f, actual first4 SAME masses, tau subtracted once. Standard instantiation/LP/maximum semantic rules are not proof-assistant formalized",
       "requires": [
         "quantified-interface-identities"
       ],
@@ -682,30 +682,30 @@
       }
     },
     {
-      "id": "canonical-A_0-stop",
+      "id": "canonical-alpha_0-stop",
       "group": "preclip_projection",
       "status": "replay_verified",
-      "scope": "A_0<=r excluded in retained N_C<0+L>=0 branch from caps+L; opposite N_C>=0 branch needs B_mix. Canonical arc uses only first scope; high-rho paths do not retain A_0>=r",
+      "scope": "alpha_0<=r excluded in retained N_C<0+L>=0 branch from caps+L; opposite N_C>=0 branch needs B_mix. Canonical arc uses only first scope; high-rho paths do not retain alpha_0>=r",
       "requires": [
         "compact-identities"
       ],
       "operation": {
         "kind": "independent_replay",
-        "script": "../simplify/replay-A_0-mass-stop-exclusion.py",
+        "script": "../simplify/replay-alpha_0-mass-stop-exclusion.py",
         "args": [],
         "cwd": "../.."
       },
       "inputs": [
-        "../simplify/A_0-mass-stop-exclusion.json"
+        "../simplify/alpha_0-mass-stop-exclusion.json"
       ],
       "replay_report": {
-        "path": "../simplify/A_0-mass-stop-exclusion-replay.json",
+        "path": "../simplify/alpha_0-mass-stop-exclusion-replay.json",
         "checks": {
           "all_passed": true
         }
       },
       "current_evidence": {
-        "path": "../simplify/A_0-mass-stop-exclusion-replay.json",
+        "path": "../simplify/alpha_0-mass-stop-exclusion-replay.json",
         "checks": {
           "all_passed": true
         }
@@ -752,7 +752,7 @@
       "scope": "canonical T=0=>S<2r; S>=r=>v>4/5; selected G=0 contradicts E>=0 using z>=k. The abandoned v>9/10 claim is not used",
       "requires": [
         "canonical-E1",
-        "canonical-A_0-stop"
+        "canonical-alpha_0-stop"
       ],
       "operation": {
         "kind": "independent_replay",
@@ -830,7 +830,7 @@
       "id": "high-rho-left",
       "group": "preclip_projection",
       "status": "replay_verified",
-      "scope": "rho>=1/2, ANY physical L=0 root; keeps s_2>=0,T>=0,m,n>0,G>=0,uppermass,E>=0; allows s_1<0,A_0<r; no upper-root restriction; pole intervals retained",
+      "scope": "rho>=1/2, ANY physical L=0 root; keeps s_2>=0,T>=0,m,n>0,G>=0,uppermass,E>=0; allows s_1<0,alpha_0<r; no upper-root restriction; pole intervals retained",
       "requires": [
         "fixed-v-and-u1",
         "full-mass-both-high"
@@ -872,7 +872,7 @@
       "id": "high-rho-below",
       "group": "preclip_projection",
       "status": "replay_verified",
-      "scope": "rho>=1/2 conditional physical B_mix=0 boundary,N_R<0<=N_C; keeps s_2>=0,T>=0,m,n>0,G>=0,uppermass,E>=0; allows s_1<0,A_0<r",
+      "scope": "rho>=1/2 conditional physical B_mix=0 boundary,N_R<0<=N_C; keeps s_2>=0,T>=0,m,n>0,G>=0,uppermass,E>=0; allows s_1<0,alpha_0<r",
       "requires": [
         "fixed-v-and-u1",
         "full-mass-both-high"
@@ -1039,7 +1039,7 @@
       "id": "full-rho-kink-face",
       "group": "kink_root",
       "status": "replay_verified",
-      "scope": "kappa_1=0,all rho in [r,1-r],S>r>T,0<A_0<=1-r,h_2>r,selected row-envelope>=0: L>=0=>r<=r*; high-rho B_mix>=0 impossible for r>=r0. Does not require A_0>=r,s_1/s_2>=0,T>=0,other envelope",
+      "scope": "kappa_1=0,all rho in [r,1-r],S>r>T,0<alpha_0<=1-r,h_2>r,selected row-envelope>=0: L>=0=>r<=r*; high-rho B_mix>=0 impossible for r>=r0. Does not require alpha_0>=r,s_1/s_2>=0,T>=0,other envelope",
       "requires": [
         "natural-root"
       ],
@@ -1212,8 +1212,8 @@
     },
     {
       "path": "../critical/replay_full_rho_kink_face.py",
-      "bytes": 10464,
-      "sha256": "028953163b84d0e648a1122e78109e682da9155b2d072906e947b6d9c2dd743f",
+      "bytes": 10552,
+      "sha256": "68e1eb7239c231526a2fff2005247b495c5cecd5654585644b571fc7cc36fbd0",
       "kind": "source"
     },
     {
@@ -1224,8 +1224,8 @@
     },
     {
       "path": "../global/check_reduction_identities.py",
-      "bytes": 1757,
-      "sha256": "c30bdfc084109be5e520500de0d541b30195af83a45eecbf04ed086e3f30bcc6",
+      "bytes": 1789,
+      "sha256": "ad2e06be5eaf1c4f0835abf6dcdef3daf9153c12136e97b9990fddf2f16b4c59",
       "kind": "source"
     },
     {
@@ -1278,14 +1278,14 @@
     },
     {
       "path": "../global/replay_preclip_below_interval.py",
-      "bytes": 8155,
-      "sha256": "9eac1ee8ae8d4a8a14633a32d16afc2f816f509c983868891a6b81b508af39e9",
+      "bytes": 8153,
+      "sha256": "4cfc04e9e0c6bb34f84f2c0650fce2d202b4c95e09f84c3b54ef9104aa88ae56",
       "kind": "source"
     },
     {
       "path": "../global/replay_preclip_left_interval.py",
-      "bytes": 9423,
-      "sha256": "509148e9b95027a7caef4aac6997c262eb0928bfa9765242cb426b1482c9bff7",
+      "bytes": 9421,
+      "sha256": "c94833ce40eb59d5f4c74d472cbb1c843ac91fbdde5f17549f10adba549ba5c5",
       "kind": "source"
     },
     {
@@ -1349,9 +1349,9 @@
       "kind": "certificate_or_polynomial_input"
     },
     {
-      "path": "../simplify/A_0-mass-stop-exclusion.json",
-      "bytes": 71595,
-      "sha256": "b09e34b2178473d9cc7f29fa6fd974b03aa9177d2c9a7ee9338c96d5dd84e9ea",
+      "path": "../simplify/alpha_0-mass-stop-exclusion.json",
+      "bytes": 71599,
+      "sha256": "8ce00bb145339247c66070f84d48b2664eba270d3956d544660b9c466e3cf83c",
       "kind": "certificate_or_polynomial_input"
     },
     {
@@ -1373,9 +1373,9 @@
       "kind": "certificate_or_polynomial_input"
     },
     {
-      "path": "../simplify/replay-A_0-mass-stop-exclusion.py",
-      "bytes": 1490,
-      "sha256": "f5e6f32bc906e686487d5500e6c3b904946f023a34125bd8b597300ee0bbb2f8",
+      "path": "../simplify/replay-alpha_0-mass-stop-exclusion.py",
+      "bytes": 1498,
+      "sha256": "2f075d19e8251fe606f5f6f96959bf9256359782d4d48ce2b69c5f3ca540667f",
       "kind": "source"
     },
     {
@@ -1417,14 +1417,14 @@
     {
       "path": "../quantified/replay_quantified_identities.py",
       "kind": "source",
-      "bytes": 9364,
-      "sha256": "a1ad7c6737f2f186ef4a7640a4a3c359cf006961f330bccd97ec93e6f62414ec"
+      "bytes": 9372,
+      "sha256": "e6e8eded46015575bba11a7132d5628c59d155b4ddec3a740d608c6e2816d6b7"
     },
     {
       "path": "../quantified/quantified-registry.json",
       "kind": "contract_registry_or_document",
-      "bytes": 22726,
-      "sha256": "fa7a25c3bab48528a0083e13ffaf8e9094fe5c914c04b9dd0fce13eff433ca1b"
+      "bytes": 22758,
+      "sha256": "8d790932a7f666e7bc8a98ba12db2e98157a4133453ca92d400604c5218d0165"
     },
     {
       "path": "../quantified/stage-i-contracts.json",
@@ -1453,14 +1453,14 @@
     {
       "path": "../critical/replay_delta_f_lift_ledger.py",
       "kind": "source",
-      "bytes": 11368,
-      "sha256": "d661bd69aa33a5526d29f3f64e391990cd579de4948330b4b12151997557a5d8"
+      "bytes": 11386,
+      "sha256": "8ab4778d39f358b1e1f929bde3dbca9c19b7e6b02480ea479b82699a02a6e734"
     },
     {
       "path": "../critical/delta_f-lift-ledger.json",
       "kind": "certificate_or_polynomial_input",
-      "bytes": 35354,
-      "sha256": "0d46bd0774e33e34f5191980593b4b93df48a4cfad1454ba00bcd4c4d0016b41"
+      "bytes": 35416,
+      "sha256": "ee2291250abe844df6b59011d200dc723d2907f6780055deedadf08ba6002438"
     },
     {
       "path": "../global/replay_m_chart_certificate.py",
@@ -1477,26 +1477,26 @@
     {
       "path": "../global/replay_ideal_cap_provenance_ledger.py",
       "kind": "source",
-      "bytes": 16157,
-      "sha256": "07cc8b8332634d3bf56a69e110b6f3d1cc6f40580a7e6dd3594415ff940c89bb"
+      "bytes": 16165,
+      "sha256": "ee9aa2ee47dbe99419c68bbbd21a1bcd00b27e01337add045f675d95ce25c1ef"
     },
     {
       "path": "../global/ideal-cap-provenance-ledger.json",
       "kind": "certificate_or_polynomial_input",
-      "bytes": 88379,
-      "sha256": "2303e3cbce6c7cf2bf0cf15a3646e5a14c44195afc78f705bc722ad76a4f58dc"
+      "bytes": 88403,
+      "sha256": "ce9dc076f9bd394a2569f4477c28d2361e8cc7b4b97bb8486f7caa911284b990"
     },
     {
       "path": "../quantified/replay_fullbr_rectangle_bridge.py",
       "kind": "source",
-      "bytes": 6389,
-      "sha256": "7efdbfe4d6331d2df6c8de7a59b4b09beec88be9d93bd6f65e9730562fe89c03"
+      "bytes": 6401,
+      "sha256": "740cf4471bc5c7262e0d127d5c35d594d6ac67dff8f01b720c806d347eb2cda5"
     },
     {
       "path": "../quantified/fullbr-rectangle-bridge.json",
       "kind": "certificate_or_contract_input",
-      "bytes": 8296,
-      "sha256": "213dd35f875b65a08a3b89a88b9af3014fb828b8c5e5023b08ec3836f046978c"
+      "bytes": 8318,
+      "sha256": "a8cb27d0848df0b2ea6d1d767c82af1d2aaa62b1a68122de91dbff38af00f347"
     }
   ],
   "budget": {

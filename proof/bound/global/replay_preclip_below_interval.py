@@ -95,8 +95,8 @@ def independent_exclusion(box):
     if T.upper<0:return 'T<0'
     m=m.intersect(lower=0)
     n=n.intersect(lower=0,upper=r.upper)  # T>=0 gives n<=r.
-    B_mass=(1-r)*m-r*n
-    if B_mass.upper<0:return 'upper-mass<0'
+    Theta=(1-r)*m-r*n
+    if Theta.upper<0:return 'upper-mass<0'
     R=r-s_1;A=h_2-r
     if R.upper<=0:return 's_1>=r'
     # G>=0, m,n,R>0 imply A>0, so this intersection is conditional but sound.

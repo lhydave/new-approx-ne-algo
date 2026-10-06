@@ -47,7 +47,21 @@ The runner resolves all file paths relative to its own directory, so it also wor
 
 The three subdivision certificates independently verify **5,098**, **19,771**, and **4,945** terminal leaves, respectively, with full partition coverage and no open leaves. The checker scopes distinguish canonical and large stationary-weight regions, preclip and postclip branches, and the constraints preserved along each reduction.
 
-The paper spells Greek symbols out in script identifiers (`rho`, `eta`, `xi`, `alpha`, `gamma`), with subscripts represented by underscores (`h_2`, `N_R`, `B_mix`, `N_1`). Some inherited directory and helper filenames describe an earlier construction. The registered algorithm is the final **four-LP + OptimalMixing + five-profile selection** algorithm; Appendices A–C derive the retained arithmetic from the first four LP calls and the OptimalMixing comparisons.
+The paper spells Greek symbols out in script identifiers (`rho`, `eta`, `xi`, `alpha`, `gamma`), with subscripts represented by underscores (`h_2`, `N_R`, `B_mix`, `N_1`).
+
+Symbols that the paper writes with accents or Greek capitals use the following identifiers:
+
+| Paper symbol | Script identifier | Meaning |
+| --- | --- | --- |
+| $\alpha_0$ | `alpha_0` | balancing value of $\alpha$, $(r-T)/(S-T)$ |
+| $\hat g$ | `g_hat` | conservative stationary value $g-\delta_f$ |
+| $\Theta$ | `Theta` | the bound $\alpha_0\le1-r$, multiplied by $m+n$ |
+| $\Phi_1,\Phi_2$ | `Phi_1`, `Phi_2` | additive constants of the stationarity LP |
+| $\Phi(\cdot)$ | `Phi(...)` | stationarity payoff expression, instantiated at the listed strategies |
+
+In scripts, a trailing `_bar` denotes a complement, e.g. `alpha_bar` is $1-\alpha$ and `xi_bar` is $1-\xi$. The Stage-I contract text in `bound/quantified/stage-i-contracts.json` is preserved verbatim and keeps its original notation (for example `A_s`, `B_s` for $\Phi_1,\Phi_2$).
+
+Some inherited directory and helper filenames describe an earlier construction. The registered algorithm is the final **four-LP + OptimalMixing + five-profile selection** algorithm; Appendices A–C derive the retained arithmetic from the first four LP calls and the OptimalMixing comparisons.
 
 ## Registered checkers
 
@@ -70,7 +84,7 @@ The paper spells Greek symbols out in script identifiers (`rho`, `eta`, `xi`, `a
 | `full-mass-both-high` | E.1–E.2 | [replay-fullmass-both-high.py](bound/simplify/replay-fullmass-both-high.py) |
 | `fixed-v-and-u1` | E.3 | [replay_preclip_left_projection_signs.py](bound/global/replay_preclip_left_projection_signs.py) |
 | `canonical-alignment` | E.3 | [preclip_canonical_alignment.py](bound/preclip_canonical_alignment.py) |
-| `canonical-A_0-stop` | E.3 | [replay-A_0-mass-stop-exclusion.py](bound/simplify/replay-A_0-mass-stop-exclusion.py) |
+| `canonical-alpha_0-stop` | E.3 | [replay-alpha_0-mass-stop-exclusion.py](bound/simplify/replay-alpha_0-mass-stop-exclusion.py) |
 | `canonical-E1` | E.3 | [replay-arc-e1-source-budget.py](bound/simplify/replay-arc-e1-source-budget.py) |
 | `canonical-boundary-stops` | E.3 | [replay-preclip-stop-events.py](bound/simplify/replay-preclip-stop-events.py) |
 | `canonical-upper-arc` | E.3 | [replay_preclip_bernstein_interval.py](bound/kink/replay_preclip_bernstein_interval.py) |

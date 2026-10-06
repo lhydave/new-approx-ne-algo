@@ -40,8 +40,8 @@
     "y_s_2"
   ],
   "symbols": [
-    "A_s",
-    "B_s",
+    "Phi_1",
+    "Phi_2",
     "kappa_2",
     "kappa_1",
     "CC",
@@ -1136,7 +1136,7 @@
       "id": "T_value",
       "kind": "primitive",
       "relation": "eq",
-      "expression": "-A_s - B_s - C_x_s_1_x_s_2*sigma - rho*R_x_s_1_x_s_2 + V",
+      "expression": "-Phi_1 - Phi_2 - C_x_s_1_x_s_2*sigma - rho*R_x_s_1_x_s_2 + V",
       "operation": "Tvalue",
       "clause_ids": [
         "T05"
@@ -1940,7 +1940,7 @@
       "id": "Trow_s",
       "kind": "primitive",
       "relation": "ge",
-      "expression": "-A_s - rho*R_x_s_1_x_s_2 + sigma*(-C_x_s_1_x_s_2 + C_x_s_1_y_s_2)",
+      "expression": "-Phi_1 - rho*R_x_s_1_x_s_2 + sigma*(-C_x_s_1_x_s_2 + C_x_s_1_y_s_2)",
       "operation": "Tdual_row",
       "clause_ids": [
         "T04",
@@ -1953,7 +1953,7 @@
       "id": "Tcol_z",
       "kind": "primitive",
       "relation": "ge",
-      "expression": "-B_s - C_x_s_1_y_s_2*sigma + rho*(-R_x_s_1_y_s_2 + R_y_s_1_y_s_2)",
+      "expression": "-Phi_2 - C_x_s_1_y_s_2*sigma + rho*(-R_x_s_1_y_s_2 + R_y_s_1_y_s_2)",
       "operation": "Tdual_col",
       "clause_ids": [
         "T04",
@@ -2006,7 +2006,7 @@
       "id": "Trow_w",
       "kind": "primitive",
       "relation": "ge",
-      "expression": "-A_s - rho*R_y_s_1_x_s_2 + sigma*(-C_y_s_1_x_s_2 + C_y_s_1_y_s_2)",
+      "expression": "-Phi_1 - rho*R_y_s_1_x_s_2 + sigma*(-C_y_s_1_x_s_2 + C_y_s_1_y_s_2)",
       "operation": "Tdual_row",
       "clause_ids": [
         "T04",
@@ -2019,7 +2019,7 @@
       "id": "Tcol_v",
       "kind": "primitive",
       "relation": "ge",
-      "expression": "-B_s - C_x_s_1_x_s_2*sigma + rho*(-R_x_s_1_x_s_2 + R_y_s_1_x_s_2)",
+      "expression": "-Phi_2 - C_x_s_1_x_s_2*sigma + rho*(-R_x_s_1_x_s_2 + R_y_s_1_x_s_2)",
       "operation": "Tdual_col",
       "clause_ids": [
         "T04",
@@ -2372,7 +2372,7 @@
       "id": "Tcol_j",
       "kind": "primitive",
       "relation": "ge",
-      "expression": "-B_s - C_x_s_1_y_1_2*sigma + rho*(-R_x_s_1_y_1_2 + R_y_s_1_y_1_2)",
+      "expression": "-Phi_2 - C_x_s_1_y_1_2*sigma + rho*(-R_x_s_1_y_1_2 + R_y_s_1_y_1_2)",
       "operation": "Tdual_col",
       "clause_ids": [
         "T04",
@@ -2445,7 +2445,7 @@
       "id": "Trow_r",
       "kind": "primitive",
       "relation": "ge",
-      "expression": "-A_s - rho*R_y_1_1_x_s_2 + sigma*(-C_y_1_1_x_s_2 + C_y_1_1_y_s_2)",
+      "expression": "-Phi_1 - rho*R_y_1_1_x_s_2 + sigma*(-C_y_1_1_x_s_2 + C_y_1_1_y_s_2)",
       "operation": "Tdual_row",
       "clause_ids": [
         "T04",
@@ -3770,7 +3770,7 @@
       "id": "Tcol_k",
       "kind": "primitive",
       "relation": "ge",
-      "expression": "-B_s - C_x_s_1_k*sigma + rho*(-R_x_s_1_k + R_y_s_1_k)",
+      "expression": "-Phi_2 - C_x_s_1_k*sigma + rho*(-R_x_s_1_k + R_y_s_1_k)",
       "operation": "Tdual_col",
       "clause_ids": [
         "T04",
@@ -3859,7 +3859,7 @@
       "id": "Trow_h",
       "kind": "primitive",
       "relation": "ge",
-      "expression": "-A_s - rho*R_h_x_s_2 + sigma*(-C_h_x_s_2 + C_h_y_s_2)",
+      "expression": "-Phi_1 - rho*R_h_x_s_2 + sigma*(-C_h_x_s_2 + C_h_y_s_2)",
       "operation": "Tdual_row",
       "clause_ids": [
         "T04",

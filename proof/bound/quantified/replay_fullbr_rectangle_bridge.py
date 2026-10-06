@@ -54,9 +54,9 @@ def run():
     rawC=base+p*(1-q*mu_payoff)+(1-p)*q*tau_2-LC*kC
     equal('row_cap_nonnegative_combination',rawR-actualR,q*(1-row_normalization_gap)+(JRr-LR*kR))
     equal('column_cap_nonnegative_combination',rawC-actualC,p*(1-column_normalization_gap)+(JCr-LC*kC))
-    rho,sigma,G_s,lambda_0,mu_0=S.symbols('rho sigma G_s lambda_0 mu_0')
-    equal('row_joint_gap_positive_division',lambda_payoff-G_s/rho,(rho*lambda_payoff-G_s)/rho)
-    equal('column_joint_gap_positive_division',mu_payoff-G_s/sigma,(sigma*mu_payoff-G_s)/sigma)
+    rho,sigma,g_hat,lambda_0,mu_0=S.symbols('rho sigma g_hat lambda_0 mu_0')
+    equal('row_joint_gap_positive_division',lambda_payoff-g_hat/rho,(rho*lambda_payoff-g_hat)/rho)
+    equal('column_joint_gap_positive_division',mu_payoff-g_hat/sigma,(sigma*mu_payoff-g_hat)/sigma)
     equal('row_actual_gap_to_lower_alias_cap',rawR.subs(lambda_payoff,lambda_0)-rawR,p*q*(lambda_payoff-lambda_0))
     equal('column_actual_gap_to_lower_alias_cap',rawC.subs(mu_payoff,mu_0)-rawC,p*q*(mu_payoff-mu_0))
     equal('row_final_lower_alias_cap',rawR.subs(lambda_payoff,lambda_0)-actualR,

@@ -104,22 +104,22 @@
       {
         "id": "T04",
         "block": "TSenlarged",
-        "property": "A_s,B_s are stationary LP offsets satisfying the raw dual constraints over full original x,y",
+        "property": "Phi_1,Phi_2 are stationary LP offsets satisfying the raw dual constraints over full original x,y",
         "quantifier_order": [
-          "actual rho,sigma,rho*y_s_1,sigma*y_s_2,A_s,B_s",
+          "actual rho,sigma,rho*y_s_1,sigma*y_s_2,Phi_1,Phi_2",
           "forall x in full simplex",
           "forall y in full simplex"
         ],
         "status": "primitive contract",
         "raw_dual_constraints": [
-          "A_s<=-rho*R(x,x_s_2)+sigma*(C(x,y_s_2)-C(x,x_s_2)) for every x in full row simplex",
-          "B_s<=-sigma*C(x_s_1,y)+rho*(R(y_s_1,y)-R(x_s_1,y)) for every y in full column simplex"
+          "Phi_1<=-rho*R(x,x_s_2)+sigma*(C(x,y_s_2)-C(x,x_s_2)) for every x in full row simplex",
+          "Phi_2<=-sigma*C(x_s_1,y)+rho*(R(y_s_1,y)-R(x_s_1,y)) for every y in full column simplex"
         ]
       },
       {
         "id": "T05",
         "block": "TSenlarged",
-        "property": "V=rho*R(x_s_1,x_s_2)+sigma*C(x_s_1,x_s_2)+A_s+B_s and V>=g-delta_f",
+        "property": "V=rho*R(x_s_1,x_s_2)+sigma*C(x_s_1,x_s_2)+Phi_1+Phi_2 and V>=g-delta_f",
         "quantifier_order": [
           "same actual primal and dual"
         ],
@@ -336,8 +336,8 @@
           "fullbr-rectangle-bridge-replay.json"
         ],
         "actual_gap_connector": {
-          "row": "lambda_payoff=R(y_s_1,y_s_2)-R(x_s_1,y_s_2); joint(x=x_s_1,y=y_s_2) gives rho*lambda_payoff>=G_s; rho>0 gives lambda_payoff>=lambda_0=G_s/rho",
-          "column": "mu_payoff=C(y_s_1,y_s_2)-C(y_s_1,x_s_2); joint(x=y_s_1,y=x_s_2) gives sigma*mu_payoff>=G_s; sigma>0 gives mu_payoff>=mu_0=G_s/sigma",
+          "row": "lambda_payoff=R(y_s_1,y_s_2)-R(x_s_1,y_s_2); joint(x=x_s_1,y=y_s_2) gives rho*lambda_payoff>=g_hat; rho>0 gives lambda_payoff>=lambda_0=g_hat/rho",
+          "column": "mu_payoff=C(y_s_1,y_s_2)-C(y_s_1,x_s_2); joint(x=y_s_1,y=x_s_2) gives sigma*mu_payoff>=g_hat; sigma>0 gives mu_payoff>=mu_0=g_hat/sigma",
           "cap_differences": [
             "p*q*(lambda_payoff-lambda_0)",
             "p*q*(mu_payoff-mu_0)"
@@ -397,10 +397,10 @@
       {
         "id": "E05b",
         "kind": "sound monotone necessary projection",
-        "from": "G_s/rho,G_s/sigma lower-alias cap model after actual-gap connector",
-        "to": "ideal threshold cap model with G_s=r",
+        "from": "g_hat/rho,g_hat/sigma lower-alias cap model after actual-gap connector",
+        "to": "ideal threshold cap model with g_hat=r",
         "reverse_implication": false,
-        "machine_status": "Actual-gap to lower-alias connector is checked in fullBR bridge; subsequent G_s-to-r crossing-arc sign sub-obligations have exact Bernstein replay; projection direction remains necessary only"
+        "machine_status": "Actual-gap to lower-alias connector is checked in fullBR bridge; subsequent g_hat-to-r crossing-arc sign sub-obligations have exact Bernstein replay; projection direction remains necessary only"
       },
       {
         "id": "E06a",

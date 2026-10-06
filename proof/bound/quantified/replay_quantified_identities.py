@@ -28,10 +28,10 @@ def run():
         'rho sigma eta xi alpha gamma r u v')
     R_x_s_1_x_s_2,R_x_x_s_2,R_y_s_1_y,R_x_s_1_y,C_x_y_s_2,C_x_x_s_2,C_x_s_1_y,C_x_s_1_x_s_2 = sp.symbols(
         'R_x_s_1_x_s_2 R_x_x_s_2 R_y_s_1_y R_x_s_1_y C_x_y_s_2 C_x_x_s_2 C_x_s_1_y C_x_s_1_x_s_2')
-    A_s_comparison = -rho*R_x_x_s_2 + sigma*(C_x_y_s_2-C_x_x_s_2)
-    B_s_comparison = -sigma*C_x_s_1_y + rho*(R_y_s_1_y-R_x_s_1_y)
+    Phi_1_comparison = -rho*R_x_x_s_2 + sigma*(C_x_y_s_2-C_x_x_s_2)
+    Phi_2_comparison = -sigma*C_x_s_1_y + rho*(R_y_s_1_y-R_x_s_1_y)
     joint = rho*(R_y_s_1_y-R_x_s_1_y-R_x_x_s_2+R_x_s_1_x_s_2)+sigma*(C_x_y_s_2-C_x_x_s_2-C_x_s_1_y+C_x_s_1_x_s_2)
-    identity('T04_T05_raw_joint_plane', rho*R_x_s_1_x_s_2+sigma*C_x_s_1_x_s_2+A_s_comparison+B_s_comparison, joint)
+    identity('T04_T05_raw_joint_plane', rho*R_x_s_1_x_s_2+sigma*C_x_s_1_x_s_2+Phi_1_comparison+Phi_2_comparison, joint)
 
     h,f_1_value,f_2_value = sp.symbols('h f_1_value f_2_value')
     identity('R01_R02_nonnegative_slack_sum',
